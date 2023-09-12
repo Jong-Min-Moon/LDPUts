@@ -1,0 +1,81 @@
+genRR <- function(data, alphabet_size, privacy_level){
+  p <- rep(
+    1/(exp(privacy_level) + alphabet_size - 1), 
+    alphabet_size
+  )
+  p[data] <- p[data] * exp(privacy_level)
+  #print(p)
+  priv <- rmultinom(1,1, p)
+  return(which(!priv == 0))
+}
+
+chisq_priv <- function(Y, Z, alphabet_size, gamma){
+  n1 <- length(Y)
+  n2 <- length(Z)
+  Y_count <- Z_count <- rep(NA, alphabet_size)
+  for(ii in 1:alphabet_size){
+    Y_count[ii] <- sum(Y==ii)
+    Z_count[ii] <- sum(Z==ii)
+  }
+  total_count <- Y_count + Z_count
+  
+  T_chi <- 0
+  for (cat in 1:alphabet_size){
+    if (total_count[cat] > 0){
+      T_chi <- T_chi + ((n1*Y_count[cat]-n2*Z_count[cat])^2)/(n1*n2*total_count[cat])
+    }
+  }
+
+  thres <- qchisq(gamma, df=(alphabet_size-1), lower.tail = F) 
+  return(T_chi>thres)
+}
+
+generate_nearly_unif <- function(alphabet_size, beta, n_sample){
+  p <- (1:alphabet_size)^{-beta}
+  p <- p / sum(p)
+  #print(p)
+  raw <- rep(NA, n_sample)
+  for (ii in 1:n_sample) raw[ii] <- which(!rmultinom(1,1, p) == 0)
+  return(raw)
+}
+
+generate_poly <- function(alphabet_size, beta, n_sample){
+  raw <- generate_nearly_unif(alphabet_size, 1+beta, n_sample)
+}
+
+estimate_type_one <- function(alphabet_size, n1, n2, gamma, privacy_level, n_test, generator, beta_list){
+  type_one_result <- rep(NA, length(beta_list))
+  names(type_one_result) <- beta_list
+  
+  for (i in 1:length(type_one_result)){
+    beta_now <- beta_list[i]
+    test_result <- rep(NA, n_test)
+    for (test_num in 1:n_test){
+      Y <- generator(alphabet_size, beta_now, n1)
+      Z <- generator(alphabet_size, beta_now, n2)
+      
+      Y_priv <- rep(NA, n1)
+      Z_priv <- rep(NA, n2)
+      for (j1 in 1:n1) Y_priv[j1] <- genRR(Y[j1], alphabet_size, privacy_level)
+      for (j2 in 1:n2) Z_priv[j2] <- genRR(Z[j2], alphabet_size, privacy_level)
+      decision <- as.numeric(chisq_priv(Y_priv, Z_priv, alphabet_size, gamma))
+      test_result[test_num] <- decision
+    }
+    type_one_now <- 1-sum(test_result==0)/n_test
+    type_one_result[i] <- type_one_now
+  }
+  return(type_one_result)
+}
+
+n1 <- n2 <- 1000
+privacy_level <- 0.5
+gamma <- 0.1
+n_test <- 1000
+
+unif_beta_list <- seq(0, 0.9, length=10)
+type_one_unif_10 <- estimate_type_one(10, n1, n2, gamma, privacy_level, n_test, generate_nearly_unif, unif_beta_list)
+type_one_unif_20 <- estimate_type_one(20, n1, n2, gamma, privacy_level, n_test, generate_nearly_unif, unif_beta_list)
+type_one_unif_50 <- estimate_type_one(50, n1, n2, gamma, privacy_level, n_test, generate_nearly_unif, unif_beta_list)
+type_one_unif_100 <- estimate_type_one(100, n1, n2, gamma, privacy_level, n_test, generate_nearly_unif, unif_beta_list)
+
+estimate_type_one(500, n1, n2, gamma, privacy_level, n_test, generate_nearly_unif, unif_beta_list)
