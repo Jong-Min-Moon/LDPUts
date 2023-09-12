@@ -1,0 +1,10 @@
+class data_transformer:
+    def __init__(self, cuda_device):
+        self.cuda_device = cuda_device
+          
+    def transform_onehot(dataMultivariate, d):
+        return(
+            torch.nn.functional.one_hot(
+                dataMultivariate,
+                num_classes = d)
+        )

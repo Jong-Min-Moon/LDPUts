@@ -1,0 +1,17 @@
+class client:
+    def __init__(self, privacy_level, n_user, distribution, cuda_device):
+        self.privacy_level = privacy_level
+        self.n_user = n_user
+        self.distribution = distribution
+        self.cuda_device = cuda_device
+    
+        
+        
+
+    def release(self)
+        return(
+            self.privacy_channel.privatize(self.discdata)
+        )
+
+    
+
