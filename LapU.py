@@ -6,17 +6,18 @@ class LapU:
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
         data_onehot = self.transform_onehot(data_mutinomial, alphabet_size)
         laplace_scale = torch.tensor(2*alphabet_size).sqrt().mul(2).div(privacy_level) #sigma_alpha in the paper
-
-        d = self.kappa ** tst_data_y.size(dim = 1)
-        theta = d**(1/2)
-        tst_data_y_multi = self.h_bin(tst_data_y, self.kappa)
-        tst_data_y_oneHot = self.transform_onehot(tst_data_y_multi, d)
-        tst_data_z_multi = self.h_bin(tst_data_z, self.kappa) 
-        tst_data_z_oneHot = self.transform_onehot(tst_data_z_multi, d)
-        dataCombined = torch.cat([tst_data_y_oneHot, tst_data_z_oneHot], dim = 0)
-        tst_data_priv = self.LapU(dataCombined, alpha, 2, theta)
-        return(tst_data_priv)
+        sample_size = self.get_sample_size(data_mutinomial)
+        laplace_noise = self.generate_random_noise(sample_size, alphabet_size, privacy_level)
+        return(
+            torch.add(
+                data_onehot.mul(sqrt(alphabet_size)),
+                laplace_noise.mul(laplace_scale)
+            )  
+        )
     
+    
+
+    def generate_random_noise(self, sample_size, alphabet_size, privacy_level):
 
     def LapU(self, oneHot, alpha, c, theta):
         p = torch.exp(torch.tensor(
@@ -29,3 +30,11 @@ class LapU:
     
     def transform_onehot(data_multinomial, alphabet_size)
         return(torch.nn.functional.one_hot(data_multinomial, alphabet_size))
+
+    def get_sample_size(self, data):
+        if data.dim() == 1:
+            return( data.size(dim = 0) )
+        elif data.dim() == 2:
+            return( data.size(dim = 1) )
+        else:
+            return # we only use up to 2-dimensional tensor, i.e. matrix
