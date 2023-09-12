@@ -1,11 +1,16 @@
 class client:
-    def __init__(self, privacy_level, data, cuda_device):
+    def __init__(self, privacy_level, cuda_device):
         self.privacy_level = privacy_level
-        self.data = data
         self.cuda_device = cuda_device
         self.discretizer = discretizer()
         self.LapU = LapU()
         self.discLapU = discLapU()
+
+    def load_data_disc(self, data):
+        self.data = data
+
+    def load_data_conti(self, data):
+        self.data = discretizer.transform(data)
     
     def release_LapU(self):
         return(self.LapU.privatize(self.data))
