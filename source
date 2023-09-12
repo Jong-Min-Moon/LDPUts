@@ -1,29 +1,3 @@
-class discLapU(LapU):
-    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
-        data_onehot = self.__transform_onehot(data_mutinomial, alphabet_size)
-        laplace_scale = torch.tensor(2*alphabet_size).sqrt().mul(2).div(privacy_level).to(self.cuda_device) #sigma_alpha in the paper
-        sample_size = self.__get_sample_size(data_mutinomial)
-        laplace_noise = self.unit_laplace_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device)
-        return(
-            torch.add(
-                data_onehot.mul(alphabet_size**(1/2)),
-                laplace_noise.mul(laplace_scale)
-            )  
-        )     
-    def __initialize_laplace_generator(self):
-
-        self.unit_laplace_generator = torch.distributions.laplace.Laplace(
-            torch.tensor(0.0).to(self.cuda_device),
-            torch.tensor(2**(-1/2)).to(self.cuda_device)
-        )   
-               p = torch.exp(torch.tensor(
-            - alpha / (c * theta)
-            )).to(self.cuda_device)
-
-            def generate_disc_laplace(self, p, size):
-        geometric_generator = torch.distributions.geometric.Geometric(1 - p)
-        noise = geometric_generator.sample(sample_shape = size) - geometric_generator.sample(sample_shape = size)
-        return(noise)
 
 
 
