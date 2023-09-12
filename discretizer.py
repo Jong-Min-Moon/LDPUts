@@ -13,11 +13,7 @@ class discretizer:
         # create designated number of intervals
         data_bin_index = self.transform_bin_index(data, n_bin) # each column into bin index
         data_multinomial = self.transform_multinomial(data_bin_index, n_bin) # all column in to a single column with n_bin^d categories  
-        data_onehot = torch.nn.functional.one_hot(
-            data_multinomial,
-            n_bin**self.get_dimension(data)
-        )
-        return(data_onehot)
+        return(data_multinomial)
     
     def get_dimension(self, data):
         if data.dim() == 1:

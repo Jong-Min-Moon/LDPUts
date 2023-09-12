@@ -1,3 +1,8 @@
+       data_onehot = torch.nn.functional.one_hot(
+            data_multinomial,
+            n_bin**self.get_dimension(data)
+        )
+
 import datetime
 import time
 
