@@ -3,7 +3,10 @@ class LapU:
         self.cuda_device = cuda_device
 
 
-    def privatize(self, tst_data_y, tst_data_z, alpha):
+    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
+        data_onehot = self.transform_onehot(data_mutinomial, alphabet_size)
+
+
         d = self.kappa ** tst_data_y.size(dim = 1)
         theta = d**(1/2)
         tst_data_y_multi = self.h_bin(tst_data_y, self.kappa)
@@ -23,3 +26,6 @@ class LapU:
         laplaceNoise = self.generate_disc_laplace(p, laplaceSize)
         LDPView = torch.tensor(theta) * oneHot + laplaceNoise
         return(LDPView)
+    
+    def transform_onehot(data_multinomial, alphabet_size)
+        return(torch.nn.functional.one_hot(data_multinomial, alphabet_size))

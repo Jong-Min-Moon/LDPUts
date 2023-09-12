@@ -6,17 +6,18 @@ class client:
         self.LapU = LapU(cuda_device)
         self.discLapU = discLapU(cuda_device)
 
-    def load_data_disc(self, data):
+    def load_data_disc(self, data, alphabet_size):
         self.data = data
+        self.alphabet_size = alphabet_size
 
     def load_data_conti(self, data, n_bin):
         self.data = self.discretizer.transform(data, n_bin)
     
     def release_LapU(self):
-        return(self.LapU.privatize(self.data), self.privacy_level)
+        return(self.LapU.privatize(self.data), self.alphabet_size, self.privacy_level)
     
     def release_DiscLapU(self):
-        return(self.discLapU.privatize(self.data), self.privacy_level)
+        return(self.discLapU.privatize(self.data), self.alphabet_size, self.privacy_level)
 
    
 
