@@ -5,7 +5,7 @@ class LapU:
 
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
         data_onehot = self.transform_onehot(data_mutinomial, alphabet_size)
-
+        laplace_scale = torch.tensor(2*alphabet_size).sqrt().mul(2).div(privacy_level) #sigma_alpha in the paper
 
         d = self.kappa ** tst_data_y.size(dim = 1)
         theta = d**(1/2)

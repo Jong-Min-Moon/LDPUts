@@ -6,15 +6,15 @@ class discretizer:
         ''' 
         input arguments
             data: 2d torch tensor of continuous data
-            n_bin: number of bin in each dimension
+            n_bin: number of bin in each dimension (kappa in the paper)
         output
-            torch tensor of multivariate data
+            1. torch tensor of multivariate data
+            2. alphabet size of the multivariate data: kappa^d
         '''          
         # create designated number of intervals
         data_bin_index = self.transform_bin_index(data, n_bin) # each column into bin index
         data_multinomial = self.transform_multinomial(data_bin_index, n_bin) # all column in to a single column with n_bin^d categories 
-        n_bin**self.get_dimension(data)
-        return(data_multinomial)
+        return(data_multinomial, n_bin**self.get_dimension(data))
     
     def get_dimension(self, data):
         if data.dim() == 1:

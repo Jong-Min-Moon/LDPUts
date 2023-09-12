@@ -11,7 +11,7 @@ class client:
         self.alphabet_size = alphabet_size
 
     def load_data_conti(self, data, n_bin):
-        self.data = self.discretizer.transform(data, n_bin)
+        self.data, self.alphabet_size = self.discretizer.transform(data, n_bin)
     
     def release_LapU(self):
         return(self.LapU.privatize(self.data), self.alphabet_size, self.privacy_level)
