@@ -9,8 +9,8 @@ class client:
     def load_data_disc(self, data):
         self.data = data
 
-    def load_data_conti(self, data):
-        self.data = discretizer.transform(data)
+    def load_data_conti(self, data, n_bin):
+        self.data = discretizer.transform(data, n_bin)
     
     def release_LapU(self):
         return(self.LapU.privatize(self.data))

@@ -3,7 +3,7 @@ The primary objective of this project is to offer a user-friendly interface for 
 For example, the raw dataset is first loaded in its entirety on the client side before to the implementation of privacy 
 mechanism. 
 This practice deviates from the fundamental assumption that each individual data point within the raw dataset can only be accessed by its own data owner, while the curator is limited to observing only the privatized releases.
-
+This violation pertains to the implementation of efficient discretization and privatization for large-scale datasets.
 
 Although local differential privacy is based on individual data owners
 

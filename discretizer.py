@@ -2,67 +2,55 @@ class discretizer:
     def __init__(self, cuda_device):
         self.cuda_device = cuda_device
 
-       def h_bin(self, data, kappa): 
-        ''' Only for continuous data
+    def transform(self, data, n_bin): 
+        ''' 
         input arguments
-            data: torch tensor of continuous data
-            kappa: number of bin in each dimension
+            data: 2d torch tensor of continuous data
+            n_bin: number of bin in each dimension
         output
             torch tensor of multivariate data
-        '''
-               
+        '''          
         # create designated number of intervals
-        d = self.get_dimension(data)
-     
-        # 1. for each dimension, turn the continuous data into interval
-        # each row now indicates a hypercube in [0,1]^d
-        # the more the data is closer to 1, the larger the interval index.
-        dataBinIndex = self.transform_bin_index(data = data, nIntervals = kappa)
-        
-        # 2. for each datapoint(row),
-        #    turn the hypercube data into a multivariate data of (1, 2, ..., kappa^d)
-        #    each row now becomes an integer.
-        dataMultivariate = self.TransformMultivariate(dataBinIndex, kappa)
-        
-        return(dataMultivariate)
-    
-          
-    def transform_onehot(dataMultivariate, d):
-        return(
-            torch.nn.functional.one_hot(dataMultivariate, num_classes = d)
+        data_bin_index = self.transform_bin_index(data, n_bin) # each column into bin index
+        data_multinomial = self.transform_multinomial(data_bin_index, n_bin) # all column in to a single column with n_bin^d categories  
+        data_onehot = torch.nn.functional.one_hot(
+            data_multinomial,
+            n_bin**self.get_dimension(data)
         )
+        return(data_onehot)
     
- 
+    def get_dimension(self, data):
+        if data.dim() == 1:
+            return(1)
+        elif data.dim() == 2:
+            return( data.size(dim = 1) )
+        else:
+            return # we only use up to 2-dimensional tensor, i.e. matrix
     
-
-       def transform_bin_index(self, data, nIntervals):
-        ''' Only for continuous data.
+    def transform_bin_index(self, data, n_bin):
+        '''
         for each dimension, transform the data in [0,1] into the interval index
         first interval = [0, x], the others = (y z]
         
-        input arguments
-            data: torch tensor object on GPU
-            nIntervals: integer
-        output
-            dataIndices: torch tensor, dimension same as the input
-        '''
-        # create designated number of intervals
-        d = self.get_dimension(data)
-        breaks = torch.linspace(start = 0, end = 1, steps = nIntervals + 1).to(self.cuda_device) #floatTensor
-        dataIndices = torch.bucketize(data, breaks, right = False) # ( ] form.
-        dataIndices = dataIndices.add(
-            dataIndices.eq(0)
-        ) #move 0 values from the bin number 0 to the bin number 1       
-        return(dataIndices)    
+        input: two
+            1. data: torch tensor object on GPU
+            2. n_bin: integer
+        output: one
+            1. bin_index: torch tensor of bin indices, dimension same as the input
+        '''      
+        bin = torch.linspace(start = 0, end = 1, steps = n_bin + 1).to(self.cuda_device) #create bins (floatTensor)
+        bin_index = torch.bucketize(data, bin, right = False) # bin index
+        bin_index = bin_index.add(bin_index.eq(0)) #move 0 values from the bin number 0 to the bin number 1       
+        return(bin_index)    
 
-    def TransformMultivariate(self, dataBinIndex, nBin):
+    def transform_multinomial(self, data_bin_index, n_bin):
         """Only for continuous and multivariate data ."""
-        d = self.get_dimension(dataBinIndex)
+        d = self.get_dimension(data_bin_index)
         if d == 1:
-            return(dataBinIndex.sub(1).reshape(-1,))
+            return(data_bin_index.sub(1).reshape(-1,))
         else:
             exponent = torch.linspace(start = (d-1), end = 0, steps = d, dtype = torch.long)
-            vector = torch.tensor(nBin).pow(exponent)
-            return( torch.matmul( dataBinIndex.sub(1).to(torch.float), vector.to(torch.float).to(self.cuda_device) ).to(torch.long) )   
+            vector = torch.tensor(n_bin).pow(exponent)
+            return( torch.matmul( data_bin_index.sub(1).to(torch.float), vector.to(torch.float).to(self.cuda_device) ).to(torch.long) )   
     
     
