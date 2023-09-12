@@ -110,75 +110,9 @@ class twoSampleContiTester(tester):
         print( f"simulation ended at {datetime.datetime.now()}" )
         return(torch.sum(test_results).item())
         
-    def permu_test(self, tst_data_y, tst_data_z, alpha, B): 
-        n_1 = tst_data_y.size(dim = 0)
-        tst_data_priv = self.privatize(tst_data_y, tst_data_z, alpha)
-        n = tst_data_priv.size(dim = 0)
-        
-        #original statistic
-        ustatOriginal = self.compute_stat(tst_data_priv[:n_1,:], tst_data_priv[n_1:,:])
-        print(f"original u-statistic:{ustatOriginal}")
-        
-        #permutation procedure
-        permStats = torch.empty(B).to(self.cuda_device)
-        
-        for i in range(B):
-            permutation = torch.randperm(n)
-            perm_stat_now = self.compute_stat(
-                tst_data_priv[permutation][:n_1,:],
-                tst_data_priv[permutation][n_1:,:]
-            ).to(self.cuda_device)
-            permStats[i] = perm_stat_now
-
-               
-        p_value_proxy = (1 +
-                         torch.sum(
-                             torch.gt(input = permStats, other = ustatOriginal)
-                         )
-                        ) / (B + 1)
-      
-        print(f"p value proxy: {p_value_proxy}")
-        return(p_value_proxy < self.gamma)#test result: TRUE = 1 = reject the null, FALSE = 0 = retain the null.    
  
-    def compute_stat(self, tst_data_y_priv, tst_data_z_priv):
-        n_1 = torch.tensor(tst_data_y_priv.size(dim = 0))
-        n_2 = torch.tensor(tst_data_z_priv.size(dim = 0))
-    
-        y_row_sum = torch.sum(tst_data_y_priv, axis = 0)
-        z_row_sum = torch.sum(tst_data_z_priv, axis = 0)
-        phi_psi = torch.einsum('ji,jk->ik', tst_data_y_priv, tst_data_z_priv)
+ 
 
-
-        one_Phi_one = torch.inner(y_row_sum, y_row_sum)
-        one_Psi_one = torch.inner(z_row_sum, z_row_sum)
-
-        tr_Phi = torch.sum(torch.square(tst_data_y_priv))
-        tr_Psi = torch.sum(torch.square(tst_data_z_priv))
-
-        one_Phi_tilde_one = one_Phi_one - tr_Phi
-        one_Psi_tilde_one = one_Psi_one - tr_Psi
-
-        onePhioneonePsione = one_Phi_tilde_one * one_Psi_tilde_one
-
-        # y only part. log calculation in case of large n1
-        sign_y = torch.sign(one_Phi_tilde_one)
-        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(n_1) - torch.log(n_1 - 1) )
-        u_y = sign_y * abs_u_y
-
-
-        # z only part. log calculation in case of large n2
-        sign_z = torch.sign(one_Psi_tilde_one)
-
-        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(n_2) - torch.log(n_2 - 1) )
-        u_z = sign_z * abs_u_z
-
-        # cross part
-        cross = torch.inner(y_row_sum, z_row_sum)
-        sign_cross = torch.sign(cross)
-        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(n_1) - torch.log(n_2) )
-        u_cross = sign_cross * abs_cross
-
-        return(u_y + u_z - u_cross)
     
         
 
