@@ -44,4 +44,19 @@ class discLapU(LapU):
         return(laplace_noise_disc)
      
 
+class genRR()
+    def __init__(self, cuda_device):
+        self.cuda_device = cuda_device
+    
+    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
+        sample_size = self._get_sample_size(data_mutinomial)
+        data_multinomial_private = torch.zeros(size = torch.Size([sample_size]))
+        for i in range(sample_size):
+            category_now = data_mutinomial[i]
+            p = 1 / ( torch.tensor(privacy_level).exp().add(alphabet_size - 1) )
+            p = p.repeat_interleave(alphabet_size)
+            p[category_now] = p[dcategory_nowata] * torch.tensor(privacy_level).exp()
+
+            data_multinomial_private[i] = torch.multinomial(p, 1)
+       return(data_multinomial_private)
 

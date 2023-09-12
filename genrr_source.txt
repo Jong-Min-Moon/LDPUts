@@ -1,13 +1,4 @@
-genRR <- function(data, alphabet_size, privacy_level){
-  p <- rep(
-    1/(exp(privacy_level) + alphabet_size - 1), 
-    alphabet_size
-  )
-  p[data] <- p[data] * exp(privacy_level)
-  #print(p)
-  priv <- rmultinom(1,1, p)
-  return(which(!priv == 0))
-}
+
 
 chisq_priv <- function(Y, Z, alphabet_size, gamma){
   n1 <- length(Y)
