@@ -10,11 +10,7 @@ def generate_unit_laplace(self, k):
         '''
         return self.unit_laplace_generator.sample(sample_shape = k)
 
-def initialize_laplace_generator(self)
-    self.unit_laplace_generator = torch.distributions.laplace.Laplace(
-            torch.tensor(0.0).to(self.cuda_device),
-            torch.tensor(2**(-1/2)).to(self.cuda_device)
-        )
+
 
 def release_LapU(self, alpha):
         ''' Only for continuous data.
