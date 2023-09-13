@@ -9,21 +9,32 @@ class client:
         self.discLapU = discLapU(cuda_device)
         self.genRR = genRR(cuda_device)
 
-    def load_data_disc(self, data, alphabet_size):
-        self.data = data
+    def load_data_disc(self, data_y, data_z, alphabet_size):
+        self.data_y = data_y
+        self.data_z = data_z
         self.alphabet_size = alphabet_size
 
-    def load_data_conti(self, data, n_bin):
-        self.data, self.alphabet_size = self.discretizer.transform(data, n_bin)
+    def load_data_conti(self, data_y, data_z, n_bin):
+        self.data_y, self.alphabet_size = self.discretizer.transform(data_y, n_bin)
+        self.data_z, self.alphabet_size = self.discretizer.transform(data_z, n_bin)
     
     def release_LapU(self, privacy_level):
-        return(self.LapU.privatize(self.data, self.alphabet_size, privacy_level))
+        return(
+            self.LapU.privatize(self.data_y, self.alphabet_size, privacy_level),
+            self.LapU.privatize(self.data_z, self.alphabet_size, privacy_level)
+            )
     
     def release_DiscLapU(self, privacy_level):
-        return(self.discLapU.privatize(self.data, self.alphabet_size, privacy_level))
+        return(
+            self.discLapU.privatize(self.data_y, self.alphabet_size, privacy_level),
+            self.discLapU.privatize(self.data_z, self.alphabet_size, privacy_level)
+            )
 
     def release_genRR(self, privacy_level):
-        return(self.genRR.privatize(self.data, self.alphabet_size, privacy_level))
+        return(
+            self.genRR.privatize(self.data_y, self.alphabet_size, privacy_level),
+            self.genRR.privatize(self.data_z, self.alphabet_size, privacy_level)
+               )
    
 class LapU:
     def __init__(self, cuda_device):
