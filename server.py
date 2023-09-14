@@ -1,7 +1,10 @@
 from abc import ABCMeta, abstractmethod
+from client import client
+import torch
+
 class server(client):
     def release_p_value(self, data_y, data_z, n_permutation):
-        self._permutation_test(data_y, data_z, n_permutation)
+        return(self._permutation_test(data_y, data_z, n_permutation))
 
     def _permutation_test(self, data_y, data_z, n_permutation):
         n_1 = self._get_sample_size(data_y)
@@ -23,7 +26,7 @@ class server(client):
             ).to(self.cuda_device)
             u_stat_permuted[i] = perm_stat_now
 
-               
+        #print(u_stat_permuted)      
         p_value_proxy = (1 +
                          torch.sum(
                              torch.gt(input = u_stat_permuted, other = u_stat_original)
@@ -36,10 +39,10 @@ class server(client):
     def _calculate_statistic(self, data_y, data_z):
         raise NotImplementedError()
     
-def server_twosample_U(server):    
+class server_twosample_U(server):    
     def _calculate_statistic(self, data_y, data_z):
-        n_1 = self._get_sample_size(data_y)
-        n_2 = self._get_sample_size(data_z) 
+        n_1 = torch.tensor(self._get_sample_size(data_y))
+        n_2 = torch.tensor(self._get_sample_size(data_z))
     
         y_row_sum = torch.sum(data_y, axis = 0)
         z_row_sum = torch.sum(data_z, axis = 0)

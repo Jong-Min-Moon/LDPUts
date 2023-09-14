@@ -35,7 +35,14 @@ class client:
             self.genRR.privatize(self.data_y, self.alphabet_size, privacy_level),
             self.genRR.privatize(self.data_z, self.alphabet_size, privacy_level)
                )
-   
+
+    def _get_sample_size(self, data):
+        if data.dim() == 1:
+            return( data.size(dim = 0) )
+        elif data.dim() == 2:
+            return( data.size(dim = 1) )
+        else:
+            return # we only use up to 2-dimensional tensor, i.e. matrix  
 class LapU:
     def __init__(self, cuda_device):
         self.cuda_device = cuda_device
@@ -62,7 +69,7 @@ class LapU:
         elif data.dim() == 2:
             return( data.size(dim = 1) )
         else:
-            return # we only use up to 2-dimensional tensor, i.e. matrix
+            return # we only use up to 2-dimensional tensor, i.e. matrix 
         
     def _initialize_laplace_generator(self):
         self.unit_laplace_generator = torch.distributions.laplace.Laplace(
