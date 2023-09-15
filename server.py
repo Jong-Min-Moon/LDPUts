@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from client import client
+import utils
 import torch
 
 class server(client):
@@ -7,8 +8,8 @@ class server(client):
         return(self._permutation_test(data_y, data_z, n_permutation))
 
     def _permutation_test(self, data_y, data_z, n_permutation):
-        n_1 = self._get_sample_size(data_y)
-        n_2 = self._get_sample_size(data_z) 
+        n_1 = utils.get_sample_size(data_y)
+        n_2 = utils.get_sample_size(data_z)
         n = n_1 + n_2
         tst_data_combined = torch.vstack((data_y, data_z))
        
@@ -41,8 +42,8 @@ class server(client):
     
 class server_twosample_U(server):    
     def _calculate_statistic(self, data_y, data_z):
-        n_1 = torch.tensor(self._get_sample_size(data_y))
-        n_2 = torch.tensor(self._get_sample_size(data_z))
+        n_1 = torch.tensor(utils.get_sample_size(data_y))
+        n_2 = torch.tensor(utils.get_sample_size(data_z))
     
         y_row_sum = torch.sum(data_y, axis = 0)
         z_row_sum = torch.sum(data_z, axis = 0)

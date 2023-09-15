@@ -1,4 +1,6 @@
 import torch
+import utils
+
 from discretizer import discretizer
 
 class client:
@@ -36,13 +38,7 @@ class client:
             self.genRR.privatize(self.data_z, self.alphabet_size, privacy_level)
                )
 
-    def _get_sample_size(self, data):
-        if data.dim() == 1:
-            return( data.size(dim = 0) )
-        elif data.dim() == 2:
-            return( data.size(dim = 1) )
-        else:
-            return # we only use up to 2-dimensional tensor, i.e. matrix  
+
 class LapU:
     def __init__(self, cuda_device):
         self.cuda_device = cuda_device
@@ -50,7 +46,7 @@ class LapU:
 
 
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
-        sample_size = self._get_sample_size(data_mutinomial)
+        sample_size = utils.get_sample_size(data_mutinomial)
         data_onehot_scaled = self._transform_onehot(data_mutinomial, alphabet_size).mul(alphabet_size**(1/2)) # scaled by \sqrt(k)
         noise = self._generate_noise(alphabet_size, privacy_level, sample_size)
         return(torch.add(data_onehot_scaled,noise))
@@ -89,7 +85,7 @@ class discLapU(LapU):
 
 class genRR(LapU):   
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
-        sample_size = self._get_sample_size(data_mutinomial)
+        sample_size = utils.get_sample_size(data_mutinomial)
         data_onehot = self._transform_onehot(data_mutinomial, alphabet_size)
         one_matrix = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1)
         bias = torch.tensor(privacy_level).exp()
