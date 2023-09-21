@@ -760,8 +760,7 @@ LDP two-sample  chi-squared test
 	\item Allow for $n_1 \neq n_2$
 	
 \end{itemize}
-\section{Generalized Randomized Response and two sample Pearson chi-square statistic}
-\subsection{Privacy mechanism: Generalized Randomized Response}
+\section{Privacy mechanism: Generalized Randomized Response}
 \begin{definition}[Generalized Randomized Response~(Theorem 5.4. of \citet{Gaboardi2018LDPChisq})]
 For a multinomial random vector 
 $
@@ -811,7 +810,7 @@ They demonstrate that the limiting distribution is chi-square distribution both 
 
 
 
-\subsection{Two sample chi-square statistic}
+\section{Two sample chi-square statistic}
 We extend the goodness-of-fit test by \citet{Gaboardi2018LDPChisq} into two-sample testing by privatizing the raw samples
 $\rVecZ_i \stackrel{iid}{\sim}multi(\sampleSize_2, \distparamMultinom_{\rVecZ})$
 into $\tilde{\rVecZ}_j := \genrr(\rVecZ_j)$. 
@@ -837,184 +836,222 @@ Under the null, $\genrr(\rVecY_i)$ and $\genrr(\rVecZ_j)$ follow multinomial dis
 		}
 	\end{align*}
   converges to a chi-square distribution with degree of freedom $\alphabetSize-1$ and yields a valid  test with size $\gamma$.
-This test statistic is from Van der Vaart's book Asymptotic Statistics, pp. 253.
+The test statistic is from Van der Vaart's book Asymptotic Statistics, pp. 253.
 
-\section{Bit flip privatization and related test statisitc}
-\subsection{Bit flip privatization}
-\subsection{test statistic}
-\subsubsection{Review of one-sample statistic}
-We first review how $\cite{Gaboardi2018LDPChisq}$ builds goodness-of-fit chi-square statistic for  histogram of bit-flipped observations.
-We start with applying CLT to the bit-flipped obsevations. 
-\begin{lemma}[Applying CLT to bit-flipped observations, Lemma 5.7 of \cite{Gaboardi2018LDPChisq}]\label{lemma_57}
-When $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$, denote the histogram of flipped observations as
-\begin{equation}
-	\tilde{\boldsymbol{H}}:= \sum_{i=1}^{n_1} \mathcal{M}_{bit}(Y_i).
-\end{equation}
-The mean vector and covariance matrices are computed as follows: 
-\begin{equation}
-	\tilde{\boldsymbol{p}}:=	
-	\mathbb{E}(\mathcal{M}_{bit}(Y_1))
-	=
-	\frac{(\exp
-		\bigl(
-		\alpha/2)-1
-		\bigr) \boldsymbol{p}+1}{\exp(\alpha/2)+1}, \text{ and}
-\end{equation}
+Minimax optimal Chi-square test~\citet{Arias-Castro2018RememberDimension} might not stay optimal when combined with $\genrr$.
+The probability vectors has changed due to LDP, but they only affect the covariance matrix of the sample mean which does not affect the limiting distribution as long as it is rank $\alphabetSize-1$ projection matrix.
 
-\begin{equation}
-	\Sigma_{\boldsymbol{p}}
-	:=
-	Var(\mathcal{M}_{bit}(Y_1))
-	=
-	\left(
-	\frac{\exp(\alpha/2)-1}{\exp(\alpha/2)+1}
-	\right)^2
-	\bigl(
-	diag(\boldsymbol{p}) - \boldsymbol{p}\boldsymbol{p}^\top
-	\bigr)
-	+
-	\frac{\exp(\alpha/2)}{(\exp(\alpha/2)+1)^2}
-	I_d,
-\end{equation}
-For any $\alpha >0$ and $\boldsymbol{p} >0$, $\Sigma_{\boldsymbol{p}}$ is full-rank  and one of its eigenvector is one-vector. 
-By the CLT for i.i.d random vectors, we get the following asymptotic distribution:
-\begin{equation}\label{CLT_onesample_vector}
-	\sqrt{n}(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
-	\stackrel{d}{\to}
-	N
-	\bigl(
-	0, \Sigma_{\boldsymbol{p}}
-	\bigr)
-\end{equation}
-\end{lemma}
-\noindent In non-private chi-square test, we apply CLT and
-multiply by $diag(\boldsymbol{p})^{-1/2}$ to turn the  covariance matrix on the RHS into a projector matrix.
-Here in the private setting, we also need a scaling matrix to turn the covariance matrix into a projector matrix.
-\citet{Gaboardi2018LDPChisq} proposes $\tilde{\boldsymbol{p}}^{-1/2} \Pi$, where $\Pi := I_k - \frac{1}{k} \boldsymbol{1} \boldsymbol{1}^\top$. The properties of $\Pi$ are as follows:
-\begin{enumerate}
-	\item It is symmetric idempotent (a projecter matrix).
-	\item Its null space is $span\{\boldsymbol{1}\}$, so when multiplied to a symmetric matrix, it deletes an eigenvector $\boldsymbol{1}$.
-	\begin{align*}
-		\Pi x  = 0
-		&\iff
-		x = (1/k) \boldsymbol{1} \boldsymbol{1}^\top x
-		\\&
-		\iff
-		x = (1/k) \boldsymbol{1} (\boldsymbol{1}^\top x) = ((\boldsymbol{1}^\top x)/k) \boldsymbol{1} = c\boldsymbol{1}
-	\end{align*}
-\end{enumerate}
-By multiplying $\tilde{\boldsymbol{p}}^{-1/2} \Pi$ to the LHS vector of~\eqref{CLT_onesample_vector}, we get
-\begin{equation}
-	\sqrt{n}
-	\tilde{\boldsymbol{p}}^{-1/2} \Pi
-	(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
-	\stackrel{d}{\to}
-	N
-	\bigl(
-	0,
-	\tilde{\boldsymbol{p}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \tilde{\boldsymbol{p}}^{-1/2}
-	\bigr),
-\end{equation}
-where
-	$\tilde{\boldsymbol{p}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \tilde{\boldsymbol{p}}^{-1/2}$ is an identity matrix except one diagonal entry is zero. Therefore, the covariance matrix is idempotent and rank $k-1$.
-	Now we invoke the following classical theorem to derive an asymptotic chi-square distribution with degree of freedom $k-1$.
-\begin{theorem}[Ferguson (1996)]
-	If $\boldsymbol{X} \sim N( \boldsymbol{\mu}, \Sigma)$ and $\Sigma$ is a projection matrix of rank $\nu$ an
-	$\Sigma \boldsymbol{\mu} = \boldsymbol{\mu}$ then $\boldsymbol{X}^\top \boldsymbol{X} \sim \chi^2_{\nu} (\boldsymbol{\mu}^\top \boldsymbol{\mu})$.
+\section{Proof of Theorem~\ref{asymp:chisq} }
+
+Tㅇe result is evident, since it is one of the exercise problems in chapter 17 of Van der Vaart's book, but...
+\begin{itemize}
+	\item Unequal sample size seems to cause trouble
+	\item However, we may use Lyapuvov CLT which only assumes independence at the cost of some regularity condition
+	\item Is there a multivariate version of Lyapuvov CLT?
+	\item Van der Vaart's book does not introduce Lyapunov CLT, so there must be a solution that uses classical multivariate CLT. 
+\end{itemize}
+\begin{figure*}
+	\includegraphics[width=0.8\textwidth]{van}
+\end{figure*}
+The proof of Theorem~\ref{asymp:chisq}  utilizes the following classical result.
+\begin{theorem}[\citet{ferguson1996course}]
+	If $\boldsymbol{X} \sim N(\boldsymbol{\mu}, \Sigma)$
+	and
+	$\Sigma$ is a projection matrix of rank $\nu$ and $\Sigma \boldsymbol{\mu} = \boldsymbol{\mu}$ then 
+	$\boldsymbol{X}^\top \boldsymbol{X}  \sim \chi^2_\nu (\boldsymbol{\mu}^\top \boldsymbol{\mu})$.
 \end{theorem}
-
-\subsection{Extension to two sample test statistic}
-
-We can extend this lemma to two-sample setting.
-Suppose
- $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}_1, 1)$
- and
-  $Z_j \stackrel{iid}{\sim} multinomial(\boldsymbol{p}_2, 1)$.
-We follow Lemma~\ref{lemma_57} to denote
-$\tilde{\boldsymbol{p}}_Y = \mathbb{E}(\mathcal{M}_{bit}(Y_1)), 
-\Sigma_{\boldsymbol{p}_Y} := Var(\mathcal{M}_{bit}(Y_1))$
-and
-$\tilde{\boldsymbol{p}}_Z = \mathbb{E}(\mathcal{M}_{bit}(Z_1)),
-\Sigma_{\boldsymbol{p}_Z} := Var(\mathcal{M}_{bit}(Z_1))$.
-Denote 
-$\tilde{Y_i} := \mathcal{M}_{bit}(Y_i) - \tilde{\boldsymbol{p}}_Y$
-and
-$\tilde{Z_j} := \mathcal{M}_{bit}(Z_j) - \tilde{\boldsymbol{p}}_Z$.
-Then denote
-$T_n := \sum_{i=1}^n \tilde{Y_i} - \sum_{j=1}^n \tilde{Z_j}$
-and
-$\Sigma_n := Var(T_n) =  n \bigl( \Sigma_{\boldsymbol{p}_Y} + \Sigma_{\boldsymbol{p}_Z} \bigr)$.
-
-Under the null hypothesis of $\boldsymbol{p}_Y = \boldsymbol{p}_Z = \boldsymbol{p}$, 
-we have
-$T_n = \sum_{i=1}^n\mathcal{M}_{bit}(Y_i) - \sum_{j=1}^n \mathcal{M}_{bit}(Z_j)= \tilde{\boldsymbol{H}_Y} - \tilde{\boldsymbol{H}_Z} $ and 
-$\Sigma_n = 2n \Sigma_{\boldsymbol{p}}$.
-So we have
-\begin{equation}
-	\sqrt{n/2}(\tilde{\boldsymbol{H}_Y}/n -\tilde{\boldsymbol{H}_Z}/n)
-	\stackrel{d}{\to}
-	N
-	\bigl(
-	0, \Sigma_{\boldsymbol{p}}
-	\bigr)
-\end{equation}
-
-\begin{equation}
-	\sqrt{n/2}(\tilde{\boldsymbol{H}_Y}/n -\tilde{\boldsymbol{H}_Z}/n)
-	\stackrel{d}{\to}
-	N
-	\bigl(
-	0, \Sigma_{\boldsymbol{p}}
-	\bigr)
-\end{equation}
-Since $\Sigma_{\boldsymbol{p}}$ is symmetric and one of its eigenvector is one-vector, we can diagonalize it as  $\Sigma_{\boldsymbol{p}} = BDB^\top$, where $D$ is a diagonal matrix and $B$ has orthogonal columns with one of them being $k^{-1} \boldsymbol{1}$.
-
-We introduce $\Pi := I_d - \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T$.
-First, this is an orthogornal projection matrix, since it is symmetric and idempotent:
+We will use CLT, slutsky and continuous mapping theorem.
+\subsection{Multivariate CLT}
+Let $N:=n_1 + n_2$.
+In order to apply CLT, 
+we first express $n_2 \tilde{\rVecY}^{(\ell)} - n_1 \tilde{\rVecZ}^{(\ell)}$ as a sum of $N$ i.i.d.~$\alphabetSize$-dimensional random vectors as follows. For any $\ell \in [\alphabetSize]$,
+\begin{itemize}
+	\item $\tilde{\rVecY}_t^\ast(\ell) := \tilde{\rVecY}_t(\ell)$ and $\tilde{\rVecZ}_t^\ast(\ell) := 0$ for  $t=1,\ldots n_1$
+	\item $\tilde{\rVecY}_t^\ast(\ell) := 0$ and $\tilde{\rVecZ}_t^\ast(\ell) := \tilde{\rVecZ}_{t-n_1}(\ell)$ for  $t=n_1+1,\ldots n_2$
+\end{itemize}
+Then we have $\tilde{\rVecY}^{(\ell)} = \sum_{t=1}^N$
+		
+we first calculate expectation and covariance matrix.
+Note that $\tilde{\rVecY}^{(\ell)}$'s and $\tilde{\rVecZ}^{(\ell)}$'s are sum of Bernoulli random variables.
+Under the null, first note that
+$
+	\mE[n_2 \tilde{\rVecY}^{(\ell)}] = 
+	\mE[n_1 \tilde{\rVecZ}^{(\ell)}]
+$
+since
 \begin{align*}
-\Pi^2 =
-\left(
-I_d - \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-\right)
-\left(
-I_d - \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-\right)
+	\mE[n_2 \tilde{\rVecY}^{(\ell)}] &= n_1n_2\mE[\tilde{\rVecY}^{(\ell)}/n_1] = n_1 n_2
+	\distparamMultinom_{\rVecY}(\ell) \text{ and}
+	\\
+	\mE[n_1 \tilde{\rVecZ}^{(\ell)}] &= n_1n_2\mE[\tilde{\rVecZ}^{(\ell)}/n_2] = n_1 n_2 \distparamMultinom_{\rVecZ}(\ell) = n_1 n_2 \distparamMultinom_{\rVecY}(\ell).
+\end{align*}
+Thus we can express the numerator of the test statistic as 
+\begin{align*}
+n_2 \tilde{\rVecY}^{(\ell)} - n_1 \tilde{\rVecZ}^{(\ell)}
 &=
-I_d -  \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
- -  \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
- +
- \frac{1}{k^2}\boldsymbol{1} \boldsymbol{1}^T\boldsymbol{1} \boldsymbol{1}^T
-\\&=
-I_d -  2\frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-+
-\frac{1}{k^2}\boldsymbol{1} (\boldsymbol{1}^T\boldsymbol{1}) \boldsymbol{1}^T
-\\&=
-I_d -  2\frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-+
-\frac{1}{k^2}\boldsymbol{1} (k \boldsymbol{1}^T)
-\\&=
-I_d -  \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-\\&= \Pi.
+\bigl(
+n_2 \tilde{\rVecY}^{(\ell)} - \mE[n_2 \tilde{\rVecY}^{(\ell)}]
+\bigr)
+-
+\bigl(
+n_1 \tilde{\rVecZ}^{(\ell)} - \mE[n_1 \tilde{\rVecZ}^{(\ell)}]
+\bigr)
+\\
+&=
+%express as independent sum
+\sum_{i=1}^{n_1}
+\bigl(
+n_2 \tilde{\rVecY}_i(\ell)
+-
+\mE[n_2 \tilde{\rVecY}_i(\ell)]
+\bigr)
+-
+\sum_{j=1}^{n_2}
+\bigl(
+n_1 \tilde{\rVecZ}_j(\ell)
+-
+\mE[n_1 \tilde{\rVecZ}_j(\ell)]
+\bigr)
+\\
+&:=
+%centered random variable as \check
+\sum_{i=1}^{n_1}
+\check{\rVecY}_i(\ell)
+-
+\sum_{j=1}^{n_2}
+\check{\rVecZ}_j(\ell)
 \end{align*}
-
-$\boldsymbol{1} \boldsymbol{1}^T$
-Since $\Pi$ is symmetric, its column space is the orthogonal complement of $span\{\boldsymbol{1}\}$.
-So multiplying by $\Pi$ means 
-under the null, it suffices to use the CLT for i.i.d. random vectors, but under the alternative, we would need to use Lindeburg or Lyapunov.
-
-
-
-
-
-
-
-
-
 
 \begin{align*}
-	\frac{\tilde{\boldsymbol{H}}_1}{n_1} - \frac{\tilde{\boldsymbol{H}}_2}{n_2}
+	Var[
+n_2
+		\tilde{\rVecY}^{(\ell)}
+		-
+		n_1
+		\tilde{\rVecZ}^{(\ell)}	
+	]
+&=
+n_2^2
+	Var[
+		\tilde{\rVecY}^{(\ell)}]
++		
+n_1^2
+Var[
+\tilde{\rVecZ}^{(\ell)}	
+	]
+	\\
+	&=
+n_2^2 n_1
+\distparamMultinom_{\rVecY}(\ell)
+\bigl(
+1-\distparamMultinom_{\rVecY}(\ell)
+\bigr)
++		
+n_1^2 n_2
+\distparamMultinom_{\rVecZ}(\ell)
+\bigl(
+1-\distparamMultinom_{\rVecZ}(\ell)
+\bigr)
+\\&=
+n_1n_2(n_1+n_2)
+\distparamMultinom_{\rVecY}(\ell)
+\bigl(
+1-\distparamMultinom_{\rVecY}(\ell)
+\bigr).
 \end{align*}
-
+%
+\begin{align*}
+	&
+	Cov[
+n_2\tilde{\rVecY}^{(\ell)}
+		-
+		n_1
+		\tilde{\rVecZ}^{(\ell)}
+,
+n_2\tilde{\rVecY}^{(\ell')}
+		-
+		n_1
+		\tilde{\rVecZ}^{(\ell')}	
+	]
+\\&\stackrel{(1)}{=}
+\mE
+\bigl[
+\bigl(
+n_2\tilde{\rVecY}^{(\ell)}
+		-
+		n_1
+		\tilde{\rVecZ}^{(\ell)}
+\bigr)
+\bigl(
+n_2\tilde{\rVecY}^{(\ell')}
+		-
+		n_1
+		\tilde{\rVecZ}^{(\ell')}
+\bigr)
+\bigr]
+\\&=
+n_2^2\mE[\tilde{\rVecY}^{(\ell)} \tilde{\rVecY}^{(\ell')}]
++
+n_1^2\mE[\tilde{\rVecZ}^{(\ell)} \tilde{\rVecZ}^{(\ell')}]
+%Y-Z terms exploit independence
+-n_1^2 n_2^2
+\distparamMultinom_{\rVecY}(\ell)
+\distparamMultinom_{\rVecY}(\ell')
+%
+\\&\stackrel{(2)}{=}
+n_2^2(n_1^2 - n_1)
+\distparamMultinom_{\rVecY}(\ell)
+\distparamMultinom_{\rVecY}(\ell')
++
+n_1^2 (n_2^2 - n_2)
+\distparamMultinom_{\rVecY}(\ell)
+\distparamMultinom_{\rVecY}(\ell')
+%Y-Z terms exploit independence
+-n_1^2 n_2^2
+\distparamMultinom_{\rVecY}(\ell)
+\distparamMultinom_{\rVecY}(\ell')
+\\&=
+-n_1n_2(n_1+n_2)\distparamMultinom_{\rVecY}(\ell)
+\distparamMultinom_{\rVecY}(\ell')
+\end{align*}
+For (1), we use the zero-mean property demonstrated in~\eqref{chisq_zero_mean}.
+For (2), we use the following facts: a Bernoulli random variable in $\tilde{\rVecY}^{(\ell)}$ and another Bernoulli random variable in $\tilde{\rVecY}^{(\ell')}$ are independent between different sample, and dependent between the same sample. When between different samples, the expectation of the Bernoulli multiplication is  $\distparamMultinom_{\rVecY}(\ell)
+\distparamMultinom_{\rVecY}(\ell')$.
+ When between the same sample, the expectation of the Bernoulli multiplication is zero.
+ 
+ Now we have to apply multivariate CLT to the following random vector:
+ \begin{align*}
+		\frac{
+		n_2
+		\sum_{i=1}^{n_1}
+		\tilde{\rVecY}_i
+		-
+		n_1
+		\sum_{j=1}^{n_2}
+		\tilde{\rVecZ}^{(\ell)}
+		}{
+		\sqrt{n_1 n_2 (n_1 + n_2) }
+		} 	
+ \end{align*}
+ 
+\subsection{aaa}
+Under $H_0$. 
+\begin{align*}
+	(\sqrt{n/2})(H_1/n - H_2/n)
+	\stackrel{d}{\to}
+	N(0,\Sigma_p)
+\end{align*}
+Let $\Sigma_p= BDB^T$. We scale the statisic with
+$\Sigma_p^{-1/2} \Pi$.
+Then by the continuous mapping theorem,
+\begin{align*}
+	(\sqrt{n/2})
+	\Sigma_p^{-1/2} \Pi
+	(H_1/n - H_2/n)
+	\stackrel{d}{\to}
+	N(0, \Sigma_p^{-1/2} \Pi \Sigma_p  \Pi \Sigma_p^{-1/2})
+\end{align*}
+We can check that the variance of the limiting distribution, $\Sigma_p^{-1/2} \Pi \Sigma_p  \Pi \Sigma_p^{-1/2}$, is an identity matrix with a single zero on the diagonal.
 \bibliographystyle{apalike}
 \bibliography{reference}
 
