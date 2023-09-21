@@ -842,11 +842,18 @@ This test statistic is from Van der Vaart's book Asymptotic Statistics, pp. 253.
 \section{Bit flip privatization and related test statisitc}
 \subsection{Bit flip privatization}
 \subsection{test statistic}
-\begin{lemma}[Lemma 5.7 of \cite{Gaboardi2018LDPChisq}]\label{lemma_57}
-When $X_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$, denote the histogram of flipped observations as $\tilde{\boldsymbol{H}}:= \sum_{i=1}^n \mathcal{M}_{bit}(X_i)$. The mean vector and covariance matrices are computed as follows: 
+\subsubsection{Review of one-sample statistic}
+We first review how $\cite{Gaboardi2018LDPChisq}$ builds goodness-of-fit chi-square statistic for  histogram of bit-flipped observations.
+We start with applying CLT to the bit-flipped obsevations. 
+\begin{lemma}[Applying CLT to bit-flipped observations, Lemma 5.7 of \cite{Gaboardi2018LDPChisq}]\label{lemma_57}
+When $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$, denote the histogram of flipped observations as
+\begin{equation}
+	\tilde{\boldsymbol{H}}:= \sum_{i=1}^{n_1} \mathcal{M}_{bit}(Y_i).
+\end{equation}
+The mean vector and covariance matrices are computed as follows: 
 \begin{equation}
 	\tilde{\boldsymbol{p}}:=	
-	\mathbb{E}(\mathcal{M}_{bit}(X_1))
+	\mathbb{E}(\mathcal{M}_{bit}(Y_1))
 	=
 	\frac{(\exp
 		\bigl(
@@ -857,7 +864,7 @@ When $X_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$, denote the histo
 \begin{equation}
 	\Sigma_{\boldsymbol{p}}
 	:=
-	Var(\mathcal{M}_{bit}(X_1))
+	Var(\mathcal{M}_{bit}(Y_1))
 	=
 	\left(
 	\frac{\exp(\alpha/2)-1}{\exp(\alpha/2)+1}
@@ -871,7 +878,7 @@ When $X_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$, denote the histo
 \end{equation}
 For any $\alpha >0$ and $\boldsymbol{p} >0$, $\Sigma_{\boldsymbol{p}}$ is full-rank  and one of its eigenvector is one-vector. 
 By the CLT for i.i.d random vectors, we get the following asymptotic distribution:
-\begin{equation}
+\begin{equation}\label{CLT_onesample_vector}
 	\sqrt{n}(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
 	\stackrel{d}{\to}
 	N
@@ -880,6 +887,43 @@ By the CLT for i.i.d random vectors, we get the following asymptotic distributio
 	\bigr)
 \end{equation}
 \end{lemma}
+\noindent In non-private chi-square test, we apply CLT and
+multiply by $diag(\boldsymbol{p})^{-1/2}$ to turn the  covariance matrix on the RHS into a projector matrix.
+Here in the private setting, we also need a scaling matrix to turn the covariance matrix into a projector matrix.
+\citet{Gaboardi2018LDPChisq} proposes $\tilde{\boldsymbol{p}}^{-1/2} \Pi$, where $\Pi := I_k - \frac{1}{k} \boldsymbol{1} \boldsymbol{1}^\top$. The properties of $\Pi$ are as follows:
+\begin{enumerate}
+	\item It is symmetric idempotent (a projecter matrix).
+	\item Its null space is $span\{\boldsymbol{1}\}$, so when multiplied to a symmetric matrix, it deletes an eigenvector $\boldsymbol{1}$.
+	\begin{align*}
+		\Pi x  = 0
+		&\iff
+		x = (1/k) \boldsymbol{1} \boldsymbol{1}^\top x
+		\\&
+		\iff
+		x = (1/k) \boldsymbol{1} (\boldsymbol{1}^\top x) = ((\boldsymbol{1}^\top x)/k) \boldsymbol{1} = c\boldsymbol{1}
+	\end{align*}
+\end{enumerate}
+By multiplying $\tilde{\boldsymbol{p}}^{-1/2} \Pi$ to the LHS vector of~\eqref{CLT_onesample_vector}, we get
+\begin{equation}
+	\sqrt{n}
+	\tilde{\boldsymbol{p}}^{-1/2} \Pi
+	(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
+	\stackrel{d}{\to}
+	N
+	\bigl(
+	0,
+	\tilde{\boldsymbol{p}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \tilde{\boldsymbol{p}}^{-1/2}
+	\bigr),
+\end{equation}
+where
+	$\tilde{\boldsymbol{p}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \tilde{\boldsymbol{p}}^{-1/2}$ is an identity matrix except one diagonal entry is zero. Therefore, the covariance matrix is idempotent and rank $k-1$.
+	Now we invoke the following classical theorem to derive an asymptotic chi-square distribution with degree of freedom $k-1$.
+\begin{theorem}[Ferguson (1996)]
+	If $\boldsymbol{X} \sim N( \boldsymbol{\mu}, \Sigma)$ and $\Sigma$ is a projection matrix of rank $\nu$ an
+	$\Sigma \boldsymbol{\mu} = \boldsymbol{\mu}$ then $\boldsymbol{X}^\top \boldsymbol{X} \sim \chi^2_{\nu} (\boldsymbol{\mu}^\top \boldsymbol{\mu})$.
+\end{theorem}
+
+
 We can extend this lemma to two-sample setting.
 Suppose
  $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}_1, 1)$
@@ -942,15 +986,7 @@ I_d -  2\frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
 I_d -  \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
 \\&= \Pi.
 \end{align*}
-Second, its null space is $span\{\boldsymbol{1}\}$:
-\begin{align*}
-	\Pi x  = 0
-	&\iff
-	x = (1/k) \boldsymbol{1} \boldsymbol{1}^\top x
-	\\&
-	\iff
-x = (1/k) \boldsymbol{1} (\boldsymbol{1}^\top x) = ((\boldsymbol{1}^\top x)/k) \boldsymbol{1} = c\boldsymbol{1}
-\end{align*}
+
 $\boldsymbol{1} \boldsymbol{1}^T$
 Since $\Pi$ is symmetric, its column space is the orthogonal complement of $span\{\boldsymbol{1}\}$.
 So multiplying by $\Pi$ means 
