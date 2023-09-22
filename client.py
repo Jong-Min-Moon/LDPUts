@@ -10,6 +10,8 @@ class client:
         self.LapU = LapU(cuda_device)
         self.discLapU = discLapU(cuda_device)
         self.genRR = genRR(cuda_device)
+        self.bitFlip = bitFlip(cuda_device)
+        
 
     def load_data_disc(self, data_y, data_z, alphabet_size):
         self.data_y = data_y
@@ -38,6 +40,11 @@ class client:
             self.genRR.privatize(self.data_z, self.alphabet_size, privacy_level)
                )
 
+    def release_bitFlip(self, privacy_level):
+        return(
+            self.bitFlip.privatize(self.data_y, self.alphabet_size, privacy_level),
+            self.bitFlip.privatize(self.data_z, self.alphabet_size, privacy_level)
+               )
 
 class LapU:
     def __init__(self, cuda_device):
