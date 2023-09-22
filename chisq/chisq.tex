@@ -1,0 +1,1142 @@
+% !TeX spellcheck = en_US
+
+\documentclass[11pt]{article} % default template
+%% Packages
+\usepackage{verbatim}
+\usepackage[open,openlevel=1]{bookmark}
+\usepackage{dirtytalk}
+\usepackage{mathtools} %\DeclarePairedDelimiter
+\usepackage{dsfont} %indicator
+\usepackage{booktabs} % for fancy tables
+\usepackage{makecell} % linebreak inside a cell
+\usepackage{algorithm} % for algorithm box
+\usepackage{algpseudocode} % for algorithm box
+\usepackage{tikz}%for figures
+\usepackage{subfigure} % subfigures
+\usepackage{graphics}%for figures
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{epsfig}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{multirow} %table
+\usepackage{adjustbox} % table size
+\usepackage{float}
+\usepackage{footmisc}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{setspace}
+\usepackage{xparse}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{blindtext}
+
+\usepackage[titletoc,title]{appendix}
+\usepackage[T1]{fontenc}
+
+\usepackage[square,numbers]{natbib}
+%\setcitestyle{numbers, square}
+
+\usepackage{url}
+\usepackage[font=small,labelfont=bf]{caption}
+\captionsetup[table]{skip=0.5pt}
+\usepackage{authblk} % authors
+\usepackage{hyperref}[] % hyperlink
+\hypersetup{
+colorlinks = true,
+linkcolor = blue, %Colour of internal links
+filecolor = magenta,
+urlcolor = blue, %Colour for external hyperlinks
+citecolor = blue, %Colour of citations
+pdfpagemode=UseOutlines
+}
+\usepackage{cleveref} % for hyperinks
+
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-6cm}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-4cm}
+\addtolength{\textheight}{-1.1\headheight}
+\addtolength{\textheight}{-\headsep}
+\addtolength{\textheight}{-\footskip}
+\setlength{\oddsidemargin}{0.5cm}
+\setlength{\evensidemargin}{0.5cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%align page break
+\allowdisplaybreaks[1]
+\allowbreak
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+% 1. basic math
+% 2. norms
+% 3. probability
+% 4. minimax rates
+
+% 1. basic math
+\newcommand{\vecBold}[1]{\boldsymbol{#1}} %vector notation
+\newcommand{\naturalNumber}{\mathbb{N}^{+}}
+\newcommand{\real}{\mathbb{R}} %set of real numbers
+\newcommand{\floor}[1]{\lfloor #1 \rfloor} %floor function
+\newcommand{\bfloor}[1]{\Bigl\lfloor #1 \Bigr\rfloor} %big floor function
+\newcommand{\indicator}[1]{\mathds{1} \left( #1 \right) }%indicator funcion
+\newcommand{\sampleSize}{n}
+%stat
+\newcommand{\distparamMultinom}{\boldsymbol{p}}
+
+% 2. norms and distances
+\newcommand{\normProbVec}[3]{\|p_{#3}\|_{#1}^{#2}}
+\newcommand{\distProbVec}[4]{\|p_{#3} - p_{#4}\|_{#1}^{#2}}
+\newcommand{\Lone}{\mathbb{L}_1} %L1 norm
+\newcommand{\Ltwo}{\mathbb{L}_2} %L2 norm
+\newcommand{\Linfty}{\mathbb{L}_{\infty}} %inf norm
+\newcommand{\vertiii}[1]{
+	{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}
+    }%triple norm notation
+    
+%lemma and theorem reference
+\newcommand{\improvedTwoMomentMethod}{Lemma C.1 of \citet{Kim2022MinimaxTests}}
+\newcommand{\normNegBesov}[2]{\|#1 \|^{#2}_{B^{-\gamma}_{2,2}}}
+\newcommand{\normNegBesovTrunc}[2]{\widetilde{\|#1 \|^{#2}}_{B^{-\gamma}_{2,2}}}
+
+% 3. probabilities
+\newcommand{\mE}{\mathbb{E}} %expectation
+\newcommand{\mP}{\mathbb{P}} %probability
+\newcommand{\iid}{\stackrel{\text{i.i.d}}{\sim}} %iid
+
+
+% 4. minimax
+\newcommand{\minimaxTestingRateTwosample}{\rho^{\ast}_{n_1, n_2}}
+
+\newcommand{\rvLap}{W}
+\newcommand{\realizedLap}{w}
+
+%parameters
+\newcommand{\binNum}{\kappa}
+\newcommand{\binNumOptimalTs}{\binNum_{(1)}}
+\newcommand{\binNumOptimalIndep}{\binNum_{(2)}}
+\newcommand{\discLapParam}{\zeta}
+\newcommand{\smoothness}{s}
+\newcommand{\ballRadius}{R}
+
+
+%indexing
+\newcommand{\sampleIndexY}{i}
+\newcommand{\sampleIndexZ}{j}
+\newcommand{\alphabetSize}{k}
+\newcommand{\alphabetSizeY}{\alphabetSize_Y}
+\newcommand{\alphabetSizeZ}{\alphabetSize_Z}
+\newcommand{\dimDensity}{d}
+\newcommand{\vectorIndex}{m}
+\newcommand{\haarScaleSecondIndex}{v}
+\newcommand{\adaptiveBinNumIndex}{t}
+\newcommand{\mixtureIndex}{\boldsymbol{\eta}}
+\newcommand{\adaptiveBinNumIndexSet}{[\gammamax]}
+
+% prob, expectation, variance
+\newcommand{\mEQPYPZ}{\mathbb{E}_{(Q_{P_Y}, Q_{P_Z})}}
+\newcommand{\mEQPY}{\mathbb{E}_{Q_{P_Y}}}
+\newcommand{\mEQPZ}{\mathbb{E}_{Q_{P_Z}}}
+
+
+\newcommand{\mEQ}{\mathbb{E}_{P, Q}}
+\newcommand{\mVQ}{\mathrm{Var}_{P,Q}}
+\newcommand{\noiseVarIndep}[1]{\hat{\sigma}^{#1}_\alpha}
+
+
+% Besov
+\newcommand{\besovParamNorm}{p}
+\newcommand{\besovParamMicroscope}{q}
+\newcommand{\resLev}{j}
+\newcommand{\primResLev}{J}
+\newcommand{\primResLevOptimalTs}{J_{(1)}}
+\newcommand{\wavFatherUnivIndex}{k}
+\newcommand{\wavFatherIndex}{\boldsymbol{\wavFatherUnivIndex}}
+\newcommand{\wavMotherUnivIndex}{\ell}
+\newcommand{\wavMotherIndex}{\boldsymbol{\wavMotherUnivIndex}}
+\newcommand{\wavMotherBooleanUnivIndex}{\epsilon}
+\newcommand{\wavMotherBooleanIndex}{\boldsymbol{\wavMotherBooleanUnivIndex}}
+\newcommand{\wavMotherBooleanIndexSet}{S_{\dimDensity}}
+\newcommand{\wavCoef}{\theta}
+\newcommand{\wavCoefFather}[1]{\wavCoef_{\primResLev, #1}}
+\newcommand{\wavCoefFatherVec}[1]{\wavCoef_{#1}}
+\newcommand{\wavCoefMother}[3]{ \wavCoef_{#1, #2}^{#3} }
+\newcommand{\wavCoefMotherVec}[1]{\wavCoef_{#1}}
+\newcommand{\besovSubscript}{\tilde{\mathcal{B}}_{\besovParamNorm,\besovParamMicroscope}^\smoothness}
+%
+\newcommand{\wavFatherFunc}{\phi}
+\newcommand{\haarScaleIndices}[2]{\wavFatherFunc_{#1, #2}}
+\newcommand{\multivInhomoWavFatherBasis}{\overline{\Phi}_{\primResLev}}
+\newcommand{\wavGenericFatherCoef}{\wavCoef_{\wavFatherFunc}}
+%
+\newcommand{\wavMotherFunc}{\psi}
+\newcommand{\wavMotherFuncPerturb}{\tilde{\psi}}
+\newcommand{\haarMotherIndices}[3]{\wavMotherFunc_{#1, #2}^{#3}}
+\newcommand{\multivInhomoWavMotherBasis}{\overline{\uppercase{\Psi}}_{\resLev}} %wavelet function basis subset at resolution level j
+\newcommand{\wavGenericMotherCoef}{\wavCoef_{\wavMotherFunc}}
+
+\newcommand{\besovCoeffVec}{{\theta}_{\resLev \cdot }}
+%adaptive
+\newcommand{\adaptiveSingleTest}{\Delta^{{\adaptiveBinNumIndex}}_ {\gamma/\gammamax}}
+\newcommand{\adaptiveBinNumIndexProof}{\tau}
+
+
+%upper bound
+\newcommand{\hyperRec}[1]{\mathrm{H}_{#1}}
+\newcommand{\binMNProbVecY}{\hat{p}_{\vecBold{Y}}}
+\newcommand{\binMNProbVecZ}{\hat{p}_{\vecBold{Z}}}
+\newcommand{\binMNProbVecYZ}{\hat{p}_{\vecBold{YZ}}}
+%mathmatics
+
+%dimensions
+
+
+\newcommand{\genrr}{\mathcal{M}_{\texttt{GenRR}}}
+%dimension-related
+\newcommand{\vectorElements}[1]{
+(#1_{1}, \ldots, #1_{\dimDensity})
+}
+\newcommand{\dimProd}[1]{\prod_{{#1}=1}^\dimDensity}
+\newcommand{\kappaProd}{{\kappa}^\dimDensity}
+\newcommand{\kappaProdHalf}{{\kappa}^{\dimDensity/2}}
+\newcommand{\kappaProdInv}{{\kappa}^{-\dimDensity}}
+\newcommand{\domainTs}{
+[0,1]^{{\dimDensity}}
+}
+\newcommand{\domainIndep}{
+[0,1]^{{\dimDensity_1+\dimDensity_2}}
+}
+
+%function spaces
+\newcommand{\LinftySpace}{\mathbb{L}_{\infty}(\domainTs)}
+\newcommand{\LtwoSpace}{\mathbb{L}_{2}(\domainTs)}
+
+
+\newcommand{\besovBall}[2]{\tilde{\mathcal{B}}_{#1,#2}^\smoothness(\ballRadius)}
+
+\newcommand{\holderTwosample}{\mathcal{C}^{\smoothness}} %new
+\newcommand{\holderIndep}{\mathcal{H}^{\dimDensity_1 + \dimDensity_2}_\smoothness(\ballRadius)}
+\newcommand{\holderBall}{\mathcal{C}^{\smoothness}(\ballRadius)} %new
+\newcommand{\holderTwosampleArias}{\mathcal{H}^\dimDensity_\smoothness(\ballRadius)}
+
+% density spaces
+%Holder classes
+
+\newcommand{\pBesovTs}{
+	\mathcal{P}_{%subscript
+		\text{Besov}
+		}^{%superscript
+		(\dimDensity, \smoothness, \besovParamMicroscope)
+		}
+}
+\newcommand{\pBesovIndep}{
+	\mathcal{P}_{%subscript
+		\text{Besov}
+		}^{%superscript
+		(\dimDensity_1+\dimDensity_2, \smoothness, \besovParamMicroscope)
+		}
+}
+\newcommand{\pHolderTwosample}{
+	\mathcal{P}^{(\dimDensity, \smoothness)}_{\text{H\"{o}lder}}
+	}
+\newcommand{\pHolderIndep}{
+	\mathcal{P}^{(\dimDensity_1 + \dimDensity_2, \smoothness)}_{\text{H\"{o}lder}}
+	}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Besov
+
+
+
+\newcommand{\bumpBasisBesovTwosample}[1]{
+\psi^{\boldsymbol{\epsilon}^\ast}_{#1, \boldsymbol{\ell}}
+}
+
+\newcommand{\besovBasis}[3]{
+\psi_{#1, \boldsymbol{#2}}^{\boldsymbol{#3}}
+}
+
+\newcommand{\besovCoeff}[3]{
+\theta^{\boldsymbol{#3}}_{#1,\boldsymbol{#2}}
+}
+%besov indices
+\newcommand{\besovEpsilonIndex}{
+\{0,1\}^\dimDensity \backslash \{(0, \ldots, 0)\}
+}
+
+\newcommand{\besovLambda}[1]{
+\{
+0, 1, \ldots, (2^{#1} - 1)
+\}^{\dimDensity}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Holder
+
+
+
+\newcommand{\bumpBasisHolderTwosample}[1]{
+\varphi_{(#1, \boldsymbol{\ell})}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%U-statistic
+\newcommand{\indepSigmaU}{
+	\sum_{ (i_1, i_2, i_3, i_4) \in \mathbf{i}_4^n}
+}
+
+\newcommand{\indepSigmaUThree}{
+	\sum_{ (i_1, i_2, i_3) \in \mathbf{i}_3^n}
+}
+%
+\newcommand{\indepSigmaUTwo}{
+	\sum_{ (i_1, i_2) \in \mathbf{i}_2^n}
+}
+%common
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+
+
+
+%%two sample testing
+
+%domain
+
+
+
+%kappa
+\newcommand{\kappaTsHalf}[1]{
+	\kappa^{#1d/2}
+	}
+\newcommand{\kappaTs}[1]{
+	\kappa^{{#1}d}
+	}
+
+
+
+%privatized vectors
+
+\newcommand{\yTildei}{\widetilde{Y}_{i}}
+\newcommand{\zTildei}{\widetilde{Z}_{i}}
+\newcommand{\yTildePrimei}{\widetilde{Y}'_{i}}
+\newcommand{\zTildePrimei}{\widetilde{Z}'_{i}}
+
+
+%two sample testing
+
+% distribution space
+\newcommand{\pTwosampleDisc}{\mathcal{P}^{(\alphabetSize)}}
+
+% noise variance
+\newcommand{\LapUParam}{\sigma_{\alpha}}
+%% optimal kappa for two sample testing upper bound
+\newcommand{\optimalKappaTwosample}{\kappa^\ast}
+
+%privatized vectors
+\newcommand{\elemRandomPrivTwoSampleY}{{\Phi}_{i,\vectorIndex}}
+\newcommand{\elemRandomPrivTwoSampleZ}{{\Psi}_{j,\vectorIndex'}}
+\newcommand{\elemRandomPrivTwoSampleYNumber}[2]{{\Phi}_{#1, #2}}
+\newcommand{\elemRandomPrivTwoSampleZNumber}[2]{{\Psi}_{#1, #2}}
+\newcommand{\elemFixedPrivTwoSampleY}{{\phi}_{i, \vectorIndex}}
+\newcommand{\elemFixedPrivTwoSampleZ}{{\psi}_{j, \vectorIndex'}}
+
+
+\newcommand{\vecRandomPrivTwoSampleY}{\boldsymbol{\Phi}_{i}}
+\newcommand{\vecRandomPrivTwoSampleZ}{\boldsymbol{\Psi}_{j}}
+\newcommand{\vecFixedPrivTwoSampleY}{\boldsymbol{\phi}_{i}}
+\newcommand{\vecFixedPrivTwoSampleZ}{\boldsymbol{\psi}_{j}}
+\newcommand{\vecFixedPrivTwoSampleYNumber}[1]{\boldsymbol{\phi}_{#1}}
+\newcommand{\vecFixedPrivTwoSampleZNumber}[1]{\boldsymbol{\psi}_{#1}}
+\newcommand{\vecRandomPrivTwoSampleYNumber}[1]{\boldsymbol{\Phi}_{#1}}
+\newcommand{\vecRandomPrivTwoSampleZNumber}[1]{\boldsymbol{\Psi}_{#1}}
+
+
+
+\newcommand{\vecRandomPrivAdaptiveY}{\tilde{\boldsymbol{\Phi}}_{i}}
+\newcommand{\vecRandomPrivAdaptiveZ}{\tilde{\boldsymbol{\Psi}}_{j}}
+\newcommand{\vecFixedPrivAdaptiveY}{\tilde{\boldsymbol{\phi}}_{i}}
+\newcommand{\vecFixedPrivAdaptiveZ}{\tilde{\boldsymbol{\psi}}_{j}}
+
+\newcommand{\elemRandomPrivAdaptiveY}{\tilde{\boldsymbol{\Phi}}_{i, \adaptiveBinNumIndex}}
+\newcommand{\elemRandomPrivAdaptiveZ}{\tilde{\boldsymbol{\Psi}}_{j, \adaptiveBinNumIndex}}
+\newcommand{\elemFixedPrivAdaptiveY}{ \tilde{\boldsymbol{\phi}}_{i, \adaptiveBinNumIndex, \vectorIndex}}
+\newcommand{\elemFixedPrivAdaptiveZ}{\tilde{\boldsymbol{\psi}}_{j, \adaptiveBinNumIndex,\vectorIndex}}
+
+\newcommand{\vecRandomPrivIndepY}{\boldsymbol{\Phi}_{i}}
+\newcommand{\vecRandomPrivIndepZ}{\boldsymbol{\Psi}_{i}}
+
+
+%U-statistic
+\newcommand{\kernelTwoSample}{h_{ts}}
+\newcommand{\kernelTwoSampleSym}{\bar{h}_{ts}}
+\newcommand{\kernelIndep}{h_{in}}
+\newcommand{\kernelIndepSym}{\bar{h}_{in}}
+
+
+
+
+
+
+
+% two moments method
+\newcommand{\momentTwosampleOneY}{M_{Y,1}(P)}
+\newcommand{\momentTwosampleOneZ}{M_{Z,1}(P)}
+\newcommand{\momentTwosampleYZ}{M_{Y Z,2}(P)}
+
+
+
+\newcommand{\LDPviewSingleGeneric}[1]{\tilde{X}_#1}
+\newcommand{\LDPviewsGeneric}{(\LDPviewSingleGeneric{1}, \ldots \LDPviewSingleGeneric{n})}
+\newcommand{\LDPviewSingleGenericVec}[1]{\tilde{\vecBold{X}}_#1}
+\newcommand{\LDPviewGenericVec}{(\LDPviewSingleGenericVec{1}, \ldots \LDPviewSingleGenericVec{n})}
+
+\newcommand{\beforNoiseIndepY}{
+	\widetilde{Y}_{i,k}
+}
+
+\newcommand{\beforNoiseIndepZ}{
+	\widetilde{Z}_{i,j}
+}
+
+
+\newcommand{\priVecIndepRealization}{
+\left(
+	\phi_{i},
+	\psi_{i}
+\right)
+}
+
+\newcommand{\priVecIndepRV}{
+\left(
+	\Phi_{i, \kappa},
+	\Psi_{i, \kappa}
+\right)
+}
+
+\newcommand{\priVecIndepDataset}{
+\left\{
+	\priVecIndep
+\right\}_{i=1}^n
+}
+
+%kappas
+\newcommand{\kappaIndepHalf}[1]{
+	\kappa^{\frac{{#1}(d_1+d_2)}{2}}
+	}
+
+\newcommand{\kappaIndep}[1]{
+	\kappa^{{#1}(d_1+d_2)}
+	}
+
+
+%sigma
+\newcommand{\sigmaIndep}[1]{
+	\sigma_{\kappa, \alpha}^{#1}
+}
+
+
+
+%indicator functions
+\newcommand{\indicatorIndepY}{
+	\mathds{1}\bigl(\widetilde{Y}_i = k\bigr)
+}
+
+\newcommand{\indicatorIndepYPrime}{
+	\mathds{1}\bigl(\widetilde{Y'}_i = k\bigr)
+}
+
+\newcommand{\indicatorIndepZ}{
+	\mathds{1}\bigl(\widetilde{Z}_j = k\bigr)
+}
+
+\newcommand{\indicatorIndepZPrime}{
+	\mathds{1}\bigl(\widetilde{Z'}_j = k\bigr)
+}
+
+\newcommand{\dimIndep}{
+	\kappa^{d_1+d_2}
+}
+
+\newcommand{\scalingIndep}{
+	\kappa^{\frac{d_1+d_2}{2}}
+}
+
+
+%lower bound proofs
+
+
+% Adaptive tests
+\newcommand{\gammamax}{
+	\mathcal{N}
+	}
+
+\newcommand{\adaptiveTest}{
+	\Delta_{\mathrm{adapt}}
+}
+
+
+% for lower bound
+\newcommand{\mPPrivate}[1]{
+	\mP_{{Q, {#1}}}^{(n)}
+	}
+
+\newcommand{\mEPrivate}[1]{
+	\mE_{{Q, {#1}}}^{(n)}
+	}
+	
+\newcommand{\mPNuRho}{
+	\mP_{\nu_{\rho}}
+	}
+	
+
+
+%%%%%%%%%%%%%%%%%%% SETS %%%%%%%%%%%%%%%%%%%
+\newcommand{\sampleSets}[3]{\{{#1}_{#2}\}_{#2 \in [#3]}}
+\newcommand{\laplaceSets}[4]{\{{#1}_{#2, #3}\}_{#3 \in [#4]}}
+
+% set of distributions
+\newcommand{\pNull}{\mathcal{P}_0}
+\newcommand{\pAlterTwosample}{\mathcal{P}_1(\rhoTwosample)}
+\newcommand{\pAlterIndep}{\mathcal{P}_1(\rho_{n})}
+
+\newcommand{\rhoTwosample}{\rho_{n_1, n_2}}
+
+
+
+
+% probability spaces
+\newcommand{\sigmaAlgebraYPriv}{\mathcal{F}_{i}^\Phi}
+
+% datasets
+\newcommand{\datasetTwosampleY}{\mathcal{Y}_{n_1}}
+\newcommand{\datasetTwosampleZ}{\mathcal{Z}_{n_2}}
+\newcommand{\datasetIndep}{\mathcal{X}_{n}}
+%algorithm names
+\newcommand{\permuteTestTS}{\text{\textsc{PermuTestTS}}}
+\newcommand{\permuteTestIndep}{\text{\textsc{PermuTestIndep}}}
+\newcommand{\privatizer}{\text{\textsc{LapU}}}
+\newcommand{\privatizerDisc}{\text{\textsc{DiscLapU}}}
+\newcommand{\privatizerAdapt}{\text{\textsc{LapUAdapt}}}
+\newcommand{\procedureTSDisc}{\text{\textsc{PrivUTS}}}
+\newcommand{\procedureTSConti}{\text{\textsc{PrivUTS}}_\text{\textsc{H\"{o}lder}}}
+\newcommand{\procedureTSAdapt}{\text{\textsc{PrivUTS}}_\text{\textsc{Adapt}}}
+\newcommand{\procedureIndepMarginal}{ \text{\textsc{PrivUIndep}} }
+\newcommand{\procedureIndepSplit}{ \text{\textsc{PrivUSplit}} }
+
+
+%LapU
+
+
+%binning function
+\newcommand{\binner}[2]{ h^{(#1, #2)}_{\mathrm{bin}} }
+
+% noise variances
+
+
+
+\newcommand{\LapUDiscParam}{ p_{\alpha, c, \theta}}
+\newcommand{\LapUIndepParam}{\sigma_{\alpha, c, \theta}}
+\newcommand{\LapUIndepParamProof}{\sigma_{\alpha, 4, d^\ell}}
+\newcommand{\sigmaAlphaKappa}[1]{
+	\sigma_{\alpha, \kappa}^{#1}
+}
+
+
+
+
+% matrices
+\newcommand{\yUmat}{[\gammamax]}
+\newcommand{\zUmat}{\mathbf{L}}
+\newcommand{\yUmatTilde}{\mathbf{\tilde{K}}}
+\newcommand{\zUmatTilde}{\mathbf{\tilde{L}}}
+
+
+
+
+%privatized vectors
+
+\newcommand{\YPrivVec}[1]{\boldsymbol{\Phi}_{#1}}
+\newcommand{\ZPrivVec}[1]{\boldsymbol{\Psi}_{#1}}
+
+
+\newcommand{\YPriv}{\Phi_i}
+\newcommand{\YPrivComp}[1]{\Phi_{i, #1}}
+\newcommand{\YPrivOne}[1]{\Phi_{1, #1}}
+
+\newcommand{\yPriv}{\phi_i}
+\newcommand{\yPrivComp}[1]{\phi_{i, #1}}
+
+\newcommand{\ZPriv}{\Psi_i}
+\newcommand{\ZPrivComp}[1]{\Psi_{i, #1}}
+\newcommand{\ZPrivOne}[1]{\Psi_{1, #1}}
+
+\newcommand{\zPriv}{\psi_i}
+\newcommand{\zPrivComp}[1]{\psi_{i, #1}}
+
+\newcommand{\psionek}{\psi_{1k}}
+
+%probability vector components
+\newcommand{\pYk}{p_{Y}(k)}
+\newcommand{\pZk}{p_{Z}(\vectorIndex')}
+\newcommand{\pYZkk}{p_{YZ}(\vectorIndex, \vectorIndex')}
+\newcommand{\pYpZkk}{p_{Y}(k) p_{Z}(\vectorIndex')}
+\newcommand{\deltakk}{\Delta_{k,k'}}
+
+%norms
+\newcommand{\normpy}{\| p_{Y} \|_2}
+\newcommand{\normpz}{\| p_{Z} \|_2}
+\newcommand{\normpzsq}{\| p_{Z} \|_2^2}
+\newcommand{\normdeltats}{\| p_{Y} - p_Z \|_2}
+\newcommand{\normdeltatssq}{\| p_{Y} - p_Z \|_2^2}
+
+
+%moments
+\newcommand{\momentOneIndep}{M'_1(P)}
+
+%independence testing
+
+
+% definition of noise-added phi
+
+\newcommand{\ik}{h_{in}}
+\newcommand{\PsiIndepOne}{\Psi'_1}
+
+%norms
+\newcommand{\normpyz}{\|P_{\vecBold{YZ}}\|_2}
+\newcommand{\normpyzsq}{\|P_{\vecBold{YZ}}\|_2^2}
+\newcommand{\normpypz}{\|p_{Y}p_{Z}\|_2}
+\newcommand{\normpypzsq}{\|p_{Y}p_{Z}\|_2^2}
+\newcommand{\normdelta}{\|P_{\vecBold{YZ}} - p_Y p_Z\|_2}
+
+
+
+% lower bound proofs
+\newcommand{\intdone}{
+\int_{[0,1]^{\dimDensity_1}}
+	}
+	
+\newcommand{\intdtwo}{
+\int_{[0,1]^{\dimDensity_2}}
+	}
+
+\newcommand{\intindepwhole}{\int_{[0,1]^{\dimDensity_1 + \dimDensity_2}}}	
+\newcommand{\qDensityY}{
+q^Y_i(\phi_i|y_i)
+	}
+
+\newcommand{\qDensityZ}{
+		q^Z_i(\psi_i|z_i)
+	}	
+	
+\newcommand{\qDensityYPrime}{
+q^Y_i(\phi_i|y_i')
+	}
+
+\newcommand{\qDensityZPrime}{
+		q^Z_i(\psi_i|z_i')
+	}	
+
+\newcommand{\qDensityYCdot}{
+q^Y_i(\cdot|y_i)
+	}
+
+\newcommand{\qDensityZCdot}{
+		q^Z_i(\cdot|z_i)
+	}
+
+\newcommand{\privateUnif}{
+\tilde{f}_{0, i}
+	}
+
+\newcommand{\dMuY}{
+d\mu^Y_i(\phi_i)
+	}
+
+\newcommand{\dMuZ}{
+d\mu^Z_i(\psi_i)
+	}
+
+
+
+
+
+
+\newcommand{\rvY}{Y}
+\newcommand{\rVecY}{\vecBold{\rvY}}
+\newcommand{\rvZ}{Z}
+\newcommand{\rVecZ}{\vecBold{\rvZ}}
+\newcommand{\mT}{\mathcal{T}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mV}{\mathcal{V}}
+\newcommand{\tV}{\text{Var}}
+
+\newcommand{\bX}{\textbf{X}}
+\newcommand{\bY}{\textbf{Y}}
+\newcommand{\bW}{\textbf{W}}
+\newcommand{\bZ}{\textbf{Z}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\bcdot}{\boldsymbol{\cdot}}
+\newcommand{\bell}{\boldsymbol{\ell}}
+
+
+
+\newcommand{\convAS}{\overset{a.s}{\longrightarrow}}
+\newcommand{\convP}{\overset{p}{\longrightarrow}}
+\newcommand{\convD}{\overset{d}{\longrightarrow}}
+\newcommand\fnurl[2]{%
+\href{#2}{#1}\footnote{\url{#2}}%
+}
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}} % independece
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+% \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\setlength{\oddsidemargin}{0in} \setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in} \setlength{\topmargin}{-.2in}
+\setlength{\textheight}{8.25in}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{property}{Property}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+%comments
+\newcommand{\ilmun}[1]{
+	{ \color{blue} Ilmun: #1}
+	}
+
+\newcommand{\jongmin}[1]{
+	{ \color{red} #1}
+	}
+	
+\newcommand{\sw}[1]{
+    { \color{green} S: #1}
+    }
+    
+\newcommand{\sobolevTwo}[1]{\mathcal{W}_1^{#1}(\Omega)}
+\newcommand{\advLossSobol}[1]{d_{#1}^\mathcal{W}}
+
+\begin{document}
+
+\begin{center}
+\LARGE \bf
+LDP two-sample  chi-squared test
+\end{center}
+
+\begin{comment}
+\begin{keyword}
+\kwd{local differential privacy}
+\kwd{two-sample testing}
+\kwd{independence testing}
+\kwd{minimax separation rates}
+\end{keyword}
+
+%\end{frontmatter} #uncomment this to use the Bernoulli template
+\end{comment}
+%%%%%%%%% uncomment the codes above to use Bernoulli template (Part II)%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{tocdepth}{2}
+\section{Setting}
+\begin{itemize}
+	\item $
+\rVecY_i \stackrel{iid}{\sim}multi(\sampleSize_1, \distparamMultinom_{\rVecY}),
+\rVecZ_i \stackrel{iid}{\sim}multi(\sampleSize_2, \distparamMultinom_{\rVecZ})$ with $\alphabetSize$ categories
+	\item One-hot vector form i.e. random vectors with dependent Bernoulli random variable entries
+	\item Allow for $n_1 \neq n_2$
+	
+\end{itemize}
+\section{Generalized Randomized Response and two sample Pearson chi-square statistic}
+\subsection{Privacy mechanism: Generalized Randomized Response}
+\begin{definition}[Generalized Randomized Response~(Theorem 5.4. of \citet{Gaboardi2018LDPChisq})]
+For a multinomial random vector 
+$
+\rVecY_i \stackrel{iid}{\sim}multi(\sampleSize_1, \distparamMultinom_{\rVecY})$, 
+we define
+\begin{align*}
+\mP
+\bigl(
+\genrr(\rVecY_i) = \vecBold{y}'
+|
+\rVecY_i = \vecBold{y}
+\bigr)
+:=
+\begin{cases}
+\dfrac
+	{\exp(\alpha)}
+	{\exp(\alpha) + \alphabetSize - 1 }
+	\text{ if }
+	\vecBold{y}' = \vecBold{y}
+	\\
+\dfrac
+	{1}
+	{\exp(\alpha) + \alphabetSize - 1 }	
+	\text{ if }
+	\vecBold{y}' \neq \vecBold{y}.
+\end{cases}
+\end{align*}
+Then  $\tilde{\rVecY}_i:=\genrr(\rVecY_i)$ is a multinomial random vector with probability vector
+\begin{align*}
+\tilde{\distparamMultinom}_{\rVecY}
+:=
+\distparamMultinom_{\rVecY}
+	\frac
+	{\exp(\alpha)}
+	{\exp(\alpha) + \alphabetSize - 1 }
+	+
+(1-\distparamMultinom_{\rVecY})	
+	\frac
+	{1}
+	{\exp(\alpha) + \alphabetSize - 1 }.
+\end{align*}
+\end{definition}
+\noindent
+Since $e^\alpha>1$ for $\alpha>0$, the probability of sending the original category is a little bit higher than sending the other category.
+\citet{Gaboardi2018LDPChisq} constructs a private goodness-of-fit test based on a chi-square statistic evaluated on $\tilde{\rVecY}_i$'s.
+They demonstrate that the limiting distribution is chi-square distribution both under the null and alternative.
+
+
+
+\subsection{Two sample chi-square statistic}
+We extend the goodness-of-fit test by \citet{Gaboardi2018LDPChisq} into two-sample testing by privatizing the raw samples
+$\rVecZ_i \stackrel{iid}{\sim}multi(\sampleSize_2, \distparamMultinom_{\rVecZ})$
+into $\tilde{\rVecZ}_j := \genrr(\rVecZ_j)$. 
+Under the null, $\genrr(\rVecY_i)$ and $\genrr(\rVecZ_j)$ follow multinomial distributions with the same probability vector.
+ Therefore, the usual two-sample chi-square test statistic
+ 	\begin{align*}
+		T_{\chi} :=
+		\sum_{\ell=1}^k
+		\frac{
+		\bigl(
+		n_2
+		\sum_{i=1}^{n_1}\tilde{\rVecY}_i(\ell)
+		-
+		n_1
+		\sum_{j=1}^{n_1}\tilde{\rVecZ}_j(\ell)
+		\bigr)^2
+		}{
+		n_1 n_2 (n_1 + n_2) 
+		\sum_{j=1}^{n_1}
+		\bigl(
+		\tilde{\rVecY}_j(\ell)+\tilde{\rVecZ}_j(\ell)
+		\bigr)
+		}
+	\end{align*}
+  converges to a chi-square distribution with degree of freedom $\alphabetSize-1$ and yields a valid  test with size $\gamma$.
+This test statistic is from Van der Vaart's book Asymptotic Statistics, pp. 253.
+
+\section{Bit flip privatization and related test statisitc}
+\subsection{Bit flip privatization}
+We next consider another LDP algorithm $\mathcal{M}_{bit} : \{\boldsymbol{e}_1, \ldots, \boldsymbol{e}_k\} \to \{0,1\}^k$, which is the Algorithm 4 of~\citet{Gaboardi2018LDPChisq}. It  flips each bit with some biased probability.
+\begin{algorithm}
+	\caption{Bit Flip Local Randomizer: $\mathcal{M}_{bit}$ }\label{algorithm:bitflip}
+\textbf{Input: } $\boldsymbol{y} \in  \{\boldsymbol{e}_1, \ldots, \boldsymbol{e}_k\}, \;  \alpha$.
+\begin{algorithmic}
+\For{$\ell \in [k]$}
+\State
+	Set $\tilde{\boldsymbol{y}}_\ell = \boldsymbol{y}_\ell $ with probability $e^{\alpha/2}/(e^{\alpha/2}+1)$ ,
+otherwise 
+$\tilde{\boldsymbol{y}}_\ell = 1-\boldsymbol{y}_\ell $
+\EndFor
+\State \textbf{Output:} $\tilde{\boldsymbol{y}}$
+\end{algorithmic}
+\end{algorithm}
+The Algorithm~\ref{algorithm:bitflip} is $\alpha$-LDP~(Theorem 5.5 of~\citet{Gaboardi2018LDPChisq}).)
+\subsection{test statistic}
+We first review the one-sample test statistic of~\citet{Gaboardi2018LDPChisq} and expand it into two-sample statistic. 
+\subsubsection{Review of one-sample statistic}
+We first review how~\citet{Gaboardi2018LDPChisq} builds goodness-of-fit chi-square statistic for  histogram of bit-flipped observations.
+We start with applying CLT to the bit-flipped obsevations. 
+\begin{lemma}[Applying CLT to bit-flipped observations, Lemma 5.7 of \cite{Gaboardi2018LDPChisq}]\label{lemma_57}
+When $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$,
+the mean vector and covariance matrix of the flipped observation are computed as follows: 
+\begin{equation}
+	\tilde{\boldsymbol{p}}:=	
+	\mathbb{E}(\mathcal{M}_{bit}(Y_1))
+	=
+	\frac{(\exp
+		\bigl(
+		\alpha/2)-1
+		\bigr) \boldsymbol{p}+1}{\exp(\alpha/2)+1}, \text{ and}
+\end{equation}
+
+\begin{equation}
+	\Sigma_{\boldsymbol{\tilde{p}}}
+	:=
+	Var(\mathcal{M}_{bit}(Y_1))
+	=
+	\left(
+	\frac{\exp(\alpha/2)-1}{\exp(\alpha/2)+1}
+	\right)^2
+	\bigl(
+	diag(\boldsymbol{p}) - \boldsymbol{p}\boldsymbol{p}^\top
+	\bigr)
+	+
+	\frac{\exp(\alpha/2)}{(\exp(\alpha/2)+1)^2}
+	I_d,
+\end{equation}
+For any $\alpha >0$ and $\boldsymbol{p} >0$, $\Sigma_{\boldsymbol{\tilde{p}}}$ is positive definite  and one of its eigenvector is one-vector.
+ Denote the histogram of flipped observations as
+\begin{equation}
+	\tilde{\boldsymbol{H}}:= \sum_{i=1}^{n} \mathcal{M}_{bit}(Y_i).
+\end{equation} 
+By the CLT for i.i.d random vectors, we get the following asymptotic distribution:
+\begin{equation}\label{CLT_onesample_vector}
+	\sqrt{n}(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
+	\stackrel{d}{\to}
+	N
+	\bigl(
+	0, \Sigma_{\boldsymbol{\tilde{p}}}
+	\bigr)
+\end{equation}
+\end{lemma}
+\noindent In non-private chi-square test, we apply CLT and
+multiply by $diag(\boldsymbol{p})^{-1/2}$ to turn the  covariance matrix on the RHS into a projector matrix.
+Here in the private setting, we also need a scaling matrix to turn the covariance matrix into a projector matrix.
+\citet{Gaboardi2018LDPChisq} proposes $\tilde{\boldsymbol{p}}^{-1/2} \Pi$, where $\Pi := I_k - \frac{1}{k} \boldsymbol{1} \boldsymbol{1}^\top$. The properties of $\Pi$ are as follows:
+\begin{enumerate}
+	\item It is symmetric idempotent (a projecter matrix).
+	\item Its null space is $span\{\boldsymbol{1}\}$, so when multiplied to a symmetric matrix, it deletes an eigenvector $\boldsymbol{1}$.
+	\begin{align*}
+		\Pi x  = 0
+		&\iff
+		x = (1/k) \boldsymbol{1} \boldsymbol{1}^\top x
+		\\&
+		\iff
+		x = (1/k) \boldsymbol{1} (\boldsymbol{1}^\top x) = ((\boldsymbol{1}^\top x)/k) \boldsymbol{1} = c\boldsymbol{1}
+	\end{align*}
+\end{enumerate}
+By multiplying $\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi$ to the LHS vector of~\eqref{CLT_onesample_vector}, we get
+\begin{equation}
+	\sqrt{n}
+	\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi
+	(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
+	\stackrel{d}{\to}
+	N
+	\bigl(
+	0,
+	\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \Sigma_{\boldsymbol{\tilde{p}}}^{-1/2}
+	\bigr).
+\end{equation}
+The next lemma specifies the property of the covariance matrix $\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \Sigma_{\boldsymbol{\tilde{p}}}^{-1/2}$.
+\begin{lemma}\label{chisq_projection}
+	Let $\Sigma \in \real^{k \times k}$ be a symmetric positive definite matrix one of whose eigenvector is $\boldsymbol{1}$. Then we can diagonalize as $\Sigma = BDB^T$.
+	Let $\Pi := I_k - \frac{1}{k} \boldsymbol{1} \boldsymbol{1}^\top$.
+	Then the following matrix is the identity matrix except one of the entries on the diagonal is zero.
+	\begin{equation}
+		\Sigma^{-1/2} \Pi \Sigma \Pi \Sigma^{-1/2}
+		=
+		\Sigma^{-1/2} \Pi BDB^\top \Pi \Sigma^{-1/2}		
+	\end{equation}
+\end{lemma}
+\noindent
+	Now we invoke the following classical theorem to derive an asymptotic chi-square distribution with degree of freedom $k-1$.
+\begin{theorem}[Ferguson (1996)]\label{chisq_theorem}
+	If $\boldsymbol{X} \sim N( \boldsymbol{\mu}, \Sigma)$ and $\Sigma$ is a projection matrix of rank $\nu$ an
+	$\Sigma \boldsymbol{\mu} = \boldsymbol{\mu}$ then $\boldsymbol{X}^\top \boldsymbol{X} \sim \chi^2_{\nu} (\boldsymbol{\mu}^\top \boldsymbol{\mu})$.
+\end{theorem}
+
+\subsection{Extension to two sample test statistic}
+We extend the previous result  to two-sample setting.
+For simplicity, we follow the equal sample size setting of~\citet{Gaboardi2018LDPChisq}.
+Now we have two collections of  raw data $\{\boldsymbol{Y}_i\}_{i \in [n]}$ and $\{\boldsymbol{Z}_j\}_{j \in [n]}$ generated from multinomial distributions with probability vectors $\boldsymbol{p}_1$ and $\boldsymbol{p}_2$, respectiveley.
+According to Lemma~\ref{lemma_57}, flipped observations of these samples have following moments:
+\begin{align*}
+	\tilde{\boldsymbol{p}}_Y
+	&:=
+	\mathbb{E}(\mathcal{M}_{bit}(Y_1))
+	=
+	\frac{(\exp
+		\bigl(
+		\alpha/2)-1
+		\bigr) \boldsymbol{p}_{\boldsymbol{Y}}+1}{\exp(\alpha/2)+1},
+	\\ 
+	\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} &:= Var(\mathcal{M}_{bit}(Y_1))=	\left(
+	\frac{\exp(\alpha/2)-1}{\exp(\alpha/2)+1}
+	\right)^2
+	\bigl(
+	diag(\boldsymbol{p}_{\boldsymbol{Y}}) - \boldsymbol{p}_{\boldsymbol{Y}} \boldsymbol{p}_{\boldsymbol{Y}}^\top
+	\bigr)
+	+
+	\frac{\exp(\alpha/2)}{(\exp(\alpha/2)+1)^2}
+	I_d
+\\
+	\tilde{\boldsymbol{p}}_Z
+&:=
+\mathbb{E}(\mathcal{M}_{bit}(Z_1))
+=
+\frac{(\exp
+	\bigl(
+	\alpha/2)-1
+	\bigr) \boldsymbol{p}_{\boldsymbol{Z}}+1}{\exp(\alpha/2)+1},
+\\ 
+\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}} &:= Var(\mathcal{M}_{bit}(Z_1))=	\left(
+\frac{\exp(\alpha/2)-1}{\exp(\alpha/2)+1}
+\right)^2
+\bigl(
+diag(\boldsymbol{p}_{\boldsymbol{Z}}) - \boldsymbol{p}_{\boldsymbol{Z}} \boldsymbol{p}_{\boldsymbol{Z}}^\top
+\bigr)
++
+\frac{\exp(\alpha/2)}{(\exp(\alpha/2)+1)^2}
+I_d
+\end{align*}
+We also denote the histograms of flipped observations as 
+\begin{equation}
+	\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}:= \sum_{i=1}^{n} \mathcal{M}_{bit}(Y_i) \text{ and }
+	\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}:= \sum_{i=1}^{n} \mathcal{M}_{bit}(Z_i).
+\end{equation} 
+Then we have the following asymptotic distribution:
+\begin{equation}\label{chisq_twosample_first_asymptotic}
+\sqrt{n}
+\left(
+	\left(
+		\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+		\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	-
+	(\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z)
+\right)
+\stackrel{d}{\to}
+N(0, \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}).
+\end{equation}
+According to Lemma~\ref{lemma_57}, $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}$ and  $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$ are positive-definite.
+Since the set of symmetric positive-definite matrices is closed under nonnegative linear combination, 
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$ is also symmetric positive definite.
+Lemma~\ref{lemma_57} also implies that both of 
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}$ and  $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$
+have eigenvector $\boldsymbol{1}$.
+Therefore, 
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$
+also has eigenvector $\boldsymbol{1}$.
+Thus we can invoke Lemma~\ref{chisq_projection} to modify the  asymptotic distribution~\eqref{chisq_twosample_first_asymptotic}.
+Let us denote $\tilde{\Sigma} := \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$.
+Then we have the following asymptotic distribution:
+
+\begin{equation}\label{chisq_twosample_second_asymptotic}
+	\sqrt{n}
+	\tilde{\Sigma}^{-1/2} \Pi
+	\left(
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	-
+	(\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z)
+	\right)
+	\stackrel{d}{\to}
+	N(0, 
+	\tilde{\Sigma}^{-1/2} \Pi
+	\tilde{\Sigma}
+	\Pi \tilde{\Sigma}^{-1/2}).
+\end{equation}
+Since  
+$\|\mathcal{M}_{bit}(Y_i)\|_2 \leq \sqrt{k}$ and  $\|\mathcal{M}_{bit}(Z_j)\|_2 \leq \sqrt{k}$,
+the sample covariance matrices 
+\begin{align*}
+	\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} &:=
+	\frac{1}{n}
+	\sum_{i=1}^n
+	(
+	\mathcal{M}_{bit}(Y_i) - \tilde{\boldsymbol{H}_{\boldsymbol{Y}}}/n
+	)
+	(
+\mathcal{M}_{bit}(Y_i) - \tilde{\boldsymbol{H}_{\boldsymbol{Y}}}/n
+)^\top
+\\
+	\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}} &:=
+\frac{1}{n}
+\sum_{j=1}^n
+(
+\mathcal{M}_{bit}(Z_j) - \tilde{\boldsymbol{H}_{\boldsymbol{Z}}}/n
+)
+(
+\mathcal{M}_{bit}(Z_j) - \tilde{\boldsymbol{H}_{\boldsymbol{Z}}}/n
+)^\top
+	\end{align*}
+converge in probability to  
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}$ and  $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$, respectively~(Corolloary 6.20 of \citet{wainwright_high-dimensional_2019}).
+Let us denote 
+$
+\hat{\Sigma} :=	\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}
++ 
+\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$.
+Since matrix inversion and matrix square root is continuous mapping on the space of positive symmetric definite matrices, we have
+\begin{equation}
+	\hat{\Sigma}^{-1/2} \tilde{\Sigma}^{-1/2} \stackrel{p}{\to} I_{k}.
+\end{equation}
+Therefore, by the Slutsky's theorem, we have
+\begin{equation}\label{chisq_twosample_third_asymptotic}
+	\sqrt{n}
+	\hat{\Sigma}^{-1/2} \Pi
+	\left(
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	-
+	(\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z)
+	\right)
+	\stackrel{d}{\to}
+	N(0, 
+	\tilde{\Sigma}^{-1/2} \Pi
+	\tilde{\Sigma}
+	\Pi \tilde{\Sigma}^{-1/2}).
+\end{equation}
+\noindent
+Under the Under the null hypothesis of $\boldsymbol{p}_{\boldsymbol{Y}} = \boldsymbol{p}_Z $, 
+we have $\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z = 0$. Therefore, we have
+\begin{equation}\label{chisq_twosample_third_asymptotic}
+	\sqrt{n}
+	\hat{\Sigma}^{-1/2} \Pi
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	\stackrel{d}{\to}
+	N(0, 
+	\tilde{\Sigma}^{-1/2} \Pi
+	\tilde{\Sigma}
+	\Pi \tilde{\Sigma}^{-1/2}).
+\end{equation}
+Finally, we invoke Theorem~\ref{chisq_theorem} to obtain the following asymptotic null distribution
+
+\begin{equation}\label{chisq_twosample_final_asymptotic}
+n
+	\left(
+\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+\right)^\top
+\Pi
+	\hat{\Sigma}^{-1} \Pi
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	\stackrel{d}{\to}
+\chi^2_{(k-1)},
+\end{equation}
+and we define the lefthand side of \eqref{chisq_twosample_final_asymptotic} as our test statistic.
+
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{reference}
+
+
+\end{document}
