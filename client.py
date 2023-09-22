@@ -47,7 +47,7 @@ class LapU:
 
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
         sample_size = utils.get_sample_size(data_mutinomial)
-        data_onehot_scaled = self._transform_onehot(data_mutinomial, alphabet_size).mul(alphabet_size**(1/2)) # scaled by \sqrt(k)
+        data_onehot_scaled = torch.nn.functional.one_hot(data_mutinomial, alphabet_size).mul(alphabet_size**(1/2)) # scaled by \sqrt(k)
         noise = self._generate_noise(alphabet_size, privacy_level, sample_size)
         return(torch.add(data_onehot_scaled,noise))
            
@@ -56,8 +56,7 @@ class LapU:
         laplace_noise = self.unit_laplace_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device)
         return(laplace_noise.mul(laplace_scale))
 
-    def _transform_onehot(self, data_multinomial, alphabet_size):
-        return(torch.nn.functional.one_hot(data_multinomial, alphabet_size))
+        
 
     def _get_sample_size(self, data):
         if data.dim() == 1:
@@ -86,16 +85,16 @@ class discLapU(LapU):
 class genRR(LapU):   
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
         sample_size = utils.get_sample_size(data_mutinomial)
-        data_onehot = self._transform_onehot(data_mutinomial, alphabet_size)
-        one_matrix = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1)
+        data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
+        one_matrix = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).to(self.cuda_device)
         bias = torch.tensor(privacy_level).exp()
         bias_matrix = data_onehot.mul(bias).add(one_matrix).sub(data_onehot)
 
         p = 1 / ( torch.tensor(privacy_level).exp().add(alphabet_size - 1) )
-        p = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).mul(p)
+        p = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).mul(p).to(self.cuda_device)
         p = p.mul(bias_matrix)
-        random_multinomial = torch.multinomial(p, 1).view(-1)
-        return(self._transform_onehot(random_multinomial, alphabet_size))  
+        random_multinomial = torch.multinomial(p, 1).view(-1).to(self.cuda_device)
+        return(random_multinomial)  
 
     
 

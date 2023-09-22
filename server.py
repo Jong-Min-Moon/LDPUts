@@ -2,6 +2,7 @@ from abc import ABCMeta, abstractmethod
 from client import client
 import utils
 import torch
+from scipy.stats import chi2
 
 class server(client):
     def release_p_value(self, data_y, data_z, n_permutation):
@@ -36,9 +37,7 @@ class server(client):
       
         return(p_value_proxy)
     
-    @abstractmethod   
-    def _calculate_statistic(self, data_y, data_z):
-        raise NotImplementedError()
+
     
 class server_twosample_U(server):    
     def _calculate_statistic(self, data_y, data_z):
@@ -78,3 +77,38 @@ class server_twosample_U(server):
         u_cross = sign_cross * abs_cross
 
         return(u_y + u_z - u_cross)
+    
+class server_twosample_chi(server):
+    def release_p_value(self, data_y, data_z, alphabet_size):
+        if (self.not_multinomial(data_y)) or (self.not_multinomial(data_z)):
+            raise Exception("only accepts multinomial data (torch.int64 or torch.long)")
+        else:
+            n_1 = torch.tensor(utils.get_sample_size(data_y))
+            n_2 = torch.tensor(utils.get_sample_size(data_z))
+            Y_count = data_y.bincount(minlength=alphabet_size)
+
+            Z_count = data_z.bincount(minlength=alphabet_size)
+    
+      
+            total_count = Y_count + Z_count
+            
+            total_count_nonzero = total_count[total_count>0]
+            Y_count_nonzero = Y_count[total_count>0]
+            Z_count_nonzero = Z_count[total_count>0]
+            
+            T_chi = torch.sub(Y_count_nonzero.mul(n_1), Z_count_nonzero.mul(n_2)).square().divide(
+                total_count_nonzero.mul(n_1).mul(n_2)
+            ).sum()
+
+            chisq_dist = chi2(alphabet_size-1)
+            p_value = chisq_dist.sf(T_chi.cpu().numpy().item())
+            return(p_value)
+        
+    def not_multinomial(self, data):
+        if data.dtype != torch.int64:
+            return(True)
+        elif data.dtype != torch.long:
+            return(True)
+        else:
+            return(False)
+    
