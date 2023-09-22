@@ -96,5 +96,23 @@ class genRR(LapU):
         random_multinomial = torch.multinomial(p, 1).view(-1).to(self.cuda_device)
         return(random_multinomial)  
 
-    
+class bitFlip(LapU):   
+    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
+        """
+        output: bit vector in (0,1)^k
+        """
+        sample_size = utils.get_sample_size(data_mutinomial)
+        data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
+
+        exp_alpha = torch.tensor(privacy_level).exp()
+        p = torch.tensor([exp_alpha.divide(exp_alpha.add(1))]).to(self.cuda_device)
+        bernoulli_dist = torch.distributions.bernoulli.Bernoulli(1-p) #0 value = stay, 1 value = flip
+        bitFlipNoise = bernoulli_dist.sample((sample_size,alphabet_size)).view(sample_size, alphabet_size).to(self.cuda_device)
+
+        data_flip = data_onehot.add(bitFlipNoise)
+        data_flip = data_flip.add(
+            data_flip.eq(2).mul(-2)
+        )
+
+        return(data_flip)  
 
