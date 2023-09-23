@@ -111,8 +111,10 @@ class bitFlip(LapU):
         sample_size = utils.get_sample_size(data_mutinomial)
         data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
 
-        exp_alpha = torch.tensor(privacy_level).exp()
-        p = torch.tensor([exp_alpha.divide(exp_alpha.add(1))]).to(self.cuda_device)
+        alpha_half = torch.tensor(privacy_level).div(2)
+
+        log_p = alpha_half - alpha_half.exp().add(1).log().to(self.cuda_device)
+        p = log_p.exp()
         bernoulli_dist = torch.distributions.bernoulli.Bernoulli(1-p) #0 value = stay, 1 value = flip
         bitFlipNoise = bernoulli_dist.sample((sample_size,alphabet_size)).view(sample_size, alphabet_size).to(self.cuda_device)
 

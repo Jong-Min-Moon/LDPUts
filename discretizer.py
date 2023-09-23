@@ -1,5 +1,5 @@
 import torch
-
+from utils import get_dimension
 class discretizer:
     def __init__(self, cuda_device):
         self.cuda_device = cuda_device

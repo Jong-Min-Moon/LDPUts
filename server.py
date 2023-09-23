@@ -3,6 +3,7 @@ from client import client
 import utils
 import torch
 from scipy.stats import chi2
+import numpy
 
 class server(client):
     def release_p_value(self, data_y, data_z, n_permutation):
@@ -113,35 +114,30 @@ class server_twosample_chi(server):
             return(False)
 
 class server_twosample_projection(server):
-    def release_p_value(self, data_y, data_z, alphabet_size):
+    #def release_p_value(self, data_y, data_z):
+
+    def _calculate_statistic(self, data_y, data_z):
         n_1 = torch.tensor(utils.get_sample_size(data_y))
         n_2 = torch.tensor(utils.get_sample_size(data_z))
+        alphabet_size_1 = utils.get_dimension(data_y)
+        alphabet_size_2 = utils.get_dimension(data_z)
         if n_1 != n_2:
             raise Exception("sample size from each group must be the same)")
-        else:
-            pi = torch.eye(alphabet_size)
+        elif alphabet_size_1 != alphabet_size_2:
+            raise Exception("Alphabet sizes of each group must be the same)")
+        else: 
+            #prelim
             n = n_1
-            mean_diff = data_y.mean(axis=0).sub(data_z.mean(axis=0)).view([4,1])
+            alphabet_size = alphabet_size_1
+            one_projector = torch.eye(alphabet_size).sub(torch.ones(torch.Size([alphabet_size,alphabet_size])))
+            mean_diff = data_y.mean(axis=0).sub(data_z.mean(axis=0)).view([alphabet_size,1])
             cov_sum = torch.cov(data_y.T) + torch.cov(data_z.T)
-            mean_diff.T.matmul()
+            if self.cuda_device.type== "cpu":
+                cov_sum_inv = torch.tensor(numpy.linalg.inv(one_projector.numpy()))
+            else:
+                cov_sum_inv = cov_sum.inverse()
 
-            
-            total_count_nonzero = total_count[total_count>0]
-            Y_count_nonzero = Y_count[total_count>0]
-            Z_count_nonzero = Z_count[total_count>0]
-            
-            T_chi = torch.sub(Y_count_nonzero.mul(n_1), Z_count_nonzero.mul(n_2)).square().divide(
-                total_count_nonzero.mul(n_1).mul(n_2)
-            ).sum()
-
-            chisq_dist = chi2(alphabet_size-1)
-            p_value = chisq_dist.sf(T_chi.cpu().numpy().item())
-            return(p_value)
+            #
+            test_statistic = mean_diff.T.matmul(one_projector).matmul(cov_sum_inv).matmul(one_projector).matmul(mean_diff).mul(n)
+            return(test_statistic)
         
-    def not_multinomial(self, data):
-        if data.dtype != torch.int64:
-            return(True)
-        elif data.dtype != torch.long:
-            return(True)
-        else:
-            return(False)
