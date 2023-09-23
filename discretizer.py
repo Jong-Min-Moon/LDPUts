@@ -16,15 +16,9 @@ class discretizer:
         # create designated number of intervals
         data_bin_index = self.__transform_bin_index(data, n_bin) # each column into bin index
         data_multinomial = self.__transform_multinomial(data_bin_index, n_bin) # all column in to a single column with n_bin^d categories 
-        return(data_multinomial, n_bin**self.__get_dimension(data))
+        return(data_multinomial, n_bin**get_dimension(data))
     
-    def __get_dimension(self, data):
-        if data.dim() == 1:
-            return(1)
-        elif data.dim() == 2:
-            return( data.size(dim = 1) )
-        else:
-            return # we only use up to 2-dimensional tensor, i.e. matrix
+
     
     def __transform_bin_index(self, data, n_bin):
         '''
@@ -44,7 +38,7 @@ class discretizer:
 
     def __transform_multinomial(self, data_bin_index, n_bin):
         """Only for continuous and multivariate data ."""
-        d = self.__get_dimension(data_bin_index)
+        d = get_dimension(data_bin_index)
         if d == 1:
             return(data_bin_index.sub(1).reshape(-1,))
         else:

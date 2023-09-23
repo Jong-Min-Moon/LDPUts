@@ -111,4 +111,37 @@ class server_twosample_chi(server):
             return(True)
         else:
             return(False)
-    
+
+class server_twosample_projection(server):
+    def release_p_value(self, data_y, data_z, alphabet_size):
+        n_1 = torch.tensor(utils.get_sample_size(data_y))
+        n_2 = torch.tensor(utils.get_sample_size(data_z))
+        if n_1 != n_2:
+            raise Exception("sample size from each group must be the same)")
+        else:
+            pi = torch.eye(alphabet_size)
+            n = n_1
+            mean_diff = data_y.mean(axis=0).sub(data_z.mean(axis=0)).view([4,1])
+            cov_sum = torch.cov(data_y.T) + torch.cov(data_z.T)
+            mean_diff.T.matmul()
+
+            
+            total_count_nonzero = total_count[total_count>0]
+            Y_count_nonzero = Y_count[total_count>0]
+            Z_count_nonzero = Z_count[total_count>0]
+            
+            T_chi = torch.sub(Y_count_nonzero.mul(n_1), Z_count_nonzero.mul(n_2)).square().divide(
+                total_count_nonzero.mul(n_1).mul(n_2)
+            ).sum()
+
+            chisq_dist = chi2(alphabet_size-1)
+            p_value = chisq_dist.sf(T_chi.cpu().numpy().item())
+            return(p_value)
+        
+    def not_multinomial(self, data):
+        if data.dtype != torch.int64:
+            return(True)
+        elif data.dtype != torch.long:
+            return(True)
+        else:
+            return(False)
