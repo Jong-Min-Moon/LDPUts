@@ -841,16 +841,29 @@ This test statistic is from Van der Vaart's book Asymptotic Statistics, pp. 253.
 
 \section{Bit flip privatization and related test statisitc}
 \subsection{Bit flip privatization}
+We next consider another LDP algorithm $\mathcal{M}_{bit} : \{\boldsymbol{e}_1, \ldots, \boldsymbol{e}_k\} \to \{0,1\}^k$, which is the Algorithm 4 of~\citet{Gaboardi2018LDPChisq}. It  flips each bit with some biased probability.
+\begin{algorithm}
+	\caption{Bit Flip Local Randomizer: $\mathcal{M}_{bit}$ }\label{algorithm:bitflip}
+\textbf{Input: } $\boldsymbol{y} \in  \{\boldsymbol{e}_1, \ldots, \boldsymbol{e}_k\}, \;  \alpha$.
+\begin{algorithmic}
+\For{$\ell \in [k]$}
+\State
+	Set $\tilde{\boldsymbol{y}}_\ell = \boldsymbol{y}_\ell $ with probability $e^{\alpha/2}/(e^{\alpha/2}+1)$ ,
+otherwise 
+$\tilde{\boldsymbol{y}}_\ell = 1-\boldsymbol{y}_\ell $
+\EndFor
+\State \textbf{Output:} $\tilde{\boldsymbol{y}}$
+\end{algorithmic}
+\end{algorithm}
+The Algorithm~\ref{algorithm:bitflip} is $\alpha$-LDP~(Theorem 5.5 of~\citet{Gaboardi2018LDPChisq}).)
 \subsection{test statistic}
+We first review the one-sample test statistic of~\citet{Gaboardi2018LDPChisq} and expand it into two-sample statistic. 
 \subsubsection{Review of one-sample statistic}
-We first review how $\cite{Gaboardi2018LDPChisq}$ builds goodness-of-fit chi-square statistic for  histogram of bit-flipped observations.
+We first review how~\citet{Gaboardi2018LDPChisq} builds goodness-of-fit chi-square statistic for  histogram of bit-flipped observations.
 We start with applying CLT to the bit-flipped obsevations. 
 \begin{lemma}[Applying CLT to bit-flipped observations, Lemma 5.7 of \cite{Gaboardi2018LDPChisq}]\label{lemma_57}
-When $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$, denote the histogram of flipped observations as
-\begin{equation}
-	\tilde{\boldsymbol{H}}:= \sum_{i=1}^{n_1} \mathcal{M}_{bit}(Y_i).
-\end{equation}
-The mean vector and covariance matrices are computed as follows: 
+When $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}, 1)$,
+the mean vector and covariance matrix of the flipped observation are computed as follows: 
 \begin{equation}
 	\tilde{\boldsymbol{p}}:=	
 	\mathbb{E}(\mathcal{M}_{bit}(Y_1))
@@ -862,7 +875,7 @@ The mean vector and covariance matrices are computed as follows:
 \end{equation}
 
 \begin{equation}
-	\Sigma_{\boldsymbol{p}}
+	\Sigma_{\boldsymbol{\tilde{p}}}
 	:=
 	Var(\mathcal{M}_{bit}(Y_1))
 	=
@@ -876,14 +889,18 @@ The mean vector and covariance matrices are computed as follows:
 	\frac{\exp(\alpha/2)}{(\exp(\alpha/2)+1)^2}
 	I_d,
 \end{equation}
-For any $\alpha >0$ and $\boldsymbol{p} >0$, $\Sigma_{\boldsymbol{p}}$ is full-rank  and one of its eigenvector is one-vector. 
+For any $\alpha >0$ and $\boldsymbol{p} >0$, $\Sigma_{\boldsymbol{\tilde{p}}}$ is positive definite  and one of its eigenvector is one-vector.
+ Denote the histogram of flipped observations as
+\begin{equation}
+	\tilde{\boldsymbol{H}}:= \sum_{i=1}^{n} \mathcal{M}_{bit}(Y_i).
+\end{equation} 
 By the CLT for i.i.d random vectors, we get the following asymptotic distribution:
 \begin{equation}\label{CLT_onesample_vector}
 	\sqrt{n}(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
 	\stackrel{d}{\to}
 	N
 	\bigl(
-	0, \Sigma_{\boldsymbol{p}}
+	0, \Sigma_{\boldsymbol{\tilde{p}}}
 	\bigr)
 \end{equation}
 \end{lemma}
@@ -903,117 +920,220 @@ Here in the private setting, we also need a scaling matrix to turn the covarianc
 		x = (1/k) \boldsymbol{1} (\boldsymbol{1}^\top x) = ((\boldsymbol{1}^\top x)/k) \boldsymbol{1} = c\boldsymbol{1}
 	\end{align*}
 \end{enumerate}
-By multiplying $\tilde{\boldsymbol{p}}^{-1/2} \Pi$ to the LHS vector of~\eqref{CLT_onesample_vector}, we get
+By multiplying $\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi$ to the LHS vector of~\eqref{CLT_onesample_vector}, we get
 \begin{equation}
 	\sqrt{n}
-	\tilde{\boldsymbol{p}}^{-1/2} \Pi
+	\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi
 	(\tilde{\boldsymbol{H}}/n - \tilde{\boldsymbol{p}})
 	\stackrel{d}{\to}
 	N
 	\bigl(
 	0,
-	\tilde{\boldsymbol{p}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \tilde{\boldsymbol{p}}^{-1/2}
-	\bigr),
+	\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \Sigma_{\boldsymbol{\tilde{p}}}^{-1/2}
+	\bigr).
 \end{equation}
-where
-	$\tilde{\boldsymbol{p}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \tilde{\boldsymbol{p}}^{-1/2}$ is an identity matrix except one diagonal entry is zero. Therefore, the covariance matrix is idempotent and rank $k-1$.
+The next lemma specifies the property of the covariance matrix $\Sigma_{\boldsymbol{\tilde{p}}}^{-1/2} \Pi \Sigma_{\boldsymbol{p}} \Pi \Sigma_{\boldsymbol{\tilde{p}}}^{-1/2}$.
+\begin{lemma}\label{chisq_projection}
+	Let $\Sigma \in \real^{k \times k}$ be a symmetric positive definite matrix one of whose eigenvector is $\boldsymbol{1}$. Then we can diagonalize as $\Sigma = BDB^T$.
+	Let $\Pi := I_k - \frac{1}{k} \boldsymbol{1} \boldsymbol{1}^\top$.
+	Then the following matrix is the identity matrix except one of the entries on the diagonal is zero.
+	\begin{equation}
+		\Sigma^{-1/2} \Pi \Sigma \Pi \Sigma^{-1/2}
+		=
+		\Sigma^{-1/2} \Pi BDB^\top \Pi \Sigma^{-1/2}		
+	\end{equation}
+\end{lemma}
+\noindent
 	Now we invoke the following classical theorem to derive an asymptotic chi-square distribution with degree of freedom $k-1$.
-\begin{theorem}[Ferguson (1996)]
+\begin{theorem}[Ferguson (1996)]\label{chisq_theorem}
 	If $\boldsymbol{X} \sim N( \boldsymbol{\mu}, \Sigma)$ and $\Sigma$ is a projection matrix of rank $\nu$ an
 	$\Sigma \boldsymbol{\mu} = \boldsymbol{\mu}$ then $\boldsymbol{X}^\top \boldsymbol{X} \sim \chi^2_{\nu} (\boldsymbol{\mu}^\top \boldsymbol{\mu})$.
 \end{theorem}
 
 \subsection{Extension to two sample test statistic}
-
-We can extend this lemma to two-sample setting.
-Suppose
- $Y_i \stackrel{iid}{\sim} multinomial(\boldsymbol{p}_1, 1)$
- and
-  $Z_j \stackrel{iid}{\sim} multinomial(\boldsymbol{p}_2, 1)$.
-We follow Lemma~\ref{lemma_57} to denote
-$\tilde{\boldsymbol{p}}_Y = \mathbb{E}(\mathcal{M}_{bit}(Y_1)), 
-\Sigma_{\boldsymbol{p}_Y} := Var(\mathcal{M}_{bit}(Y_1))$
-and
-$\tilde{\boldsymbol{p}}_Z = \mathbb{E}(\mathcal{M}_{bit}(Z_1)),
-\Sigma_{\boldsymbol{p}_Z} := Var(\mathcal{M}_{bit}(Z_1))$.
-Denote 
-$\tilde{Y_i} := \mathcal{M}_{bit}(Y_i) - \tilde{\boldsymbol{p}}_Y$
-and
-$\tilde{Z_j} := \mathcal{M}_{bit}(Z_j) - \tilde{\boldsymbol{p}}_Z$.
-Then denote
-$T_n := \sum_{i=1}^n \tilde{Y_i} - \sum_{j=1}^n \tilde{Z_j}$
-and
-$\Sigma_n := Var(T_n) =  n \bigl( \Sigma_{\boldsymbol{p}_Y} + \Sigma_{\boldsymbol{p}_Z} \bigr)$.
-
-Under the null hypothesis of $\boldsymbol{p}_Y = \boldsymbol{p}_Z = \boldsymbol{p}$, 
-we have
-$T_n = \sum_{i=1}^n\mathcal{M}_{bit}(Y_i) - \sum_{j=1}^n \mathcal{M}_{bit}(Z_j)= \tilde{\boldsymbol{H}_Y} - \tilde{\boldsymbol{H}_Z} $ and 
-$\Sigma_n = 2n \Sigma_{\boldsymbol{p}}$.
-So we have
-\begin{equation}
-	\sqrt{n/2}(\tilde{\boldsymbol{H}_Y}/n -\tilde{\boldsymbol{H}_Z}/n)
-	\stackrel{d}{\to}
-	N
-	\bigl(
-	0, \Sigma_{\boldsymbol{p}}
-	\bigr)
-\end{equation}
-
-\begin{equation}
-	\sqrt{n/2}(\tilde{\boldsymbol{H}_Y}/n -\tilde{\boldsymbol{H}_Z}/n)
-	\stackrel{d}{\to}
-	N
-	\bigl(
-	0, \Sigma_{\boldsymbol{p}}
-	\bigr)
-\end{equation}
-Since $\Sigma_{\boldsymbol{p}}$ is symmetric and one of its eigenvector is one-vector, we can diagonalize it as  $\Sigma_{\boldsymbol{p}} = BDB^\top$, where $D$ is a diagonal matrix and $B$ has orthogonal columns with one of them being $k^{-1} \boldsymbol{1}$.
-
-We introduce $\Pi := I_d - \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T$.
-First, this is an orthogornal projection matrix, since it is symmetric and idempotent:
+We extend the previous result  to two-sample setting.
+For simplicity, we follow the equal sample size setting of~\citet{Gaboardi2018LDPChisq}.
+Now we have two collections of  raw data $\{\boldsymbol{Y}_i\}_{i \in [n]}$ and $\{\boldsymbol{Z}_j\}_{j \in [n]}$ generated from multinomial distributions with probability vectors $\boldsymbol{p}_1$ and $\boldsymbol{p}_2$, respectiveley.
+According to Lemma~\ref{lemma_57}, flipped observations of these samples have following moments:
 \begin{align*}
-\Pi^2 =
-\left(
-I_d - \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-\right)
-\left(
-I_d - \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-\right)
-&=
-I_d -  \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
- -  \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
- +
- \frac{1}{k^2}\boldsymbol{1} \boldsymbol{1}^T\boldsymbol{1} \boldsymbol{1}^T
-\\&=
-I_d -  2\frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
+	\tilde{\boldsymbol{p}}_Y
+	&:=
+	\mathbb{E}(\mathcal{M}_{bit}(Y_1))
+	=
+	\frac{(\exp
+		\bigl(
+		\alpha/2)-1
+		\bigr) \boldsymbol{p}_{\boldsymbol{Y}}+1}{\exp(\alpha/2)+1},
+	\\ 
+	\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} &:= Var(\mathcal{M}_{bit}(Y_1))=	\left(
+	\frac{\exp(\alpha/2)-1}{\exp(\alpha/2)+1}
+	\right)^2
+	\bigl(
+	diag(\boldsymbol{p}_{\boldsymbol{Y}}) - \boldsymbol{p}_{\boldsymbol{Y}} \boldsymbol{p}_{\boldsymbol{Y}}^\top
+	\bigr)
+	+
+	\frac{\exp(\alpha/2)}{(\exp(\alpha/2)+1)^2}
+	I_d
+\\
+	\tilde{\boldsymbol{p}}_Z
+&:=
+\mathbb{E}(\mathcal{M}_{bit}(Z_1))
+=
+\frac{(\exp
+	\bigl(
+	\alpha/2)-1
+	\bigr) \boldsymbol{p}_{\boldsymbol{Z}}+1}{\exp(\alpha/2)+1},
+\\ 
+\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}} &:= Var(\mathcal{M}_{bit}(Z_1))=	\left(
+\frac{\exp(\alpha/2)-1}{\exp(\alpha/2)+1}
+\right)^2
+\bigl(
+diag(\boldsymbol{p}_{\boldsymbol{Z}}) - \boldsymbol{p}_{\boldsymbol{Z}} \boldsymbol{p}_{\boldsymbol{Z}}^\top
+\bigr)
 +
-\frac{1}{k^2}\boldsymbol{1} (\boldsymbol{1}^T\boldsymbol{1}) \boldsymbol{1}^T
-\\&=
-I_d -  2\frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-+
-\frac{1}{k^2}\boldsymbol{1} (k \boldsymbol{1}^T)
-\\&=
-I_d -  \frac{1}{k}\boldsymbol{1} \boldsymbol{1}^T
-\\&= \Pi.
+\frac{\exp(\alpha/2)}{(\exp(\alpha/2)+1)^2}
+I_d
 \end{align*}
+We also denote the histograms of flipped observations as 
+\begin{equation}
+	\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}:= \sum_{i=1}^{n} \mathcal{M}_{bit}(Y_i) \text{ and }
+	\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}:= \sum_{i=1}^{n} \mathcal{M}_{bit}(Z_i).
+\end{equation} 
+Then we have the following asymptotic distribution:
+\begin{equation}\label{chisq_twosample_first_asymptotic}
+\sqrt{n}
+\left(
+	\left(
+		\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+		\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	-
+	(\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z)
+\right)
+\stackrel{d}{\to}
+N(0, \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}).
+\end{equation}
+According to Lemma~\ref{lemma_57}, $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}$ and  $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$ are positive-definite.
+Since the set of symmetric positive-definite matrices is closed under nonnegative linear combination, 
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$ is also symmetric positive definite.
+Lemma~\ref{lemma_57} also implies that both of 
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}$ and  $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$
+have eigenvector $\boldsymbol{1}$.
+Therefore, 
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$
+also has eigenvector $\boldsymbol{1}$.
+Thus we can invoke Lemma~\ref{chisq_projection} to modify the  asymptotic distribution~\eqref{chisq_twosample_first_asymptotic}.
+Let us denote $\tilde{\Sigma} := \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} + \Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$.
+Then we have the following asymptotic distribution:
 
-$\boldsymbol{1} \boldsymbol{1}^T$
-Since $\Pi$ is symmetric, its column space is the orthogonal complement of $span\{\boldsymbol{1}\}$.
-So multiplying by $\Pi$ means 
-under the null, it suffices to use the CLT for i.i.d. random vectors, but under the alternative, we would need to use Lindeburg or Lyapunov.
-
-
-
-
-
-
-
-
-
-
+\begin{equation}\label{chisq_twosample_second_asymptotic}
+	\sqrt{n}
+	\tilde{\Sigma}^{-1/2} \Pi
+	\left(
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	-
+	(\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z)
+	\right)
+	\stackrel{d}{\to}
+	N(0, 
+	\tilde{\Sigma}^{-1/2} \Pi
+	\tilde{\Sigma}
+	\Pi \tilde{\Sigma}^{-1/2}).
+\end{equation}
+Since  
+$\|\mathcal{M}_{bit}(Y_i)\|_2 \leq \sqrt{k}$ and  $\|\mathcal{M}_{bit}(Z_j)\|_2 \leq \sqrt{k}$,
+the sample covariance matrices 
 \begin{align*}
-	\frac{\tilde{\boldsymbol{H}}_1}{n_1} - \frac{\tilde{\boldsymbol{H}}_2}{n_2}
-\end{align*}
+	\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}} &:=
+	\frac{1}{n}
+	\sum_{i=1}^n
+	(
+	\mathcal{M}_{bit}(Y_i) - \tilde{\boldsymbol{H}_{\boldsymbol{Y}}}/n
+	)
+	(
+\mathcal{M}_{bit}(Y_i) - \tilde{\boldsymbol{H}_{\boldsymbol{Y}}}/n
+)^\top
+\\
+	\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}} &:=
+\frac{1}{n}
+\sum_{j=1}^n
+(
+\mathcal{M}_{bit}(Z_j) - \tilde{\boldsymbol{H}_{\boldsymbol{Z}}}/n
+)
+(
+\mathcal{M}_{bit}(Z_j) - \tilde{\boldsymbol{H}_{\boldsymbol{Z}}}/n
+)^\top
+	\end{align*}
+converge in probability to  
+$\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}$ and  $\Sigma_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$, respectively~(Corolloary 6.20 of \citet{wainwright_high-dimensional_2019}).
+Let us denote 
+$
+\hat{\Sigma} :=	\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Y}}}
++ 
+\hat{\Sigma}_{\tilde{\boldsymbol{p}}_{\boldsymbol{Z}}}$.
+Since matrix inversion and matrix square root is continuous mapping on the space of positive symmetric definite matrices, we have
+\begin{equation}
+	\hat{\Sigma}^{-1/2} \tilde{\Sigma}^{-1/2} \stackrel{p}{\to} I_{k}.
+\end{equation}
+Therefore, by the Slutsky's theorem, we have
+\begin{equation}\label{chisq_twosample_third_asymptotic}
+	\sqrt{n}
+	\hat{\Sigma}^{-1/2} \Pi
+	\left(
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	-
+	(\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z)
+	\right)
+	\stackrel{d}{\to}
+	N(0, 
+	\tilde{\Sigma}^{-1/2} \Pi
+	\tilde{\Sigma}
+	\Pi \tilde{\Sigma}^{-1/2}).
+\end{equation}
+\noindent
+Under the Under the null hypothesis of $\boldsymbol{p}_{\boldsymbol{Y}} = \boldsymbol{p}_Z $, 
+we have $\tilde{\boldsymbol{p}}_Y - \tilde{\boldsymbol{p}}_Z = 0$. Therefore, we have
+\begin{equation}\label{chisq_twosample_third_asymptotic}
+	\sqrt{n}
+	\hat{\Sigma}^{-1/2} \Pi
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	\stackrel{d}{\to}
+	N(0, 
+	\tilde{\Sigma}^{-1/2} \Pi
+	\tilde{\Sigma}
+	\Pi \tilde{\Sigma}^{-1/2}).
+\end{equation}
+Finally, we invoke Theorem~\ref{chisq_theorem} to obtain the following asymptotic null distribution
+
+\begin{equation}\label{chisq_twosample_final_asymptotic}
+n
+	\left(
+\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+\right)^\top
+\Pi
+	\hat{\Sigma}^{-1} \Pi
+	\left(
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Y}}}}{n} -
+	\frac{\tilde{\boldsymbol{H}_{\boldsymbol{Z}}}}{n}
+	\right)
+	\stackrel{d}{\to}
+\chi^2_{(k-1)},
+\end{equation}
+and we define the lefthand side of \eqref{chisq_twosample_final_asymptotic} as our test statistic.
+
+
+
+
 
 \bibliographystyle{apalike}
 \bibliography{reference}

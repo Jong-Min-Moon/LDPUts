@@ -10,6 +10,8 @@ class client:
         self.LapU = LapU(cuda_device)
         self.discLapU = discLapU(cuda_device)
         self.genRR = genRR(cuda_device)
+        self.bitFlip = bitFlip(cuda_device)
+        
 
     def load_data_disc(self, data_y, data_z, alphabet_size):
         self.data_y = data_y
@@ -38,6 +40,11 @@ class client:
             self.genRR.privatize(self.data_z, self.alphabet_size, privacy_level)
                )
 
+    def release_bitFlip(self, privacy_level):
+        return(
+            self.bitFlip.privatize(self.data_y, self.alphabet_size, privacy_level),
+            self.bitFlip.privatize(self.data_z, self.alphabet_size, privacy_level)
+               )
 
 class LapU:
     def __init__(self, cuda_device):
@@ -47,7 +54,7 @@ class LapU:
 
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
         sample_size = utils.get_sample_size(data_mutinomial)
-        data_onehot_scaled = self._transform_onehot(data_mutinomial, alphabet_size).mul(alphabet_size**(1/2)) # scaled by \sqrt(k)
+        data_onehot_scaled = torch.nn.functional.one_hot(data_mutinomial, alphabet_size).mul(alphabet_size**(1/2)) # scaled by \sqrt(k)
         noise = self._generate_noise(alphabet_size, privacy_level, sample_size)
         return(torch.add(data_onehot_scaled,noise))
            
@@ -56,8 +63,7 @@ class LapU:
         laplace_noise = self.unit_laplace_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device)
         return(laplace_noise.mul(laplace_scale))
 
-    def _transform_onehot(self, data_multinomial, alphabet_size):
-        return(torch.nn.functional.one_hot(data_multinomial, alphabet_size))
+        
 
     def _get_sample_size(self, data):
         if data.dim() == 1:
@@ -86,16 +92,36 @@ class discLapU(LapU):
 class genRR(LapU):   
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
         sample_size = utils.get_sample_size(data_mutinomial)
-        data_onehot = self._transform_onehot(data_mutinomial, alphabet_size)
-        one_matrix = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1)
+        data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
+        one_matrix = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).to(self.cuda_device)
         bias = torch.tensor(privacy_level).exp()
         bias_matrix = data_onehot.mul(bias).add(one_matrix).sub(data_onehot)
 
         p = 1 / ( torch.tensor(privacy_level).exp().add(alphabet_size - 1) )
-        p = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).mul(p)
+        p = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).mul(p).to(self.cuda_device)
         p = p.mul(bias_matrix)
-        random_multinomial = torch.multinomial(p, 1).view(-1)
-        return(self._transform_onehot(random_multinomial, alphabet_size))  
+        random_multinomial = torch.multinomial(p, 1).view(-1).to(self.cuda_device)
+        return(random_multinomial)  
 
-    
+class bitFlip(LapU):   
+    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
+        """
+        output: bit vector in (0,1)^k
+        """
+        sample_size = utils.get_sample_size(data_mutinomial)
+        data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
+
+        alpha_half = torch.tensor(privacy_level).div(2)
+
+        log_p = alpha_half - alpha_half.exp().add(1).log().to(self.cuda_device)
+        p = log_p.exp()
+        bernoulli_dist = torch.distributions.bernoulli.Bernoulli(1-p) #0 value = stay, 1 value = flip
+        bitFlipNoise = bernoulli_dist.sample((sample_size,alphabet_size)).view(sample_size, alphabet_size).to(self.cuda_device)
+
+        data_flip = data_onehot.add(bitFlipNoise)
+        data_flip = data_flip.add(
+            data_flip.eq(2).mul(-2)
+        )
+
+        return(data_flip)  
 
