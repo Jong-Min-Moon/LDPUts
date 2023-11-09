@@ -4,15 +4,16 @@ import utils
 from discretizer import discretizer
 
 class client:
-    def __init__(self, cuda_device):
+    def __init__(self, cuda_device, privacy_level):
         self.cuda_device = cuda_device
+        self.privacy_level = privacy_level
+        
         self.discretizer = discretizer(cuda_device)
         self.LapU = LapU(cuda_device)
         self.discLapU = discLapU(cuda_device)
         self.genRR = genRR(cuda_device)
         self.bitFlip = bitFlip(cuda_device)
         
-
     def load_data_disc(self, data_y, data_z, alphabet_size):
         self.data_y = data_y
         self.data_z = data_z
@@ -22,28 +23,29 @@ class client:
         self.data_y, self.alphabet_size = self.discretizer.transform(data_y, n_bin)
         self.data_z, self.alphabet_size = self.discretizer.transform(data_z, n_bin)
     
-    def release_LapU(self, privacy_level):
+    def release_LapU(self):
         return(
-            self.LapU.privatize(self.data_y, self.alphabet_size, privacy_level),
-            self.LapU.privatize(self.data_z, self.alphabet_size, privacy_level)
+            self.LapU.privatize(self.data_y, self.alphabet_size, self.privacy_level),
+            self.LapU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
             )
     
-    def release_DiscLapU(self, privacy_level):
+    def release_DiscLapU(self):
         return(
-            self.discLapU.privatize(self.data_y, self.alphabet_size, privacy_level),
-            self.discLapU.privatize(self.data_z, self.alphabet_size, privacy_level)
+            self.discLapU.privatize(self.data_y, self.alphabet_size, self.privacy_level),
+            self.discLapU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
             )
 
-    def release_genRR(self, privacy_level):
+    def release_genRR(self):
         return(
-            self.genRR.privatize(self.data_y, self.alphabet_size, privacy_level),
-            self.genRR.privatize(self.data_z, self.alphabet_size, privacy_level)
+            self.genRR.privatize(self.data_y, self.alphabet_size, self.privacy_level),
+            self.genRR.privatize(self.data_z, self.alphabet_size, self.privacy_level),
+            self.alphabet_size
                )
 
-    def release_bitFlip(self, privacy_level):
+    def release_bitFlip(self):
         return(
-            self.bitFlip.privatize(self.data_y, self.alphabet_size, privacy_level),
-            self.bitFlip.privatize(self.data_z, self.alphabet_size, privacy_level)
+            self.bitFlip.privatize(self.data_y, self.alphabet_size, self.privacy_level),
+            self.bitFlip.privatize(self.data_z, self.alphabet_size, self.privacy_level)
                )
 
 class LapU:
@@ -124,4 +126,3 @@ class bitFlip(LapU):
         )
 
         return(data_flip)  
-
