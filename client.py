@@ -125,4 +125,4 @@ class bitFlip(LapU):
             data_flip.eq(2).mul(-2)
         )
 
-        return(data_flip)  
+        return(data_flip)

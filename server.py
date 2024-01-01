@@ -1,54 +1,74 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, ABCMeta, abstractmethod
 from client import client
 import utils
 import torch
 from scipy.stats import chi2
 import numpy
 
-class server(client):
-    def load_private_data(self, data_y, data_z):
-        self.data_y = data_y
-        self.data_z = data_z
-          
-    def release_p_value_permutation(self, n_permutation):
-        n_1 = utils.get_sample_size(self.data_y)
-        n_2 = utils.get_sample_size(self.data_z)
-        n = n_1 + n_2
-        tst_data_combined = torch.vstack((self.data_y, self.data_z))
-       
-        stat_original = self._calculate_statistic(self.data_y, self.data_z) #original statistic
-        #print(f"original u-statistic:{u_stat_original}")
-        
-        #permutation procedure
-        stat_permuted = torch.empty(n_permutation).to(self.cuda_device)
-        
-        for i in range(n_permutation):
-            permutation = torch.randperm(n)
-            perm_stat_now = self._calculate_statistic(
-                tst_data_combined[permutation][:n_1,:],
-                tst_data_combined[permutation][n_1:,:]
-            ).to(self.cuda_device)
-            stat_permuted[i] = perm_stat_now
+class server(ABC):
+    def __init__(self, cuda_device, privacy_level):
+        self.cuda_device = cuda_device
+        self.privacy_level = privacy_level
 
-        #print(u_stat_permuted)      
+    def load_private_data_multinomial(self, data_y, data_z, alphabet_size):
+        self.n_1 = torch.tensor(utils.get_sample_size(data_y)).to(self.cuda_device)
+        self.n_2 = torch.tensor(utils.get_sample_size(data_z)).to(self.cuda_device)
+        self.alphabet_size = alphabet_size.to(self.cuda_device)
+        self.chisq_distribution = chi2(self.alphabet_size - 1)
+
+        dim_1 = utils.get_dimension(data_y)
+        dim_2 = utils.get_dimension(data_z)       
+        if dim_1 != dim_2:
+            raise Exception("different data dimensions")
+        else:
+            self.save_data(data_y, data_z)
+    
+    @abstractmethod
+    def save_data(self, data_y, data_z):
+        pass
+
+    def release_p_value_permutation(self, n_permutation):       
+        original_statistic = self.get_original_statistic()
+        permuted_statistic_vec = torch.empty(n_permutation).to(self.cuda_device)
+       
+        for i in range(n_permutation):
+            permutation = torch.randperm(self.n_1 + self.n_2)
+            permuted_statistic_vec[i] = self._calculate_statistic(
+                permutation[torch.arange(self.n_1)],
+                permutation[torch.arange(self.n_1, self.n_1 + self.n_2)]
+            )
+      
+        return(self.get_p_value_proxy(permuted_statistic_vec, original_statistic))
+    
+    def get_original_statistic(self):
+       original_statistic = self._get_statistic(
+           torch.arange(self.n_1),
+           torch.arange(self.n_1, self.n_1 + self.n_2)
+           )
+       return(original_statistic)
+
+    @abstractmethod
+    def _get_statistic(self, idx_1, idx_2):
+        return(statistic)
+    
+    def get_p_value_proxy(self, stat_permuted, stat_original):
         p_value_proxy = (1 +
                          torch.sum(
                              torch.gt(input = stat_permuted, other = stat_original)
                          )
-                        ) / (n_permutation + 1)
-      
+                        ) / (stat_permuted.size(dim = 0) + 1)
         return(p_value_proxy)
     
+class server_LapU(server):
+    def save_data(self, data_y, data_z):
+        self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)           
 
-    
-class server_twosample_U(server):    
-    def _calculate_statistic(self, data_y, data_z):
-        n_1 = torch.tensor(utils.get_sample_size(data_y))
-        n_2 = torch.tensor(utils.get_sample_size(data_z))
-    
+    def _get_statistic(self, idx_1, idx_2):
+        data_y = self.data[idx_1]
+        data_z = self.data[idx_2]
+
         y_row_sum = torch.sum(data_y, axis = 0)
         z_row_sum = torch.sum(data_z, axis = 0)
-
 
         one_Phi_one = torch.inner(y_row_sum, y_row_sum)
         one_Psi_one = torch.inner(z_row_sum, z_row_sum)
@@ -62,23 +82,24 @@ class server_twosample_U(server):
 
         # y only part. log calculation in case of large n1
         sign_y = torch.sign(one_Phi_tilde_one)
-        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(n_1) - torch.log(n_1 - 1) )
+        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(self.n_1) - torch.log(self.n_1 - 1) )
         u_y = sign_y * abs_u_y
 
 
         # z only part. log calculation in case of large n2
         sign_z = torch.sign(one_Psi_tilde_one)
 
-        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(n_2) - torch.log(n_2 - 1) )
+        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(self.n_2) - torch.log(self.n_2- 1) )
         u_z = sign_z * abs_u_z
 
         # cross part
         cross = torch.inner(y_row_sum, z_row_sum)
         sign_cross = torch.sign(cross)
-        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(n_1) - torch.log(n_2) )
+        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(self.n_1) - torch.log(nself.n_2) )
         u_cross = sign_cross * abs_cross
 
         return(u_y + u_z - u_cross)
+<<<<<<< HEAD
     
 class server_twosample_chi(server):
     def load_private_data(self, data_y, data_z):      
@@ -187,48 +208,59 @@ class server_twosample_bitflip(server_twosample_chi):
     def _calculate_bitflip_statistic(self, mean_1, mean_2, cov_sum, alphabet_size, n):
         one_projector = utils.projection_orth_one(alphabet_size).to(self.cuda_device)
         mean_diff = mean_1.sub(mean_2)
+=======
+
+
+
+class server_multinomial_bitflip(server):
+    def save_data(self, data_y, data_z):
+        self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)
+
+    def _get_statistic(self, idx_1, idx_2):
+        data_y = self.data[idx_1]
+        data_z = self.data[idx_2]
+
+        mu_hat_y = data_y.mean(axis=0).view([self.alphabet_size,1]) #column vector
+        mu_hat_z = data_z.mean(axis=0).view([self.alphabet_size,1]) #column vector
+        mu_hat_diff = torch.sub(mu_hat_y, mu_hat_z)
+        scaling_matrix = self._get_scaling_matrix()
+        scaling_constant = torch.reciprocal( torch.add( self.n_1.reciprocal(), self.n_2.reciprocal() ) )
+        statistic = mu_hat_diff.T.matmul(scaling_matrix).matmul(mu_hat_diff).mul(scaling_constant)
+        return(statistic)
+
+    def _get_scaling_matrix(self)
+        cov_est = torch.cov(self.data.T)
+        mat_proj = self.get_proj_orth_one_space()
+>>>>>>> f117be6494ab04651dcf973c34fce5639a55bf1b
         if self.cuda_device.type== "cpu":
-            cov_sum_inv = torch.tensor(numpy.linalg.inv(one_projector.numpy()))
+            prec_mat_est =  torch.tensor(numpy.linalg.inv(cov_est.numpy())) 
         else:
-            cov_sum_inv = cov_sum.inverse()
-        test_statistic = mean_diff.T.matmul(one_projector).matmul(cov_sum_inv).matmul(one_projector).matmul(mean_diff).mul(n)
-        return(test_statistic)
+            prec_mat_est =  torch.linalg.inverse(cov_est)
+        return(
+            mat_proj.matmul(prec_mat_est).matmul(mat_proj)
+        )
     
-    def _calculate_p_tilde(self, p, privacy_level):
-        p_tensor = torch.tensor(p).to(self.cuda_device)
-        e_alpha_half = torch.tensor(privacy_level).div(2).exp().to(self.cuda_device)
-        p_tilde = p_tensor.mul(e_alpha_half-1).add(1).div(e_alpha_half+1)
-        return(p_tilde)
+    def get_proj_orth_one_space(self):
+        matrix_iden = torch.eye(self.alphabet_size)
+        one_one_t = torch.ones( torch.Size([self.alphabet_size, self.alphabet_size]) )
+        one_one_t_over_d = one_one_t.div(self.alphabet_size)
+        one_projector = matrix_iden.sub(one_one_t_over_d)
+        return(one_projector)
+
+
         
-    def _calculate_simga_p(self, p, privacy_level):
-        p_tensor = torch.tensor(p).to(self.cuda_device)
-        alphabet_size = p_tensor.size()[0]
-        p_tensor = p_tensor.view(alphabet_size,1)
-        original_sigma = torch.diag(p_tensor) - p_tensor.matmul(p_tensor.T)
-        
-        e_alpha_half = torch.tensor(privacy_level).div(2).exp().to(self.cuda_device)
-        alpha_epsilon_square = (e_alpha_half-1).div(e_alpha_half+1).square()
-        sigma_p = original_sigma.mul(alpha_epsilon_square)
-        sigma_p = sigma_p.add(
-            torch.eye(alphabet_size).to(self.cuda_device).mul(e_alpha_half).div(
-                e_alpha_half.add(1).square()
-            ))
-   
-        return(sigma_p)
+ class server_multinomial_genRR(server_multinomial_bitflip):
+    def save_data(self, data_y, data_z):
+            self.data = torch.cat( (data_y, data_z) ).to(self.cuda_device)
+            self.data = torch.nn.functional.one_hot(self.data, self.alphabet_size)
+
+    def _get_scaling_matrix(self)
+        mean_recip_est = self.data.mean(axis=0).reciprocal()
+        mean_recip_est[mean_recip_est.isinf()] = 0
+        return(torch.diag(mean_recip_est))
 
 
-class server_onesample_bitflip(server_twosample_bitflip):
-    #def release_p_value(self, data_y, data_z):
 
-    def _calculate_statistic(self, data_y, p):
-        n = torch.tensor(utils.get_sample_size(data_y))
-        alphabet_size = utils.get_dimension(data_y)
-        p_tilde = self._calculate_p_tilde(p, self.privacy_level).view([alphabet_size,1])
-        sigma_p = self._calculate_simga_p(p, self.privacy_level)
-        y_mean = data_y.mean(axis=0).view([alphabet_size,1])
-        
-        test_statistic = self._calculate_bitflip_statistic(y_mean, p_tilde, sigma_p, alphabet_size, n)
-   
-
-        return(test_statistic)
  
+
+
