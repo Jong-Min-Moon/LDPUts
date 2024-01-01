@@ -121,7 +121,35 @@ class server_twosample_genRR(server_twosample_chi):
         self.sample_size = n_1.to(self.cuda_device)
         self.alphabet_size = alphabet_size
         self.chisq_distribution = chi2(self.alphabet_size - 1) 
+
+    def release_p_value_permutation(self, n_permutation):
+        n_1 = utils.get_sample_size(self.data_y)
+        n_2 = utils.get_sample_size(self.data_z)
+        n = n_1 + n_2
+        tst_data_combined = torch.cat((self.data_y, self.data_z))
+       
+        stat_original = self._calculate_statistic(self.data_y, self.data_z) #original statistic
+        #print(f"original u-statistic:{u_stat_original}")
         
+        #permutation procedure
+        stat_permuted = torch.empty(n_permutation).to(self.cuda_device)
+        
+        for i in range(n_permutation):
+            permutation = torch.randperm(n)
+            perm_stat_now = self._calculate_statistic(
+                tst_data_combined[permutation][:n_1],
+                tst_data_combined[permutation][n_1:]
+            ).to(self.cuda_device)
+            stat_permuted[i] = perm_stat_now
+
+        #print(u_stat_permuted)      
+        p_value_proxy = (1 +
+                         torch.sum(
+                             torch.gt(input = stat_permuted, other = stat_original)
+                         )
+                        ) / (n_permutation + 1)
+      
+        return(p_value_proxy)
     def _calculate_statistic(self, data_y, data_z):
         # n_1 = torch.tensor(utils.get_sample_size(data_y))
         # n_2 = torch.tensor(utils.get_sample_size(data_z))
@@ -157,7 +185,7 @@ class server_twosample_bitflip(server_twosample_chi):
         return(test_statistic)
         
     def _calculate_bitflip_statistic(self, mean_1, mean_2, cov_sum, alphabet_size, n):
-        one_projector = torch.eye(alphabet_size).sub(torch.ones(torch.Size([alphabet_size,alphabet_size]))).div(alphabet_size).to(self.cuda_device)
+        one_projector = utils.projection_orth_one(alphabet_size).to(self.cuda_device)
         mean_diff = mean_1.sub(mean_2)
         if self.cuda_device.type== "cpu":
             cov_sum_inv = torch.tensor(numpy.linalg.inv(one_projector.numpy()))
