@@ -139,7 +139,7 @@ class server_multinomial_bitflip(server):
 
         
  class server_multinomial_genRR(server_multinomial_bitflip):
-        def save_data(self, data_y, data_z):
+    def save_data(self, data_y, data_z):
             self.data = torch.cat( (data_y, data_z) ).to(self.cuda_device)
             self.data = torch.nn.functional.one_hot(self.data, self.alphabet_size)
 
