@@ -22,10 +22,36 @@ class server:
             raise Exception("different data dimensions")
         
         if dim_1 == 1:
-            self.data = torch.cat( (data_y, data_z) )
+            self.data = torch.cat( (data_y, data_z) ).to(self.cuda_device)
         elif dim_1 == 2:
-            self.data = torch.vstack( (data_y, data_z) )
+            self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)
 
+    def release_p_value_permutation(self, n_permutation):
+        n = n_1 + n_2
+       
+        original_statistic = self.get_original_statistic()
+        permuted_statistic_vec = torch.empty(n_permutation).to(self.cuda_device)
+       
+        for i in range(n_permutation):
+            permutation = torch.randperm(n)
+            permuted_statistic_vec[i] = self._calculate_statistic(
+                permutation[torch.arange(self.n_1)],
+                permutation[torch.arange(self.n_1, self.n_1 + self.n_2)]
+            )
+      
+        return(self.get_p_value_proxy(permuted_statistic_vec, original_statistic))
+    
+    def get_original_statistic(self):
+       original_statistic = self._get_statistic(
+           torch.arange(self.n_1),
+           torch.arange(self.n_1, self.n_1 + self.n_2)
+           )
+       return(original_statistic)
+
+    @abstractmethod
+    def _get_statistic(self, idx_1, idx_2):
+        return(statistic)
+    
     def get_p_value_proxy(self, stat_permuted, stat_original):
         p_value_proxy = (1 +
                          torch.sum(
@@ -35,37 +61,7 @@ class server:
         return(p_value_proxy)
 
 
-class server(client):  
-    def release_p_value_permutation(self, n_permutation):
-        n_1 = utils.get_sample_size(self.data_y)
-        n_2 = utils.get_sample_size(self.data_z)
-        n = n_1 + n_2
-        tst_data_combined = torch.vstack((self.data_y, self.data_z))
-       
-        stat_original = self._calculate_statistic(self.data_y, self.data_z) #original statistic
-        #print(f"original u-statistic:{u_stat_original}")
-        
-        #permutation procedure
-        stat_permuted = torch.empty(n_permutation).to(self.cuda_device)
-        
-        for i in range(n_permutation):
-            permutation = torch.randperm(n)
-            perm_stat_now = self._calculate_statistic(
-                tst_data_combined[permutation][:n_1,:],
-                tst_data_combined[permutation][n_1:,:]
-            ).to(self.cuda_device)
-            stat_permuted[i] = perm_stat_now
-
-        #print(u_stat_permuted)      
-        p_value_proxy = (1 +
-                         torch.sum(
-                             torch.gt(input = stat_permuted, other = stat_original)
-                         )
-                        ) / (n_permutation + 1)
-      
-        return(p_value_proxy)
     
-class server_multinomial()
     
 class server_twosample_U(server):    
     def _calculate_statistic(self, data_y, data_z):
