@@ -1,11 +1,7 @@
 import torch
 
-def projection_orth_one(alphabet_size):
-    identity = torch.eye(alphabet_size)
-    one_one_t = torch.ones( torch.Size([alphabet_size,alphabet_size]) )
-    one_one_t_over_d = one_one_t.div(alphabet_size)
-    one_projector = identity.sub(one_one_t_over_d)
-    return(one_projector)
+
+
 
 def get_sample_size(data):
     if data.dim() == 1:
@@ -28,18 +24,7 @@ def chi_sq_dist(x1,x2):
     return( torch.norm((x1-x2)/((x1+x2).sqrt()), p=2))
 
 
-def get_idx_permute_twosample(n_1, n_2):
-    n = n_1 + n_2
-    permutation = torch.randperm(n)
 
-    idx_to_1 = permutation[range(n_1)]
-    idx_to_2 = permutation[range(n_1, n)]
-    idx_to_1_from_1 = idx_to_1[idx_to_1 < n_1]
-    idx_to_1_from_2 = idx_to_1[idx_to_1 >= n_1] - n_1
-    idx_to_2_from_1 = idx_to_2[idx_to_2 < n_1]
-    idx_to_2_from_2 = idx_to_2[idx_to_2 >= n_1] - n_1
-
-    return idx_to_1_from_1, idx_to_1_from_2, idx_to_2_from_1, idx_to_2_from_2
 
 def get_permuted_twosample(data_y, data_z):
     dim_1 = get_dimension(data_y)

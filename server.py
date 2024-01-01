@@ -102,6 +102,75 @@ class server_twosample_U(server):
 
 
 
+class server_twosample_bitflip(server):
+    def save_data(self, data_y, data_z):
+        self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)
+
+    def _get_statistic(self, idx_1, idx_2):
+        data_y = self.data[idx_1]
+        data_z = self.data[idx_2]
+
+        mu_hat_y = data_y.mean(axis=0).view([self.alphabet_size,1]) #column vector
+        mu_hat_z = data_z.mean(axis=0).view([self.alphabet_size,1]) #column vector
+        mu_hat_diff = torch.sub(mu_hat_y, mu_hat_z)
+        scaling_matrix = self._get_scaling_matrix()
+        scaling_constant = torch.reciprocal( torch.add( self.n_1.reciprocal(), self.n_2.reciprocal() ) )
+        statistic = mu_hat_diff.T.matmul(scaling_matrix).matmul(mean_diff).mul(scaling_constant)
+        return(statistic)
+
+    def _get_scaling_matrix(self)
+        cov_est = torch.cov(self.data.T)
+        if self.cuda_device.type== "cpu":
+            cov_sum_inv = torch.tensor(numpy.linalg.inv(one_projector.numpy()))
+        else:
+            cov_sum_inv = cov_sum.inverse()
+        return(torch.linalg.inverse(cov_est))
+    def get_proj_orth_one_space(self):
+        matrix_iden = torch.eye(self.alphabet_size)
+        one_one_t = torch.ones( torch.Size([self.alphabet_size, self.alphabet_size]) )
+        one_one_t_over_d = one_one_t.div(self.alphabet_size)
+        one_projector = matrix_iden.sub(one_one_t_over_d)
+        return(one_projector)
+
+    def _calculate_statistic(self, idx_1, idx_2):
+
+
+        cov_sum = torch.cov(data_y.T).add(torch.cov(data_z.T))
+        test_statistic = self._calculate_bitflip_statistic(mean_y, mean_z, cov_sum, self.alphabet_size, self.sample_size)
+        return(test_statistic)
+        
+    def _calculate_bitflip_statistic(self, mean_1, mean_2, cov_sum, alphabet_size, n):
+        one_projector = utils.projection_orth_one(alphabet_size).to(self.cuda_device)
+        mean_diff = mean_1.sub(mean_2)
+        if self.cuda_device.type== "cpu":
+            cov_sum_inv = torch.tensor(numpy.linalg.inv(one_projector.numpy()))
+        else:
+            cov_sum_inv = cov_sum.inverse()
+        test_statistic = mean_diff.T.matmul(one_projector).matmul(cov_sum_inv).matmul(one_projector).matmul(mean_diff).mul(n)
+        return(test_statistic)
+    
+    def _calculate_p_tilde(self, p, privacy_level):
+        p_tensor = torch.tensor(p).to(self.cuda_device)
+        e_alpha_half = torch.tensor(privacy_level).div(2).exp().to(self.cuda_device)
+        p_tilde = p_tensor.mul(e_alpha_half-1).add(1).div(e_alpha_half+1)
+        return(p_tilde)
+        
+    def _calculate_simga_p(self, p, privacy_level):
+        p_tensor = torch.tensor(p).to(self.cuda_device)
+        alphabet_size = p_tensor.size()[0]
+        p_tensor = p_tensor.view(alphabet_size,1)
+        original_sigma = torch.diag(p_tensor) - p_tensor.matmul(p_tensor.T)
+        
+        e_alpha_half = torch.tensor(privacy_level).div(2).exp().to(self.cuda_device)
+        alpha_epsilon_square = (e_alpha_half-1).div(e_alpha_half+1).square()
+        sigma_p = original_sigma.mul(alpha_epsilon_square)
+        sigma_p = sigma_p.add(
+            torch.eye(alphabet_size).to(self.cuda_device).mul(e_alpha_half).div(
+                e_alpha_half.add(1).square()
+            ))
+   
+        return(sigma_p)
+
 
 class server_twosample_chi(server):
     def load_private_data(self, data_y, data_z):      
@@ -199,45 +268,7 @@ class server_twosample_genRR(server_twosample_chi):
         return(test_statistic)
 
  
-class server_twosample_bitflip(server_twosample_chi):  
-    def _calculate_statistic(self, data_y, data_z):
-        mean_y = data_y.mean(axis=0).view([self.alphabet_size,1])
-        mean_z = data_z.mean(axis=0).view([self.alphabet_size,1])
-        cov_sum = torch.cov(data_y.T).add(torch.cov(data_z.T))
-        test_statistic = self._calculate_bitflip_statistic(mean_y, mean_z, cov_sum, self.alphabet_size, self.sample_size)
-        return(test_statistic)
-        
-    def _calculate_bitflip_statistic(self, mean_1, mean_2, cov_sum, alphabet_size, n):
-        one_projector = utils.projection_orth_one(alphabet_size).to(self.cuda_device)
-        mean_diff = mean_1.sub(mean_2)
-        if self.cuda_device.type== "cpu":
-            cov_sum_inv = torch.tensor(numpy.linalg.inv(one_projector.numpy()))
-        else:
-            cov_sum_inv = cov_sum.inverse()
-        test_statistic = mean_diff.T.matmul(one_projector).matmul(cov_sum_inv).matmul(one_projector).matmul(mean_diff).mul(n)
-        return(test_statistic)
-    
-    def _calculate_p_tilde(self, p, privacy_level):
-        p_tensor = torch.tensor(p).to(self.cuda_device)
-        e_alpha_half = torch.tensor(privacy_level).div(2).exp().to(self.cuda_device)
-        p_tilde = p_tensor.mul(e_alpha_half-1).add(1).div(e_alpha_half+1)
-        return(p_tilde)
-        
-    def _calculate_simga_p(self, p, privacy_level):
-        p_tensor = torch.tensor(p).to(self.cuda_device)
-        alphabet_size = p_tensor.size()[0]
-        p_tensor = p_tensor.view(alphabet_size,1)
-        original_sigma = torch.diag(p_tensor) - p_tensor.matmul(p_tensor.T)
-        
-        e_alpha_half = torch.tensor(privacy_level).div(2).exp().to(self.cuda_device)
-        alpha_epsilon_square = (e_alpha_half-1).div(e_alpha_half+1).square()
-        sigma_p = original_sigma.mul(alpha_epsilon_square)
-        sigma_p = sigma_p.add(
-            torch.eye(alphabet_size).to(self.cuda_device).mul(e_alpha_half).div(
-                e_alpha_half.add(1).square()
-            ))
-   
-        return(sigma_p)
+
 
 
 class server_onesample_bitflip(server_twosample_bitflip):
