@@ -13,7 +13,7 @@ class server(ABC):
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size):
         self.n_1 = torch.tensor(utils.get_sample_size(data_y)).to(self.cuda_device)
         self.n_2 = torch.tensor(utils.get_sample_size(data_z)).to(self.cuda_device)
-        self.alphabet_size = alphabet_size.to(self.cuda_device)
+        self.alphabet_size = alphabet_size
         self.chisq_distribution = chi2(self.alphabet_size - 1)
 
         dim_1 = utils.get_dimension(data_y)
@@ -33,7 +33,7 @@ class server(ABC):
        
         for i in range(n_permutation):
             permutation = torch.randperm(self.n_1 + self.n_2)
-            permuted_statistic_vec[i] = self._calculate_statistic(
+            permuted_statistic_vec[i] = self._get_statistic(
                 permutation[torch.arange(self.n_1)],
                 permutation[torch.arange(self.n_1, self.n_1 + self.n_2)]
             )
@@ -95,10 +95,10 @@ class server_LapU(server):
         # cross part
         cross = torch.inner(y_row_sum, z_row_sum)
         sign_cross = torch.sign(cross)
-        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(self.n_1) - torch.log(nself.n_2) )
+        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(self.n_1) - torch.log(self.n_2) )
         u_cross = sign_cross * abs_cross
-
-        return(u_y + u_z - u_cross)
+        statistic = u_y + u_z - u_cross
+        return(statistic)
 
 
 
@@ -126,11 +126,11 @@ class server_multinomial_bitflip(server):
         cov_est = torch.cov(self.data.T)
         mat_proj = self.get_proj_orth_one_space()
         if self.cuda_device.type== "cpu":
-            prec_mat_est =  torch.tensor(numpy.linalg.inv(cov_est.numpy())) 
+            prec_mat_est =  torch.tensor(numpy.linalg.inv(cov_est.numpy()))
         else:
-            prec_mat_est =  torch.linalg.inverse(cov_est)
+            prec_mat_est =  torch.linalg.inv(cov_est)
         return(
-            mat_proj.matmul(prec_mat_est).matmul(mat_proj)
+            mat_proj.matmul(prec_mat_est.to(self.cuda_device)).matmul(mat_proj)
         )
     
     def get_proj_orth_one_space(self):
@@ -138,14 +138,14 @@ class server_multinomial_bitflip(server):
         one_one_t = torch.ones( torch.Size([self.alphabet_size, self.alphabet_size]) )
         one_one_t_over_d = one_one_t.div(self.alphabet_size)
         one_projector = matrix_iden.sub(one_one_t_over_d)
-        return(one_projector)
+        return(one_projector.to(self.cuda_device))
 
 
         
 class server_multinomial_genRR(server_multinomial_bitflip):
     def save_data(self, data_y, data_z):
             self.data = torch.cat( (data_y, data_z) ).to(self.cuda_device)
-            self.data = torch.nn.functional.one_hot(self.data, self.alphabet_size)
+            self.data = torch.nn.functional.one_hot(self.data, self.alphabet_size).float()
 
     def _get_scaling_matrix(self):
         mean_recip_est = self.data.mean(axis=0).reciprocal()
