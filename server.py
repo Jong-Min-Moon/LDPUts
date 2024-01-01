@@ -15,9 +15,9 @@ class server:
         self.n_2 = torch.tensor(utils.get_sample_size(data_z)).to(self.cuda_device)
         self.alphabet_size = alphabet_size.to(self.cuda_device)
         self.chisq_distribution = chi2(self.alphabet_size - 1)
-        
-        dim_1 = get_dimension(data_y)
-        dim_2 = get_dimension(data_z)       
+
+        dim_1 = utils.get_dimension(data_y)
+        dim_2 = utils.get_dimension(data_z)       
         if dim_1 != dim_2:
             raise Exception("different data dimensions")
         
@@ -26,6 +26,13 @@ class server:
         elif dim_1 == 2:
             self.data = torch.vstack( (data_y, data_z) )
 
+    def get_p_value_proxy(self, stat_permuted, stat_original):
+        p_value_proxy = (1 +
+                         torch.sum(
+                             torch.gt(input = stat_permuted, other = stat_original)
+                         )
+                        ) / (stat_permuted.size(dim = 0) + 1)
+        return(p_value_proxy)
 
 
 class server(client):  
