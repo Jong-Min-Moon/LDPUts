@@ -1,11 +1,11 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, ABCMeta, abstractmethod
 from client import client
 import utils
 import torch
 from scipy.stats import chi2
 import numpy
 
-class server:
+class server(ABC):
     def __init__(self, cuda_device, privacy_level):
         self.cuda_device = cuda_device
         self.privacy_level = privacy_level
@@ -20,20 +20,19 @@ class server:
         dim_2 = utils.get_dimension(data_z)       
         if dim_1 != dim_2:
             raise Exception("different data dimensions")
-        
-        if dim_1 == 1:
-            self.data = torch.cat( (data_y, data_z) ).to(self.cuda_device)
-        elif dim_1 == 2:
-            self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)
+        else:
+            self.save_data(data_y, data_z)
+    
+    @abstractmethod
+    def save_data(self, data_y, data_z):
+        pass
 
-    def release_p_value_permutation(self, n_permutation):
-        n = n_1 + n_2
-       
+    def release_p_value_permutation(self, n_permutation):       
         original_statistic = self.get_original_statistic()
         permuted_statistic_vec = torch.empty(n_permutation).to(self.cuda_device)
        
         for i in range(n_permutation):
-            permutation = torch.randperm(n)
+            permutation = torch.randperm(self.n_1 + self.n_2)
             permuted_statistic_vec[i] = self._calculate_statistic(
                 permutation[torch.arange(self.n_1)],
                 permutation[torch.arange(self.n_1, self.n_1 + self.n_2)]
@@ -59,18 +58,17 @@ class server:
                          )
                         ) / (stat_permuted.size(dim = 0) + 1)
         return(p_value_proxy)
+    
+class server_twosample_U(server):
+    def save_data(self, data_y, data_z):
+        self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)           
 
+    def _get_statistic(self, idx_1, idx_2):
+        data_y = self.data[idx_1]
+        data_z = self.data[idx_2]
 
-    
-    
-class server_twosample_U(server):    
-    def _calculate_statistic(self, data_y, data_z):
-        n_1 = torch.tensor(utils.get_sample_size(data_y))
-        n_2 = torch.tensor(utils.get_sample_size(data_z))
-    
         y_row_sum = torch.sum(data_y, axis = 0)
         z_row_sum = torch.sum(data_z, axis = 0)
-
 
         one_Phi_one = torch.inner(y_row_sum, y_row_sum)
         one_Psi_one = torch.inner(z_row_sum, z_row_sum)
@@ -84,24 +82,27 @@ class server_twosample_U(server):
 
         # y only part. log calculation in case of large n1
         sign_y = torch.sign(one_Phi_tilde_one)
-        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(n_1) - torch.log(n_1 - 1) )
+        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(self.n_1) - torch.log(self.n_1 - 1) )
         u_y = sign_y * abs_u_y
 
 
         # z only part. log calculation in case of large n2
         sign_z = torch.sign(one_Psi_tilde_one)
 
-        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(n_2) - torch.log(n_2 - 1) )
+        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(self.n_2) - torch.log(self.n_2- 1) )
         u_z = sign_z * abs_u_z
 
         # cross part
         cross = torch.inner(y_row_sum, z_row_sum)
         sign_cross = torch.sign(cross)
-        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(n_1) - torch.log(n_2) )
+        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(self.n_1) - torch.log(nself.n_2) )
         u_cross = sign_cross * abs_cross
 
         return(u_y + u_z - u_cross)
-    
+
+
+
+
 class server_twosample_chi(server):
     def load_private_data(self, data_y, data_z):      
         n_1 = torch.tensor(utils.get_sample_size(data_y))
