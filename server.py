@@ -5,11 +5,30 @@ import torch
 from scipy.stats import chi2
 import numpy
 
-class server(client):
-    def load_private_data(self, data_y, data_z):
-        self.data_y = data_y
-        self.data_z = data_z
-          
+class server:
+    def __init__(self, cuda_device, privacy_level):
+        self.cuda_device = cuda_device
+        self.privacy_level = privacy_level
+
+    def load_private_data_multinomial(self, data_y, data_z, alphabet_size):
+        self.n_1 = torch.tensor(utils.get_sample_size(data_y)).to(self.cuda_device)
+        self.n_2 = torch.tensor(utils.get_sample_size(data_z)).to(self.cuda_device)
+        self.alphabet_size = alphabet_size.to(self.cuda_device)
+        self.chisq_distribution = chi2(self.alphabet_size - 1)
+        
+        dim_1 = get_dimension(data_y)
+        dim_2 = get_dimension(data_z)       
+        if dim_1 != dim_2:
+            raise Exception("different data dimensions")
+        
+        if dim_1 == 1:
+            self.data = torch.cat( (data_y, data_z) )
+        elif dim_1 == 2:
+            self.data = torch.vstack( (data_y, data_z) )
+
+
+
+class server(client):  
     def release_p_value_permutation(self, n_permutation):
         n_1 = utils.get_sample_size(self.data_y)
         n_2 = utils.get_sample_size(self.data_z)
@@ -39,7 +58,7 @@ class server(client):
       
         return(p_value_proxy)
     
-
+class server_multinomial()
     
 class server_twosample_U(server):    
     def _calculate_statistic(self, data_y, data_z):
