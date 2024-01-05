@@ -59,9 +59,12 @@ class server(ABC):
                         ) / (stat_permuted.size(dim = 0) + 1)
         return(p_value_proxy)
     
-class server_LapU(server):
+class server_ell2(server):
     def save_data(self, data_y, data_z):
-        self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)           
+        if utils.get_dimension(data_y)==1:
+            self.data = torch.nn.functional.one_hot( torch.cat( (data_y, data_z) ), self.alphabet_size).float().to(self.cuda_device)
+        else:
+            self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)           
 
     def _get_statistic(self, idx_1, idx_2):
         data_y = self.data[idx_1]
