@@ -4,7 +4,6 @@ sys.path.insert(0, '/mnt/nas/users/mjm/LDPUts')
 from discretizer import discretizer
 from client import client
 import torch
-import matplotlib.pyplot as plt
 from server import server_ell2, server_multinomial_genRR, server_multinomial_bitflip
 from data_generator import data_generator
 from discretizer import discretizer
@@ -17,7 +16,7 @@ device = torch.device("cpu")
 print(device)
 
 sample_size = 10000
-privacy_level = 2.0
+privacy_level = 1.0
 
 
 
@@ -45,14 +44,14 @@ p2 = p1.add(
 )
 print(p2)
 
-def run_simul_k_4_genRR(device, n_test, n_permutation, p1, p2, sample_size, privacy_level):
+def run_simul_k_4_bitflip(device, n_test, n_permutation, p1, p2, sample_size, privacy_level):
     alphabet_size = 4
     
     data_gen = data_generator(device)
     LDPclient = client(device, privacy_level)
 
 
-    server_genrr = server_multinomial_genRR(device, privacy_level)
+    server_bitflip = server_multinomial_bitflip(device, privacy_level)
 
     p_value_array = np.zeros([n_test, 2])
     t = time.time()
@@ -63,16 +62,16 @@ def run_simul_k_4_genRR(device, n_test, n_permutation, p1, p2, sample_size, priv
         LDPclient.load_data_multinomial(data_y, data_z, alphabet_size)
     
        
-        data_genrr_y, data_genrr_z = LDPclient.release_genRR()
-        server_genrr.load_private_data_multinomial(data_genrr_y, data_genrr_z, alphabet_size)
-        p_value_array[i,0] = server_genrr.release_p_value_permutation(n_permutation)
-        p_value_array[i,1] = server_genrr.release_p_value()
+        data_genrr_y, data_genrr_z = LDPclient.release_bitFlip()
+        server_bitflip.load_private_data_multinomial(data_genrr_y, data_genrr_z, alphabet_size)
+        p_value_array[i,0] = server_bitflip.release_p_value_permutation(n_permutation)
+        p_value_array[i,1] = server_bitflip.release_p_value()
         print(f"{i+1}th test: {p_value_array[i,0]}, {p_value_array[i,1]}")
 
     elapsed = time.time() - t
     print(elapsed)
-    with open('/mnt/nas/users/mjm/LDPUts/simul/power/gaboardi/k_4/priv_20/p_value_array_priv_genRR_' + str(int(privacy_level*10)) +'_k_4_n_' + str(int(sample_size)) + '.npy', 'wb') as f:
+    with open('./p_value_array_priv_bitflip_priv_' + str(int(privacy_level*10)) +'_k_4_n_' + str(int(sample_size)) + '.npy', 'wb') as f:
         np.save(f, p_value_array)
     return(p_value_array)
 
-p_value_array_priv_40_k_4_n_10000 = run_simul_k_4(device, n_test, n_permutation, p1, p2, sample_size, privacy_level)
+result = run_simul_k_4_bitflip(device, n_test, n_permutation, p1, p2, sample_size, privacy_level)
