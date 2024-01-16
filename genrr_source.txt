@@ -1,13 +1,4 @@
-genRR <- function(data, alphabet_size, privacy_level){
-  p <- rep(
-    1/(exp(privacy_level) + alphabet_size - 1), 
-    alphabet_size
-  )
-  p[data] <- p[data] * exp(privacy_level)
-  #print(p)
-  priv <- rmultinom(1,1, p)
-  return(which(!priv == 0))
-}
+
 
 chisq_priv <- function(Y, Z, alphabet_size, gamma){
   n1 <- length(Y)
@@ -30,14 +21,7 @@ chisq_priv <- function(Y, Z, alphabet_size, gamma){
   return(T_chi>thres)
 }
 
-generate_nearly_unif <- function(alphabet_size, beta, n_sample){
-  p <- (1:alphabet_size)^{-beta}
-  p <- p / sum(p)
-  #print(p)
-  raw <- rep(NA, n_sample)
-  for (ii in 1:n_sample) raw[ii] <- which(!rmultinom(1,1, p) == 0)
-  return(raw)
-}
+
 
 generate_poly <- function(alphabet_size, beta, n_sample){
   raw <- generate_nearly_unif(alphabet_size, 1+beta, n_sample)
