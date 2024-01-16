@@ -13,8 +13,7 @@ class client:
         self.discLapU = discLapU(cuda_device)
         self.genRR = genRR(cuda_device)
         self.bitFlip = bitFlip(cuda_device)
-        self.geomU = geomU(cuda_device)
-        self.discLapU_test = DiscLapU_test(cuda_device)
+        self.truncGaussU = truncGaussU(cuda_device)
         
     def load_data_multinomial(self, data_y, data_z, alphabet_size):
         self.data_y = data_y
@@ -37,16 +36,12 @@ class client:
             self.discLapU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
             )
 
-    def release_DiscLapU_test(self):
+    def release_truncGaussU(self):
         return(
-            self.discLapU_test.privatize(self.data_y, self.alphabet_size, self.privacy_level),
-            self.discLapU_test.privatize(self.data_z, self.alphabet_size, self.privacy_level)
+            self.truncGaussU.privatize(self.data_y, self.alphabet_size, self.privacy_level),
+            self.truncGaussU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
             )
-    def release_geomU(self):
-        return(
-            self.geomU.privatize(self.data_y, self.alphabet_size, self.privacy_level),
-            self.geomU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
-            )
+
     def release_genRR(self):
         return(
             self.genRR.privatize(self.data_y, self.alphabet_size, self.privacy_level),
@@ -59,22 +54,23 @@ class client:
             self.bitFlip.privatize(self.data_z, self.alphabet_size, self.privacy_level)
                )
 
-class DiscLapU_test:
+class truncGaussU:
     def __init__(self, cuda_device):
         self.cuda_device = cuda_device
 
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
         sample_size = utils.get_sample_size(data_mutinomial)
-        data_onehot_scaled = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)#.mul(alphabet_size**(1/2)) # scaled by \sqrt(k)
+        data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
         noise = self._generate_noise(alphabet_size, privacy_level, sample_size)
-        return(torch.add(data_onehot_scaled,noise))
+        return(
+            data_onehot.add(noise).mul(alphabet_size**0.5)
+        )
     
     def _generate_noise(self, alphabet_size, privacy_level, sample_size):
-        zeta_alpha = torch.tensor(- privacy_level).div(2).div(alphabet_size**(1/2)).exp().to(self.cuda_device)
-        geometric_generator = torch.distributions.geometric.Geometric(1 - zeta_alpha)
-        laplace_noise_disc  = geometric_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device)
-        laplace_noise_disc = laplace_noise_disc.sub(geometric_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device))
-        return(laplace_noise_disc)
+        noise = torch.empty(sample_size, alphabet_size).to(self.cuda_device)
+        upper_limit = (1/privacy_level - 1/2)
+        noise = torch.nn.init.trunc_normal_(noise,  mean=0.0, std=(2**0.5)/privacy_level, a = -upper_limit, b=upper_limit)
+        return(noise)
     
 class LapU:
     def __init__(self, cuda_device):
@@ -117,21 +113,6 @@ class discLapU(LapU):
         laplace_noise_disc = laplace_noise_disc.sub(geometric_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device))
         return(laplace_noise_disc)
 
-class geomU(LapU):
-    def _generate_noise(self, alphabet_size, privacy_level, sample_size):
-        geom_param = self.geom(privacy_level)
-        geometric_generator = torch.distributions.geometric.Geometric(geom_param)
-        noise = geometric_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device)
-        mean = geom_param.mul(-1).add(1).div(geom_param)
-        return(noise.sub(mean).mul(alphabet_size**(1/2)))
-    
-    def geom(self, alpha):
-
-        
-        root= torch.tensor(alpha).exp().sub(
-            torch.tensor(2*alpha).exp().sub(4).sqrt()
-        ).div(2)
-        return (1-root)
 
 class genRR(LapU):   
     def privatize(self, data_mutinomial, alphabet_size, privacy_level):
