@@ -19,8 +19,8 @@ print(device)
 
 sample_size = 100000
 privacy_level = 2.0
-bump_size = 0.001
-alphabet_size = 500
+bump_size = 0.0005
+alphabet_size = 1000
 
 
 n_test = 300

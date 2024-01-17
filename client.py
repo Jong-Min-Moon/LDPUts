@@ -15,7 +15,7 @@ class client:
         self.bitFlip = bitFlip(cuda_device)
         self.truncGaussU = truncGaussU(cuda_device)
         
-    def load_data_multinomial(self, data_y, data_z, alphabet_size):
+    def load_data_multinomial_y(self, data_y, data_z, alphabet_size):
         self.data_y = data_y
         self.data_z = data_z
         self.alphabet_size = alphabet_size
@@ -24,11 +24,8 @@ class client:
         self.data_y, self.alphabet_size = self.discretizer.transform(data_y, n_bin)
         self.data_z, self.alphabet_size = self.discretizer.transform(data_z, n_bin)
     
-    def release_LapU(self):
-        return(
-            self.LapU.privatize(self.data_y, self.alphabet_size, self.privacy_level),
-            self.LapU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
-            )
+    def release_LapU(self, data, alphabet_size, privacy_level):
+        return( self.LapU.privatize(data, alphabet_size, privacy_level) )
     
     def release_DiscLapU(self):
         return(
@@ -84,7 +81,7 @@ class LapU:
         return(torch.add(data_onehot_scaled,noise))
            
     def _generate_noise(self, alphabet_size, privacy_level, sample_size):
-        laplace_scale = torch.tensor(2*alphabet_size).sqrt().mul(2).div(privacy_level).to(self.cuda_device) #sigma_alpha in the paper
+        laplace_scale = torch.tensor(2*alphabet_size).to(torch.float).sqrt().mul(2).div(privacy_level).to(self.cuda_device) #sigma_alpha in the paper
         laplace_noise = self.unit_laplace_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size])).to(self.cuda_device)
         return(laplace_noise.mul(laplace_scale))
 

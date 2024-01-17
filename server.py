@@ -9,7 +9,10 @@ class server(ABC):
     def __init__(self, cuda_device, privacy_level):
         self.cuda_device = cuda_device
         self.privacy_level = privacy_level
-
+    
+    def delete_data(self):
+        del self.data
+        
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size):
         self.n_1 = torch.tensor(utils.get_sample_size(data_y)).to(self.cuda_device)
         self.n_2 = torch.tensor(utils.get_sample_size(data_z)).to(self.cuda_device)
@@ -66,18 +69,23 @@ class server_ell2(server):
         else:
             self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)           
 
+
+
+
     def _get_statistic(self, idx_1, idx_2):
+        n_1 = self.n_1.to(torch.float)
+        n_2 = self.n_2.to(torch.float)
         data_y = self.data[idx_1]
         data_z = self.data[idx_2]
 
-        y_row_sum = torch.sum(data_y, axis = 0)
-        z_row_sum = torch.sum(data_z, axis = 0)
+        y_row_sum = torch.sum(self.data[idx_1], axis = 0)
+        z_row_sum = torch.sum(self.data[idx_2], axis = 0)
 
-        one_Phi_one = torch.inner(y_row_sum, y_row_sum)
-        one_Psi_one = torch.inner(z_row_sum, z_row_sum)
+        one_Phi_one = y_row_sum.dot(y_row_sum)
+        one_Psi_one = z_row_sum.dot(z_row_sum)
 
-        tr_Phi = torch.sum(torch.square(data_y))
-        tr_Psi = torch.sum(torch.square(data_z))
+        tr_Phi = torch.sum(torch.square(self.data[idx_1]))
+        tr_Psi = torch.sum(torch.square(self.data[idx_2]))
 
         one_Phi_tilde_one = one_Phi_one - tr_Phi
         one_Psi_tilde_one = one_Psi_one - tr_Psi
@@ -85,20 +93,20 @@ class server_ell2(server):
 
         # y only part. log calculation in case of large n1
         sign_y = torch.sign(one_Phi_tilde_one)
-        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(self.n_1) - torch.log(self.n_1 - 1) )
+        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(n_1) - torch.log(n_1 - 1) )
         u_y = sign_y * abs_u_y
 
 
         # z only part. log calculation in case of large n2
         sign_z = torch.sign(one_Psi_tilde_one)
 
-        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(self.n_2) - torch.log(self.n_2- 1) )
+        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(n_2) - torch.log(n_2- 1) )
         u_z = sign_z * abs_u_z
 
         # cross part
-        cross = torch.inner(y_row_sum, z_row_sum)
+        cross = y_row_sum.dot(z_row_sum)
         sign_cross = torch.sign(cross)
-        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2))- torch.log(self.n_1) - torch.log(self.n_2) )
+        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2).to(torch.float))- torch.log(n_1) - torch.log(n_2) )
         u_cross = sign_cross * abs_cross
         statistic = u_y + u_z - u_cross
         return(statistic)
@@ -108,7 +116,9 @@ class server_ell2(server):
 class server_multinomial_bitflip(server):
     def save_data(self, data_y, data_z):
         self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)
-        
+        del data_y
+        del data_z
+ 
     def release_p_value(self):
         test_stat = self.get_original_statistic().cpu().numpy().item()      
         return(self.chisq_distribution.sf(test_stat))
