@@ -68,6 +68,8 @@ class server_ell2(server):
             self.data = torch.nn.functional.one_hot( torch.cat( (data_y, data_z) ), self.alphabet_size).float().to(self.cuda_device)
         else:
             self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)           
+        del data_y
+        del data_z
 
 
 
@@ -157,8 +159,12 @@ class server_multinomial_bitflip(server):
         
 class server_multinomial_genRR(server_multinomial_bitflip):
     def save_data(self, data_y, data_z):
-            self.data = torch.cat( (data_y, data_z) ).to(self.cuda_device)
-            self.data = torch.nn.functional.one_hot(self.data, self.alphabet_size).float()
+            self.data = torch.nn.functional.one_hot(
+                torch.cat( (data_y, data_z) ).to(self.cuda_device),
+                self.alphabet_size
+                ).float()
+        del data_y
+        del data_z
 
     def _get_scaling_matrix(self):
         mean_recip_est = self.data.mean(axis=0).reciprocal()

@@ -39,17 +39,11 @@ class client:
             self.truncGaussU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
             )
 
-    def release_genRR(self):
-        return(
-            self.genRR.privatize(self.data_y, self.alphabet_size, self.privacy_level),
-            self.genRR.privatize(self.data_z, self.alphabet_size, self.privacy_level),
-               )
+    def release_genRR(self, data, alphabet_size, privacy_level):
+        return( self.genRR.privatize(data, alphabet_size, privacy_level) )
 
-    def release_bitFlip(self):
-        return(
-            self.bitFlip.privatize(self.data_y, self.alphabet_size, self.privacy_level),
-            self.bitFlip.privatize(self.data_z, self.alphabet_size, self.privacy_level)
-               )
+    def release_bitFlip(self, data, alphabet_size, privacy_level):
+        return( self.bitFlip.privatize(data, alphabet_size, privacy_level)               )
 
 class truncGaussU:
     def __init__(self, cuda_device):
