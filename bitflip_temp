@@ -1,0 +1,38 @@
+
+class server_multinomial_bitflip(server):
+  
+    def release_p_value(self):
+        test_stat = self.get_original_statistic().cpu().numpy().item()      
+        return(self.chisq_distribution.sf(test_stat))
+    
+    def _get_statistic(self, idx_1, idx_2):
+        perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1)
+        mat_proj = 
+        mu_hat_y = self.data_y[perm_toY_fromY].mean(axis=0).to(self.cuda_device_z ).add(
+            self.data_z[perm_toY_fromZ].sum(0) 
+            ).to(self.cuda_device_z )#.view([self.alphabet_size,1]) #column vector
+        mu_hat_z = self.data_y[perm_toZ_fromY].mean(axis=0).to(self.cuda_device_z ).add( self.data_z[perm_toZ_fromZ].sum(0) )# #column vector
+        mu_hat_diff_proj = self.get_proj_orth_one_space().matmul(
+            torch.sub(mu_hat_y, mu_hat_z).view([self.alphabet_size,1])
+            )
+        
+        total_mean =  mu_hat_y.mul(self.n_1).add( mu_hat_z.mul(self.n_2 ) ).div(self.n_1 + self.n_2)
+        cov_est = self.data_y.sub(total_mean).t().matmul(
+            self.data_y.sub(total_mean)
+            ).to(self.cuda_device_z ).add(
+                self.data_z.sub(total_mean).t().matmul(self.data_y.sub(total_mean))
+            ).div(self.n_1 + self.n_2-1)
+        
+        scaling_constant = torch.reciprocal( torch.add( self.n_1.reciprocal(), self.n_2.reciprocal() ) )
+        statistic = mu_hat_diff_proj.t().matmul(
+            torch.linalg.solve(cov_est, mu_hat_diff_proj)
+            ).mul(scaling_constant)
+        
+        return(statistic)
+    
+    def get_proj_orth_one_space(self):
+        matrix_iden = torch.eye(self.alphabet_size)
+        one_one_t = torch.ones( torch.Size([self.alphabet_size, self.alphabet_size]) )
+        one_one_t_over_d = one_one_t.div(self.alphabet_size)
+        one_projector = matrix_iden.sub(one_one_t_over_d)
+        return(one_projector.to(self.cuda_device_z))

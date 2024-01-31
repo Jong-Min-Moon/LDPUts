@@ -29,6 +29,7 @@ class server(ABC):
         del data_y
         gc.collect()
         torch.cuda.empty_cache()
+
     def load_private_data_multinomial_z(self, data_z, alphabet_size):
         if not self.is_y_loaded:
             raise Exception("Load Y data first")
@@ -87,29 +88,22 @@ class server(ABC):
 
     def is_integer_form(self, data):
         return( utils.get_dimension(data) == 1 )
+
+    def get_group_sum(self, perm):
+        perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1)
+
+        return(
+            self.data_y[perm_toY_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toY_fromZ].sum(0) ),
+            self.data_y[perm_toZ_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toZ_fromZ].sum(0) )
+        )
         
+        
+
+
 class server_ell2(server):
-  
-
-
-
-
     def _get_statistic(self, perm):
-        
-        
-
-        perm_toY = perm[     :self.n_1]
-        perm_toY_fromY = perm_toY[perm_toY < self.n_1]
-        perm_toY_fromZ = perm_toY[perm_toY >= self.n_1] - self.n_1
-
-        perm_toZ = perm[ self.n_1 :   ]
-        perm_toZ_fromY = perm_toZ[perm_toZ < self.n_1]
-        perm_toZ_fromZ = perm_toZ[perm_toZ >= self.n_1] - self.n_1
-
-        y_row_sum = self.data_y[perm_toY_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toY_fromZ].sum(0) )
-        z_row_sum = self.data_y[perm_toZ_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toZ_fromZ].sum(0) )
-        
-
+        perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1) 
+        y_row_sum, z_row_sum =  self.get_group_sum(perm)
         y_sqrsum = self.data_y_square_colsum[perm_toY_fromY].sum().to(self.cuda_device_z ).add(
             self.data_z_square_colsum[perm_toY_fromZ].sum()
         ) # scalar
@@ -148,41 +142,41 @@ class server_ell2(server):
 
 
 class server_multinomial_bitflip(server):
-    def save_data(self, data_y, data_z):
-        self.data = torch.vstack( (data_y, data_z) ).to(self.cuda_device)
-        del data_y
-        del data_z
- 
     def release_p_value(self):
         test_stat = self.get_original_statistic().cpu().numpy().item()      
         return(self.chisq_distribution.sf(test_stat))
     
-    def _get_statistic(self, idx_1, idx_2):
-        mu_hat_y = self.data[idx_1].mean(axis=0).view([self.alphabet_size,1]) #column vector
-        mu_hat_z = self.data[idx_2].mean(axis=0).view([self.alphabet_size,1]) #column vector
-        mu_hat_diff = torch.sub(mu_hat_y, mu_hat_z)
-        scaling_matrix = self._get_scaling_matrix()
-        scaling_constant = torch.reciprocal( torch.add( self.n_1.reciprocal(), self.n_2.reciprocal() ) )
-        statistic = mu_hat_diff.T.matmul(scaling_matrix).matmul(mu_hat_diff).mul(scaling_constant)
-        return(statistic)
+    def _get_statistic(self, perm):
+        y_row_sum, z_row_sum =  self.get_group_sum(perm)
 
-    def _get_scaling_matrix(self):
-        mat_proj = self.get_proj_orth_one_space()
-        if self.cuda_device.type== "cpu":
-            prec_mat_est =  torch.tensor(numpy.linalg.inv(torch.cov(self.data.T).numpy()))
-        else:
-            prec_mat_est =  torch.linalg.inv(torch.cov(self.data.T))
-        return(
-            mat_proj.matmul(prec_mat_est.to(self.cuda_device)).matmul(mat_proj)
-        )
+        mu_hat_diff_proj = self.get_proj_orth_one_space().matmul(
+            torch.sub(
+                y_row_sum.div(self.n_1),
+                z_row_sum.div(self.n_2)
+                ).view([self.alphabet_size,1])
+            )
+
+         
+        total_mean =  y_row_sum.add( z_row_sum ).div(self.n_1 + self.n_2)
+        cov_est = self.data_y.sub(total_mean).t().matmul(
+            self.data_y.sub(total_mean)
+            ).to(self.cuda_device_z ).add(
+                self.data_z.sub(total_mean).t().matmul(self.data_y.sub(total_mean))
+            ).div(self.n_1 + self.n_2-1)
+        
+        scaling_constant = torch.reciprocal( torch.add( self.n_1.reciprocal(), self.n_2.reciprocal() ) )
+        statistic = mu_hat_diff_proj.t().matmul(
+            torch.linalg.solve(cov_est, mu_hat_diff_proj)
+            ).mul(scaling_constant)
+        
+        return(statistic)
     
     def get_proj_orth_one_space(self):
         matrix_iden = torch.eye(self.alphabet_size)
         one_one_t = torch.ones( torch.Size([self.alphabet_size, self.alphabet_size]) )
         one_one_t_over_d = one_one_t.div(self.alphabet_size)
         one_projector = matrix_iden.sub(one_one_t_over_d)
-        return(one_projector.to(self.cuda_device))
-
+        return(one_projector.to(self.cuda_device_z))
 
         
 class server_multinomial_genrr(server_multinomial_bitflip):
