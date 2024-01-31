@@ -119,7 +119,7 @@ class twoSampleContiTester(tester):
 ##################################################
 ##################################################
 class twoSampleDiscTester(twoSampleContiTester):
-    def LapU(self, oneHot, alpha, c, theta):
+    def lapu(self, oneHot, alpha, c, theta):
  
         laplaceSize = oneHot.size()
         laplaceNoise = self.generate_disc_laplace(p, laplaceSize)
@@ -261,8 +261,8 @@ class indepContiTester(tester):
         tst_data_y_oneHot = self.transform_onehot(tst_data_y_multi, d1)
         tst_data_z_oneHot = self.transform_onehot(tst_data_z_multi, d2)
 
-        tst_data_priv_y = self.LapU(tst_data_y_oneHot, alpha, 4, theta)
-        tst_data_priv_z = self.LapU(tst_data_z_oneHot, alpha, 4, theta)
+        tst_data_priv_y = self.lapu(tst_data_y_oneHot, alpha, 4, theta)
+        tst_data_priv_z = self.lapu(tst_data_z_oneHot, alpha, 4, theta)
         return(tst_data_priv_y, tst_data_priv_z)
 ##################################################
 ##################################################

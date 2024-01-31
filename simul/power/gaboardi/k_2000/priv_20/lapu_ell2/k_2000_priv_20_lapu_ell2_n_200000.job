@@ -3,7 +3,7 @@
 #SBATCH --job-name=k_2000_priv_20_lapu_ell2_n_200000
 #SBATCH --partition=all
 #SBATCH --account=user213
-#SBATCH --mem=4gb
+#SBATCH --mem=20gb
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --time=99:59:59

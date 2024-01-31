@@ -40,8 +40,8 @@ estimate_type_one <- function(alphabet_size, n1, n2, gamma, privacy_level, n_tes
       
       Y_priv <- rep(NA, n1)
       Z_priv <- rep(NA, n2)
-      for (j1 in 1:n1) Y_priv[j1] <- genRR(Y[j1], alphabet_size, privacy_level)
-      for (j2 in 1:n2) Z_priv[j2] <- genRR(Z[j2], alphabet_size, privacy_level)
+      for (j1 in 1:n1) Y_priv[j1] <- genrr(Y[j1], alphabet_size, privacy_level)
+      for (j2 in 1:n2) Z_priv[j2] <- genrr(Z[j2], alphabet_size, privacy_level)
       decision <- as.numeric(chisq_priv(Y_priv, Z_priv, alphabet_size, gamma))
       test_result[test_num] <- decision
     }

@@ -1,1 +1,4 @@
-slurmstepd-cpu-compute: error: *** JOB 6445 ON cpu-compute CANCELLED AT 2024-01-16T12:22:15 ***
+Traceback (most recent call last):
+  File "/mnt/nas/users/user213/LDPUts/simul/power/gaboardi/k_4/priv_10/k_4_priv_10_bitflip_n_10000.py", line 7, in <module>
+    from server import server_ell2, server_multinomial_genrr, server_multinomial_bitflip
+ImportError: cannot import name 'server_multinomial_genrr' from 'server' (/mnt/nas/users/mjm/LDPUts/server.py)

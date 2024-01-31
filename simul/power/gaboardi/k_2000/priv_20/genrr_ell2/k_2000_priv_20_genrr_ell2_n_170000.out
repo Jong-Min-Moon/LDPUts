@@ -1,0 +1,9 @@
+cuda:0
+genrr_ell2
+tensor([0.0001, 0.0009, 0.0001,  ..., 0.0009, 0.0001, 0.0009])
+tensor([0.0009, 0.0001, 0.0009,  ..., 0.0001, 0.0009, 0.0001])
+pval: 0.8774999976158142 -- 1th test, time elapsed 81.62670969963074 -- emperical power so far: 0.0
+pval: 0.019999999552965164 -- 2th test, time elapsed 66.1018545627594 -- emperical power so far: 0.5
+pval: 0.9599999785423279 -- 3th test, time elapsed 67.47092604637146 -- emperical power so far: 0.3333333333333333
+pval: 0.5349999666213989 -- 4th test, time elapsed 67.04557466506958 -- emperical power so far: 0.25
+slurmstepd-gpu-compute: error: *** JOB 6576 ON gpu-compute CANCELLED AT 2024-01-24T20:13:15 ***

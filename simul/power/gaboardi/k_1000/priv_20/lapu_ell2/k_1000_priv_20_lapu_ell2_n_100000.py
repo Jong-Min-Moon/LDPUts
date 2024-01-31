@@ -6,7 +6,7 @@ from client import client
 import torch
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 import matplotlib.pyplot as plt
-from server import server_ell2, server_multinomial_genRR, server_multinomial_bitflip
+from server import server_ell2, server_multinomial_genrr, server_multinomial_bitflip
 from data_generator import data_generator
 from discretizer import discretizer
 import time
@@ -47,7 +47,7 @@ for i in range(n_test):
     data_z = data_gen.generate_multinomial_data(p2, sample_size)
     LDPclient.load_data_multinomial(data_y, data_z, alphabet_size)
     
-    data_lapu_y, data_lapu_z = LDPclient.release_LapU()
+    data_lapu_y, data_lapu_z = LDPclient.release_lapu()
     server_elltwo.load_private_data_multinomial(data_lapu_y, data_lapu_z, alphabet_size)
     p_value_array[i,0] = server_elltwo.release_p_value_permutation(n_permutation)
     t_end_i = time.time() - t_start_i

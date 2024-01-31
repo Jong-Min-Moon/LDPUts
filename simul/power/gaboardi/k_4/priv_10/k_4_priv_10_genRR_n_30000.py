@@ -4,7 +4,7 @@ sys.path.insert(0, '/mnt/nas/users/mjm/LDPUts')
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2, server_multinomial_genRR, server_multinomial_bitflip
+from server import server_ell2, server_multinomial_genrr, server_multinomial_bitflip
 from data_generator import data_generator
 from discretizer import discretizer
 import time
@@ -44,14 +44,14 @@ p2 = p1.add(
 )
 print(p2)
 
-def run_simul_k_4_genRR(device, n_test, n_permutation, p1, p2, sample_size, privacy_level):
+def run_simul_k_4_genrr(device, n_test, n_permutation, p1, p2, sample_size, privacy_level):
     alphabet_size = 4
     
     data_gen = data_generator(device)
     LDPclient = client(device, privacy_level)
 
 
-    server_genrr = server_multinomial_genRR(device, privacy_level)
+    server_genrr = server_multinomial_genrr(device, privacy_level)
 
     p_value_array = np.zeros([n_test, 2])
     t = time.time()
@@ -62,7 +62,7 @@ def run_simul_k_4_genRR(device, n_test, n_permutation, p1, p2, sample_size, priv
         LDPclient.load_data_multinomial(data_y, data_z, alphabet_size)
     
        
-        data_genrr_y, data_genrr_z = LDPclient.release_genRR()
+        data_genrr_y, data_genrr_z = LDPclient.release_genrr()
         server_genrr.load_private_data_multinomial(data_genrr_y, data_genrr_z, alphabet_size)
         p_value_array[i,0] = server_genrr.release_p_value_permutation(n_permutation)
         p_value_array[i,1] = server_genrr.release_p_value()
@@ -70,8 +70,8 @@ def run_simul_k_4_genRR(device, n_test, n_permutation, p1, p2, sample_size, priv
 
     elapsed = time.time() - t
     print(elapsed)
-    with open('./p_value_array_priv_genRR_priv_' + str(int(privacy_level*10)) +'_k_4_n_' + str(int(sample_size)) + '.npy', 'wb') as f:
+    with open('./p_value_array_priv_genrr_priv_' + str(int(privacy_level*10)) +'_k_4_n_' + str(int(sample_size)) + '.npy', 'wb') as f:
         np.save(f, p_value_array)
     return(p_value_array)
 
-result = run_simul_k_4_genRR(device, n_test, n_permutation, p1, p2, sample_size, privacy_level)
+result = run_simul_k_4_genrr(device, n_test, n_permutation, p1, p2, sample_size, privacy_level)

@@ -6,7 +6,7 @@ sys.path.insert(0, '/mnt/nas/users/mjm/LDPUts')
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2, server_multinomial_genRR, server_multinomial_bitflip
+from server import server_ell2, server_multinomial_genrr, server_multinomial_bitflip
 from data_generator import data_generator
 from discretizer import discretizer
 import time
@@ -58,7 +58,7 @@ for i in range(n_test):
     LDPclient.load_data_multinomial(data_y, data_z, alphabet_size)
     
        
-    data_genrr_y, data_genrr_z = LDPclient.release_bitFlip()
+    data_genrr_y, data_genrr_z = LDPclient.release_bitflip()
     server_bitflip.load_private_data_multinomial(data_genrr_y, data_genrr_z, alphabet_size)
     p_value_array[i,0] = server_bitflip.release_p_value_permutation(n_permutation)
     p_value_array[i,1] = server_bitflip.release_p_value()

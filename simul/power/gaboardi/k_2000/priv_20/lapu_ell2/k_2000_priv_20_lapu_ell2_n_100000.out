@@ -1,0 +1,12 @@
+cuda:0
+lapu_ell2
+tensor([0.0001, 0.0009, 0.0001,  ..., 0.0009, 0.0001, 0.0009])
+tensor([0.0009, 0.0001, 0.0009,  ..., 0.0001, 0.0009, 0.0001])
+Traceback (most recent call last):
+  File "/mnt/nas/users/user213/LDPUts/simul/power/gaboardi/k_2000/priv_20/lapu_ell2/k_2000_priv_20_lapu_ell2_n_100000.py", line 56, in <module>
+    LDPclient.release_lapu(
+  File "/mnt/nas/users/user213/LDPUts/client.py", line 28, in release_lapu
+    return( self.lapu.privatize(data, alphabet_size, privacy_level) )
+  File "/mnt/nas/users/user213/LDPUts/client.py", line 74, in privatize
+    data_private = torch.nn.functional.one_hot(data_mutinomial, alphabet_size).add(
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!

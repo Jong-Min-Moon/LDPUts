@@ -196,7 +196,7 @@ pdfpagemode=UseOutlines
 %dimensions
 
 
-\newcommand{\genrr}{\mathcal{M}_{\texttt{GenRR}}}
+\newcommand{\genrr}{\mathcal{M}_{\texttt{genrr}}}
 %dimension-related
 \newcommand{\vectorElements}[1]{
 (#1_{1}, \ldots, #1_{\dimDensity})
@@ -339,7 +339,7 @@ pdfpagemode=UseOutlines
 \newcommand{\pTwosampleDisc}{\mathcal{P}^{(\alphabetSize)}}
 
 % noise variance
-\newcommand{\LapUParam}{\sigma_{\alpha}}
+\newcommand{\lapuParam}{\sigma_{\alpha}}
 %% optimal kappa for two sample testing upper bound
 \newcommand{\optimalKappaTwosample}{\kappa^\ast}
 
@@ -525,9 +525,9 @@ pdfpagemode=UseOutlines
 %algorithm names
 \newcommand{\permuteTestTS}{\text{\textsc{PermuTestTS}}}
 \newcommand{\permuteTestIndep}{\text{\textsc{PermuTestIndep}}}
-\newcommand{\privatizer}{\text{\textsc{LapU}}}
-\newcommand{\privatizerDisc}{\text{\textsc{DiscLapU}}}
-\newcommand{\privatizerAdapt}{\text{\textsc{LapUAdapt}}}
+\newcommand{\privatizer}{\text{\textsc{lapu}}}
+\newcommand{\privatizerDisc}{\text{\textsc{Disclapu}}}
+\newcommand{\privatizerAdapt}{\text{\textsc{lapuAdapt}}}
 \newcommand{\procedureTSDisc}{\text{\textsc{PrivUTS}}}
 \newcommand{\procedureTSConti}{\text{\textsc{PrivUTS}}_\text{\textsc{H\"{o}lder}}}
 \newcommand{\procedureTSAdapt}{\text{\textsc{PrivUTS}}_\text{\textsc{Adapt}}}
@@ -535,7 +535,7 @@ pdfpagemode=UseOutlines
 \newcommand{\procedureIndepSplit}{ \text{\textsc{PrivUSplit}} }
 
 
-%LapU
+%lapu
 
 
 %binning function
@@ -545,9 +545,9 @@ pdfpagemode=UseOutlines
 
 
 
-\newcommand{\LapUDiscParam}{ p_{\alpha, c, \theta}}
-\newcommand{\LapUIndepParam}{\sigma_{\alpha, c, \theta}}
-\newcommand{\LapUIndepParamProof}{\sigma_{\alpha, 4, d^\ell}}
+\newcommand{\lapuDiscParam}{ p_{\alpha, c, \theta}}
+\newcommand{\lapuIndepParam}{\sigma_{\alpha, c, \theta}}
+\newcommand{\lapuIndepParamProof}{\sigma_{\alpha, 4, d^\ell}}
 \newcommand{\sigmaAlphaKappa}[1]{
 	\sigma_{\alpha, \kappa}^{#1}
 }
