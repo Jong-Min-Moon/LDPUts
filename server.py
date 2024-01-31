@@ -39,6 +39,7 @@ class server(ABC):
             
               
         self.n_2 = torch.tensor(utils.get_sample_size(data_z))
+        self.n = self.n_1 + self.n_2
         
         if self.is_integer_form(data_z):
             self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).float()
@@ -65,7 +66,7 @@ class server(ABC):
        return(original_statistic)
 
     @abstractmethod
-    def _get_statistic(self, idx_1, idx_2):
+    def _get_statistic(self, perm):
         return(statistic)
     
     def get_p_value_proxy(self, stat_permuted, stat_original):
@@ -89,13 +90,21 @@ class server(ABC):
     def is_integer_form(self, data):
         return( utils.get_dimension(data) == 1 )
 
-    def get_group_sum(self, perm):
-        perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1)
+    def get_sum_y(self, perm ):
+        perm_toY_fromY, perm_toY_fromZ, _, _ = utils.split_perm(perm, self.n_1)
+        return (self.data_y[perm_toY_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toY_fromZ].sum(0) ))
+    
+    def get_sum_z(self, perm ):
+        _, _, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1)
+        return (self.data_y[perm_toZ_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toZ_fromZ].sum(0) ))
+    
+    def get_mean_y(self, perm):
+        return self.get_sum_y(perm).div(self.n_1)
+    
+    def get_mean_z(self, perm):
+        return self.get_sum_z(perm).div(self.n_2)
 
-        return(
-            self.data_y[perm_toY_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toY_fromZ].sum(0) ),
-            self.data_y[perm_toZ_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toZ_fromZ].sum(0) )
-        )
+  
         
         
 
@@ -103,7 +112,8 @@ class server(ABC):
 class server_ell2(server):
     def _get_statistic(self, perm):
         perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1) 
-        y_row_sum, z_row_sum =  self.get_group_sum(perm)
+        y_row_sum = self.get_sum_y(perm)
+        z_row_sum = self.get_sum_z(perm)
         y_sqrsum = self.data_y_square_colsum[perm_toY_fromY].sum().to(self.cuda_device_z ).add(
             self.data_z_square_colsum[perm_toY_fromZ].sum()
         ) # scalar
