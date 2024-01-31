@@ -104,6 +104,12 @@ class server(ABC):
     def get_mean_z(self, perm):
         return self.get_sum_z(perm).div(self.n_2)
 
+    def get_grand_mean(self):
+        return(
+            self.get_sum_y(torch.arange(self.n)).add(
+                self.get_sum_z(torch.arange(self.n))
+            ).div(self.n)
+        )
   
         
         
@@ -152,9 +158,9 @@ class server_ell2(server):
 
 
 class server_multinomial_bitflip(server):
-    #def load_private_data_multinomial_z(self):
-    #    super().load_private_data_multinomial_z(); 
-    #    self.cov = 
+    def load_private_data_multinomial_z(self, data_z, alphabet_size ):
+        super().load_private_data_multinomial_z(data_z, alphabet_size); 
+        self.grand_mean = self.get_grand_mean()
     
     def release_p_value(self):
         test_stat = self.get_original_statistic().cpu().numpy().item()      
@@ -164,34 +170,32 @@ class server_multinomial_bitflip(server):
  
        
     def _get_statistic(self, perm):
-        mu_hat_y = self.get_mean_y(perm).view([self.alphabet_size,1])
-        mu_hat_z = self.get_mean_z(perm).view([self.alphabet_size,1])
-        mu_hat_diff = mu_hat_y.sub(mu_hat_z)
-        print(mu_hat_diff)
-        proj = self.get_proj_orth_one_space()
-        #mu_hat_diff_proj = self.get_proj_orth_one_space().mv(
-        #    mu_hat_y.sub(mu_hat_z)
-        #    )
+        proj_mu_hat_diff = torch.mv(
+            self.get_proj_orth_one_space(),
+            torch.sub(
+                self.get_mean_y(perm),
+                self.get_mean_z(perm)
+            )
+        )
 
-         
-        total_mean =  mu_hat_y.mul(self.n_1).add( 
-            mu_hat_z.mul(self.n_2) ).div(
-                self.n
-                )
-        cov_est = torch.linalg.inv(torch.cov(torch.vstack((self.data_y, self.data_z)).T))
-        #cov_est = self.data_y.sub(total_mean).T.matmul(
-        #    self.data_y.sub(total_mean)
+        print(self.grand_mean)
+
+        cov_est = torch.cov(
+            torch.vstack((self.data_y, self.data_z)).T)
+
+        #cov_est = self.data_y.sub(total_mean.T).T.matmul(
+        #    self.data_y.sub(total_mean.T)
         #    ).to(self.cuda_device_z ).add(
-        #        self.data_z.sub(total_mean).T.matmul(self.data_y.sub(total_mean))
+        #        self.data_z.sub(total_mean.T).T.matmul(self.data_y.sub(total_mean.T))
         #    ).div(self.n-1)
-        
+        print(cov_est)
         scaling_constant = torch.reciprocal( torch.add( self.n_1.reciprocal(), self.n_2.reciprocal() ) )
         
-        #statistic = torch.dot(
-        #    mu_hat_diff_proj,
-        #    torch.linalg.solve(cov_est, mu_hat_diff_proj)
-        #).mul(scaling_constant)
-        statistic = mu_hat_diff.T.matmul(proj.mm(torch.linalg.inv(cov_est).mm(proj))).matmul(mu_hat_diff).mul(scaling_constant)
+        statistic = torch.dot(
+            proj_mu_hat_diff,
+            torch.linalg.solve(cov_est, proj_mu_hat_diff)
+        ).mul(scaling_constant)
+        #statistic = mu_hat_diff.T.matmul(proj.mm(torch.linalg.inv(cov_est).mm(proj))).matmul(mu_hat_diff).mul(scaling_constant)
         print(statistic)
         return(statistic)
     
@@ -238,7 +242,9 @@ class server_multinomial_bitflip_old(server):
 
     def _get_scaling_matrix(self):
         mat_proj = self.get_proj_orth_one_space()
-        prec_mat_est =  torch.linalg.inv(torch.cov(self.data.T))
+        cov_est = torch.cov(self.data.T)
+        print(cov_est)
+        prec_mat_est =  torch.linalg.inv(cov_est)
         return(
             mat_proj.matmul(prec_mat_est.to(self.data_z.device)).matmul(mat_proj)
         )
