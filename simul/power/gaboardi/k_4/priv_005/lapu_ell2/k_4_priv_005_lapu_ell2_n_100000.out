@@ -1,0 +1,7 @@
+cuda:1
+lapu_ell2
+tensor([0.1500, 0.3500, 0.1500, 0.3500])
+tensor([0.3500, 0.1500, 0.3500, 0.1500])
+pval: 0.0024999999441206455 -- 1th test, time elapsed 45.607725858688354 -- emperical power so far: 1.0
+pval: 0.574999988079071 -- 2th test, time elapsed 46.817545652389526 -- emperical power so far: 0.5
+slurmstepd-gpu-compute: error: *** JOB 6847 ON gpu-compute CANCELLED AT 2024-02-01T09:02:33 ***
