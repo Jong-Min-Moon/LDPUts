@@ -24,11 +24,11 @@ class client:
 
 
 
-    def release_genrr(self, data, alphabet_size, privacy_level):
-        return( self.genrr.privatize(data, alphabet_size, privacy_level) )
+    def release_genrr(self, data, alphabet_size, privacy_level, cuda_device):
+        return( self.genrr.privatize(data, alphabet_size, privacy_level, cuda_device) )
 
-    def release_bitflip(self, data, alphabet_size, privacy_level):
-        return( self.bitflip.privatize(data, alphabet_size, privacy_level)               )
+    def release_bitflip(self, data, alphabet_size, privacy_level, cuda_device):
+        return( self.bitflip.privatize(data, alphabet_size, privacy_level, cuda_device)               )
         """     def release_truncGaussU(self):
         return(
             self.truncGaussU.privatize(self.data_y, self.alphabet_size, self.privacy_level),
@@ -100,7 +100,7 @@ class disclapu(lapu):
 
 
 class genrr(lapu):   
-    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
+    def privatize(self, data_mutinomial, alphabet_size, privacy_level, cuda_device):
         sample_size = utils.get_sample_size(data_mutinomial)
         data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
         one_matrix = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1)
@@ -112,10 +112,10 @@ class genrr(lapu):
         p = 1 / ( torch.tensor(privacy_level).exp().add(alphabet_size - 1) )
         p = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).mul(p)
         p = p.mul(bias_matrix)
-        return( torch.multinomial(p, 1).view(-1) )  
+        return( torch.multinomial(p, 1).view(-1).to(cuda_device) )  
 
 class bitflip(lapu):   
-    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
+    def privatize(self, data_mutinomial, alphabet_size, privacy_level, cuda_device):
         """
         output: bit vector in (0,1)^k
         """
@@ -135,4 +135,4 @@ class bitflip(lapu):
             data_bitflip.eq(2).mul(-2)
         )
 
-        return(data_bitflip)
+        return(data_bitflip.to(cuda_device))

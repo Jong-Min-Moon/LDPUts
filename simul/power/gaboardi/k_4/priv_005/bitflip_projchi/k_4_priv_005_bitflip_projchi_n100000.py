@@ -26,7 +26,7 @@ alphabet_size = 4
 
 n_permutation = 399
 n_test = 100
-significance_level = 0.5
+significance_level = 0.05
 
 p = torch.ones(alphabet_size).div(alphabet_size)
 p2 = p.add(

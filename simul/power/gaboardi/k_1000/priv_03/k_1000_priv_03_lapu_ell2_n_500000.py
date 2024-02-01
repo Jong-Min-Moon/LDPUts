@@ -13,21 +13,23 @@ import numpy as np
 from scipy.stats import chi2
 from utils import chi_sq_dist
 
-device = torch.device("cuda:0")
+device_y = torch.device("cuda:0")
+device_z = torch.device("cuda:1")
 
-print(device)
+print(device_y)
+print(device_z)
 priv_mech = "lapu"
 statistic = "ell2"
 print(priv_mech + "_" + statistic)
 
-sample_size = 50000
-privacy_level = 0.1
-bump_size = 0.1
-alphabet_size = 4
+sample_size = 500000
+privacy_level = 0.3
+bump_size = 0.0009
+alphabet_size = 1000
 
 n_permutation = 999
 n_test = 100
-significance_level = 0.1
+significance_level = 0.05
 
 p = torch.ones(alphabet_size).div(alphabet_size)
 p2 = p.add(
@@ -58,7 +60,7 @@ for i in range(n_test):
             data_gen.generate_multinomial_data(p1, sample_size),
             alphabet_size,
             privacy_level,
-            device
+            device_y
             ),
         alphabet_size
     )
@@ -68,7 +70,7 @@ for i in range(n_test):
             data_gen.generate_multinomial_data(p2, sample_size),
             alphabet_size,
             privacy_level,
-            device
+            device_z
             ),
         alphabet_size
     )
