@@ -4,7 +4,7 @@ import gc
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2, server_multinomial_genrr, server_multinomial_genrr
+from server import server_ell2
 from data_generator import data_generator
 from discretizer import discretizer
 import time
@@ -12,13 +12,13 @@ import numpy as np
 from scipy.stats import chi2
 from utils import chi_sq_dist
 
-device = torch.device("cuda:1")
+device = torch.device("cuda:0")
 
 
 priv_mech = "lapu"
 statistic = "ell2"
 
-sample_size_list = np.array( [2000,4000,6000,8000,10000,12000,14000, 16000, 18000, 20000] ) - 1000
+sample_size_list = np.arange(1,21)*1000
 privacy_level = 0.5 * 2
 bump_size = 0.04
 alphabet_size = 4
@@ -61,7 +61,7 @@ for sample_size in sample_size_list:
     
 
         server_private.load_private_data_multinomial_y(
-            LDPclient.release_genrr(
+            LDPclient.release_lapu(
                 data_gen.generate_multinomial_data(p1, sample_size),
                 alphabet_size,
                 privacy_level,
@@ -71,7 +71,7 @@ for sample_size in sample_size_list:
         )
 
         server_private.load_private_data_multinomial_z(
-            LDPclient.release_genrr(
+            LDPclient.release_lapu(
                 data_gen.generate_multinomial_data(p2, sample_size),
                 alphabet_size,
                 privacy_level,

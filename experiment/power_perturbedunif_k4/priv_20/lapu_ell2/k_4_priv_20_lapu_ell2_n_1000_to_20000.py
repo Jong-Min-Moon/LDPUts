@@ -4,7 +4,7 @@ import gc
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2, server_multinomial_genrr, server_multinomial_genrr
+from server import server_ell2
 from data_generator import data_generator
 from discretizer import discretizer
 import time
@@ -61,7 +61,7 @@ for sample_size in sample_size_list:
     
 
         server_private.load_private_data_multinomial_y(
-            LDPclient.release_genrr(
+            LDPclient.release_lapu(
                 data_gen.generate_multinomial_data(p1, sample_size),
                 alphabet_size,
                 privacy_level,
@@ -71,7 +71,7 @@ for sample_size in sample_size_list:
         )
 
         server_private.load_private_data_multinomial_z(
-            LDPclient.release_genrr(
+            LDPclient.release_lapu(
                 data_gen.generate_multinomial_data(p2, sample_size),
                 alphabet_size,
                 privacy_level,

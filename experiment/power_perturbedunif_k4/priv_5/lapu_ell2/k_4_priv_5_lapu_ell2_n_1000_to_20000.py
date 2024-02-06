@@ -4,15 +4,15 @@ import gc
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2, server_multinomial_lapu, server_multinomial_lapu
+from server import server_ell2
 from data_generator import data_generator
 from discretizer import discretizer
-import timeå
+import time
 import numpy as np
 from scipy.stats import chi2
 from utils import chi_sq_dist
 
-device = torch.device("cuda:1")å
+device = torch.device("cuda:1")
 
 
 priv_mech = "lapu"
