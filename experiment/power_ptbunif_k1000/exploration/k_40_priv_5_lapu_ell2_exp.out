@@ -1,0 +1,55 @@
+cuda:1
+lapu_ell2
+privacy level = 0.5
+tensor([0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400])
+tensor([0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100])
+
+
+#########################################
+sample size = 30000
+tensor(1.0088, device='cuda:1')
+pval: 0.10300000756978989 -- 1th test, time elapsed 31.476959705352783 -- emperical power so far: 0.0
+tensor(0.9145, device='cuda:1')
+pval: 0.13600000739097595 -- 2th test, time elapsed 10.512186765670776 -- emperical power so far: 0.0
+tensor(1.1451, device='cuda:1')
+pval: 0.07800000160932541 -- 3th test, time elapsed 11.882763624191284 -- emperical power so far: 0.0
+tensor(1.6900, device='cuda:1')
+pval: 0.027000000700354576 -- 4th test, time elapsed 11.06966781616211 -- emperical power so far: 0.25
+tensor(1.3203, device='cuda:1')
+pval: 0.055000003427267075 -- 5th test, time elapsed 10.668958902359009 -- emperical power so far: 0.2
+tensor(2.4638, device='cuda:1')
+pval: 0.004000000189989805 -- 6th test, time elapsed 10.835539102554321 -- emperical power so far: 0.3333333333333333
+tensor(-0.7001, device='cuda:1')
+pval: 0.8110000491142273 -- 7th test, time elapsed 11.723842144012451 -- emperical power so far: 0.2857142857142857
+tensor(1.1623, device='cuda:1')
+pval: 0.08000000566244125 -- 8th test, time elapsed 11.439157009124756 -- emperical power so far: 0.25
+tensor(1.4067, device='cuda:1')
+pval: 0.046000003814697266 -- 9th test, time elapsed 10.875934839248657 -- emperical power so far: 0.3333333333333333
+tensor(0.5012, device='cuda:1')
+pval: 0.25600001215934753 -- 10th test, time elapsed 11.459217548370361 -- emperical power so far: 0.3
+tensor(1.0159, device='cuda:1')
+pval: 0.09300000220537186 -- 11th test, time elapsed 11.20493745803833 -- emperical power so far: 0.2727272727272727
+tensor(2.0185, device='cuda:1')
+pval: 0.014000000432133675 -- 12th test, time elapsed 11.103789567947388 -- emperical power so far: 0.3333333333333333
+tensor(1.8408, device='cuda:1')
+pval: 0.00800000037997961 -- 13th test, time elapsed 11.953854084014893 -- emperical power so far: 0.38461538461538464
+tensor(1.5737, device='cuda:1')
+pval: 0.03700000047683716 -- 14th test, time elapsed 10.505802869796753 -- emperical power so far: 0.42857142857142855
+tensor(0.0412, device='cuda:1')
+pval: 0.43300002813339233 -- 15th test, time elapsed 10.64197587966919 -- emperical power so far: 0.4
+tensor(1.3969, device='cuda:1')
+pval: 0.03800000250339508 -- 16th test, time elapsed 10.932010173797607 -- emperical power so far: 0.4375
+tensor(0.2908, device='cuda:1')
+pval: 0.31300002336502075 -- 17th test, time elapsed 11.3795645236969 -- emperical power so far: 0.4117647058823529
+tensor(0.6460, device='cuda:1')
+pval: 0.17000000178813934 -- 18th test, time elapsed 11.182127714157104 -- emperical power so far: 0.3888888888888889
+tensor(2.5904, device='cuda:1')
+slurmstepd-gpu-compute: error: *** JOB 7020 ON gpu-compute CANCELLED AT 2024-02-06T15:28:19 ***

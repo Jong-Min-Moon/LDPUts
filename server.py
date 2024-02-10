@@ -97,24 +97,24 @@ class server(ABC):
 
     def get_sum_y(self, perm ):
         perm_toY_fromY, perm_toY_fromZ, _, _ = utils.split_perm(perm, self.n_1)
-        return (self.data_y[perm_toY_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toY_fromZ].sum(0) ))
+        return (self.data_y[perm_toY_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toY_fromZ].sum(0) )).to(torch.float)
     
     def get_sum_z(self, perm ):
         _, _, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1)
-        return (self.data_y[perm_toZ_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toZ_fromZ].sum(0) ))
+        return (self.data_y[perm_toZ_fromY].sum(0).to(self.cuda_device_z ).add( self.data_z[perm_toZ_fromZ].sum(0) )).to(torch.float)
     
     def get_mean_y(self, perm):
-        return self.get_sum_y(perm).div(self.n_1)
+        return self.get_sum_y(perm).div(self.n_1).to(torch.float)
     
     def get_mean_z(self, perm):
-        return self.get_sum_z(perm).div(self.n_2)
+        return self.get_sum_z(perm).div(self.n_2).to(torch.float)
 
     def get_grand_mean(self):
         return(
             self.get_sum_y(torch.arange(self.n)).add(
                 self.get_sum_z(torch.arange(self.n))
             ).div(self.n)
-        )
+        ).to(torch.float)
   
         
         
@@ -181,7 +181,7 @@ class server_multinomial_bitflip(server):
         ).div(
         #
         self.n-1
-                )
+                ).to(torch.float)
     def release_p_value(self):
         test_stat = self.get_original_statistic()
         print(self.chisq_distribution.df)
@@ -214,7 +214,7 @@ class server_multinomial_bitflip(server):
         one_one_t = torch.ones( torch.Size([self.alphabet_size, self.alphabet_size]) )
         one_one_t_over_d = one_one_t.div(self.alphabet_size)
         one_projector = matrix_iden.sub(one_one_t_over_d)
-        return(one_projector.to(self.cuda_device_z))
+        return(one_projector.to(torch.float).to(self.cuda_device_z))
 
        
 class server_multinomial_genrr(server_multinomial_bitflip):

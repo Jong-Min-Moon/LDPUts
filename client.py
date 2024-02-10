@@ -10,30 +10,24 @@ class client:
         self.disclapu = disclapu()
         self.genrr = genrr()
         self.bitflip = bitflip()
-        #self.truncGaussU = truncGaussU()
 
-    #def load_data_conti(self, data_y, data_z, n_bin):
-    #    self.data_y, self.alphabet_size = self.discretizer.transform(data_y, n_bin)
-    #    self.data_z, self.alphabet_size = self.discretizer.transform(data_z, n_bin) """
     
-    def release_lapu(self, data, alphabet_size, privacy_level, cuda_device):
-        return( self.lapu.privatize(data, alphabet_size, privacy_level, cuda_device) )
+    def release_private(self, method_name, data, alphabet_size, privacy_level, cuda_device):
+        if method_name == "lapu":
+            return( self.lapu.privatize(data, alphabet_size, privacy_level, cuda_device) )
+        elif method_name == "genrr":
+            return( self.genrr.privatize(data, alphabet_size, privacy_level, cuda_device) )
+        elif method_name =="bitflip":
+            return( self.bitflip.privatize(data, alphabet_size, privacy_level, cuda_device) )
     
-    def release_Disclapu(self, data, alphabet_size, privacy_level):
-        return( self.disclapu.privatize(data, alphabet_size, privacy_level) )
 
 
 
-    def release_genrr(self, data, alphabet_size, privacy_level, cuda_device):
-        return( self.genrr.privatize(data, alphabet_size, privacy_level, cuda_device) )
+        
 
-    def release_bitflip(self, data, alphabet_size, privacy_level, cuda_device):
-        return( self.bitflip.privatize(data, alphabet_size, privacy_level, cuda_device)               )
-        """     def release_truncGaussU(self):
-        return(
-            self.truncGaussU.privatize(self.data_y, self.alphabet_size, self.privacy_level),
-            self.truncGaussU.privatize(self.data_z, self.alphabet_size, self.privacy_level)
-            ) """
+
+        
+  
 
     
 """ class truncGaussU:
@@ -101,15 +95,16 @@ class disclapu(lapu):
 
 class genrr(lapu):   
     def privatize(self, data_mutinomial, alphabet_size, privacy_level, cuda_device):
+        privacy_level_exp = torch.tensor(privacy_level, dtype=torch.float64).exp()
         sample_size = utils.get_sample_size(data_mutinomial)
         data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
         one_matrix = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1)
 
         bias_matrix = data_onehot.mul(
-            torch.tensor(privacy_level).exp()
+            privacy_level_exp
             ).add(one_matrix).sub(data_onehot)
 
-        p = 1 / ( torch.tensor(privacy_level).exp().add(alphabet_size - 1) )
+        p = 1 / ( privacy_level_exp.add(alphabet_size - 1) )
         p = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).mul(p)
         p = p.mul(bias_matrix)
         return( torch.multinomial(p, 1).view(-1).to(cuda_device) )  
