@@ -1,0 +1,498 @@
+cuda:1
+genrr_chi
+privacy level = 2
+tensor([0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034])
+tensor([0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034,
+        0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016, 0.0034, 0.0016,
+        0.0034, 0.0016, 0.0034, 0.0016])
+
+
+#########################################
+sample size = 200000
+tensor(379.8344, device='cuda:1')
+pval: 0.7380000352859497 -- 1th test, time elapsed 153.30420184135437 -- emperical power so far: 0.0
+tensor(445.4007, device='cuda:1')
+pval: 0.0560000017285347 -- 2th test, time elapsed 130.69603490829468 -- emperical power so far: 0.0
+tensor(385.9425, device='cuda:1')
+pval: 0.6840000152587891 -- 3th test, time elapsed 132.6031458377838 -- emperical power so far: 0.0
+tensor(416.6750, device='cuda:1')
+pval: 0.25600001215934753 -- 4th test, time elapsed 131.16158294677734 -- emperical power so far: 0.0
+tensor(456.9674, device='cuda:1')
+pval: 0.026000000536441803 -- 5th test, time elapsed 132.33727955818176 -- emperical power so far: 0.2
+tensor(430.6853, device='cuda:1')
+pval: 0.15300001204013824 -- 6th test, time elapsed 132.9694209098816 -- emperical power so far: 0.16666666666666666
+tensor(414.8124, device='cuda:1')
+pval: 0.28600001335144043 -- 7th test, time elapsed 131.4949402809143 -- emperical power so far: 0.14285714285714285
+tensor(387.2940, device='cuda:1')
+pval: 0.6320000290870667 -- 8th test, time elapsed 131.7714240550995 -- emperical power so far: 0.125
+tensor(413.8155, device='cuda:1')
+pval: 0.289000004529953 -- 9th test, time elapsed 131.1609401702881 -- emperical power so far: 0.1111111111111111
+tensor(422.5232, device='cuda:1')
+pval: 0.20600001513957977 -- 10th test, time elapsed 130.6049609184265 -- emperical power so far: 0.1
+tensor(419.2300, device='cuda:1')
+pval: 0.24800001084804535 -- 11th test, time elapsed 132.63650846481323 -- emperical power so far: 0.09090909090909091
+tensor(431.9237, device='cuda:1')
+pval: 0.12700000405311584 -- 12th test, time elapsed 133.34969830513 -- emperical power so far: 0.08333333333333333
+tensor(446.8784, device='cuda:1')
+pval: 0.05300000309944153 -- 13th test, time elapsed 131.30858159065247 -- emperical power so far: 0.07692307692307693
+tensor(390.2525, device='cuda:1')
+pval: 0.6160000562667847 -- 14th test, time elapsed 131.17452836036682 -- emperical power so far: 0.07142857142857142
+tensor(436.2146, device='cuda:1')
+pval: 0.09400000423192978 -- 15th test, time elapsed 132.0625286102295 -- emperical power so far: 0.06666666666666667
+tensor(390.6944, device='cuda:1')
+pval: 0.5980000495910645 -- 16th test, time elapsed 131.24356198310852 -- emperical power so far: 0.0625
+tensor(416.1448, device='cuda:1')
+pval: 0.2639999985694885 -- 17th test, time elapsed 132.65383625030518 -- emperical power so far: 0.058823529411764705
+tensor(419.6939, device='cuda:1')
+pval: 0.23800000548362732 -- 18th test, time elapsed 132.60978198051453 -- emperical power so far: 0.05555555555555555
+tensor(404.3007, device='cuda:1')
+pval: 0.39900001883506775 -- 19th test, time elapsed 132.00097823143005 -- emperical power so far: 0.05263157894736842
+tensor(397.0202, device='cuda:1')
+pval: 0.5330000519752502 -- 20th test, time elapsed 132.44999957084656 -- emperical power so far: 0.05
+tensor(345.3529, device='cuda:1')
+pval: 0.968000054359436 -- 21th test, time elapsed 133.58031129837036 -- emperical power so far: 0.047619047619047616
+tensor(407.3701, device='cuda:1')
+pval: 0.39000001549720764 -- 22th test, time elapsed 132.50038266181946 -- emperical power so far: 0.045454545454545456
+tensor(410.1184, device='cuda:1')
+pval: 0.3240000009536743 -- 23th test, time elapsed 131.60480117797852 -- emperical power so far: 0.043478260869565216
+tensor(400.6805, device='cuda:1')
+pval: 0.48900002241134644 -- 24th test, time elapsed 133.60069155693054 -- emperical power so far: 0.041666666666666664
+tensor(407.3486, device='cuda:1')
+pval: 0.3880000114440918 -- 25th test, time elapsed 131.8342273235321 -- emperical power so far: 0.04
+tensor(395.8739, device='cuda:1')
+pval: 0.5220000147819519 -- 26th test, time elapsed 132.18232417106628 -- emperical power so far: 0.038461538461538464
+tensor(348.9026, device='cuda:1')
+pval: 0.9640000462532043 -- 27th test, time elapsed 131.28181982040405 -- emperical power so far: 0.037037037037037035
+tensor(413.6627, device='cuda:1')
+pval: 0.3060000240802765 -- 28th test, time elapsed 130.88939547538757 -- emperical power so far: 0.03571428571428571
+tensor(441.5276, device='cuda:1')
+pval: 0.07700000703334808 -- 29th test, time elapsed 132.7802529335022 -- emperical power so far: 0.034482758620689655
+tensor(376.2769, device='cuda:1')
+pval: 0.7950000166893005 -- 30th test, time elapsed 131.81133604049683 -- emperical power so far: 0.03333333333333333
+tensor(479.2513, device='cuda:1')
+pval: 0.005000000353902578 -- 31th test, time elapsed 132.53194642066956 -- emperical power so far: 0.06451612903225806
+tensor(437.4390, device='cuda:1')
+pval: 0.08700000494718552 -- 32th test, time elapsed 132.10719656944275 -- emperical power so far: 0.0625
+tensor(432.4414, device='cuda:1')
+pval: 0.11900000274181366 -- 33th test, time elapsed 133.11425375938416 -- emperical power so far: 0.06060606060606061
+tensor(427.8102, device='cuda:1')
+pval: 0.1340000033378601 -- 34th test, time elapsed 131.83341097831726 -- emperical power so far: 0.058823529411764705
+tensor(400.2516, device='cuda:1')
+pval: 0.4870000183582306 -- 35th test, time elapsed 132.6051948070526 -- emperical power so far: 0.05714285714285714
+tensor(426.9629, device='cuda:1')
+pval: 0.17400000989437103 -- 36th test, time elapsed 132.5526475906372 -- emperical power so far: 0.05555555555555555
+tensor(443.0916, device='cuda:1')
+pval: 0.0650000050663948 -- 37th test, time elapsed 132.90404558181763 -- emperical power so far: 0.05405405405405406
+tensor(394.8625, device='cuda:1')
+pval: 0.527999997138977 -- 38th test, time elapsed 133.02905106544495 -- emperical power so far: 0.05263157894736842
+tensor(434.7831, device='cuda:1')
+pval: 0.0860000029206276 -- 39th test, time elapsed 132.6044738292694 -- emperical power so far: 0.05128205128205128
+tensor(408.2065, device='cuda:1')
+pval: 0.3760000169277191 -- 40th test, time elapsed 130.39203262329102 -- emperical power so far: 0.05
+tensor(390.1666, device='cuda:1')
+pval: 0.6050000190734863 -- 41th test, time elapsed 130.69410109519958 -- emperical power so far: 0.04878048780487805
+tensor(427.7407, device='cuda:1')
+pval: 0.14000000059604645 -- 42th test, time elapsed 131.7843475341797 -- emperical power so far: 0.047619047619047616
+tensor(372.1256, device='cuda:1')
+pval: 0.8440000414848328 -- 43th test, time elapsed 133.57039070129395 -- emperical power so far: 0.046511627906976744
+tensor(446.3622, device='cuda:1')
+pval: 0.052000001072883606 -- 44th test, time elapsed 131.82175207138062 -- emperical power so far: 0.045454545454545456
+tensor(406.1400, device='cuda:1')
+pval: 0.4010000228881836 -- 45th test, time elapsed 130.88193607330322 -- emperical power so far: 0.044444444444444446
+tensor(357.2251, device='cuda:1')
+pval: 0.9410000443458557 -- 46th test, time elapsed 131.27168679237366 -- emperical power so far: 0.043478260869565216
+tensor(367.3431, device='cuda:1')
+pval: 0.8740000128746033 -- 47th test, time elapsed 132.91761779785156 -- emperical power so far: 0.0425531914893617
+tensor(398.1110, device='cuda:1')
+pval: 0.5010000467300415 -- 48th test, time elapsed 131.09379053115845 -- emperical power so far: 0.041666666666666664
+tensor(453.5645, device='cuda:1')
+pval: 0.032999999821186066 -- 49th test, time elapsed 131.34576225280762 -- emperical power so far: 0.061224489795918366
+tensor(440.3292, device='cuda:1')
+pval: 0.07100000232458115 -- 50th test, time elapsed 132.92687058448792 -- emperical power so far: 0.06
+tensor(423.2111, device='cuda:1')
+pval: 0.2120000123977661 -- 51th test, time elapsed 132.19558453559875 -- emperical power so far: 0.058823529411764705
+tensor(388.6627, device='cuda:1')
+pval: 0.6550000309944153 -- 52th test, time elapsed 131.40188670158386 -- emperical power so far: 0.057692307692307696
+tensor(391.5737, device='cuda:1')
+pval: 0.6030000448226929 -- 53th test, time elapsed 131.3091642856598 -- emperical power so far: 0.05660377358490566
+tensor(371.9355, device='cuda:1')
+pval: 0.8360000252723694 -- 54th test, time elapsed 132.64959740638733 -- emperical power so far: 0.05555555555555555
+tensor(430.3160, device='cuda:1')
+pval: 0.14800000190734863 -- 55th test, time elapsed 130.7950279712677 -- emperical power so far: 0.05454545454545454
+tensor(397.1092, device='cuda:1')
+pval: 0.5170000195503235 -- 56th test, time elapsed 132.71211099624634 -- emperical power so far: 0.05357142857142857
+tensor(442.8021, device='cuda:1')
+pval: 0.06100000441074371 -- 57th test, time elapsed 132.58934593200684 -- emperical power so far: 0.05263157894736842
+tensor(416.0605, device='cuda:1')
+pval: 0.26100000739097595 -- 58th test, time elapsed 131.83488988876343 -- emperical power so far: 0.05172413793103448
+tensor(462.7324, device='cuda:1')
+pval: 0.018000001087784767 -- 59th test, time elapsed 130.9724199771881 -- emperical power so far: 0.06779661016949153
+tensor(431.1422, device='cuda:1')
+pval: 0.12300000339746475 -- 60th test, time elapsed 131.65874528884888 -- emperical power so far: 0.06666666666666667
+tensor(399.2543, device='cuda:1')
+pval: 0.49400001764297485 -- 61th test, time elapsed 131.25715517997742 -- emperical power so far: 0.06557377049180328
+tensor(396.2951, device='cuda:1')
+pval: 0.5190000534057617 -- 62th test, time elapsed 130.74165630340576 -- emperical power so far: 0.06451612903225806
+tensor(417.8038, device='cuda:1')
+pval: 0.2460000067949295 -- 63th test, time elapsed 131.09774446487427 -- emperical power so far: 0.06349206349206349
+tensor(408.2251, device='cuda:1')
+pval: 0.3570000231266022 -- 64th test, time elapsed 131.91641497612 -- emperical power so far: 0.0625
+tensor(396.7029, device='cuda:1')
+pval: 0.5090000033378601 -- 65th test, time elapsed 132.4304850101471 -- emperical power so far: 0.06153846153846154
+tensor(411.1138, device='cuda:1')
+pval: 0.3230000138282776 -- 66th test, time elapsed 130.29201555252075 -- emperical power so far: 0.06060606060606061
+tensor(391.5912, device='cuda:1')
+pval: 0.6150000095367432 -- 67th test, time elapsed 132.5619740486145 -- emperical power so far: 0.05970149253731343
+tensor(429.5612, device='cuda:1')
+pval: 0.15600000321865082 -- 68th test, time elapsed 132.00761222839355 -- emperical power so far: 0.058823529411764705
+tensor(391.0705, device='cuda:1')
+pval: 0.6170000433921814 -- 69th test, time elapsed 131.46715545654297 -- emperical power so far: 0.057971014492753624
+tensor(409.9688, device='cuda:1')
+pval: 0.3270000219345093 -- 70th test, time elapsed 130.95221948623657 -- emperical power so far: 0.05714285714285714
+tensor(398.1937, device='cuda:1')
+pval: 0.4780000150203705 -- 71th test, time elapsed 130.86069774627686 -- emperical power so far: 0.056338028169014086
+tensor(442.8359, device='cuda:1')
+pval: 0.0690000057220459 -- 72th test, time elapsed 131.16767001152039 -- emperical power so far: 0.05555555555555555
+tensor(408.6987, device='cuda:1')
+pval: 0.359000027179718 -- 73th test, time elapsed 130.39549255371094 -- emperical power so far: 0.0547945205479452
+tensor(443.9758, device='cuda:1')
+pval: 0.05700000375509262 -- 74th test, time elapsed 133.18495154380798 -- emperical power so far: 0.05405405405405406
+tensor(457.3612, device='cuda:1')
+pval: 0.027000000700354576 -- 75th test, time elapsed 131.770272731781 -- emperical power so far: 0.06666666666666667
+tensor(420.3384, device='cuda:1')
+pval: 0.2070000171661377 -- 76th test, time elapsed 132.64027166366577 -- emperical power so far: 0.06578947368421052
+tensor(436.7118, device='cuda:1')
+pval: 0.0820000022649765 -- 77th test, time elapsed 132.04272484779358 -- emperical power so far: 0.06493506493506493
+tensor(457.5229, device='cuda:1')
+pval: 0.021000001579523087 -- 78th test, time elapsed 133.21890258789062 -- emperical power so far: 0.07692307692307693
+tensor(360.3717, device='cuda:1')
+pval: 0.9150000214576721 -- 79th test, time elapsed 131.49196791648865 -- emperical power so far: 0.0759493670886076
+tensor(388.7095, device='cuda:1')
+pval: 0.6430000066757202 -- 80th test, time elapsed 133.17762351036072 -- emperical power so far: 0.075
+tensor(412.4424, device='cuda:1')
+pval: 0.3070000112056732 -- 81th test, time elapsed 134.5630338191986 -- emperical power so far: 0.07407407407407407
+tensor(391.6835, device='cuda:1')
+pval: 0.5750000476837158 -- 82th test, time elapsed 131.79893112182617 -- emperical power so far: 0.07317073170731707
+tensor(392.3857, device='cuda:1')
+pval: 0.5860000252723694 -- 83th test, time elapsed 133.63088846206665 -- emperical power so far: 0.07228915662650602
+tensor(411.7924, device='cuda:1')
+pval: 0.31800001859664917 -- 84th test, time elapsed 132.42904949188232 -- emperical power so far: 0.07142857142857142
+tensor(398.5457, device='cuda:1')
+pval: 0.49500003457069397 -- 85th test, time elapsed 131.62779259681702 -- emperical power so far: 0.07058823529411765
+tensor(423.7176, device='cuda:1')
+pval: 0.2110000103712082 -- 86th test, time elapsed 131.41666841506958 -- emperical power so far: 0.06976744186046512
+tensor(421.4815, device='cuda:1')
+pval: 0.21400001645088196 -- 87th test, time elapsed 131.27920246124268 -- emperical power so far: 0.06896551724137931
+tensor(360.4652, device='cuda:1')
+pval: 0.9230000376701355 -- 88th test, time elapsed 132.06555080413818 -- emperical power so far: 0.06818181818181818
+tensor(426.9492, device='cuda:1')
+pval: 0.1680000126361847 -- 89th test, time elapsed 132.36016964912415 -- emperical power so far: 0.06741573033707865
+tensor(400.0464, device='cuda:1')
+pval: 0.4820000231266022 -- 90th test, time elapsed 132.5736038684845 -- emperical power so far: 0.06666666666666667
+tensor(344.6525, device='cuda:1')
+pval: 0.9830000400543213 -- 91th test, time elapsed 132.86777567863464 -- emperical power so far: 0.06593406593406594
+tensor(423.7455, device='cuda:1')
+pval: 0.19600000977516174 -- 92th test, time elapsed 132.80271339416504 -- emperical power so far: 0.06521739130434782
+tensor(402.9169, device='cuda:1')
+pval: 0.4580000340938568 -- 93th test, time elapsed 133.27518224716187 -- emperical power so far: 0.06451612903225806
+tensor(392.0377, device='cuda:1')
+pval: 0.5700000524520874 -- 94th test, time elapsed 132.64170145988464 -- emperical power so far: 0.06382978723404255
+tensor(413.3454, device='cuda:1')
+pval: 0.3020000159740448 -- 95th test, time elapsed 131.31559681892395 -- emperical power so far: 0.06315789473684211
+tensor(416.8220, device='cuda:1')
+pval: 0.2880000174045563 -- 96th test, time elapsed 131.3344612121582 -- emperical power so far: 0.0625
+tensor(438.1849, device='cuda:1')
+pval: 0.0860000029206276 -- 97th test, time elapsed 132.1236653327942 -- emperical power so far: 0.061855670103092786
+tensor(379.1103, device='cuda:1')
+pval: 0.7670000195503235 -- 98th test, time elapsed 131.63642477989197 -- emperical power so far: 0.061224489795918366
+tensor(405.8886, device='cuda:1')
+pval: 0.4130000174045563 -- 99th test, time elapsed 131.95519757270813 -- emperical power so far: 0.06060606060606061
+tensor(427.2390, device='cuda:1')
+pval: 0.1510000079870224 -- 100th test, time elapsed 132.02178478240967 -- emperical power so far: 0.06
+tensor(372.3350, device='cuda:1')
+pval: 0.8360000252723694 -- 101th test, time elapsed 133.05902075767517 -- emperical power so far: 0.0594059405940594
+tensor(451.3486, device='cuda:1')
+pval: 0.03700000047683716 -- 102th test, time elapsed 131.4588623046875 -- emperical power so far: 0.06862745098039216
+tensor(455.3795, device='cuda:1')
+pval: 0.021000001579523087 -- 103th test, time elapsed 131.60376381874084 -- emperical power so far: 0.07766990291262135
+tensor(453.4468, device='cuda:1')
+pval: 0.04000000283122063 -- 104th test, time elapsed 131.2238645553589 -- emperical power so far: 0.08653846153846154
+tensor(381.4491, device='cuda:1')
+pval: 0.706000030040741 -- 105th test, time elapsed 129.75167083740234 -- emperical power so far: 0.08571428571428572
+tensor(422.6192, device='cuda:1')
+pval: 0.1900000125169754 -- 106th test, time elapsed 132.95235800743103 -- emperical power so far: 0.08490566037735849
+tensor(369.1101, device='cuda:1')
+pval: 0.8660000562667847 -- 107th test, time elapsed 132.7492139339447 -- emperical power so far: 0.08411214953271028
+tensor(431.7029, device='cuda:1')
+pval: 0.1380000114440918 -- 108th test, time elapsed 131.3141815662384 -- emperical power so far: 0.08333333333333333
+tensor(469.4122, device='cuda:1')
+pval: 0.006000000052154064 -- 109th test, time elapsed 131.66760206222534 -- emperical power so far: 0.09174311926605505
+tensor(426.8428, device='cuda:1')
+pval: 0.1510000079870224 -- 110th test, time elapsed 132.9420804977417 -- emperical power so far: 0.09090909090909091
+tensor(367.6870, device='cuda:1')
+pval: 0.8830000162124634 -- 111th test, time elapsed 131.7266983985901 -- emperical power so far: 0.09009009009009009
+tensor(402.3128, device='cuda:1')
+pval: 0.44700002670288086 -- 112th test, time elapsed 132.1356565952301 -- emperical power so far: 0.08928571428571429
+tensor(384.6901, device='cuda:1')
+pval: 0.6540000438690186 -- 113th test, time elapsed 131.76521801948547 -- emperical power so far: 0.08849557522123894
+tensor(419.9861, device='cuda:1')
+pval: 0.24300001561641693 -- 114th test, time elapsed 134.6694757938385 -- emperical power so far: 0.08771929824561403
+tensor(425.7176, device='cuda:1')
+pval: 0.1720000058412552 -- 115th test, time elapsed 133.1776294708252 -- emperical power so far: 0.08695652173913043
+tensor(381.5453, device='cuda:1')
+pval: 0.7160000205039978 -- 116th test, time elapsed 133.28088474273682 -- emperical power so far: 0.08620689655172414
+tensor(421.1428, device='cuda:1')
+pval: 0.21800000965595245 -- 117th test, time elapsed 131.4899561405182 -- emperical power so far: 0.08547008547008547
+tensor(382.7274, device='cuda:1')
+pval: 0.7190000414848328 -- 118th test, time elapsed 130.596031665802 -- emperical power so far: 0.0847457627118644
+tensor(410.3371, device='cuda:1')
+pval: 0.31800001859664917 -- 119th test, time elapsed 130.66815185546875 -- emperical power so far: 0.08403361344537816
+tensor(417.2521, device='cuda:1')
+pval: 0.26600000262260437 -- 120th test, time elapsed 131.50672888755798 -- emperical power so far: 0.08333333333333333
+tensor(419.8442, device='cuda:1')
+pval: 0.23400001227855682 -- 121th test, time elapsed 131.8917474746704 -- emperical power so far: 0.08264462809917356
+tensor(394.0270, device='cuda:1')
+pval: 0.5660000443458557 -- 122th test, time elapsed 132.9730806350708 -- emperical power so far: 0.08196721311475409
+tensor(370.4012, device='cuda:1')
+pval: 0.8410000205039978 -- 123th test, time elapsed 131.79951310157776 -- emperical power so far: 0.08130081300813008
+tensor(368.8521, device='cuda:1')
+pval: 0.8510000109672546 -- 124th test, time elapsed 132.163645029068 -- emperical power so far: 0.08064516129032258
+tensor(435.7697, device='cuda:1')
+pval: 0.11300000548362732 -- 125th test, time elapsed 133.22336292266846 -- emperical power so far: 0.08
+tensor(468.6310, device='cuda:1')
+pval: 0.00800000037997961 -- 126th test, time elapsed 132.98925638198853 -- emperical power so far: 0.0873015873015873
+tensor(396.3261, device='cuda:1')
+pval: 0.5120000243186951 -- 127th test, time elapsed 132.7429838180542 -- emperical power so far: 0.08661417322834646
+tensor(380.5001, device='cuda:1')
+pval: 0.7330000400543213 -- 128th test, time elapsed 131.58663058280945 -- emperical power so far: 0.0859375
+tensor(388.5398, device='cuda:1')
+pval: 0.6440000534057617 -- 129th test, time elapsed 132.79289174079895 -- emperical power so far: 0.08527131782945736
+tensor(461.8138, device='cuda:1')
+pval: 0.014000000432133675 -- 130th test, time elapsed 132.27186632156372 -- emperical power so far: 0.09230769230769231
+tensor(401.0250, device='cuda:1')
+pval: 0.46700000762939453 -- 131th test, time elapsed 131.9398398399353 -- emperical power so far: 0.0916030534351145
+tensor(417.0404, device='cuda:1')
+pval: 0.25699999928474426 -- 132th test, time elapsed 131.5783793926239 -- emperical power so far: 0.09090909090909091
+tensor(419.0202, device='cuda:1')
+pval: 0.21300001442432404 -- 133th test, time elapsed 131.01637482643127 -- emperical power so far: 0.09022556390977443
+tensor(380.9188, device='cuda:1')
+pval: 0.7290000319480896 -- 134th test, time elapsed 131.8705677986145 -- emperical power so far: 0.08955223880597014
+tensor(478.0955, device='cuda:1')
+pval: 0.005000000353902578 -- 135th test, time elapsed 131.89999866485596 -- emperical power so far: 0.0962962962962963
+tensor(393.8460, device='cuda:1')
+pval: 0.5490000247955322 -- 136th test, time elapsed 131.34525895118713 -- emperical power so far: 0.09558823529411764
+tensor(410.4781, device='cuda:1')
+pval: 0.33000001311302185 -- 137th test, time elapsed 132.43706488609314 -- emperical power so far: 0.0948905109489051
+tensor(405.2567, device='cuda:1')
+pval: 0.4410000145435333 -- 138th test, time elapsed 130.6722662448883 -- emperical power so far: 0.09420289855072464
+tensor(418.2164, device='cuda:1')
+pval: 0.23000000417232513 -- 139th test, time elapsed 132.4976966381073 -- emperical power so far: 0.09352517985611511
+tensor(416.9329, device='cuda:1')
+pval: 0.26600000262260437 -- 140th test, time elapsed 132.25449347496033 -- emperical power so far: 0.09285714285714286
+tensor(417.4224, device='cuda:1')
+pval: 0.25600001215934753 -- 141th test, time elapsed 132.85900354385376 -- emperical power so far: 0.09219858156028368
+tensor(412.6669, device='cuda:1')
+pval: 0.3240000009536743 -- 142th test, time elapsed 131.1425437927246 -- emperical power so far: 0.09154929577464789
+tensor(416.9773, device='cuda:1')
+pval: 0.27400001883506775 -- 143th test, time elapsed 132.98699593544006 -- emperical power so far: 0.09090909090909091
+tensor(353.5685, device='cuda:1')
+pval: 0.9540000557899475 -- 144th test, time elapsed 132.47841000556946 -- emperical power so far: 0.09027777777777778
+tensor(414.5758, device='cuda:1')
+pval: 0.2930000126361847 -- 145th test, time elapsed 132.06221914291382 -- emperical power so far: 0.0896551724137931
+tensor(448.3892, device='cuda:1')
+pval: 0.04400000348687172 -- 146th test, time elapsed 133.02777194976807 -- emperical power so far: 0.0958904109589041
+tensor(475.4574, device='cuda:1')
+pval: 0.004000000189989805 -- 147th test, time elapsed 132.99629616737366 -- emperical power so far: 0.10204081632653061
+tensor(378.8762, device='cuda:1')
+pval: 0.7540000081062317 -- 148th test, time elapsed 133.3934292793274 -- emperical power so far: 0.10135135135135136
+tensor(369.0991, device='cuda:1')
+pval: 0.8490000367164612 -- 149th test, time elapsed 131.29073548316956 -- emperical power so far: 0.10067114093959731
+tensor(396.9197, device='cuda:1')
+pval: 0.5300000309944153 -- 150th test, time elapsed 130.86810779571533 -- emperical power so far: 0.1
+tensor(412.0646, device='cuda:1')
+pval: 0.3110000193119049 -- 151th test, time elapsed 132.6352822780609 -- emperical power so far: 0.09933774834437085
+tensor(493.7950, device='cuda:1')
+pval: 0.0020000000949949026 -- 152th test, time elapsed 132.05990767478943 -- emperical power so far: 0.10526315789473684
+tensor(394.9484, device='cuda:1')
+pval: 0.5630000233650208 -- 153th test, time elapsed 132.03771138191223 -- emperical power so far: 0.10457516339869281
+tensor(400.2416, device='cuda:1')
+pval: 0.4910000264644623 -- 154th test, time elapsed 133.13099002838135 -- emperical power so far: 0.1038961038961039
+tensor(408.7132, device='cuda:1')
+pval: 0.39100003242492676 -- 155th test, time elapsed 132.7619023323059 -- emperical power so far: 0.1032258064516129
+tensor(427.3744, device='cuda:1')
+pval: 0.16200000047683716 -- 156th test, time elapsed 131.8536672592163 -- emperical power so far: 0.10256410256410256
+tensor(427.6530, device='cuda:1')
+pval: 0.1680000126361847 -- 157th test, time elapsed 132.01016402244568 -- emperical power so far: 0.10191082802547771
+tensor(416.7111, device='cuda:1')
+pval: 0.2800000011920929 -- 158th test, time elapsed 132.03590631484985 -- emperical power so far: 0.10126582278481013
+tensor(403.2291, device='cuda:1')
+pval: 0.4410000145435333 -- 159th test, time elapsed 133.22417068481445 -- emperical power so far: 0.10062893081761007
+tensor(427.4604, device='cuda:1')
+pval: 0.14100000262260437 -- 160th test, time elapsed 133.51872992515564 -- emperical power so far: 0.1
+tensor(389.8567, device='cuda:1')
+pval: 0.6150000095367432 -- 161th test, time elapsed 131.0540120601654 -- emperical power so far: 0.09937888198757763
+tensor(410.3418, device='cuda:1')
+pval: 0.3530000150203705 -- 162th test, time elapsed 133.4351692199707 -- emperical power so far: 0.09876543209876543
+tensor(469.5152, device='cuda:1')
+pval: 0.005000000353902578 -- 163th test, time elapsed 131.32364320755005 -- emperical power so far: 0.10429447852760736
+tensor(415.6399, device='cuda:1')
+pval: 0.27000001072883606 -- 164th test, time elapsed 132.22012209892273 -- emperical power so far: 0.10365853658536585
+tensor(442.3702, device='cuda:1')
+pval: 0.07200000435113907 -- 165th test, time elapsed 133.1395401954651 -- emperical power so far: 0.10303030303030303
+tensor(465.0153, device='cuda:1')
+pval: 0.013000000268220901 -- 166th test, time elapsed 130.96845269203186 -- emperical power so far: 0.10843373493975904
+tensor(382.9039, device='cuda:1')
+pval: 0.7190000414848328 -- 167th test, time elapsed 132.3563904762268 -- emperical power so far: 0.10778443113772455
+tensor(413.8503, device='cuda:1')
+pval: 0.2990000247955322 -- 168th test, time elapsed 129.72336173057556 -- emperical power so far: 0.10714285714285714
+tensor(370.4818, device='cuda:1')
+pval: 0.8360000252723694 -- 169th test, time elapsed 132.62382555007935 -- emperical power so far: 0.10650887573964497
+tensor(374.6833, device='cuda:1')
+pval: 0.8010000586509705 -- 170th test, time elapsed 131.63056302070618 -- emperical power so far: 0.10588235294117647
+tensor(442.7779, device='cuda:1')
+pval: 0.06200000271201134 -- 171th test, time elapsed 132.7929515838623 -- emperical power so far: 0.10526315789473684
+tensor(412.7584, device='cuda:1')
+pval: 0.30400002002716064 -- 172th test, time elapsed 133.16994833946228 -- emperical power so far: 0.10465116279069768
+tensor(426.2306, device='cuda:1')
+pval: 0.17000000178813934 -- 173th test, time elapsed 132.3955898284912 -- emperical power so far: 0.10404624277456648
+tensor(369.8394, device='cuda:1')
+pval: 0.8480000495910645 -- 174th test, time elapsed 132.38364553451538 -- emperical power so far: 0.10344827586206896
+tensor(384.2695, device='cuda:1')
+pval: 0.703000009059906 -- 175th test, time elapsed 132.36299324035645 -- emperical power so far: 0.10285714285714286
+tensor(412.9820, device='cuda:1')
+pval: 0.31300002336502075 -- 176th test, time elapsed 131.1496844291687 -- emperical power so far: 0.10227272727272728
+tensor(399.5102, device='cuda:1')
+pval: 0.4930000305175781 -- 177th test, time elapsed 131.82200980186462 -- emperical power so far: 0.1016949152542373
+tensor(437.7738, device='cuda:1')
+pval: 0.09600000083446503 -- 178th test, time elapsed 132.75696682929993 -- emperical power so far: 0.10112359550561797
+tensor(373.8270, device='cuda:1')
+pval: 0.8140000104904175 -- 179th test, time elapsed 134.0166506767273 -- emperical power so far: 0.1005586592178771
+tensor(444.3410, device='cuda:1')
+pval: 0.058000002056360245 -- 180th test, time elapsed 132.6050591468811 -- emperical power so far: 0.1
+tensor(386.9744, device='cuda:1')
+pval: 0.6480000019073486 -- 181th test, time elapsed 133.14301109313965 -- emperical power so far: 0.09944751381215469
+tensor(431.1204, device='cuda:1')
+pval: 0.12200000882148743 -- 182th test, time elapsed 131.63464498519897 -- emperical power so far: 0.0989010989010989
+tensor(357.3594, device='cuda:1')
+pval: 0.9330000281333923 -- 183th test, time elapsed 132.12413048744202 -- emperical power so far: 0.09836065573770492
+tensor(451.1436, device='cuda:1')
+pval: 0.032999999821186066 -- 184th test, time elapsed 130.88299894332886 -- emperical power so far: 0.10326086956521739
+tensor(425.4304, device='cuda:1')
+pval: 0.1770000010728836 -- 185th test, time elapsed 132.53019857406616 -- emperical power so far: 0.10270270270270271
+tensor(398.2822, device='cuda:1')
+pval: 0.5210000276565552 -- 186th test, time elapsed 131.43509340286255 -- emperical power so far: 0.10215053763440861
+tensor(400.2094, device='cuda:1')
+pval: 0.47200003266334534 -- 187th test, time elapsed 130.67831325531006 -- emperical power so far: 0.10160427807486631
+tensor(368.0468, device='cuda:1')
+pval: 0.862000048160553 -- 188th test, time elapsed 131.9888837337494 -- emperical power so far: 0.10106382978723404
+tensor(404.2780, device='cuda:1')
+pval: 0.42500001192092896 -- 189th test, time elapsed 133.57049226760864 -- emperical power so far: 0.10052910052910052
+tensor(388.2822, device='cuda:1')
+pval: 0.6370000243186951 -- 190th test, time elapsed 129.58359336853027 -- emperical power so far: 0.1
+tensor(376.9421, device='cuda:1')
+pval: 0.7710000276565552 -- 191th test, time elapsed 130.84808683395386 -- emperical power so far: 0.09947643979057591
+tensor(382.8907, device='cuda:1')
+pval: 0.7090000510215759 -- 192th test, time elapsed 130.42988848686218 -- emperical power so far: 0.09895833333333333
+tensor(373.1804, device='cuda:1')
+pval: 0.7970000505447388 -- 193th test, time elapsed 132.08039617538452 -- emperical power so far: 0.09844559585492228
+tensor(430.8710, device='cuda:1')
+pval: 0.12400000542402267 -- 194th test, time elapsed 130.9908275604248 -- emperical power so far: 0.0979381443298969
+tensor(421.2041, device='cuda:1')
+pval: 0.23400001227855682 -- 195th test, time elapsed 131.85015416145325 -- emperical power so far: 0.09743589743589744
+tensor(397.9440, device='cuda:1')
+pval: 0.49000000953674316 -- 196th test, time elapsed 132.14691948890686 -- emperical power so far: 0.09693877551020408
+tensor(429.5811, device='cuda:1')
+pval: 0.13199999928474426 -- 197th test, time elapsed 132.0763804912567 -- emperical power so far: 0.09644670050761421
+tensor(379.3323, device='cuda:1')
+pval: 0.7500000596046448 -- 198th test, time elapsed 132.8054645061493 -- emperical power so far: 0.09595959595959595
+tensor(449.5531, device='cuda:1')
+pval: 0.04000000283122063 -- 199th test, time elapsed 131.68198943138123 -- emperical power so far: 0.10050251256281408
+tensor(403.7123, device='cuda:1')
+pval: 0.4190000295639038 -- 200th test, time elapsed 130.95740914344788 -- emperical power so far: 0.1
+26429.78777551651

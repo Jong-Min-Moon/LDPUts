@@ -111,11 +111,11 @@ class server(ABC):
 
     def get_grand_mean(self):
         return(
-            self.get_sum_y(torch.arange(self.n)).add(
-                self.get_sum_z(torch.arange(self.n))
-            ).div(self.n)
-        ).to(torch.float)
-  
+            torch.add(
+                self.get_sum_y(torch.arange(self.n)),
+                self.get_sum_z(torch.arange(self.n)).to(self.cuda_device_y)
+            ).div(self.n).to(torch.float)
+        )
         
         
 
@@ -169,14 +169,14 @@ class server_multinomial_bitflip(server):
 
         self.cov_est = torch.matmul(
             torch.transpose( self.data_y.sub(self.grand_mean),0,1 ),
-            self.data_y.sub(self.grand_mean)
+            self.data_y.sub(self.grand_mean.to(self.cuda_device_y) )
         #
         ).add(
         #
         torch.matmul(
             torch.transpose( self.data_z.sub(self.grand_mean),0,1 ),
-            self.data_z.sub(self.grand_mean)
-                )
+            self.data_z.sub(self.grand_mean.to(self.cuda_device_z) )
+                ).to(self.cuda_device_y)
         #
         ).div(
         #
@@ -221,7 +221,7 @@ class server_multinomial_genrr(server_multinomial_bitflip):
     def _get_statistic(self, perm):
         mu_hat_diff_square = torch.sub(
             self.get_mean_y(perm),
-            self.get_mean_z(perm)
+            self.get_mean_z(perm).to(self.cuda_device_y)
             ).square()
         
         mean_recip_est = self.grand_mean.reciprocal()
