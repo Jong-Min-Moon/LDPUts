@@ -158,9 +158,36 @@ class server_ell2(server):
         statistic = u_y + u_z - u_cross #scalar
         return(statistic) 
 
+class server_multinomial_genrr(server):
+    def _get_statistic(self, perm):
+        mu_hat_diff_square = self.get_mean_diff(perm).square()
+        self.grand_mean = self.grand_mean.to(self.cuda_device_y)
+        mean_recip_est = self.grand_mean.reciprocal()
+        mean_recip_est[mean_recip_est.isinf()] = 0
+        scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
 
+        statistic = mu_hat_diff_square.mul(
+            mean_recip_est  
+            ).mul(scaling_constant).sum()
+        return(statistic)
 
-class server_multinomial_bitflip(server):
+    def release_p_value(self):
+        test_stat = self.get_original_statistic()
+        print(self.chisq_distribution.df)
+        print(test_stat)     
+        return(1 - self.chisq_distribution.cdf(test_stat))
+
+    def get_mean_diff(self, perm):
+        mean_y = self.get_mean_y(perm)
+        mean_y = mean_y.to(self.cuda_device_y)
+
+        mean_z = self.get_mean_z(perm)
+        mean_z = mean_z.to(self.cuda_device_y)
+      
+        mu_hat_diff =  torch.sub(mean_y, mean_z)
+        return(mu_hat_diff)
+        
+class server_multinomial_bitflip(server_multinomial_genrr):
     def load_private_data_multinomial_z(self, data_z, alphabet_size ):
         #covariance estimation, for both of genrr and bitflip
         super().load_private_data_multinomial_z(data_z, alphabet_size); 
@@ -184,11 +211,7 @@ class server_multinomial_bitflip(server):
 
         self.proj = self.get_proj_orth_one_space()
 
-    def release_p_value(self):
-        test_stat = self.get_original_statistic()
-        print(self.chisq_distribution.df)
-        print(test_stat)     
-        return(1 - self.chisq_distribution.cdf(test_stat))
+
 
     
  
@@ -215,28 +238,9 @@ class server_multinomial_bitflip(server):
         one_projector = one_projector.to(torch.float).to(self.cuda_device_y)
         return(one_projector)
 
-    def get_mean_diff(self, perm):
-        mean_y = self.get_mean_y(perm)
-        mean_y = mean_y.to(self.cuda_device_y)
 
-        mean_z = self.get_mean_z(perm)
-        mean_z = mean_z.to(self.cuda_device_y)
-      
-        mu_hat_diff =  torch.sub(mean_y, mean_z)
-        return(mu_hat_diff)
        
-class server_multinomial_genrr(server_multinomial_bitflip):
-    def _get_statistic(self, perm):
-        mu_hat_diff_square = self.get_mean_diff(perm).square()
-        self.grand_mean = self.grand_mean.to(self.cuda_device_y)
-        mean_recip_est = self.grand_mean.reciprocal()
-        mean_recip_est[mean_recip_est.isinf()] = 0
-        scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
 
-        statistic = mu_hat_diff_square.mul(
-            mean_recip_est  
-            ).mul(scaling_constant).sum()
-        return(statistic)
 
 
 
