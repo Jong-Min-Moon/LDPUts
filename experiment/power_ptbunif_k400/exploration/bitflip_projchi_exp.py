@@ -11,20 +11,19 @@ import numpy as np
 
 
 
-device = torch.device("cuda:0")
-
+device_0 = torch.device("cuda:0")
+device_1 = torch.device("cuda:1")
 
 priv_mech = "bitflip"
 statistic = "projchi"
 
 #1/2/sqrt(400)/(0.5^2) = 0.1
 # eta = sqrt(0.1/n)
-sample_size_list = [300000]
+sample_size_list = [600000]
 privacy_level = 0.5
-bump_size = 0.001
-alphabet_size = 400
+bump_size = 0.02
+alphabet_size = 40
 n_permutation = 999
-print(device)
 print(priv_mech + "_" + statistic)
 print(f"privacy level = {privacy_level}")
 
@@ -67,7 +66,7 @@ for sample_size in sample_size_list:
                 data_gen.generate_multinomial_data(p1, sample_size),
                 alphabet_size,
                 privacy_level,
-                device
+                device_0
                 ),
             alphabet_size
         )
@@ -77,14 +76,14 @@ for sample_size in sample_size_list:
                 data_gen.generate_multinomial_data(p2, sample_size),
                 alphabet_size,
                 privacy_level,
-                device
+                device_1
                 ),
             alphabet_size
         )
     
     
-        p_value_array[i,0] = server_private.release_p_value_permutation(n_permutation)
-
+        #p_value_array[i,0] = server_private.release_p_value_permutation(n_permutation)
+        p_value_array[i,0] = server_private.release_p_value()
         server_private.delete_data()
     
         t_end_i = time.time() - t_start_i

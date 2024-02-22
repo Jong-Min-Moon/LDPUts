@@ -4,7 +4,7 @@ import gc
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2, server_multinomial_bitflip
+from server_old import server_multinomial_bitflip
 from data_generator import data_generator
 from discretizer import discretizer
 import time
@@ -12,7 +12,7 @@ import numpy as np
 from scipy.stats import chi2
 from utils import chi_sq_dist
 
-device = torch.device("cuda:1")
+device = torch.device("cuda:0")
 
 
 priv_mech = "bitflip"
@@ -27,7 +27,7 @@ print(device)
 print(priv_mech + "_" + statistic)
 print(f"privacy level = {privacy_level}, sample size = {sample_size}")
 
-n_test = 2
+n_test = 1
 significance_level = 0.05
 server_private = server_multinomial_bitflip(privacy_level)
 

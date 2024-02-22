@@ -3,7 +3,7 @@
 #SBATCH --job-name=k_1000_priv_5_bitflip_projchi_exp
 #SBATCH --partition=all
 #SBATCH --account=user213
-#SBATCH --mem=10gb
+#SBATCH --mem=60gb
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=99:59:59

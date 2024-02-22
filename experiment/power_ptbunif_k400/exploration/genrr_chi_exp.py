@@ -18,10 +18,10 @@ priv_mech = "genrr"
 statistic = "chi"
 
 
-sample_size_list = [600000]
+sample_size_list = [200000]
 privacy_level = 2
 bump_size = 0.0009
-alphabet_size = 1000
+alphabet_size = 400
 n_permutation = 999
 print(priv_mech + "_" + statistic)
 print(f"privacy level = {privacy_level}")

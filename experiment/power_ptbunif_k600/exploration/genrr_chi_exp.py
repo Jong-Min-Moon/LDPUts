@@ -24,7 +24,6 @@ privacy_level = 2
 bump_size = 0.00049
 alphabet_size = 2000
 n_permutation = 999
-print(device)
 print(priv_mech + "_" + statistic)
 print(f"privacy level = {privacy_level}")
 
