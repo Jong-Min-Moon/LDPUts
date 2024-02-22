@@ -159,6 +159,9 @@ class server_ell2(server):
         return(statistic) 
 
 class server_multinomial_genrr(server):
+    def load_private_data_multinomial_z(self, data_z, alphabet_size):
+        self.scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
+
     def _get_statistic(self, perm):
         mu_hat_diff_square = self.get_mean_diff(perm).square()
         self.grand_mean = self.grand_mean.to(self.cuda_device_y)
@@ -168,7 +171,7 @@ class server_multinomial_genrr(server):
 
         statistic = mu_hat_diff_square.mul(
             mean_recip_est  
-            ).mul(scaling_constant).sum()
+            ).mul(self.scaling_constant).sum()
         return(statistic)
 
     def release_p_value(self):
@@ -188,7 +191,7 @@ class server_multinomial_genrr(server):
         return(mu_hat_diff)
         
 class server_multinomial_bitflip(server_multinomial_genrr):
-    def load_private_data_multinomial_z(self, data_z, alphabet_size ):
+    def load_private_data_multinomial_z(self, data_z, alphabet_size):
         #covariance estimation, for both of genrr and bitflip
         super().load_private_data_multinomial_z(data_z, alphabet_size); 
 
@@ -221,13 +224,13 @@ class server_multinomial_bitflip(server_multinomial_genrr):
             self.proj,
             self.get_mean_diff(perm)
         )
-        scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
+        
         statistic = torch.dot(
             proj_mu_hat_diff,
             torch.solve(
                 proj_mu_hat_diff.reshape(-1,1), 
                 self.cov_est).solution.flatten()
-        ).mul(scaling_constant)
+        ).mul(self.scaling_constant)
         return(statistic)
     
     def get_proj_orth_one_space(self):
@@ -238,6 +241,16 @@ class server_multinomial_bitflip(server_multinomial_genrr):
         one_projector = one_projector.to(torch.float).to(self.cuda_device_y)
         return(one_projector)
 
+   def release_p_value_permutation(self, n_permutation):
+            
+        original_statistic = self.get_original_statistic()
+        permuted_statistic_vec = torch.empty(n_permutation).to(self.cuda_device_y)
+       
+        for i in range(n_permutation):   
+            permuted_statistic_vec[i] = self._get_statistic( torch.randperm(self.n_1 + self.n_2) )
+      
+        return(self.get_p_value_proxy(permuted_statistic_vec, original_statistic))
+    
 
        
 
