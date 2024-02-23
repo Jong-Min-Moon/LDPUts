@@ -107,7 +107,7 @@ class genrr(lapu):
         p = 1 / ( privacy_level_exp.add(alphabet_size - 1) )
         p = torch.zeros(size = torch.Size([sample_size, alphabet_size])).add(1).mul(p)
         p = p.mul(bias_matrix)
-        return( torch.multinomial(p, 1).view(-1).to(cuda_device) )  
+        return( torch.multinomial(p, 1).view(-1))  
 
 class bitflip(lapu):   
     def privatize(self, data_mutinomial, alphabet_size, privacy_level, cuda_device):
@@ -130,4 +130,4 @@ class bitflip(lapu):
             data_bitflip.eq(2).mul(-2)
         )
 
-        return(data_bitflip.to(cuda_device))
+        return(data_bitflip)

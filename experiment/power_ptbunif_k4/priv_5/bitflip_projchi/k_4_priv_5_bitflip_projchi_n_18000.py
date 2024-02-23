@@ -56,30 +56,26 @@ for i in range(n_test):
     torch.manual_seed(i)
   
 
-    server_private.load_private_data_multinomial_y(
+    server_private.load_private_data_multinomial(
         LDPclient.release_private(priv_mech,
             data_gen.generate_multinomial_data(p1, sample_size),
             alphabet_size,
             privacy_level,
             device
             ),
-        alphabet_size
-    )
-
-    server_private.load_private_data_multinomial_z(
-        LDPclient.release_private(priv_mech,
+       LDPclient.release_private(priv_mech,
             data_gen.generate_multinomial_data(p2, sample_size),
             alphabet_size,
             privacy_level,
             device
             ),
-        alphabet_size
+        alphabet_size,
+        device,
+        device
     )
-   
-   
     p_value_array[i,0] = server_private.release_p_value_permutation(n_permutation)
 
-    server_private.delete_data()
+    
   
     t_end_i = time.time() - t_start_i
     print(f"pval: {p_value_array[i,0]} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_array[0:(i+1)] < significance_level).mean()}")

@@ -4,7 +4,7 @@ import gc
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2, server_multinomial_genrr, server_multinomial_genrr
+from server_old import server_multinomial_genrr
 from data_generator import data_generator
 from discretizer import discretizer
 import time
@@ -12,7 +12,7 @@ import numpy as np
 from scipy.stats import chi2
 from utils import chi_sq_dist
 
-device = torch.device("cuda:1")
+device = torch.device("cuda:0")
 
 
 priv_mech = "genrr"
@@ -56,22 +56,23 @@ for i in range(n_test):
     torch.manual_seed(i)
   
 
-    server_private.load_private_data_multinomial(
+    server_private.load_private_data_multinomial_y(
         LDPclient.release_private(priv_mech,
             data_gen.generate_multinomial_data(p1, sample_size),
             alphabet_size,
             privacy_level,
             device
             ),
+                    alphabet_size
+        )
+    server_private.load_private_data_multinomial_z(
         LDPclient.release_private(priv_mech,
             data_gen.generate_multinomial_data(p2, sample_size),
             alphabet_size,
             privacy_level,
             device
             ),
-        alphabet_size,
-        device,
-        device
+        alphabet_size
     )
 
  

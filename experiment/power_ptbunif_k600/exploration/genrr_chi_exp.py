@@ -12,17 +12,17 @@ import numpy as np
 
 
 device_y = torch.device("cuda:0")
-device_z = torch.device("cuda:1")
+device_z = torch.device("cuda:0")
 
 
 priv_mech = "genrr"
 statistic = "chi"
 
 
-sample_size_list = [600000]
+sample_size_list = [300000]
 privacy_level = 2
-bump_size = 0.00049
-alphabet_size = 2000
+bump_size = 0.0009
+alphabet_size = 1000
 n_permutation = 999
 print(priv_mech + "_" + statistic)
 print(f"privacy level = {privacy_level}")

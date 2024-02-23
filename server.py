@@ -84,7 +84,7 @@ class server(ABC):
     
     def delete_data(self):
         del self.data_y
-        4
+        
         del self.data_z  
         gc.collect()
         torch.cuda.empty_cache()
@@ -109,11 +109,7 @@ class server(ABC):
     def get_mean_z(self, perm):
         return self.get_sum_z(perm).div(self.n_2).to(torch.float)
 
-    def get_grand_mean(self):
-        sum_y = self.get_sum_y(torch.arange(self.n))
-        sum_z = self.get_sum_z(torch.arange(self.n)).to(self.cuda_device_y)
-        grand_mean = torch.add(sum_z, sum_y).div(self.n).to(torch.float)
-        return(grand_mean)
+  
         
         
 
@@ -159,15 +155,38 @@ class server_ell2(server):
         return(statistic) 
 
 class server_multinomial_genrr(server):
-    def load_private_data_multinomial_z(self, data_z, alphabet_size):
+    def load_private_data_multinomial_y(self, data_y, alphabet_size):
+        return()
+    def load_private_data_multinomial_z(self, data_z, alphabet_size): 
+        return()
+
+    def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
+        self.alphabet_size = alphabet_size
+        self.n_1 = torch.tensor(utils.get_sample_size(data_y))
+        self.n_2 = torch.tensor(utils.get_sample_size(data_z))
+        self.n = self.n_1 + self.n_2
         self.scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
+        self.chisq_distribution = torch.distributions.chi2.Chi2(
+            torch.tensor(self.alphabet_size - 1)
+        )
+        self.data_y = torch.nn.functional.one_hot( data_y , self.alphabet_size).float()
+        self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).float()
+        self.cuda_device_y = device_y
+        self.cuda_device_z = device_z
+
+        self.mean_recip_est = self.get_grand_mean().reciprocal().to(self.cuda_device_y)
+        print(self.mean_recip_est)
+        self.mean_recip_est[self.mean_recip_est.isinf()] = 0
+
+ 
+        self.data_y = self.data_y.to(self.cuda_device_y)
+        self.data_z = self.data_z.to(self.cuda_device_z)
 
     def _get_statistic(self, perm):
         mu_hat_diff_square = self.get_mean_diff(perm).square()
-        self.grand_mean = self.grand_mean.to(self.cuda_device_y)
+        self.grand_mean = self.get_grand_mean().to(self.cuda_device_y)
         mean_recip_est = self.grand_mean.reciprocal()
         mean_recip_est[mean_recip_est.isinf()] = 0
-        scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
 
         statistic = mu_hat_diff_square.mul(
             mean_recip_est  
@@ -180,7 +199,28 @@ class server_multinomial_genrr(server):
         print(test_stat)     
         return(1 - self.chisq_distribution.cdf(test_stat))
 
+    def release_p_value_permutation(self, n_permutation):
+        mu_hat_diff_mat = torch.empty([self.alphabet_size, (n_permutation+1) ]).to(self.cuda_device_y)
+       
+        for i in range(n_permutation):
+            mu_hat_diff_mat[:,i] = self.get_mean_diff( torch.randperm(self.n_1 + self.n_2) )
+        mu_hat_diff_mat[:,n_permutation] =  self.get_mean_diff( torch.arange(self.n) )
+        self.delete_data
+
+        mu_hat_diff_square_mat = mu_hat_diff_mat.square()
+        print(mu_hat_diff_square_mat.size())
+        print( self.mean_recip_est.size())
+        permuted_statistic_vec = torch.mul(mu_hat_diff_square_mat , self.mean_recip_est.unsqueeze(1)).sum(dim=0).mul(self.scaling_constant)        
+        print(permuted_statistic_vec[n_permutation])
+        return(
+            self.get_p_value_proxy(
+                permuted_statistic_vec[:n_permutation],
+                permuted_statistic_vec[n_permutation]
+                )
+        )
+
     def get_mean_diff(self, perm):
+        
         mean_y = self.get_mean_y(perm)
         mean_y = mean_y.to(self.cuda_device_y)
 
@@ -189,42 +229,62 @@ class server_multinomial_genrr(server):
       
         mu_hat_diff =  torch.sub(mean_y, mean_z)
         return(mu_hat_diff)
-        
+
+    def get_grand_mean(self):
+        perm_toY_fromY, perm_toY_fromZ, _, _ = utils.split_perm(torch.arange(self.n), self.n_1)
+        sum_y = self.data_y[perm_toY_fromY].sum(0).add( self.data_z[perm_toY_fromZ].sum(0) ).to(torch.float)
+        _, _, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(torch.arange(self.n), self.n_1)   
+        sum_z = self.data_y[perm_toZ_fromY].sum(0).add( self.data_z[perm_toZ_fromZ].sum(0) ).to(torch.float)
+        grand_mean = torch.add(sum_z, sum_y).div(self.n).to(torch.float)
+        return(grand_mean)
+
 class server_multinomial_bitflip(server_multinomial_genrr):
-    def load_private_data_multinomial_z(self, data_z, alphabet_size):
-        #covariance estimation, for both of genrr and bitflip
-        super().load_private_data_multinomial_z(data_z, alphabet_size); 
+    def load_private_data_multinomial_y(self, data_y, alphabet_size):
+        return()
+    def load_private_data_multinomial_z(self, data_z, alphabet_size): 
+        return()
+
+    def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
+        self.alphabet_size = alphabet_size
+        self.n_1 = torch.tensor(utils.get_sample_size(data_y))
+        self.n_2 = torch.tensor(utils.get_sample_size(data_z))
+        self.n = self.n_1 + self.n_2
+        self.scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
+        self.chisq_distribution = torch.distributions.chi2.Chi2(
+            torch.tensor(self.alphabet_size - 1)
+        )
+        self.data_y = data_y
+        self.data_z = data_z
+        self.get_cov_est()
+
+        self.cuda_device_y = device_y
+        self.cuda_device_z = device_z
+        self.data_y = self.data_y.to(self.cuda_device_y)
+        self.data_z = self.data_z.to(self.cuda_device_z)
+        self.proj = self.get_proj_orth_one_space()
+
+    def get_cov_est(self):
+        
 
         self.grand_mean = self.get_grand_mean()
-
         self.cov_est = torch.matmul(
             torch.transpose( self.data_y.sub(self.grand_mean),0,1 ),
-            self.data_y.sub(self.grand_mean.to(self.cuda_device_y) )
-        #
+            self.data_y.sub(self.grand_mean)
         )
-
-        self.grand_mean = self.grand_mean.to(self.cuda_device_z)
-        
         cov_est_z = torch.matmul(
             torch.transpose( self.data_z.sub(self.grand_mean),0,1 ),
             self.data_z.sub(self.grand_mean )
-                ).to(self.cuda_device_y)
-
+                )
         self.cov_est = self.cov_est.add(cov_est_z).div(self.n-1).to(torch.float)
 
-        self.proj = self.get_proj_orth_one_space()
 
-
-
-    
- 
        
     def _get_statistic(self, perm):
         proj_mu_hat_diff = torch.mv(
             self.proj,
             self.get_mean_diff(perm)
         )
-        
+        #torch.solve(B,A) (old version) solves AX=B i.e. X = A^{-1}B
         statistic = torch.dot(
             proj_mu_hat_diff,
             torch.solve(
@@ -232,7 +292,7 @@ class server_multinomial_bitflip(server_multinomial_genrr):
                 self.cov_est).solution.flatten()
         ).mul(self.scaling_constant)
         return(statistic)
-    
+
     def get_proj_orth_one_space(self):
         matrix_iden = torch.eye(self.alphabet_size)
         one_one_t = torch.ones( torch.Size([self.alphabet_size, self.alphabet_size]) )
@@ -240,16 +300,26 @@ class server_multinomial_bitflip(server_multinomial_genrr):
         one_projector = matrix_iden.sub(one_one_t_over_d)
         one_projector = one_projector.to(torch.float).to(self.cuda_device_y)
         return(one_projector)
-
-   def release_p_value_permutation(self, n_permutation):
-            
-        original_statistic = self.get_original_statistic()
-        permuted_statistic_vec = torch.empty(n_permutation).to(self.cuda_device_y)
+        
+    def release_p_value_permutation(self, n_permutation):
+        mu_hat_diff_mat = torch.empty([self.alphabet_size, (n_permutation+1) ]).to(self.cuda_device_y)
        
-        for i in range(n_permutation):   
-            permuted_statistic_vec[i] = self._get_statistic( torch.randperm(self.n_1 + self.n_2) )
-      
-        return(self.get_p_value_proxy(permuted_statistic_vec, original_statistic))
+        for i in range(n_permutation):
+            mu_hat_diff_mat[:,i] = self.get_mean_diff( torch.randperm(self.n_1 + self.n_2) )
+        mu_hat_diff_mat[:,n_permutation] =  self.get_mean_diff( torch.arange(self.n) )
+        self.delete_data
+
+        self.cov_est = self.cov_est.to(self.cuda_device_y)
+        proj_mu_hat_diff_mat = torch.mm(self.proj, mu_hat_diff_mat)
+        Sigma_inv_proj_mu_hat_diff_mat = torch.solve(proj_mu_hat_diff_mat, self.cov_est).solution
+        permuted_statistic_vec = torch.mul(proj_mu_hat_diff_mat, Sigma_inv_proj_mu_hat_diff_mat).sum(dim=0).mul(self.scaling_constant)
+        print(permuted_statistic_vec[n_permutation])
+        return(
+            self.get_p_value_proxy(
+                permuted_statistic_vec[:n_permutation],
+                permuted_statistic_vec[n_permutation]
+                )
+        )
     
 
        

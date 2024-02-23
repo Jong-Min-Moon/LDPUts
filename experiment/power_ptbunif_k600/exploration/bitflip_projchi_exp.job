@@ -1,11 +1,11 @@
 #!/bin/bash 
 #
-#SBATCH --job-name=k_1000_priv_5_bitflip_projchi_exp
+#SBATCH --job-name=n500k_k1000_eta0009_bitflip
 #SBATCH --partition=all
 #SBATCH --account=user213
-#SBATCH --mem=20gb
+#SBATCH --mem=25gb
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=5
 #SBATCH --time=99:59:59
 #SBATCH --output=/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k600/exploration/bitflip_projchi_exp.out
 #SBATCH --nodelist=gpu-compute
