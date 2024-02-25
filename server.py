@@ -13,47 +13,22 @@ class server(ABC):
         self.privacy_level = privacy_level
         self.n_1 = torch.tensor(0)
         self.n_2 = torch.tensor(0)
-
-    def load_private_data_multinomial_y(self, data_y, alphabet_size):
-        self.n_1 = torch.tensor(utils.get_sample_size(data_y))
+        
+    def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
         self.alphabet_size = alphabet_size
+        self.n_1 = torch.tensor(utils.get_sample_size(data_y))
+        self.n_2 = torch.tensor(utils.get_sample_size(data_z))
+        self.n = self.n_1 + self.n_2
+        self.scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
         self.chisq_distribution = torch.distributions.chi2.Chi2(
             torch.tensor(self.alphabet_size - 1)
         )
 
- 
-        if self.is_integer_form(data_y):
-            self.data_y = torch.nn.functional.one_hot( data_y , self.alphabet_size).float()
-        else:
-            self.data_y = data_y
-        
-        self.data_y_square_colsum = self.data_y.square().sum(1)
-        self.cuda_device_y = data_y.device
-        del data_y
-        gc.collect()
-        torch.cuda.empty_cache()
 
-    def load_private_data_multinomial_z(self, data_z, alphabet_size):
-        if not self.is_y_loaded:
-            raise Exception("Load Y data first")
-        
-        if self.alphabet_size != alphabet_size:
-            raise Exception("different alphabet sizes")
-            
-              
-        self.n_2 = torch.tensor(utils.get_sample_size(data_z))
-        self.n = (self.n_1 + self.n_2).to(self.cuda_device_y)
-        
-        if self.is_integer_form(data_z):
-            self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).float()
-        else:
-            self.data_z = data_z
+    def push_data_to_gpu(self):
+        self.data_y = self.data_y.to(self.cuda_device_y)
+        self.data_z = self.data_z.to(self.cuda_device_z)
 
-        self.data_z_square_colsum = self.data_z.square().sum(1)
-        self.cuda_device_z = data_z.device
-        del data_z
-        gc.collect()
-        torch.cuda.empty_cache()
 
     def release_p_value_permutation(self, n_permutation):
             
@@ -115,6 +90,10 @@ class server(ABC):
 
 
 class server_ell2(server):
+    def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
+        super().load_private_data_multinomial(data_y, data_z, alphabet_size, device_y, device_z);
+        self.push_data_to_gpu()
+
     def _get_statistic(self, perm):
         perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1) 
         y_row_sum = self.get_sum_y(perm)
@@ -155,32 +134,17 @@ class server_ell2(server):
         return(statistic) 
 
 class server_multinomial_genrr(server):
-    def load_private_data_multinomial_y(self, data_y, alphabet_size):
-        return()
-    def load_private_data_multinomial_z(self, data_z, alphabet_size): 
-        return()
-
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
-        self.alphabet_size = alphabet_size
-        self.n_1 = torch.tensor(utils.get_sample_size(data_y))
-        self.n_2 = torch.tensor(utils.get_sample_size(data_z))
-        self.n = self.n_1 + self.n_2
-        self.scaling_constant = 1/(1/ self.n_1 + 1/ self.n_2)
-        self.chisq_distribution = torch.distributions.chi2.Chi2(
-            torch.tensor(self.alphabet_size - 1)
-        )
+        super().load_private_data_multinomial(data_y, data_z, alphabet_size, device_y, device_z);
         self.data_y = torch.nn.functional.one_hot( data_y , self.alphabet_size).float()
         self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).float()
         self.cuda_device_y = device_y
         self.cuda_device_z = device_z
 
         self.mean_recip_est = self.get_grand_mean().reciprocal().to(self.cuda_device_y)
-        print(self.mean_recip_est)
         self.mean_recip_est[self.mean_recip_est.isinf()] = 0
 
- 
-        self.data_y = self.data_y.to(self.cuda_device_y)
-        self.data_z = self.data_z.to(self.cuda_device_z)
+        self.push_data_to_gpu()
 
     def _get_statistic(self, perm):
         mu_hat_diff_square = self.get_mean_diff(perm).square()
@@ -208,8 +172,6 @@ class server_multinomial_genrr(server):
         self.delete_data
 
         mu_hat_diff_square_mat = mu_hat_diff_mat.square()
-        print(mu_hat_diff_square_mat.size())
-        print( self.mean_recip_est.size())
         permuted_statistic_vec = torch.mul(mu_hat_diff_square_mat , self.mean_recip_est.unsqueeze(1)).sum(dim=0).mul(self.scaling_constant)        
         print(permuted_statistic_vec[n_permutation])
         return(
@@ -239,10 +201,7 @@ class server_multinomial_genrr(server):
         return(grand_mean)
 
 class server_multinomial_bitflip(server_multinomial_genrr):
-    def load_private_data_multinomial_y(self, data_y, alphabet_size):
-        return()
-    def load_private_data_multinomial_z(self, data_z, alphabet_size): 
-        return()
+
 
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
         self.alphabet_size = alphabet_size
@@ -259,8 +218,7 @@ class server_multinomial_bitflip(server_multinomial_genrr):
 
         self.cuda_device_y = device_y
         self.cuda_device_z = device_z
-        self.data_y = self.data_y.to(self.cuda_device_y)
-        self.data_z = self.data_z.to(self.cuda_device_z)
+        self.push_data_to_gpu()
         self.proj = self.get_proj_orth_one_space()
 
     def get_cov_est(self):

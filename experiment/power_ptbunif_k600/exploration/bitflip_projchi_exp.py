@@ -17,10 +17,9 @@ device_z = torch.device("cuda:1")
 priv_mech = "bitflip"
 statistic = "projchi"
 
-#1/2/sqrt(400)/(0.5^2) = 0.1
-# eta = sqrt(0.1/n)
+
 sample_size_list = [500000]
-privacy_level = 1
+privacy_level = 0.5
 bump_size = 0.0009
 alphabet_size = 1000
 n_permutation = 999

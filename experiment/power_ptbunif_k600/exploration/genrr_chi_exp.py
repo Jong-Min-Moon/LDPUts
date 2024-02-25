@@ -19,8 +19,8 @@ priv_mech = "genrr"
 statistic = "chi"
 
 
-sample_size_list = [300000]
-privacy_level = 2
+sample_size_list = [500000]
+privacy_level = 1
 bump_size = 0.0009
 alphabet_size = 1000
 n_permutation = 999
@@ -61,25 +61,23 @@ for sample_size in sample_size_list:
         torch.manual_seed(i)
   
 
-        server_private.load_private_data_multinomial_y(
-            LDPclient.release_private("genrr",
-                data_gen.generate_multinomial_data(p1, sample_size),
-                alphabet_size,
-                privacy_level,
-                device_y
-                ),
-            alphabet_size
-        )
-
-        server_private.load_private_data_multinomial_z(
-            LDPclient.release_private("genrr",
-                data_gen.generate_multinomial_data(p2, sample_size),
-                alphabet_size,
-                privacy_level,
-                device_z
-                ),
-            alphabet_size
-        )
+        server_private.load_private_data_multinomial(
+        LDPclient.release_private(priv_mech,
+            data_gen.generate_multinomial_data(p1, sample_size),
+            alphabet_size,
+            privacy_level,
+            device_y
+            ),
+        LDPclient.release_private(priv_mech,
+            data_gen.generate_multinomial_data(p2, sample_size),
+            alphabet_size,
+            privacy_level,
+            device_y
+            ),
+        alphabet_size,
+        device_y,
+        device_y
+    )
     
     
         p_value_array[i,0] = server_private.release_p_value_permutation(n_permutation)
