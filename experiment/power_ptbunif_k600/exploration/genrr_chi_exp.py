@@ -20,7 +20,7 @@ statistic = "chi"
 
 
 sample_size_list = [500000]
-privacy_level = 1
+privacy_level = 0.5
 bump_size = 0.0009
 alphabet_size = 1000
 n_permutation = 999

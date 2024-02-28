@@ -18,7 +18,7 @@ priv_mech = "bitflip"
 statistic = "projchi"
 
 
-sample_size_list = [500000]
+sample_size_list = [250000]
 privacy_level = 0.5
 bump_size = 0.0009
 alphabet_size = 1000

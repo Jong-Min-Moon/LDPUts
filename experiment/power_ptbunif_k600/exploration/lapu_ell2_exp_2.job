@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=99:59:59
-#SBATCH --output=/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k600/exploration/lapu_ell2_exp.out
+#SBATCH --output=/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k600/exploration/lapu_ell2_exp_2.out
 #SBATCH --nodelist=gpu-compute
 
 CONDA_BIN_PATH=/opt/miniconda/bin
@@ -15,4 +15,4 @@ ENV_NAME=mjmGPUenv
 ENV_PATH=/mnt/nas/users/$(whoami)/.conda/envs/$ENV_NAME
 source $CONDA_BIN_PATH/activate $ENV_PATH
 
-python -u /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k600/exploration/lapu_ell2_exp.py > /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k600/exploration/lapu_ell2_exp.out
+python -u /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k600/exploration/lapu_ell2_exp_2.py > /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k600/exploration/lapu_ell2_exp_2.out

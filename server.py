@@ -23,7 +23,8 @@ class server(ABC):
         self.chisq_distribution = torch.distributions.chi2.Chi2(
             torch.tensor(self.alphabet_size - 1)
         )
-
+        self.cuda_device_y = device_y
+        self.cuda_device_z = device_z
 
     def push_data_to_gpu(self):
         self.data_y = self.data_y.to(self.cuda_device_y)
@@ -92,6 +93,10 @@ class server(ABC):
 class server_ell2(server):
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
         super().load_private_data_multinomial(data_y, data_z, alphabet_size, device_y, device_z);
+        self.data_y_square_colsum = data_y.square().sum(1)
+        self.data_z_square_colsum = data_z.square().sum(1)
+        self.data_y = data_y
+        self.data_z = data_z
         self.push_data_to_gpu()
 
     def _get_statistic(self, perm):
@@ -138,8 +143,7 @@ class server_multinomial_genrr(server):
         super().load_private_data_multinomial(data_y, data_z, alphabet_size, device_y, device_z);
         self.data_y = torch.nn.functional.one_hot( data_y , self.alphabet_size).float()
         self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).float()
-        self.cuda_device_y = device_y
-        self.cuda_device_z = device_z
+
 
         self.mean_recip_est = self.get_grand_mean().reciprocal().to(self.cuda_device_y)
         self.mean_recip_est[self.mean_recip_est.isinf()] = 0
@@ -201,8 +205,6 @@ class server_multinomial_genrr(server):
         return(grand_mean)
 
 class server_multinomial_bitflip(server_multinomial_genrr):
-
-
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
         self.alphabet_size = alphabet_size
         self.n_1 = torch.tensor(utils.get_sample_size(data_y))
@@ -221,9 +223,7 @@ class server_multinomial_bitflip(server_multinomial_genrr):
         self.push_data_to_gpu()
         self.proj = self.get_proj_orth_one_space()
 
-    def get_cov_est(self):
-        
-
+    def get_cov_est(self):        
         self.grand_mean = self.get_grand_mean()
         self.cov_est = torch.matmul(
             torch.transpose( self.data_y.sub(self.grand_mean),0,1 ),
@@ -234,8 +234,6 @@ class server_multinomial_bitflip(server_multinomial_genrr):
             self.data_z.sub(self.grand_mean )
                 )
         self.cov_est = self.cov_est.add(cov_est_z).div(self.n-1).to(torch.float)
-
-
        
     def _get_statistic(self, perm):
         proj_mu_hat_diff = torch.mv(
