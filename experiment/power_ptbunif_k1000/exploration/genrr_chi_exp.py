@@ -4,22 +4,23 @@ import gc
 from discretizer import discretizer
 from client import client
 import torch
-from server import server_ell2
+from server import server_multinomial_genrr
 from data_generator import data_generator
 import time
 import numpy as np
 
 
 
-device_y = torch.device("cuda:1")
-device_z = torch.device("cuda:1")
+device_y = torch.device("cuda:0")
+device_z = torch.device("cuda:0")
 
 
-priv_mech = "lapu"
-statistic = "ell2"
+priv_mech = "genrr"
+statistic = "chi"
 
-sample_size_list = [500000]
-privacy_level = 0.5
+
+sample_size_list = [250000]
+privacy_level = 2
 bump_size = 0.0009
 alphabet_size = 1000
 n_permutation = 999
@@ -28,7 +29,7 @@ print(f"privacy level = {privacy_level}")
 
 n_test = 200
 significance_level = 0.05
-server_private = server_ell2(privacy_level)
+server_private = server_multinomial_genrr(privacy_level)
 
 
 

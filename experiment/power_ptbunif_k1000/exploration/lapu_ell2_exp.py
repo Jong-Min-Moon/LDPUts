@@ -18,7 +18,7 @@ device_z = torch.device("cuda:1")
 priv_mech = "lapu"
 statistic = "ell2"
 
-sample_size_list = [500000]
+sample_size_list = [50000]
 privacy_level = 2
 bump_size = 0.0009
 alphabet_size = 1000
