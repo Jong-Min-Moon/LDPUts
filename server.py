@@ -93,10 +93,16 @@ class server(ABC):
 class server_ell2(server):
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
         super().load_private_data_multinomial(data_y, data_z, alphabet_size, device_y, device_z);
-        self.data_y_square_colsum = data_y.square().sum(1)
-        self.data_z_square_colsum = data_z.square().sum(1)
-        self.data_y = data_y
-        self.data_z = data_z
+        if utils.get_dimension(data_y) == 1:
+            self.data_y = torch.nn.functional.one_hot( data_y , self.alphabet_size).float()
+        if utils.get_dimension(data_z) == 1:
+            self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).float()
+        else:
+            self.data_y = data_y
+            self.data_z = data_z
+        self.data_y_square_colsum = self.data_y.square().sum(1)
+        self.data_z_square_colsum = self.data_z.square().sum(1)
+
         self.push_data_to_gpu()
 
     def _get_statistic(self, perm):

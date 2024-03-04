@@ -1,5 +1,5 @@
-bitflip_projchi
-privacy level = 2
+cuda:0
+cuda:0
 tensor([0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001,
         0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019,
         0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001,
@@ -224,31 +224,65 @@ tensor([0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019,
         0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001,
         0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019, 0.0001, 0.0019,
         0.0001])
-
-
+genrrchi, alpha=2, sample size=50000
 #########################################
-sample size = 50000
-tensor(1082.1057, device='cuda:1')
-pval: 0.026000000536441803 -- 1th test, time elapsed 50.6877760887146 -- emperical power so far: 1.0
-tensor(1062.3965, device='cuda:1')
-pval: 0.07200000435113907 -- 2th test, time elapsed 54.69075536727905 -- emperical power so far: 0.5
-tensor(1082.2499, device='cuda:1')
-pval: 0.05100000277161598 -- 3th test, time elapsed 53.11534357070923 -- emperical power so far: 0.3333333333333333
-tensor(1083.2561, device='cuda:1')
-pval: 0.04100000113248825 -- 4th test, time elapsed 52.87174153327942 -- emperical power so far: 0.5
-tensor(1135.3663, device='cuda:1')
-pval: 0.003000000026077032 -- 5th test, time elapsed 53.82121253013611 -- emperical power so far: 0.6
-tensor(1134.4243, device='cuda:1')
-pval: 0.004000000189989805 -- 6th test, time elapsed 54.48851561546326 -- emperical power so far: 0.6666666666666666
-tensor(1015.8865, device='cuda:1')
-pval: 0.34800001978874207 -- 7th test, time elapsed 53.8000214099884 -- emperical power so far: 0.5714285714285714
-tensor(1029.7400, device='cuda:1')
-pval: 0.242000013589859 -- 8th test, time elapsed 53.68736672401428 -- emperical power so far: 0.5
-tensor(1087.2828, device='cuda:1')
-pval: 0.021000001579523087 -- 9th test, time elapsed 53.54410672187805 -- emperical power so far: 0.5555555555555556
-tensor(1106.9890, device='cuda:1')
-pval: 0.01100000087171793 -- 10th test, time elapsed 54.693313121795654 -- emperical power so far: 0.6
-tensor(1026.3317, device='cuda:1')
-pval: 0.28200000524520874 -- 11th test, time elapsed 53.474753856658936 -- emperical power so far: 0.5454545454545454
-tensor(1141.2235, device='cuda:1')
-pval: 0.0020000000949949026 -- 12th test, time elapsed 54.134397745132446 -- emperical power so far: 0.5833333333333334
+tensor(1032.3733, device='cuda:0')
+pval: 0.26100000739097595 -- 1th test, time elapsed 33.100096225738525 -- emperical power so far: 0.0
+tensor(974.5577, device='cuda:0')
+pval: 0.6940000057220459 -- 2th test, time elapsed 22.341485023498535 -- emperical power so far: 0.0
+tensor(1028.5471, device='cuda:0')
+pval: 0.26500001549720764 -- 3th test, time elapsed 22.67138648033142 -- emperical power so far: 0.0
+tensor(1007.8030, device='cuda:0')
+pval: 0.42600002884864807 -- 4th test, time elapsed 23.86109495162964 -- emperical power so far: 0.0
+tensor(1019.9951, device='cuda:0')
+pval: 0.3160000145435333 -- 5th test, time elapsed 21.689626216888428 -- emperical power so far: 0.0
+tensor(1094.5048, device='cuda:0')
+pval: 0.01900000125169754 -- 6th test, time elapsed 23.280561685562134 -- emperical power so far: 0.16666666666666666
+tensor(1051.2432, device='cuda:0')
+pval: 0.1290000081062317 -- 7th test, time elapsed 22.57972812652588 -- emperical power so far: 0.14285714285714285
+tensor(979.6369, device='cuda:0')
+pval: 0.6370000243186951 -- 8th test, time elapsed 22.90095615386963 -- emperical power so far: 0.125
+tensor(962.3179, device='cuda:0')
+pval: 0.815000057220459 -- 9th test, time elapsed 22.27900719642639 -- emperical power so far: 0.1111111111111111
+tensor(1056.1322, device='cuda:0')
+pval: 0.10100000351667404 -- 10th test, time elapsed 21.860301971435547 -- emperical power so far: 0.1
+tensor(982.4725, device='cuda:0')
+pval: 0.6620000600814819 -- 11th test, time elapsed 21.97490167617798 -- emperical power so far: 0.09090909090909091
+tensor(963.9682, device='cuda:0')
+pval: 0.7830000519752502 -- 12th test, time elapsed 22.59086275100708 -- emperical power so far: 0.08333333333333333
+tensor(900.1777, device='cuda:0')
+pval: 0.9910000562667847 -- 13th test, time elapsed 22.969358682632446 -- emperical power so far: 0.07692307692307693
+tensor(956.8807, device='cuda:0')
+pval: 0.8340000510215759 -- 14th test, time elapsed 23.817705631256104 -- emperical power so far: 0.07142857142857142
+tensor(1031.1925, device='cuda:0')
+pval: 0.2370000183582306 -- 15th test, time elapsed 22.082189559936523 -- emperical power so far: 0.06666666666666667
+tensor(1006.3663, device='cuda:0')
+pval: 0.4310000240802765 -- 16th test, time elapsed 25.00025486946106 -- emperical power so far: 0.0625
+tensor(955.9378, device='cuda:0')
+pval: 0.8270000219345093 -- 17th test, time elapsed 23.705514192581177 -- emperical power so far: 0.058823529411764705
+tensor(1023.7756, device='cuda:0')
+pval: 0.2770000100135803 -- 18th test, time elapsed 21.49437189102173 -- emperical power so far: 0.05555555555555555
+tensor(900.3737, device='cuda:0')
+pval: 0.9880000352859497 -- 19th test, time elapsed 23.080045700073242 -- emperical power so far: 0.05263157894736842
+tensor(1005.9612, device='cuda:0')
+pval: 0.4190000295639038 -- 20th test, time elapsed 22.048938035964966 -- emperical power so far: 0.05
+tensor(1059.7749, device='cuda:0')
+pval: 0.09200000762939453 -- 21th test, time elapsed 20.777974367141724 -- emperical power so far: 0.047619047619047616
+tensor(987.4213, device='cuda:0')
+pval: 0.5890000462532043 -- 22th test, time elapsed 21.421494722366333 -- emperical power so far: 0.045454545454545456
+tensor(1004.0756, device='cuda:0')
+pval: 0.42900002002716064 -- 23th test, time elapsed 22.948437690734863 -- emperical power so far: 0.043478260869565216
+tensor(1019.5555, device='cuda:0')
+pval: 0.30000001192092896 -- 24th test, time elapsed 21.67974090576172 -- emperical power so far: 0.041666666666666664
+tensor(1000.0825, device='cuda:0')
+pval: 0.4790000319480896 -- 25th test, time elapsed 22.112374305725098 -- emperical power so far: 0.04
+tensor(1073.5880, device='cuda:0')
+pval: 0.04500000178813934 -- 26th test, time elapsed 21.025310277938843 -- emperical power so far: 0.07692307692307693
+tensor(982.5718, device='cuda:0')
+pval: 0.6420000195503235 -- 27th test, time elapsed 22.45280933380127 -- emperical power so far: 0.07407407407407407
+tensor(961.3372, device='cuda:0')
+pval: 0.8090000152587891 -- 28th test, time elapsed 21.139889001846313 -- emperical power so far: 0.07142857142857142
+tensor(1076.0531, device='cuda:0')
+pval: 0.04000000283122063 -- 29th test, time elapsed 23.552797317504883 -- emperical power so far: 0.10344827586206896
+tensor(1009.9902, device='cuda:0')
+pval: 0.3850000202655792 -- 30th test, time elapsed 21.812915563583374 -- emperical power so far: 0.1

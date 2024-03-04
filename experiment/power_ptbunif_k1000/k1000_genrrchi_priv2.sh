@@ -3,7 +3,7 @@
 #
 
 project_name="LDPUts"
-experiment_name="power_ptbunif_k40_ell2"
+experiment_name="power_ptbunif_k1000"
 extension_code="py"
 extension_result="npy"
 tool="python -u"
@@ -15,8 +15,11 @@ code_dir="/mnt/nas/users/user213/${project_name}/experiment/${experiment_name}"
 echo "code_dir = ${code_dir}"
 
 
-k=40
-eta=0.015
+k=1000
+eta=0.0009
+statistic=chi
+privmech=genrr
+privlev=2
 
 
 
@@ -24,8 +27,12 @@ eta=0.015
 touch ${code_dir}/temp_code
 echo "alphabet_size = ${k}" >> ${code_dir}/temp_code
 echo "bump_size = ${eta}" >> ${code_dir}/temp_code
-echo "code_dir = '${code_dir}'" >> ${code_dir}/temp_code
+echo "privacy_level = ${privlev}" >> ${code_dir}/temp_code
 
+#strings
+echo "code_dir = '${code_dir}'" >> ${code_dir}/temp_code
+echo "priv_mech = '${privmech}'" >> ${code_dir}/temp_code
+echo "statistic = '${statistic}'" >> ${code_dir}/temp_code
 cat ${code_dir}/skeleton_code.${extension_code} >> ${code_dir}/temp_code
 mv ${code_dir}/temp_code ${code_dir}/${experiment_name}.${extension_code}
 

@@ -1,6 +1,8 @@
-alphabet_size = 400
-bump_size = 0.0024
+alphabet_size = 1000
+bump_size = 0.0009
 code_dir = '/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k400'
+priv_mech = 'genrr'
+statistic = 'chi'
 
 
 

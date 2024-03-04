@@ -1,0 +1,23 @@
+cuda:1
+cuda:1
+tensor([0.2100, 0.2900, 0.2100, 0.2900])
+tensor([0.2900, 0.2100, 0.2900, 0.2100])
+genrrell2, alpha=2, sample size=1000
+#########################################
+tensor(0.0161, device='cuda:1')
+pval: 0.0010000000474974513 -- 1th test, time elapsed 19.21442198753357 -- emperical power so far: 1.0
+tensor(0.0125, device='cuda:1')
+pval: 0.0010000000474974513 -- 2th test, time elapsed 2.0053040981292725 -- emperical power so far: 1.0
+tensor(0.0158, device='cuda:1')
+pval: 0.0010000000474974513 -- 3th test, time elapsed 1.9812915325164795 -- emperical power so far: 1.0
+tensor(0.0022, device='cuda:1')
+pval: 0.058000002056360245 -- 4th test, time elapsed 1.9831602573394775 -- emperical power so far: 0.75
+tensor(0.0086, device='cuda:1')
+pval: 0.0010000000474974513 -- 5th test, time elapsed 1.990074872970581 -- emperical power so far: 0.8
+tensor(0.0148, device='cuda:1')
+pval: 0.0010000000474974513 -- 6th test, time elapsed 1.9514703750610352 -- emperical power so far: 0.8333333333333334
+tensor(0.0122, device='cuda:1')
+pval: 0.0010000000474974513 -- 7th test, time elapsed 1.891958475112915 -- emperical power so far: 0.8571428571428571
+tensor(0.0007, device='cuda:1')
+pval: 0.21700000762939453 -- 8th test, time elapsed 1.8767156600952148 -- emperical power so far: 0.75
+tensor(0.0068, device='cuda:1')

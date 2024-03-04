@@ -12,10 +12,10 @@ import time
 import numpy as np
 
 method_name = priv_mech + statistic
-device_y = torch.device("cuda:0")
-device_z = torch.device("cuda:0")
+device_y = torch.device("cuda:1")
+device_z = torch.device("cuda:1")
 
-sample_size_vec = (50000 + np.arange(0,20)*30000)
+sample_size_vec = 1000 + np.arange(0,20)*1000
 server_private_vec = {
     "ell2":server_ell2(privacy_level),
     "chi":server_multinomial_genrr(privacy_level),
