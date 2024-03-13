@@ -13,10 +13,10 @@
 
 
 #SBATCH --job-name=power_ptbunif_k1000
-#SBATCH --output=/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/result/power_ptbunif_k1000.out
+#SBATCH --output=/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/result/power_ptbunif_k1000_priv1_genrrchi.out
 CONDA_BIN_PATH=/opt/miniconda/bin
 ENV_NAME=mjmGPUenv
 ENV_PATH=/mnt/nas/users/$(whoami)/.conda/envs/$ENV_NAME
 source $CONDA_BIN_PATH/activate $ENV_PATH
 
-python -u  /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/power_ptbunif_k1000.py > /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/result/power_ptbunif_k1000.out
+python -u  /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/power_ptbunif_k1000.py > /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/result/power_ptbunif_k1000_priv1_genrrchi.out

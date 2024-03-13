@@ -1,6 +1,7 @@
 alphabet_size = 1000
 bump_size = 0.0009
-privacy_level = 2
+privacy_level = 1
+device_num = 
 code_dir = '/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000'
 priv_mech = 'genrr'
 statistic = 'chi'
