@@ -1,7 +1,0 @@
-cpu
-tensor([0.0001, 0.0009, 0.0001,  ..., 0.0009, 0.0001, 0.0009])
-tensor([0.0009, 0.0001, 0.0009,  ..., 0.0001, 0.0009, 0.0001])
-Traceback (most recent call last):
-  File "/mnt/nas/users/user213/LDPUts/simul/power/gaboardi/k_2000/priv_20/bitflip_chi/k_2000_priv_20_bitflip_chi_n_250000_high_sig.py", line 55, in <module>
-    LDPclient.load_data_multinomial(data_y, data_z, alphabet_size)   
-AttributeError: 'client' object has no attribute 'load_data_multinomial'
