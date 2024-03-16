@@ -19,34 +19,41 @@ k=1000
 eta=0.0009
 statistic=chi
 privmech=genrr
-privlev=2
+privlev=1
+device=1
+sample_size=470000
 
-
-
+filename=${experiment_name}_${privmech}${statistic}_n${sample_size}_priv${privlev}
+filename_code=${code_dir}/${filename}.${extension_code}
+filename_job=${code_dir}/${filename}.job
+filename_out=${code_dir}/${filename}.out
 # code
 touch ${code_dir}/temp_code
 echo "alphabet_size = ${k}" >> ${code_dir}/temp_code
 echo "bump_size = ${eta}" >> ${code_dir}/temp_code
 echo "privacy_level = ${privlev}" >> ${code_dir}/temp_code
+echo "device_num = ${device}" >> ${code_dir}/temp_code
+echo "sample_size = ${sample_size}" >> ${code_dir}/temp_code
 
 #strings
 echo "code_dir = '${code_dir}'" >> ${code_dir}/temp_code
 echo "priv_mech = '${privmech}'" >> ${code_dir}/temp_code
 echo "statistic = '${statistic}'" >> ${code_dir}/temp_code
 cat ${code_dir}/skeleton_code.${extension_code} >> ${code_dir}/temp_code
-mv ${code_dir}/temp_code ${code_dir}/${experiment_name}.${extension_code}
+mv ${code_dir}/temp_code ${filename_code}
 
 
 
 # job
 touch ${code_dir}/temp_job
 cat ${code_dir}/skeleton_job.job >> ${code_dir}/temp_job
-echo "#SBATCH --job-name=${experiment_name}" >> ${code_dir}/temp_job
-echo "#SBATCH --output=${code_dir}/result/${experiment_name}.out" >> ${code_dir}/temp_job
+echo "#SBATCH --job-name=${filename}" >> ${code_dir}/temp_job
+echo "#SBATCH --output=${filename_out}" >> ${code_dir}/temp_job
 cat ${code_dir}/conda_template >> ${code_dir}/temp_job
-echo "${tool}  ${code_dir}/${experiment_name}.${extension_code} > ${code_dir}/result/${experiment_name}.out" >> ${code_dir}/temp_job
-mv ${code_dir}/temp_job ${code_dir}/${experiment_name}.job
-sbatch ${code_dir}/${experiment_name}.job
+echo "${tool}  ${filename_code} > ${filename_out}" >> ${code_dir}/temp_job
+mv ${code_dir}/temp_job ${filename_job}
+sleep 3
+sbatch ${filename_job}
 
 
 
