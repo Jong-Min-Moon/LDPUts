@@ -1,5 +1,0 @@
-CONDA_BIN_PATH=/opt/miniconda/bin
-ENV_NAME=mjmGPUenv
-ENV_PATH=/mnt/nas/users/$(whoami)/.conda/envs/$ENV_NAME
-source $CONDA_BIN_PATH/activate $ENV_PATH
-
