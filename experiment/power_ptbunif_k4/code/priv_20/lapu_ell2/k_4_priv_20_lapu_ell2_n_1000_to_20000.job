@@ -1,0 +1,18 @@
+#!/bin/bash 
+#
+#SBATCH --job-name=k_4_priv_20_lapu_ell2_n_1000_to_20000
+#SBATCH --partition=all
+#SBATCH --account=user213
+#SBATCH --mem=10gb
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=99:59:59
+#SBATCH --output=/mnt/nas/users/user213/LDPUts/experiment/power_perturbedunif_k4/priv_20/lapu_ell2/k_4_priv_20_lapu_ell2_n_1000_to_20000.out
+#SBATCH --nodelist=gpu-compute
+
+CONDA_BIN_PATH=/opt/miniconda/bin
+ENV_NAME=mjmGPUenv
+ENV_PATH=/mnt/nas/users/$(whoami)/.conda/envs/$ENV_NAME
+source $CONDA_BIN_PATH/activate $ENV_PATH
+
+python -u /mnt/nas/users/user213/LDPUts/experiment/power_perturbedunif_k4/priv_20/lapu_ell2/k_4_priv_20_lapu_ell2_n_1000_to_20000.py > /mnt/nas/users/user213/LDPUts/experiment/power_perturbedunif_k4/priv_20/lapu_ell2/k_4_priv_20_lapu_ell2_n_1000_to_20000.out
