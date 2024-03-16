@@ -3,7 +3,7 @@
 #SBATCH --nodelist=gpu-compute
 #SBATCH --partition=all
 #SBATCH --account=user213
-#SBATCH --mem=45gb
+#SBATCH --mem=35gb
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=99:59:59

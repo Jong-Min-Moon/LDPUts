@@ -12,8 +12,9 @@ import time
 import numpy as np
 import sqlite3
 from datetime import datetime
-con = sqlite3.connect('/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db')
-cursor_db = con.cursor()
+from random import randint
+from time import sleep
+
 
 method_name = priv_mech + statistic
 cuda_string = "cuda:" + str(device_num)
@@ -81,14 +82,29 @@ for i in range(n_test):
 
     p_val_now = server_private.release_p_value_permutation(n_permutation)
     p_value_array[i] = p_val_now
-    server_private.delete_data()
-    data_entry = (i+1, k, bump_size, privacy_level, int(n), statistic, priv_mech, p_val_now, time_now)
-    cursor_db.execute(
-                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry,
-            )
-  
     t_end_i = time.time() - t_start_i
     print(f"pval: {p_val_now} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_array[0:(i+1)] < significance_level).mean()}")
+    server_private.delete_data()
+   
+    #insert into database
+    try:
+        data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
+        sleep(randint(1,10))
+        con = sqlite3.connect('/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db')
+        cursor_db = con.cursor()
+        cursor_db.execute(
+                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry,
+            )
+        con.close()
+    except:
+        data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
+        sleep(randint(1,10))
+        con = sqlite3.connect('/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db')
+        cursor_db = con.cursor()
+        cursor_db.execute(
+                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry,
+            )
+        con.close()       
  
 elapsed = time.time() - t
 print(elapsed)

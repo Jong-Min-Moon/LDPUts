@@ -1,8 +1,8 @@
 alphabet_size = 1000
 bump_size = 0.0009
 privacy_level = 1
-device_num = 1
-sample_size = 470000
+device_num = 0
+sample_size = 500000
 code_dir = '/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000'
 priv_mech = 'genrr'
 statistic = 'chi'
@@ -20,6 +20,8 @@ import time
 import numpy as np
 import sqlite3
 from datetime import datetime
+from random import randint
+from time import sleep
 
 
 method_name = priv_mech + statistic
@@ -61,9 +63,8 @@ print("#########################################")
 p_value_array = np.zeros([n_test, 1])
 t = time.time()
             
-for i in range(25,n_test):
+for i in range(n_test):
     t_start_i = time.time()
-    print(f"{i+1}th rep")
     torch.manual_seed(i)
     server_private.load_private_data_multinomial(
         LDPclient.release_private(
@@ -89,15 +90,11 @@ for i in range(25,n_test):
 
     p_val_now = server_private.release_p_value_permutation(n_permutation)
     p_value_array[i] = p_val_now
-    server_private.delete_data()
-    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
-    cursor_db.execute(
-                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry,
-            )
-  
     t_end_i = time.time() - t_start_i
     print(f"pval: {p_val_now} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_array[0:(i+1)] < significance_level).mean()}")
-        #insert into database
+    server_private.delete_data()
+   
+    #insert into database
     try:
         data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
         sleep(randint(1,10))
@@ -115,7 +112,8 @@ for i in range(25,n_test):
         cursor_db.execute(
                 "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry,
             )
-        con.close()   
+        con.close()       
+ 
 elapsed = time.time() - t
 print(elapsed)
 
