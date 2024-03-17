@@ -1,6 +1,4 @@
 
-
-
 import sys
 sys.path.insert(0, '/mnt/nas/users/user213/LDPUts')
 import gc
@@ -82,13 +80,13 @@ for i in range(n_test):
 
     p_val_now = server_private.release_p_value_permutation(n_permutation)
     p_value_array[i] = p_val_now
+    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
     t_end_i = time.time() - t_start_i
     print(f"pval: {p_val_now} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_array[0:(i+1)] < significance_level).mean()}")
     server_private.delete_data()
    
     #insert into database
     try:
-        data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
         sleep(randint(1,10))
         con = sqlite3.connect('/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db')
         cursor_db = con.cursor()
@@ -97,7 +95,6 @@ for i in range(n_test):
             )
         con.close()
     except:
-        data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
         sleep(randint(1,10))
         con = sqlite3.connect('/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db')
         cursor_db = con.cursor()
