@@ -21,7 +21,20 @@ from datetime import datetime
 from random import randint
 from time import sleep
 
-db_dir = "/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db"
+def insert_data(data_entry):
+    db_dir = "/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db"
+    sleep(randint(1,10))
+    con = sqlite3.connect(db_dir)
+    cursor_db = con.cursor()
+    cursor_db.execute(
+                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, statistic_val, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
+            )
+    cursor_db.close()
+    con.commit()
+    con.close()
+    print("db insert success")
+
+
 method_name = priv_mech + statistic
 cuda_string = "cuda:" + str(device_num)
 device_y = torch.device(cuda_string)
@@ -58,7 +71,8 @@ LDPclient = client()
 
 print(f"{method_name}, alpha={privacy_level}, sample size={sample_size}")
 print("#########################################")
-p_value_array = np.zeros([n_test, 1])
+p_value_vec = np.zeros([n_test, 1])
+statistic_vec = np.zeros([n_test, 1])
 t = time.time()
             
 for i in range(n_test):
@@ -86,33 +100,18 @@ for i in range(n_test):
             
     time_now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
 
-    p_val_now = server_private.release_p_value_permutation(n_permutation)
-    p_value_array[i] = p_val_now
-    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, p_value_array[i], time_now)
+    p_value_vec[i], statistic_vec[i] = server_private.release_p_value_permutation(n_permutation)
+    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, statistic_vec[i].item(), p_value_vec[i].item(), time_now)
     print(data_entry)
     t_end_i = time.time() - t_start_i
-    print(f"pval: {p_val_now} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_array[0:(i+1)] < significance_level).mean()}")
+    print(f"pval: {p_value_vec[i]} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_vec[0:(i+1)] < significance_level).mean()}")
    
     #insert into database
     try:
-        sleep(randint(1,10))
-        con = sqlite3.connect(db_dir)
-        cursor_db = con.cursor()
-        cursor_db.execute(
-                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
-            )
-        con.close()
-        print("db insert success")
+        insert_data(data_entry)
     except:
         try:
-            randint(1,10)
-            con = sqlite3.connect(db_dir)
-            cursor_db = con.cursor()
-            cursor_db.execute(
-                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
-            )
-            con.close()
-            print("db insert success")
+            insert_data(data_entry)
         except:    
             print("db insert fail")
     server_private.delete_data()

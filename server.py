@@ -39,7 +39,7 @@ class server(ABC):
         for i in range(n_permutation):   
             permuted_statistic_vec[i] = self._get_statistic( torch.randperm(self.n_1 + self.n_2) )
       
-        return(self.get_p_value_proxy(permuted_statistic_vec, original_statistic))
+        return(self.get_p_value_proxy(permuted_statistic_vec, original_statistic), float(original_statistic))
     
     def get_original_statistic(self):
        original_statistic = self._get_statistic( torch.arange(self.n_1 + self.n_2) )
@@ -56,7 +56,7 @@ class server(ABC):
                              torch.gt(input = stat_permuted, other = stat_original)
                          )
                         ) / (stat_permuted.size(dim = 0) + 1)
-        return(p_value_proxy.cpu().item())
+        return(float(p_value_proxy))
     
     def delete_data(self):
         del self.data_y
@@ -188,7 +188,8 @@ class server_multinomial_genrr(server):
             self.get_p_value_proxy(
                 permuted_statistic_vec[:n_permutation],
                 permuted_statistic_vec[n_permutation]
-                )
+                ),
+                float(permuted_statistic_vec[n_permutation])
         )
 
     def get_mean_diff(self, perm):
@@ -280,7 +281,8 @@ class server_multinomial_bitflip(server_multinomial_genrr):
             self.get_p_value_proxy(
                 permuted_statistic_vec[:n_permutation],
                 permuted_statistic_vec[n_permutation]
-                )
+                ),
+                float(permuted_statistic_vec[n_permutation])
         )
     
 
