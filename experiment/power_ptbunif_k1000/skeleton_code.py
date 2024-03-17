@@ -19,7 +19,7 @@ def insert_data(data_entry):
     con = sqlite3.connect(db_dir)
     cursor_db = con.cursor()
     cursor_db.execute(
-                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, statistic_val, p_val, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
+                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, statistic_val, p_val, compute_time, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
             )
     cursor_db.close()
     con.commit()
@@ -93,9 +93,10 @@ for i in range(n_test):
     time_now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
 
     p_value_vec[i], statistic_vec[i] = server_private.release_p_value_permutation(n_permutation)
-    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, statistic_vec[i].item(), p_value_vec[i].item(), time_now)
-    print(data_entry)
     t_end_i = time.time() - t_start_i
+    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, statistic_vec[i].item(), p_value_vec[i].item(), float(t_end_i), time_now)
+    print(data_entry)
+    
     print(f"pval: {p_value_vec[i]} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_vec[0:(i+1)] < significance_level).mean()}")
    
     #insert into database

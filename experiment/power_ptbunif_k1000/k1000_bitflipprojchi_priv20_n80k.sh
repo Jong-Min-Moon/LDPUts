@@ -17,11 +17,11 @@ echo "code_dir = ${code_dir}"
 
 k=1000
 eta=0.0009
-statistic=chi
-privmech=genrr
-privlev=1
-device=1
-sample_size=470000
+statistic=projchi
+privmech=bitflip
+privlev=2
+device=0
+sample_size=80000
 
 filename=${experiment_name}_${privmech}${statistic}_n${sample_size}_priv${privlev}
 filename_code=${code_dir}/${filename}.${extension_code}
