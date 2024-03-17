@@ -56,7 +56,7 @@ class server(ABC):
                              torch.gt(input = stat_permuted, other = stat_original)
                          )
                         ) / (stat_permuted.size(dim = 0) + 1)
-        return(p_value_proxy.cpu())
+        return(p_value_proxy.cpu().item())
     
     def delete_data(self):
         del self.data_y
