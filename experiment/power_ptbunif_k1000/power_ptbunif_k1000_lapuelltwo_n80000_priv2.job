@@ -1,0 +1,22 @@
+#!/bin/bash 
+#
+#SBATCH --nodelist=gpu-compute
+#SBATCH --partition=all
+#SBATCH --account=user213
+#SBATCH --mem=35gb
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --time=99:59:59
+
+
+
+
+
+#SBATCH --job-name=power_ptbunif_k1000_lapuelltwo_n80000_priv2
+#SBATCH --output=/mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/power_ptbunif_k1000_lapuelltwo_n80000_priv2.out
+CONDA_BIN_PATH=/opt/miniconda/bin
+ENV_NAME=mjmGPUenv
+ENV_PATH=/mnt/nas/users/$(whoami)/.conda/envs/$ENV_NAME
+source $CONDA_BIN_PATH/activate $ENV_PATH
+
+python -u  /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/power_ptbunif_k1000_lapuelltwo_n80000_priv2.py > /mnt/nas/users/user213/LDPUts/experiment/power_ptbunif_k1000/power_ptbunif_k1000_lapuelltwo_n80000_priv2.out
