@@ -1,6 +1,6 @@
 
 import sys
-sys.path.insert(0, '/mnt/nas/users/user213/LDPUts')
+sys.path.insert(0, '/home1/jongminm/LDPUts')
 import gc
 from client import client
 import torch
@@ -14,8 +14,8 @@ from random import randint
 from time import sleep
 
 def insert_data(data_entry):
-    db_dir = "/mnt/nas/users/user213/LDPUts/experiment/LDP_minimax.db"
-    sleep(randint(1,10))
+    db_dir = "/home1/jongminm/LDPUts/experiment/LDP_minimax.db"
+    sleep(randint(1,20))
     con = sqlite3.connect(db_dir)
     cursor_db = con.cursor()
     cursor_db.execute(
@@ -28,9 +28,8 @@ def insert_data(data_entry):
 
 
 method_name = priv_mech + statistic
-cuda_string = "cuda:" + str(device_num)
-device_y = torch.device(cuda_string)
-device_z = torch.device(cuda_string)
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 server_private_vec = {
     "elltwo":server_ell2(privacy_level),
@@ -40,8 +39,8 @@ server_private_vec = {
 server_private = server_private_vec[statistic]
 
 n_permutation = 999
-print(device_y)
-print(device_z)
+
+
 n_test = 200
 significance_level = 0.05
 
@@ -76,18 +75,18 @@ for i in range(n_test):
             data_gen.generate_multinomial_data(p1, sample_size),
             alphabet_size,
             privacy_level,
-            device_y
+            device
         ),
         LDPclient.release_private(
             priv_mech,
             data_gen.generate_multinomial_data(p2, sample_size),
             alphabet_size,
             privacy_level,
-            device_z
+            device
         ),
     alphabet_size,
-    device_y,
-    device_z
+    device,
+    device
     )
             
     time_now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')

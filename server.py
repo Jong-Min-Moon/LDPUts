@@ -2,8 +2,8 @@ from abc import ABC, ABCMeta, abstractmethod
 from client import client
 import utils
 import torch
-from scipy.stats import chi2
-import numpy
+
+
 import gc
 
 class server(ABC):
