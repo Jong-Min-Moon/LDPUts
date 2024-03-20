@@ -223,10 +223,11 @@ class server_multinomial_bitflip(server_multinomial_genrr):
         )
         self.data_y = data_y
         self.data_z = data_z
-        self.get_cov_est()
-
         self.cuda_device_y = device_y
         self.cuda_device_z = device_z
+        self.get_cov_est()
+
+
         self.push_data_to_gpu()
         self.proj = self.get_proj_orth_one_space()
 
@@ -240,19 +241,21 @@ class server_multinomial_bitflip(server_multinomial_genrr):
             torch.transpose( self.data_z.sub(self.grand_mean),0,1 ),
             self.data_z.sub(self.grand_mean )
                 )
-        self.cov_est = self.cov_est.add(cov_est_z).div(self.n-1).to(torch.float)
-       
+        self.cov_est_L =  torch.cholesky(
+            self.cov_est.add(cov_est_z).div(self.n-1).to(torch.float)
+            )
+        self.cov_est_L = self.cov_est_L.to(self.cuda_device_y)
     def _get_statistic(self, perm):
+        
         proj_mu_hat_diff = torch.mv(
             self.proj,
             self.get_mean_diff(perm)
         )
-        #torch.solve(B,A) (old version) solves AX=B i.e. X = A^{-1}B
         statistic = torch.dot(
             proj_mu_hat_diff,
-            torch.solve(
+            torch.cholesky_solve(
                 proj_mu_hat_diff.reshape(-1,1), 
-                self.cov_est).solution.flatten()
+                self.cov_est_L).flatten()
         ).mul(self.scaling_constant)
         return(statistic)
 
@@ -274,7 +277,7 @@ class server_multinomial_bitflip(server_multinomial_genrr):
 
         self.cov_est = self.cov_est.to(self.cuda_device_y)
         proj_mu_hat_diff_mat = torch.mm(self.proj, mu_hat_diff_mat)
-        Sigma_inv_proj_mu_hat_diff_mat = torch.solve(proj_mu_hat_diff_mat, self.cov_est).solution
+        Sigma_inv_proj_mu_hat_diff_mat = torch.cholesky_solve(proj_mu_hat_diff_mat, self.cov_est_L)
         permuted_statistic_vec = torch.mul(proj_mu_hat_diff_mat, Sigma_inv_proj_mu_hat_diff_mat).sum(dim=0).mul(self.scaling_constant)
         print(permuted_statistic_vec[n_permutation])
         return(
