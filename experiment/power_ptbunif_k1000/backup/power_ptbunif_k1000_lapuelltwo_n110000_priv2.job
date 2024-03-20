@@ -5,14 +5,14 @@
 #SBATCH --ntasks=1
 #SBATCH --gpus-per-task=k40:1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=19gb
-#SBATCH --time=5:59:59
+#SBATCH --time=19:59:59
 
 
 
 
 
 
+#SBATCH --mem=5035mb
 #SBATCH --job-name=power_ptbunif_k1000_lapuelltwo_n110000_priv2
 #SBATCH --output=/home1/jongminm/LDPUts/experiment/power_ptbunif_k1000/power_ptbunif_k1000_lapuelltwo_n110000_priv2.out
 module purge

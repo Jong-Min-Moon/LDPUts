@@ -17,10 +17,11 @@ echo "code_dir = ${code_dir}"
 
 k=1000
 eta=0.0009
-statistic=elltwo
 privmech=lapu
+statistic=elltwo
 privlev=2
 sample_size=$((110*1000))
+memory_multiplier=3
 
 filename=${experiment_name}_${privmech}${statistic}_n${sample_size}_priv${privlev}
 filename_code=${code_dir}/${filename}.${extension_code}
@@ -45,6 +46,7 @@ mv ${code_dir}/temp_code ${filename_code}
 # job
 touch ${code_dir}/temp_job
 cat ${code_dir}/skeleton_job.job >> ${code_dir}/temp_job
+echo "#SBATCH --mem=$((memory_multiplier*2*8*sample_size*k/1024/1024))mb" >> ${code_dir}/temp_job
 echo "#SBATCH --job-name=${filename}" >> ${code_dir}/temp_job
 echo "#SBATCH --output=${filename_out}" >> ${code_dir}/temp_job
 echo "module purge" >> ${code_dir}/temp_job
