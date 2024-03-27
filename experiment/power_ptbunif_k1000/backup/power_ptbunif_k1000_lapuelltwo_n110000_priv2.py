@@ -22,7 +22,7 @@ from time import sleep
 
 def insert_data(data_entry):
     db_dir = "/home1/jongminm/LDPUts/experiment/LDP_minimax.db"
-    sleep(randint(1,10))
+    sleep(randint(1,20))
     con = sqlite3.connect(db_dir)
     cursor_db = con.cursor()
     cursor_db.execute(
