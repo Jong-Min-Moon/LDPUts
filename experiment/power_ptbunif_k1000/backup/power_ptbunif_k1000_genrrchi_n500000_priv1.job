@@ -12,7 +12,7 @@
 
 
 
-#SBATCH --mem=22888mb
+#SBATCH --mem=30517mb
 #SBATCH --job-name=power_ptbunif_k1000_genrrchi_n500000_priv1
 #SBATCH --output=/home1/jongminm/LDPUts/experiment/power_ptbunif_k1000/power_ptbunif_k1000_genrrchi_n500000_priv1.out
 module purge
