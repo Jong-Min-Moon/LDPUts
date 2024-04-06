@@ -73,7 +73,7 @@ p_value_vec = np.zeros([n_test, 1])
 statistic_vec = np.zeros([n_test, 1])
 t = time.time()
             
-for i in range(9, n_test):
+for i in range(n_test):
     t_start_i = time.time()
     torch.manual_seed(i)
     server_private.load_private_data_multinomial(
