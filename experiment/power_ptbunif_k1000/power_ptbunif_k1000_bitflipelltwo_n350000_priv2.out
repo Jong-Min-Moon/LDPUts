@@ -1013,3 +1013,15 @@ tensor(0.0006, device='cuda:0')
 pval: [0.001] -- 197th test, time elapsed 123.74585247039795 -- emperical power so far: 0.9796954314720813
 db insert success
 tensor(0.0003, device='cuda:0')
+(198, 1000, 0.0009, 2, 350000, 'elltwo', 'bitflip', 0.000335693359375, 0.0020000000949949026, 124.17477107048035, '2024-04-06 19:31:18')
+pval: [0.002] -- 198th test, time elapsed 124.17477107048035 -- emperical power so far: 0.9797979797979798
+db insert success
+tensor(0.0009, device='cuda:0')
+(199, 1000, 0.0009, 2, 350000, 'elltwo', 'bitflip', 0.000885009765625, 0.0010000000474974513, 124.0454089641571, '2024-04-06 19:33:32')
+pval: [0.001] -- 199th test, time elapsed 124.0454089641571 -- emperical power so far: 0.9798994974874372
+db insert success
+tensor(0.0009, device='cuda:0')
+(200, 1000, 0.0009, 2, 350000, 'elltwo', 'bitflip', 0.0009002685546875, 0.0010000000474974513, 124.21644186973572, '2024-04-06 19:35:48')
+pval: [0.001] -- 200th test, time elapsed 124.21644186973572 -- emperical power so far: 0.98
+db insert success
+27134.768421411514
