@@ -19,7 +19,7 @@ def insert_data(data_entry):
     con = sqlite3.connect(db_dir)
     cursor_db = con.cursor()
     cursor_db.execute(
-                "INSERT INTO ldp_disc_basic_comparison(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, statistic_val, p_val, compute_time, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
+                f"INSERT INTO {table_name}(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, statistic_val, p_val, compute_time, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
             )
     cursor_db.close()
     con.commit()
@@ -38,10 +38,10 @@ server_private_vec = {
     }
 server_private = server_private_vec[statistic]
 
-n_permutation = 999
 
 
-n_test = 200
+
+
 significance_level = 0.05
 
 
