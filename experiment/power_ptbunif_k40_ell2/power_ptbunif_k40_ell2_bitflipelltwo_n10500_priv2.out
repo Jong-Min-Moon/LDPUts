@@ -1,0 +1,14 @@
+tensor([0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400])
+tensor([0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400,
+        0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100, 0.0400, 0.0100,
+        0.0400, 0.0100, 0.0400, 0.0100])
+bitflipelltwo, alpha=2, sample size=10500
+#########################################
+/var/spool/slurm/d/job22655706/slurm_script: line 23:  1121 Killed                  python -u /home1/jongminm/LDPUts/experiment/power_ptbunif_k40_ell2/power_ptbunif_k40_ell2_bitflipelltwo_n10500_priv2.py > /home1/jongminm/LDPUts/experiment/power_ptbunif_k40_ell2/power_ptbunif_k40_ell2_bitflipelltwo_n10500_priv2.out
+slurmstepd: error: Detected 1 oom_kill event in StepId=22655706.batch. Some of the step tasks have been OOM Killed.
