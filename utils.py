@@ -1,5 +1,16 @@
 import torch
 
+def get_uniform_perturb(alphabet_size, bump_size):
+    p = torch.ones(alphabet_size).div(alphabet_size)
+    p2 = p.add(
+        torch.remainder(
+        torch.tensor(range(alphabet_size)),
+        2
+        ).add(-1/2).mul(2).mul(bump_size)
+    )
+    p1_idx = torch.cat( ( torch.arange(1, alphabet_size), torch.tensor([0])), 0)
+    p1 = p2[p1_idx]
+    return(p1, p2)
 
 def split_perm(perm, n_1):
     perm_toY = perm[     :n_1]
