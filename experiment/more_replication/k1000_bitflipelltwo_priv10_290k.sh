@@ -25,14 +25,15 @@ memory_multiplier=3
 n_permutation=999
 n_test=200
 sample_size=290000
-for jj in {1..9..1}
+for jj in {10..29..1}
 do
     test_start=$((jj*200))
 
-    filename=${experiment_name}_${privmech}${statistic}_n${sample_size}_priv${privlev}
-    filename_code=${code_dir}/${filename}.${extension_code}
-    filename_job=${code_dir}/${filename}.job
-    filename_out=${code_dir}/${filename}.out
+    filename=${experiment_name}_${privmech}${statistic}_n${sample_size}_priv${privlev}_start${test_start}
+    filename_dir=${code_dir}/${filename}
+    filename_code=${filename_dir}.${extension_code}
+    filename_job=${filename_dir}.job
+    filename_out=${filename_dir}.out
     #scalar parameters
     touch ${code_dir}/temp_code
     echo "alphabet_size = ${k}"             >> ${code_dir}/temp_code

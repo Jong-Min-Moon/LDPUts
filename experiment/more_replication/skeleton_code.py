@@ -90,13 +90,14 @@ for i in range(test_start, test_start+n_test):
     )
             
     time_now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-
-    p_value_vec[i], statistic_vec[i] = server_private.release_p_value_permutation(n_permutation)
+    p_val_now, statistic_now    = server_private.release_p_value_permutation(n_permutation)
+    p_value_vec[i-test_start]   = p_val_now
+    statistic_vec[i-test_start] = statistic_now
     t_end_i = time.time() - t_start_i
-    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, statistic_vec[i].item(), p_value_vec[i].item(), float(t_end_i), time_now)
+    data_entry = (i+1, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, statistic_now, p_val_now, float(t_end_i), time_now)
     print(data_entry)
     
-    print(f"pval: {p_value_vec[i]} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_vec[0:(i+1)] < significance_level).mean()}")
+    print(f"pval: {p_val_now} -- {i+1}th test, time elapsed {t_end_i} -- emperical power so far: {(p_value_vec[0:(i-test_start+1)] < significance_level).mean()}")
    
     #insert into database
     try:
