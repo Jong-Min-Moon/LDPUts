@@ -19,7 +19,15 @@ class client:
             return( self.genrr.privatize(data, alphabet_size, privacy_level, cuda_device) )
         elif method_name =="bitflip":
             return( self.bitflip.privatize(data, alphabet_size, privacy_level, cuda_device) )
-    
+
+    def release_private_conti(self, method_name, data, privacy_level, n_bin, cuda_device):
+        if method_name == "lapu":
+            return( self.lapu.privatize_conti(data, privacy_level, n_bin, cuda_device) )
+        elif method_name == "genrr":
+            return( self.genrr.privatize_conti(data, privacy_level, n_bin, cuda_device) )
+        elif method_name =="bitflip":
+            return( self.bitflip.privatize_conti(data, privacy_level, n_bin, cuda_device) )
+            
 
 
 
