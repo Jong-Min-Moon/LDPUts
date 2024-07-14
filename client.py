@@ -51,6 +51,7 @@ class client:
 class lapu:
     def __init__(self):
         self._initialize_laplace_generator()
+        
 
     def privatize(self, data_mutinomial, alphabet_size, privacy_level, cuda_device):
         sample_size = utils.get_sample_size(data_mutinomial)
@@ -64,10 +65,15 @@ class lapu:
         return(data_private.to(cuda_device))
            
     def _generate_noise(self, alphabet_size, privacy_level, sample_size):
+        # privacy_level is unused intentionally.
         laplace_noise = self.unit_laplace_generator.sample(sample_shape = torch.Size([sample_size, alphabet_size]))
         return(laplace_noise)
 
-        
+    def privatize_conti(self, data_conti, privacy_level, n_bin, cuda_device):
+        self.discretizer = discretizer(cuda_device)
+        data_multinomial, alphabet_size = self.discretizer.transform(data_conti, n_bin)
+        data_private = self.privatize(data_multinomial, alphabet_size, privacy_level, cuda_device)
+        return(data_private)
 
     def _get_sample_size(self, data):
         if data.dim() == 1:
