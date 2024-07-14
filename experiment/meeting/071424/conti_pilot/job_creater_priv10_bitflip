@@ -20,18 +20,20 @@ echo "code_dir = ${code_dir}"
 
 d=3
 n_bin=4
-k=64
+k=$((n_bin ** d))
 
 privmech=bitflip
 statistic=elltwo
 privlev=1
-memory_multiplier=12
+memory_multiplier=20
 n_permutation=999
 test_start=1
-n_test=10
-for ii in  20
+n_test=200
+
+sample_size_multiplier=500
+for ii in {1..20..1}
 do
-    sample_size=$((ii*1000))
+    sample_size=$((ii*sample_size_multiplier))
 
     filename=${experiment_name}_${privmech}${statistic}_n${sample_size}_priv${privlev}
     filename_code=${code_dir}/${filename}.${extension_code}
@@ -41,7 +43,6 @@ do
     touch ${code_dir}/temp_code
     echo "d = ${d}"                          >> ${code_dir}/temp_code
     echo "n_bin = ${n_bin}"                 >> ${code_dir}/temp_code
-    echo "bump_size     = ${eta}"           >> ${code_dir}/temp_code
     echo "privacy_level = ${privlev}"       >> ${code_dir}/temp_code
     echo "sample_size   = ${sample_size}"   >> ${code_dir}/temp_code
     echo "n_permutation = ${n_permutation}" >> ${code_dir}/temp_code
@@ -62,7 +63,7 @@ do
     # job
     touch ${code_dir}/temp_job
     cat ${code_dir}/skeleton_job.job >> ${code_dir}/temp_job
-    echo "#SBATCH --mem=$((memory_multiplier*2*8*sample_size*k/1024/1024))mb" >> ${code_dir}/temp_job
+    echo "#SBATCH --mem=$((3000+memory_multiplier*2*8*sample_size*k/1024/1024))mb" >> ${code_dir}/temp_job
     echo "#SBATCH --job-name=${filename}" >> ${code_dir}/temp_job
     echo "#SBATCH --output=${filename_out}" >> ${code_dir}/temp_job
     echo "module purge" >> ${code_dir}/temp_job
