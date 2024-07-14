@@ -18,7 +18,7 @@ def insert_data(data_entry, db_dir):
     con = sqlite3.connect(db_dir)
     cursor_db = con.cursor()
     cursor_db.execute(
-                f"INSERT INTO {table_name}(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, statistic_val, p_val, compute_time, jobdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
+                f"INSERT INTO {table_name}(rep, dim, bump, priv_lev, sample_size, statistic, mechanism, statistic_val, p_val, compute_time, jobdate, n_bin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data_entry
             )
     cursor_db.close()
     con.commit()
@@ -88,7 +88,7 @@ for i in range(n_test):
 
     p_value_vec[i], statistic_vec[i] = server_private.release_p_value_permutation(n_permutation)
     t_end_i = time.time() - t_start_i
-    data_entry = (test_num, alphabet_size, bump_size, privacy_level, sample_size, statistic, priv_mech, statistic_vec[i].item(), p_value_vec[i].item(), float(t_end_i), time_now)
+    data_entry = (test_num, d, bump_size, privacy_level, sample_size, statistic, priv_mech, statistic_vec[i].item(), p_value_vec[i].item(), float(t_end_i), time_now, n_bin)
     print(data_entry)
     
     print(f"pval: {p_value_vec[i]} -- {test_num}th test, time elapsed {t_end_i} -- emperical power so far (from test_start): {(p_value_vec[0:(i+1)] < significance_level).mean()}")
