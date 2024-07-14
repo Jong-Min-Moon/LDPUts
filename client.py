@@ -5,7 +5,7 @@ from discretizer import discretizer
 
 class client:
     def __init__(self):
-        
+    
         self.lapu = lapu()
         self.disclapu = disclapu()
         self.genrr = genrr()

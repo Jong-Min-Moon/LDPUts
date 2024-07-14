@@ -3,31 +3,33 @@
 #
 project_name="LDPUts"
 meeting_date="071424"
-experiment_name="k_400_curve"
+experiment_name="conti_pilot"
 db_name="071424_LDPUts"
-table_name="k400"
+table_name="d3"
 extension_code="py"
 extension_result="npy"
 tool="python -u"
 
 code_dir="/home1/jongminm/${project_name}/experiment/meeting/${meeting_date}/${experiment_name}"
-db_dir="${code_dir}/${db_name}.db"
+db_dir="/home1/jongminm/${project_name}/experiment/db/${db_name}.db"
 
 #화면에 텍스트 표시:
 echo "code_dir = ${code_dir}"
 
 
 
-k=400
-eta=0.002
+d=3
+n_bin=4
+k=64
+
 privmech=bitflip
 statistic=elltwo
 privlev=1
 memory_multiplier=12
 n_permutation=999
-test_start=201
-n_test=800
-for ii in  60 70 80 90 100 110 120 130 140 150 160 170 180 190 200
+test_start=1
+n_test=10
+for ii in  20
 do
     sample_size=$((ii*1000))
 
@@ -37,7 +39,8 @@ do
     filename_out=${code_dir}/${filename}.out
     #scalar parameters
     touch ${code_dir}/temp_code
-    echo "alphabet_size = ${k}"             >> ${code_dir}/temp_code
+    echo "d = ${d}"                          >> ${code_dir}/temp_code
+    echo "n_bin = ${n_bin}"                 >> ${code_dir}/temp_code
     echo "bump_size     = ${eta}"           >> ${code_dir}/temp_code
     echo "privacy_level = ${privlev}"       >> ${code_dir}/temp_code
     echo "sample_size   = ${sample_size}"   >> ${code_dir}/temp_code
