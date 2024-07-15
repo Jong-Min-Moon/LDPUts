@@ -1,0 +1,33 @@
+bitflipelltwo, alpha=2, sample size=6000
+#########################################
+tensor(0.0161, device='cuda:0')
+(1, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.016051292419433594, 0.0010000000474974513, 2.951141595840454, '2024-07-15 01:38:30', 4)
+pval: [0.001] -- 1th test, time elapsed 2.951141595840454 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(0.0140, device='cuda:0')
+(2, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.014028549194335938, 0.0010000000474974513, 2.9448344707489014, '2024-07-15 01:38:44', 4)
+pval: [0.001] -- 2th test, time elapsed 2.9448344707489014 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(0.0201, device='cuda:0')
+(3, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.02007579803466797, 0.0010000000474974513, 2.939753293991089, '2024-07-15 01:38:59', 4)
+pval: [0.001] -- 3th test, time elapsed 2.939753293991089 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(0.0119, device='cuda:0')
+(4, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.01190185546875, 0.0010000000474974513, 2.9406042098999023, '2024-07-15 01:39:08', 4)
+pval: [0.001] -- 4th test, time elapsed 2.9406042098999023 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(0.0172, device='cuda:0')
+(5, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.017189979553222656, 0.0010000000474974513, 2.9291367530822754, '2024-07-15 01:39:17', 4)
+pval: [0.001] -- 5th test, time elapsed 2.9291367530822754 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(0.0136, device='cuda:0')
+(6, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.013575553894042969, 0.0010000000474974513, 2.9187567234039307, '2024-07-15 01:39:22', 4)
+pval: [0.001] -- 6th test, time elapsed 2.9187567234039307 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(0.0163, device='cuda:0')
+(7, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.01627826690673828, 0.0010000000474974513, 2.9051809310913086, '2024-07-15 01:39:41', 4)
+pval: [0.001] -- 7th test, time elapsed 2.9051809310913086 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(0.0115, device='cuda:0')
+(8, 3, 0, 2, 6000, 'elltwo', 'bitflip', 0.011456489562988281, 0.0010000000474974513, 2.9118075370788574, '2024-07-15 01:40:01', 4)
+pval: [0.001] -- 8th test, time elapsed 2.9118075370788574 -- emperical power so far (from test_start): 1.0

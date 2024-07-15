@@ -22,9 +22,9 @@ d=3
 n_bin=4
 k=$((n_bin ** d))
 
-privmech=genrr
+privmech=bitflip
 statistic=elltwo
-privlev=0.5
+privlev=2
 memory_multiplier=20
 n_permutation=999
 test_start=1

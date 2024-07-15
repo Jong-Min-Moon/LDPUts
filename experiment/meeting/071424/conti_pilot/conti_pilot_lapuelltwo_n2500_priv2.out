@@ -1,0 +1,41 @@
+lapuelltwo, alpha=2, sample size=2500
+#########################################
+tensor(4.3575, device='cuda:0')
+(1, 3, 0, 2, 2500, 'elltwo', 'lapu', 4.357505798339844, 0.0020000000949949026, 2.3498950004577637, '2024-07-15 01:38:30', 4)
+pval: [0.002] -- 1th test, time elapsed 2.3498950004577637 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(8.2519, device='cuda:0')
+(2, 3, 0, 2, 2500, 'elltwo', 'lapu', 8.251853942871094, 0.0010000000474974513, 2.329258680343628, '2024-07-15 01:38:35', 4)
+pval: [0.001] -- 2th test, time elapsed 2.329258680343628 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(5.3434, device='cuda:0')
+(3, 3, 0, 2, 2500, 'elltwo', 'lapu', 5.343352317810059, 0.0010000000474974513, 2.3291807174682617, '2024-07-15 01:38:42', 4)
+pval: [0.001] -- 3th test, time elapsed 2.3291807174682617 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(3.5910, device='cuda:0')
+(4, 3, 0, 2, 2500, 'elltwo', 'lapu', 3.5910067558288574, 0.003000000026077032, 2.3162357807159424, '2024-07-15 01:39:03', 4)
+pval: [0.003] -- 4th test, time elapsed 2.3162357807159424 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(1.4912, device='cuda:0')
+(5, 3, 0, 2, 2500, 'elltwo', 'lapu', 1.491246223449707, 0.11700000613927841, 2.329718828201294, '2024-07-15 01:39:19', 4)
+pval: [0.11700001] -- 5th test, time elapsed 2.329718828201294 -- emperical power so far (from test_start): 0.8
+db insert success
+tensor(4.5559, device='cuda:0')
+(6, 3, 0, 2, 2500, 'elltwo', 'lapu', 4.5559234619140625, 0.0020000000949949026, 2.3221828937530518, '2024-07-15 01:39:41', 4)
+pval: [0.002] -- 6th test, time elapsed 2.3221828937530518 -- emperical power so far (from test_start): 0.8333333333333334
+db insert success
+tensor(3.5618, device='cuda:0')
+(7, 3, 0, 2, 2500, 'elltwo', 'lapu', 3.561845302581787, 0.003000000026077032, 2.31833815574646, '2024-07-15 01:39:47', 4)
+pval: [0.003] -- 7th test, time elapsed 2.31833815574646 -- emperical power so far (from test_start): 0.8571428571428571
+db insert success
+tensor(5.0200, device='cuda:0')
+(8, 3, 0, 2, 2500, 'elltwo', 'lapu', 5.019993305206299, 0.0020000000949949026, 2.318537712097168, '2024-07-15 01:39:55', 4)
+pval: [0.002] -- 8th test, time elapsed 2.318537712097168 -- emperical power so far (from test_start): 0.875
+db insert success
+tensor(6.1078, device='cuda:0')
+(9, 3, 0, 2, 2500, 'elltwo', 'lapu', 6.107755184173584, 0.0010000000474974513, 2.31965708732605, '2024-07-15 01:40:12', 4)
+pval: [0.001] -- 9th test, time elapsed 2.31965708732605 -- emperical power so far (from test_start): 0.8888888888888888
+db insert success
+tensor(6.3430, device='cuda:0')
+(10, 3, 0, 2, 2500, 'elltwo', 'lapu', 6.343001842498779, 0.0010000000474974513, 2.3162121772766113, '2024-07-15 01:40:15', 4)
+pval: [0.001] -- 10th test, time elapsed 2.3162121772766113 -- emperical power so far (from test_start): 0.9

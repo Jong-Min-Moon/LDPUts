@@ -1,0 +1,29 @@
+lapuelltwo, alpha=2, sample size=3000
+#########################################
+tensor(5.5046, device='cuda:0')
+(1, 3, 0, 2, 3000, 'elltwo', 'lapu', 5.504632949829102, 0.0010000000474974513, 2.4587619304656982, '2024-07-15 01:38:36', 4)
+pval: [0.001] -- 1th test, time elapsed 2.4587619304656982 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(6.2558, device='cuda:0')
+(2, 3, 0, 2, 3000, 'elltwo', 'lapu', 6.255784034729004, 0.0010000000474974513, 2.4306466579437256, '2024-07-15 01:38:52', 4)
+pval: [0.001] -- 2th test, time elapsed 2.4306466579437256 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(5.5991, device='cuda:0')
+(3, 3, 0, 2, 3000, 'elltwo', 'lapu', 5.599102973937988, 0.0010000000474974513, 2.4242587089538574, '2024-07-15 01:38:58', 4)
+pval: [0.001] -- 3th test, time elapsed 2.4242587089538574 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(4.7261, device='cuda:0')
+(4, 3, 0, 2, 3000, 'elltwo', 'lapu', 4.726097106933594, 0.0010000000474974513, 2.419816732406616, '2024-07-15 01:39:12', 4)
+pval: [0.001] -- 4th test, time elapsed 2.419816732406616 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(1.2605, device='cuda:0')
+(5, 3, 0, 2, 3000, 'elltwo', 'lapu', 1.2604804039001465, 0.10700000822544098, 2.4300906658172607, '2024-07-15 01:39:30', 4)
+pval: [0.10700001] -- 5th test, time elapsed 2.4300906658172607 -- emperical power so far (from test_start): 0.8
+db insert success
+tensor(3.8264, device='cuda:0')
+(6, 3, 0, 2, 3000, 'elltwo', 'lapu', 3.8264412879943848, 0.0010000000474974513, 2.4195852279663086, '2024-07-15 01:39:50', 4)
+pval: [0.001] -- 6th test, time elapsed 2.4195852279663086 -- emperical power so far (from test_start): 0.8333333333333334
+db insert success
+tensor(3.1134, device='cuda:0')
+(7, 3, 0, 2, 3000, 'elltwo', 'lapu', 3.113443374633789, 0.004000000189989805, 2.4200563430786133, '2024-07-15 01:40:08', 4)
+pval: [0.004] -- 7th test, time elapsed 2.4200563430786133 -- emperical power so far (from test_start): 0.8571428571428571

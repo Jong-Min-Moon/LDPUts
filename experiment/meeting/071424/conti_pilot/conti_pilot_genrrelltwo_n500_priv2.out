@@ -1,0 +1,31 @@
+genrrelltwo, alpha=2, sample size=500
+#########################################
+tensor(0.0022, device='cuda:0')
+(1, 3, 0, 2, 500, 'elltwo', 'genrr', 0.002220477908849716, 0.003000000026077032, 1.962895393371582, '2024-07-15 01:38:41', 4)
+pval: [0.003] -- 1th test, time elapsed 1.962895393371582 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(7.1056e-05, device='cuda:0')
+(2, 3, 0, 2, 500, 'elltwo', 'genrr', 7.105618715286255e-05, 0.4220000207424164, 1.967860460281372, '2024-07-15 01:38:55', 4)
+pval: [0.42200002] -- 2th test, time elapsed 1.967860460281372 -- emperical power so far (from test_start): 0.5
+db insert success
+tensor(0.0014, device='cuda:0')
+(3, 3, 0, 2, 500, 'elltwo', 'genrr', 0.001408526673913002, 0.027000000700354576, 1.9687399864196777, '2024-07-15 01:39:15', 4)
+pval: [0.027] -- 3th test, time elapsed 1.9687399864196777 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(0.0028, device='cuda:0')
+(4, 3, 0, 2, 500, 'elltwo', 'genrr', 0.002778049558401108, 0.0010000000474974513, 1.960179090499878, '2024-07-15 01:39:27', 4)
+pval: [0.001] -- 4th test, time elapsed 1.960179090499878 -- emperical power so far (from test_start): 0.75
+db insert success
+tensor(0.0005, device='cuda:0')
+(5, 3, 0, 2, 500, 'elltwo', 'genrr', 0.0004942696541547775, 0.23800000548362732, 1.9593489170074463, '2024-07-15 01:39:47', 4)
+pval: [0.23800001] -- 5th test, time elapsed 1.9593489170074463 -- emperical power so far (from test_start): 0.6
+db insert success
+tensor(0.0008, device='cuda:0')
+(6, 3, 0, 2, 500, 'elltwo', 'genrr', 0.0008148755878210068, 0.12200000882148743, 1.9688522815704346, '2024-07-15 01:40:09', 4)
+pval: [0.12200001] -- 6th test, time elapsed 1.9688522815704346 -- emperical power so far (from test_start): 0.5
+db insert success
+tensor(0.0005, device='cuda:0')
+(7, 3, 0, 2, 500, 'elltwo', 'genrr', 0.00046302005648612976, 0.22700001299381256, 1.9658889770507812, '2024-07-15 01:40:22', 4)
+pval: [0.22700001] -- 7th test, time elapsed 1.9658889770507812 -- emperical power so far (from test_start): 0.42857142857142855
+db insert success
+tensor(0.0017, device='cuda:0')
