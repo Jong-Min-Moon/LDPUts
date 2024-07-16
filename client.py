@@ -31,30 +31,6 @@ class client:
 
 
 
-        
-
-
-        
-  
-
-    
-""" class truncGaussU:
-    def __init__(self ):
-
-
-    def privatize(self, data_mutinomial, alphabet_size, privacy_level):
-        sample_size = utils.get_sample_size(data_mutinomial)
-        data_onehot = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
-        noise = self._generate_noise(alphabet_size, privacy_level, sample_size)
-        return(
-            data_onehot.add(noise).mul(alphabet_size**0.5)
-        )
-    
-    def _generate_noise(self, alphabet_size, privacy_level, sample_size):
-        noise = torch.empty(sample_size, alphabet_size)
-        upper_limit = (1/privacy_level - 1/2)
-        noise = torch.nn.init.trunc_normal_(noise,  mean=0.0, std=(2**0.5)/privacy_level, a = -upper_limit, b=upper_limit)
-        return(noise) """
     
 class lapu:
     def __init__(self):
