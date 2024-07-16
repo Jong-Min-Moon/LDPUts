@@ -1,0 +1,1203 @@
+bitflipprojchi, alpha=0.5, sample size=5000
+#########################################
+tensor(0.4378)
+tensor(0.4378)
+tensor(72.5299, device='cuda:0')
+(1, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 72.52993774414062, 0.17500001192092896, 1.830134391784668, '2024-07-16 15:17:51', 4)
+pval: [0.17500001] -- 1th test, time elapsed 1.830134391784668 -- emperical power so far (from test_start): 0.0
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(71.8919, device='cuda:0')
+(2, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 71.89185333251953, 0.2120000123977661, 1.630981206893921, '2024-07-16 15:18:03', 4)
+pval: [0.21200001] -- 2th test, time elapsed 1.630981206893921 -- emperical power so far (from test_start): 0.0
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.3528, device='cuda:0')
+(3, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.35277557373047, 0.12600000202655792, 1.6250979900360107, '2024-07-16 15:18:19', 4)
+pval: [0.126] -- 3th test, time elapsed 1.6250979900360107 -- emperical power so far (from test_start): 0.0
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(39.2935, device='cuda:0')
+(4, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 39.293514251708984, 0.9910000562667847, 1.6281273365020752, '2024-07-16 15:18:21', 4)
+pval: [0.99100006] -- 4th test, time elapsed 1.6281273365020752 -- emperical power so far (from test_start): 0.0
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(84.8743, device='cuda:0')
+(5, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 84.87430572509766, 0.039000000804662704, 1.6262245178222656, '2024-07-16 15:18:34', 4)
+pval: [0.039] -- 5th test, time elapsed 1.6262245178222656 -- emperical power so far (from test_start): 0.2
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(82.4482, device='cuda:0')
+(6, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 82.44823455810547, 0.06200000271201134, 1.6275148391723633, '2024-07-16 15:18:47', 4)
+pval: [0.062] -- 6th test, time elapsed 1.6275148391723633 -- emperical power so far (from test_start): 0.16666666666666666
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.5156, device='cuda:0')
+(7, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.51559448242188, 0.09400000423192978, 1.6279940605163574, '2024-07-16 15:18:49', 4)
+pval: [0.094] -- 7th test, time elapsed 1.6279940605163574 -- emperical power so far (from test_start): 0.14285714285714285
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(82.7360, device='cuda:0')
+(8, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 82.7359619140625, 0.04000000283122063, 1.6284711360931396, '2024-07-16 15:19:05', 4)
+pval: [0.04] -- 8th test, time elapsed 1.6284711360931396 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(99.0728, device='cuda:0')
+(9, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 99.07280731201172, 0.004000000189989805, 1.6262471675872803, '2024-07-16 15:19:11', 4)
+pval: [0.004] -- 9th test, time elapsed 1.6262471675872803 -- emperical power so far (from test_start): 0.3333333333333333
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(59.3683, device='cuda:0')
+(10, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 59.368255615234375, 0.6010000109672546, 1.6320607662200928, '2024-07-16 15:19:27', 4)
+pval: [0.60100001] -- 10th test, time elapsed 1.6320607662200928 -- emperical power so far (from test_start): 0.3
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(80.7122, device='cuda:0')
+(11, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 80.71222686767578, 0.06000000238418579, 1.6204559803009033, '2024-07-16 15:19:38', 4)
+pval: [0.06] -- 11th test, time elapsed 1.6204559803009033 -- emperical power so far (from test_start): 0.2727272727272727
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(50.8057, device='cuda:0')
+(12, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 50.80565643310547, 0.8630000352859497, 1.6110801696777344, '2024-07-16 15:19:55', 4)
+pval: [0.86300004] -- 12th test, time elapsed 1.6110801696777344 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(82.4434, device='cuda:0')
+(13, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 82.44341278076172, 0.06100000441074371, 1.6139957904815674, '2024-07-16 15:20:00', 4)
+pval: [0.061] -- 13th test, time elapsed 1.6139957904815674 -- emperical power so far (from test_start): 0.23076923076923078
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(93.5326, device='cuda:0')
+(14, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 93.5326156616211, 0.010000000707805157, 1.6176002025604248, '2024-07-16 15:20:10', 4)
+pval: [0.01] -- 14th test, time elapsed 1.6176002025604248 -- emperical power so far (from test_start): 0.2857142857142857
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(76.8609, device='cuda:0')
+(15, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 76.86087799072266, 0.10200000554323196, 1.6085309982299805, '2024-07-16 15:20:17', 4)
+pval: [0.10200001] -- 15th test, time elapsed 1.6085309982299805 -- emperical power so far (from test_start): 0.26666666666666666
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.8992, device='cuda:0')
+(16, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.899169921875, 0.058000002056360245, 1.610273838043213, '2024-07-16 15:20:36', 4)
+pval: [0.058] -- 16th test, time elapsed 1.610273838043213 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(54.8808, device='cuda:0')
+(17, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 54.88077163696289, 0.7750000357627869, 1.6071767807006836, '2024-07-16 15:20:47', 4)
+pval: [0.77500004] -- 17th test, time elapsed 1.6071767807006836 -- emperical power so far (from test_start): 0.23529411764705882
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(68.1052, device='cuda:0')
+(18, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 68.10516357421875, 0.3100000023841858, 1.6104998588562012, '2024-07-16 15:20:57', 4)
+pval: [0.31] -- 18th test, time elapsed 1.6104998588562012 -- emperical power so far (from test_start): 0.2222222222222222
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(65.6644, device='cuda:0')
+(19, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 65.66443634033203, 0.38100001215934753, 1.6101655960083008, '2024-07-16 15:21:04', 4)
+pval: [0.38100001] -- 19th test, time elapsed 1.6101655960083008 -- emperical power so far (from test_start): 0.21052631578947367
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(67.0639, device='cuda:0')
+(20, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 67.06385040283203, 0.32200002670288086, 1.6104955673217773, '2024-07-16 15:21:12', 4)
+pval: [0.32200003] -- 20th test, time elapsed 1.6104955673217773 -- emperical power so far (from test_start): 0.2
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(90.1506, device='cuda:0')
+(21, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 90.150634765625, 0.01100000087171793, 1.6101160049438477, '2024-07-16 15:21:30', 4)
+pval: [0.011] -- 21th test, time elapsed 1.6101160049438477 -- emperical power so far (from test_start): 0.23809523809523808
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.5187, device='cuda:0')
+(22, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.51869201660156, 0.24400001764297485, 1.6126394271850586, '2024-07-16 15:21:51', 4)
+pval: [0.24400002] -- 22th test, time elapsed 1.6126394271850586 -- emperical power so far (from test_start): 0.22727272727272727
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(95.5402, device='cuda:0')
+(23, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 95.54024505615234, 0.009000000543892384, 1.6069560050964355, '2024-07-16 15:22:07', 4)
+pval: [0.009] -- 23th test, time elapsed 1.6069560050964355 -- emperical power so far (from test_start): 0.2608695652173913
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(54.9263, device='cuda:0')
+(24, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 54.92628479003906, 0.7540000081062317, 1.6091442108154297, '2024-07-16 15:22:28', 4)
+pval: [0.75400001] -- 24th test, time elapsed 1.6091442108154297 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.7533, device='cuda:0')
+(25, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.7533187866211, 0.14500001072883606, 1.6075093746185303, '2024-07-16 15:22:50', 4)
+pval: [0.14500001] -- 25th test, time elapsed 1.6075093746185303 -- emperical power so far (from test_start): 0.24
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(62.5809, device='cuda:0')
+(26, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 62.58089065551758, 0.4960000216960907, 1.6090991497039795, '2024-07-16 15:23:01', 4)
+pval: [0.49600002] -- 26th test, time elapsed 1.6090991497039795 -- emperical power so far (from test_start): 0.23076923076923078
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.6761, device='cuda:0')
+(27, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.67610168457031, 0.445000022649765, 1.608628749847412, '2024-07-16 15:23:17', 4)
+pval: [0.44500002] -- 27th test, time elapsed 1.608628749847412 -- emperical power so far (from test_start): 0.2222222222222222
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(66.7767, device='cuda:0')
+(28, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 66.77674865722656, 0.3460000157356262, 1.6131210327148438, '2024-07-16 15:23:28', 4)
+pval: [0.34600002] -- 28th test, time elapsed 1.6131210327148438 -- emperical power so far (from test_start): 0.21428571428571427
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(71.7323, device='cuda:0')
+(29, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 71.7323226928711, 0.20400001108646393, 1.6029455661773682, '2024-07-16 15:23:32', 4)
+pval: [0.20400001] -- 29th test, time elapsed 1.6029455661773682 -- emperical power so far (from test_start): 0.20689655172413793
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.4441, device='cuda:0')
+(30, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.44412612915039, 0.4880000352859497, 1.6064064502716064, '2024-07-16 15:23:35', 4)
+pval: [0.48800004] -- 30th test, time elapsed 1.6064064502716064 -- emperical power so far (from test_start): 0.2
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(64.0084, device='cuda:0')
+(31, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 64.0083999633789, 0.4150000214576721, 1.607743740081787, '2024-07-16 15:23:50', 4)
+pval: [0.41500002] -- 31th test, time elapsed 1.607743740081787 -- emperical power so far (from test_start): 0.1935483870967742
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(61.6326, device='cuda:0')
+(32, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 61.63255310058594, 0.5080000162124634, 1.6087133884429932, '2024-07-16 15:23:53', 4)
+pval: [0.50800002] -- 32th test, time elapsed 1.6087133884429932 -- emperical power so far (from test_start): 0.1875
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(61.0942, device='cuda:0')
+(33, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 61.09421157836914, 0.5100000500679016, 1.6108620166778564, '2024-07-16 15:24:05', 4)
+pval: [0.51000005] -- 33th test, time elapsed 1.6108620166778564 -- emperical power so far (from test_start): 0.18181818181818182
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(58.3485, device='cuda:0')
+(34, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 58.348541259765625, 0.6470000147819519, 1.611466407775879, '2024-07-16 15:24:21', 4)
+pval: [0.64700001] -- 34th test, time elapsed 1.611466407775879 -- emperical power so far (from test_start): 0.17647058823529413
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(88.6926, device='cuda:0')
+(35, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 88.6926498413086, 0.02200000174343586, 1.6117048263549805, '2024-07-16 15:24:39', 4)
+pval: [0.022] -- 35th test, time elapsed 1.6117048263549805 -- emperical power so far (from test_start): 0.2
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(69.0114, device='cuda:0')
+(36, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 69.01141357421875, 0.29600000381469727, 1.6098473072052002, '2024-07-16 15:25:00', 4)
+pval: [0.296] -- 36th test, time elapsed 1.6098473072052002 -- emperical power so far (from test_start): 0.19444444444444445
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(85.9050, device='cuda:0')
+(37, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 85.90499877929688, 0.029000001028180122, 1.6072382926940918, '2024-07-16 15:25:13', 4)
+pval: [0.029] -- 37th test, time elapsed 1.6072382926940918 -- emperical power so far (from test_start): 0.21621621621621623
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(60.3644, device='cuda:0')
+(38, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 60.36440658569336, 0.5950000286102295, 1.611382246017456, '2024-07-16 15:25:33', 4)
+pval: [0.59500003] -- 38th test, time elapsed 1.611382246017456 -- emperical power so far (from test_start): 0.21052631578947367
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(85.8421, device='cuda:0')
+(39, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 85.84207153320312, 0.021000001579523087, 1.6056978702545166, '2024-07-16 15:25:46', 4)
+pval: [0.021] -- 39th test, time elapsed 1.6056978702545166 -- emperical power so far (from test_start): 0.23076923076923078
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(106.3225, device='cuda:0')
+(40, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 106.32252502441406, 0.0010000000474974513, 1.6122541427612305, '2024-07-16 15:26:07', 4)
+pval: [0.001] -- 40th test, time elapsed 1.6122541427612305 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(79.1043, device='cuda:0')
+(41, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 79.10433959960938, 0.08000000566244125, 1.6035621166229248, '2024-07-16 15:26:09', 4)
+pval: [0.08000001] -- 41th test, time elapsed 1.6035621166229248 -- emperical power so far (from test_start): 0.24390243902439024
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(66.3952, device='cuda:0')
+(42, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 66.39517974853516, 0.33000001311302185, 1.6091198921203613, '2024-07-16 15:26:30', 4)
+pval: [0.33000001] -- 42th test, time elapsed 1.6091198921203613 -- emperical power so far (from test_start): 0.23809523809523808
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(102.2562, device='cuda:0')
+(43, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 102.2562026977539, 0.003000000026077032, 1.604325294494629, '2024-07-16 15:26:36', 4)
+pval: [0.003] -- 43th test, time elapsed 1.604325294494629 -- emperical power so far (from test_start): 0.2558139534883721
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(73.1203, device='cuda:0')
+(44, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 73.12027740478516, 0.16200000047683716, 1.606689214706421, '2024-07-16 15:26:52', 4)
+pval: [0.162] -- 44th test, time elapsed 1.606689214706421 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.2766, device='cuda:0')
+(45, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.27655792236328, 0.25200000405311584, 1.604229211807251, '2024-07-16 15:27:08', 4)
+pval: [0.252] -- 45th test, time elapsed 1.604229211807251 -- emperical power so far (from test_start): 0.24444444444444444
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(96.3955, device='cuda:0')
+(46, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 96.39546966552734, 0.00800000037997961, 1.61045503616333, '2024-07-16 15:27:12', 4)
+pval: [0.008] -- 46th test, time elapsed 1.61045503616333 -- emperical power so far (from test_start): 0.2608695652173913
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(64.7546, device='cuda:0')
+(47, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 64.75458526611328, 0.3750000298023224, 1.5961110591888428, '2024-07-16 15:27:29', 4)
+pval: [0.37500003] -- 47th test, time elapsed 1.5961110591888428 -- emperical power so far (from test_start): 0.2553191489361702
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(56.7879, device='cuda:0')
+(48, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 56.78788757324219, 0.6940000057220459, 1.6104493141174316, '2024-07-16 15:27:39', 4)
+pval: [0.69400001] -- 48th test, time elapsed 1.6104493141174316 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.4973, device='cuda:0')
+(49, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.49728393554688, 0.10000000149011612, 1.6008117198944092, '2024-07-16 15:27:46', 4)
+pval: [0.1] -- 49th test, time elapsed 1.6008117198944092 -- emperical power so far (from test_start): 0.24489795918367346
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(99.3613, device='cuda:0')
+(50, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 99.36129760742188, 0.003000000026077032, 1.6032090187072754, '2024-07-16 15:27:58', 4)
+pval: [0.003] -- 50th test, time elapsed 1.6032090187072754 -- emperical power so far (from test_start): 0.26
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(82.2888, device='cuda:0')
+(51, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 82.288818359375, 0.052000001072883606, 1.604768991470337, '2024-07-16 15:28:19', 4)
+pval: [0.052] -- 51th test, time elapsed 1.604768991470337 -- emperical power so far (from test_start): 0.2549019607843137
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(77.8971, device='cuda:0')
+(52, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 77.8971176147461, 0.09200000762939453, 1.6050693988800049, '2024-07-16 15:28:38', 4)
+pval: [0.09200001] -- 52th test, time elapsed 1.6050693988800049 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(89.0902, device='cuda:0')
+(53, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 89.09015655517578, 0.01900000125169754, 1.6062443256378174, '2024-07-16 15:28:51', 4)
+pval: [0.019] -- 53th test, time elapsed 1.6062443256378174 -- emperical power so far (from test_start): 0.2641509433962264
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(90.7944, device='cuda:0')
+(54, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 90.79440307617188, 0.013000000268220901, 1.6103689670562744, '2024-07-16 15:29:09', 4)
+pval: [0.013] -- 54th test, time elapsed 1.6103689670562744 -- emperical power so far (from test_start): 0.2777777777777778
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(76.1309, device='cuda:0')
+(55, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 76.130859375, 0.13700000941753387, 1.6062121391296387, '2024-07-16 15:29:22', 4)
+pval: [0.13700001] -- 55th test, time elapsed 1.6062121391296387 -- emperical power so far (from test_start): 0.2727272727272727
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.4489, device='cuda:0')
+(56, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.4488754272461, 0.10300000756978989, 1.6148641109466553, '2024-07-16 15:29:41', 4)
+pval: [0.10300001] -- 56th test, time elapsed 1.6148641109466553 -- emperical power so far (from test_start): 0.26785714285714285
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.0236, device='cuda:0')
+(57, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.0235824584961, 0.06599999964237213, 1.6024103164672852, '2024-07-16 15:29:47', 4)
+pval: [0.066] -- 57th test, time elapsed 1.6024103164672852 -- emperical power so far (from test_start): 0.2631578947368421
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(74.5817, device='cuda:0')
+(58, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 74.5816879272461, 0.17100000381469727, 1.604313850402832, '2024-07-16 15:29:56', 4)
+pval: [0.171] -- 58th test, time elapsed 1.604313850402832 -- emperical power so far (from test_start): 0.25862068965517243
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.5012, device='cuda:0')
+(59, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.50121307373047, 0.25699999928474426, 1.5955829620361328, '2024-07-16 15:30:15', 4)
+pval: [0.257] -- 59th test, time elapsed 1.5955829620361328 -- emperical power so far (from test_start): 0.2542372881355932
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.5936, device='cuda:0')
+(60, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.5936279296875, 0.12600000202655792, 1.5964984893798828, '2024-07-16 15:30:32', 4)
+pval: [0.126] -- 60th test, time elapsed 1.5964984893798828 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(65.5508, device='cuda:0')
+(61, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 65.55084228515625, 0.3630000054836273, 1.5961239337921143, '2024-07-16 15:30:46', 4)
+pval: [0.36300001] -- 61th test, time elapsed 1.5961239337921143 -- emperical power so far (from test_start): 0.2459016393442623
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.4178, device='cuda:0')
+(62, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.41783905029297, 0.055000003427267075, 1.5988850593566895, '2024-07-16 15:30:58', 4)
+pval: [0.055] -- 62th test, time elapsed 1.5988850593566895 -- emperical power so far (from test_start): 0.24193548387096775
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(64.8382, device='cuda:0')
+(63, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 64.83817291259766, 0.40800002217292786, 1.596466064453125, '2024-07-16 15:31:01', 4)
+pval: [0.40800002] -- 63th test, time elapsed 1.596466064453125 -- emperical power so far (from test_start): 0.23809523809523808
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(94.9992, device='cuda:0')
+(64, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 94.9991683959961, 0.006000000052154064, 1.5994443893432617, '2024-07-16 15:31:17', 4)
+pval: [0.006] -- 64th test, time elapsed 1.5994443893432617 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(61.7401, device='cuda:0')
+(65, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 61.7401123046875, 0.5250000357627869, 1.5867953300476074, '2024-07-16 15:31:29', 4)
+pval: [0.52500004] -- 65th test, time elapsed 1.5867953300476074 -- emperical power so far (from test_start): 0.24615384615384617
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(92.9012, device='cuda:0')
+(66, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 92.90122985839844, 0.006000000052154064, 1.5901267528533936, '2024-07-16 15:31:31', 4)
+pval: [0.006] -- 66th test, time elapsed 1.5901267528533936 -- emperical power so far (from test_start): 0.25757575757575757
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(102.6914, device='cuda:0')
+(67, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 102.6914291381836, 0.0010000000474974513, 1.5894923210144043, '2024-07-16 15:31:37', 4)
+pval: [0.001] -- 67th test, time elapsed 1.5894923210144043 -- emperical power so far (from test_start): 0.26865671641791045
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.4969, device='cuda:0')
+(68, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.49687576293945, 0.46000000834465027, 1.5889220237731934, '2024-07-16 15:31:43', 4)
+pval: [0.46000001] -- 68th test, time elapsed 1.5889220237731934 -- emperical power so far (from test_start): 0.2647058823529412
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(86.7416, device='cuda:0')
+(69, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 86.7416000366211, 0.029000001028180122, 1.5823984146118164, '2024-07-16 15:32:02', 4)
+pval: [0.029] -- 69th test, time elapsed 1.5823984146118164 -- emperical power so far (from test_start): 0.2753623188405797
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.5321, device='cuda:0')
+(70, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.53207397460938, 0.11300000548362732, 1.5881528854370117, '2024-07-16 15:32:05', 4)
+pval: [0.11300001] -- 70th test, time elapsed 1.5881528854370117 -- emperical power so far (from test_start): 0.2714285714285714
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.7180, device='cuda:0')
+(71, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.71797180175781, 0.24300001561641693, 1.5867161750793457, '2024-07-16 15:32:17', 4)
+pval: [0.24300002] -- 71th test, time elapsed 1.5867161750793457 -- emperical power so far (from test_start): 0.2676056338028169
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(94.6333, device='cuda:0')
+(72, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 94.6333236694336, 0.007000000216066837, 1.5912673473358154, '2024-07-16 15:32:31', 4)
+pval: [0.007] -- 72th test, time elapsed 1.5912673473358154 -- emperical power so far (from test_start): 0.2777777777777778
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.9156, device='cuda:0')
+(73, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.91561126708984, 0.14000000059604645, 1.5843327045440674, '2024-07-16 15:32:42', 4)
+pval: [0.14] -- 73th test, time elapsed 1.5843327045440674 -- emperical power so far (from test_start): 0.273972602739726
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.0633, device='cuda:0')
+(74, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.06331634521484, 0.2410000115633011, 1.593677282333374, '2024-07-16 15:33:03', 4)
+pval: [0.24100001] -- 74th test, time elapsed 1.593677282333374 -- emperical power so far (from test_start): 0.2702702702702703
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.7972, device='cuda:0')
+(75, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.79715728759766, 0.06200000271201134, 1.5874617099761963, '2024-07-16 15:33:15', 4)
+pval: [0.062] -- 75th test, time elapsed 1.5874617099761963 -- emperical power so far (from test_start): 0.26666666666666666
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(76.9954, device='cuda:0')
+(76, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 76.99540710449219, 0.10100000351667404, 1.5893714427947998, '2024-07-16 15:33:21', 4)
+pval: [0.101] -- 76th test, time elapsed 1.5893714427947998 -- emperical power so far (from test_start): 0.2631578947368421
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(43.6396, device='cuda:0')
+(77, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 43.639625549316406, 0.9630000591278076, 1.5857598781585693, '2024-07-16 15:33:38', 4)
+pval: [0.96300006] -- 77th test, time elapsed 1.5857598781585693 -- emperical power so far (from test_start): 0.2597402597402597
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(72.5199, device='cuda:0')
+(78, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 72.51991271972656, 0.19700001180171967, 1.5896048545837402, '2024-07-16 15:33:43', 4)
+pval: [0.19700001] -- 78th test, time elapsed 1.5896048545837402 -- emperical power so far (from test_start): 0.2564102564102564
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(67.9545, device='cuda:0')
+(79, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 67.95451354980469, 0.3100000023841858, 1.5868706703186035, '2024-07-16 15:33:56', 4)
+pval: [0.31] -- 79th test, time elapsed 1.5868706703186035 -- emperical power so far (from test_start): 0.25316455696202533
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(57.8730, device='cuda:0')
+(80, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 57.872962951660156, 0.6570000052452087, 1.5898933410644531, '2024-07-16 15:34:17', 4)
+pval: [0.65700001] -- 80th test, time elapsed 1.5898933410644531 -- emperical power so far (from test_start): 0.25
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(74.9229, device='cuda:0')
+(81, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 74.9228744506836, 0.14900000393390656, 1.5933759212493896, '2024-07-16 15:34:37', 4)
+pval: [0.149] -- 81th test, time elapsed 1.5933759212493896 -- emperical power so far (from test_start): 0.24691358024691357
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(90.3873, device='cuda:0')
+(82, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 90.38732147216797, 0.013000000268220901, 1.5893261432647705, '2024-07-16 15:34:54', 4)
+pval: [0.013] -- 82th test, time elapsed 1.5893261432647705 -- emperical power so far (from test_start): 0.25609756097560976
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(89.0370, device='cuda:0')
+(83, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 89.0370101928711, 0.013000000268220901, 1.5851447582244873, '2024-07-16 15:35:06', 4)
+pval: [0.013] -- 83th test, time elapsed 1.5851447582244873 -- emperical power so far (from test_start): 0.26506024096385544
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(79.7278, device='cuda:0')
+(84, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 79.72779846191406, 0.07800000160932541, 1.5903007984161377, '2024-07-16 15:35:14', 4)
+pval: [0.078] -- 84th test, time elapsed 1.5903007984161377 -- emperical power so far (from test_start): 0.2619047619047619
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(74.1229, device='cuda:0')
+(85, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 74.12286376953125, 0.15700000524520874, 1.587083339691162, '2024-07-16 15:35:35', 4)
+pval: [0.15700001] -- 85th test, time elapsed 1.587083339691162 -- emperical power so far (from test_start): 0.25882352941176473
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(92.7187, device='cuda:0')
+(86, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 92.71871185302734, 0.01100000087171793, 1.5879857540130615, '2024-07-16 15:35:52', 4)
+pval: [0.011] -- 86th test, time elapsed 1.5879857540130615 -- emperical power so far (from test_start): 0.26744186046511625
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(94.2008, device='cuda:0')
+(87, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 94.2007827758789, 0.004000000189989805, 1.5828206539154053, '2024-07-16 15:36:03', 4)
+pval: [0.004] -- 87th test, time elapsed 1.5828206539154053 -- emperical power so far (from test_start): 0.27586206896551724
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(72.4992, device='cuda:0')
+(88, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 72.49923706054688, 0.20900000631809235, 1.5941531658172607, '2024-07-16 15:36:22', 4)
+pval: [0.20900001] -- 88th test, time elapsed 1.5941531658172607 -- emperical power so far (from test_start): 0.2727272727272727
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(111.5320, device='cuda:0')
+(89, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 111.53195190429688, 0.0020000000949949026, 1.5858163833618164, '2024-07-16 15:36:42', 4)
+pval: [0.002] -- 89th test, time elapsed 1.5858163833618164 -- emperical power so far (from test_start): 0.2808988764044944
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(72.8059, device='cuda:0')
+(90, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 72.80586242675781, 0.19600000977516174, 1.5915229320526123, '2024-07-16 15:36:53', 4)
+pval: [0.19600001] -- 90th test, time elapsed 1.5915229320526123 -- emperical power so far (from test_start): 0.2777777777777778
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(74.1068, device='cuda:0')
+(91, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 74.10681915283203, 0.15000000596046448, 1.5868332386016846, '2024-07-16 15:37:08', 4)
+pval: [0.15000001] -- 91th test, time elapsed 1.5868332386016846 -- emperical power so far (from test_start): 0.27472527472527475
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.9966, device='cuda:0')
+(92, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.99657440185547, 0.2550000250339508, 1.5911459922790527, '2024-07-16 15:37:17', 4)
+pval: [0.25500003] -- 92th test, time elapsed 1.5911459922790527 -- emperical power so far (from test_start): 0.2717391304347826
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(91.7896, device='cuda:0')
+(93, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 91.78964233398438, 0.00800000037997961, 1.586115837097168, '2024-07-16 15:37:39', 4)
+pval: [0.008] -- 93th test, time elapsed 1.586115837097168 -- emperical power so far (from test_start): 0.27956989247311825
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(83.5094, device='cuda:0')
+(94, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 83.50940704345703, 0.04400000348687172, 1.587134599685669, '2024-07-16 15:37:42', 4)
+pval: [0.044] -- 94th test, time elapsed 1.587134599685669 -- emperical power so far (from test_start): 0.2872340425531915
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(74.7992, device='cuda:0')
+(95, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 74.7992172241211, 0.1469999998807907, 1.5823910236358643, '2024-07-16 15:37:59', 4)
+pval: [0.147] -- 95th test, time elapsed 1.5823910236358643 -- emperical power so far (from test_start): 0.28421052631578947
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(56.6324, device='cuda:0')
+(96, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 56.632423400878906, 0.7210000157356262, 1.5863375663757324, '2024-07-16 15:38:07', 4)
+pval: [0.72100002] -- 96th test, time elapsed 1.5863375663757324 -- emperical power so far (from test_start): 0.28125
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(87.1363, device='cuda:0')
+(97, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 87.1362533569336, 0.02200000174343586, 1.5833861827850342, '2024-07-16 15:38:24', 4)
+pval: [0.022] -- 97th test, time elapsed 1.5833861827850342 -- emperical power so far (from test_start): 0.28865979381443296
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(65.2394, device='cuda:0')
+(98, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 65.2393569946289, 0.40800002217292786, 1.5892894268035889, '2024-07-16 15:38:36', 4)
+pval: [0.40800002] -- 98th test, time elapsed 1.5892894268035889 -- emperical power so far (from test_start): 0.2857142857142857
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(69.1033, device='cuda:0')
+(99, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 69.1032943725586, 0.27000001072883606, 1.5838820934295654, '2024-07-16 15:38:44', 4)
+pval: [0.27000001] -- 99th test, time elapsed 1.5838820934295654 -- emperical power so far (from test_start): 0.2828282828282828
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(61.4078, device='cuda:0')
+(100, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 61.407798767089844, 0.5200000405311584, 1.5885419845581055, '2024-07-16 15:38:54', 4)
+pval: [0.52000004] -- 100th test, time elapsed 1.5885419845581055 -- emperical power so far (from test_start): 0.28
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.5618, device='cuda:0')
+(101, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.56175994873047, 0.10600000619888306, 1.5877814292907715, '2024-07-16 15:38:58', 4)
+pval: [0.10600001] -- 101th test, time elapsed 1.5877814292907715 -- emperical power so far (from test_start): 0.27722772277227725
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.5295, device='cuda:0')
+(102, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.52951049804688, 0.07900000363588333, 1.5917737483978271, '2024-07-16 15:39:12', 4)
+pval: [0.079] -- 102th test, time elapsed 1.5917737483978271 -- emperical power so far (from test_start): 0.27450980392156865
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.2648, device='cuda:0')
+(103, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.26476287841797, 0.4360000193119049, 1.5891001224517822, '2024-07-16 15:39:22', 4)
+pval: [0.43600002] -- 103th test, time elapsed 1.5891001224517822 -- emperical power so far (from test_start): 0.27184466019417475
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(116.1606, device='cuda:0')
+(104, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 116.16059875488281, 0.0010000000474974513, 1.5875036716461182, '2024-07-16 15:39:32', 4)
+pval: [0.001] -- 104th test, time elapsed 1.5875036716461182 -- emperical power so far (from test_start): 0.27884615384615385
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(59.8202, device='cuda:0')
+(105, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 59.82021713256836, 0.6130000352859497, 1.5850436687469482, '2024-07-16 15:39:50', 4)
+pval: [0.61300004] -- 105th test, time elapsed 1.5850436687469482 -- emperical power so far (from test_start): 0.2761904761904762
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(84.6597, device='cuda:0')
+(106, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 84.65973663330078, 0.030000001192092896, 1.591871738433838, '2024-07-16 15:40:11', 4)
+pval: [0.03] -- 106th test, time elapsed 1.591871738433838 -- emperical power so far (from test_start): 0.2830188679245283
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(85.2089, device='cuda:0')
+(107, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 85.20891571044922, 0.032999999821186066, 1.58915114402771, '2024-07-16 15:40:26', 4)
+pval: [0.033] -- 107th test, time elapsed 1.58915114402771 -- emperical power so far (from test_start): 0.2897196261682243
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(57.4957, device='cuda:0')
+(108, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 57.495697021484375, 0.6950000524520874, 1.5907890796661377, '2024-07-16 15:40:35', 4)
+pval: [0.69500005] -- 108th test, time elapsed 1.5907890796661377 -- emperical power so far (from test_start): 0.28703703703703703
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(51.3345, device='cuda:0')
+(109, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 51.3344612121582, 0.843000054359436, 1.5854763984680176, '2024-07-16 15:40:41', 4)
+pval: [0.84300005] -- 109th test, time elapsed 1.5854763984680176 -- emperical power so far (from test_start): 0.28440366972477066
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.5180, device='cuda:0')
+(110, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.51801300048828, 0.23200000822544098, 1.589346170425415, '2024-07-16 15:40:55', 4)
+pval: [0.23200001] -- 110th test, time elapsed 1.589346170425415 -- emperical power so far (from test_start): 0.2818181818181818
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(59.9027, device='cuda:0')
+(111, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 59.90266418457031, 0.597000002861023, 1.585162878036499, '2024-07-16 15:41:00', 4)
+pval: [0.597] -- 111th test, time elapsed 1.585162878036499 -- emperical power so far (from test_start): 0.27927927927927926
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.6845, device='cuda:0')
+(112, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.68452453613281, 0.04400000348687172, 1.5883488655090332, '2024-07-16 15:41:12', 4)
+pval: [0.044] -- 112th test, time elapsed 1.5883488655090332 -- emperical power so far (from test_start): 0.2857142857142857
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(67.1828, device='cuda:0')
+(113, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 67.1827621459961, 0.32500001788139343, 1.587460994720459, '2024-07-16 15:41:15', 4)
+pval: [0.32500002] -- 113th test, time elapsed 1.587460994720459 -- emperical power so far (from test_start): 0.2831858407079646
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(91.1923, device='cuda:0')
+(114, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 91.19232177734375, 0.007000000216066837, 1.5890741348266602, '2024-07-16 15:41:26', 4)
+pval: [0.007] -- 114th test, time elapsed 1.5890741348266602 -- emperical power so far (from test_start): 0.2894736842105263
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(102.2427, device='cuda:0')
+(115, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 102.24273681640625, 0.0010000000474974513, 1.588484287261963, '2024-07-16 15:41:31', 4)
+pval: [0.001] -- 115th test, time elapsed 1.588484287261963 -- emperical power so far (from test_start): 0.2956521739130435
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.4144, device='cuda:0')
+(116, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.41436767578125, 0.23200000822544098, 1.589411735534668, '2024-07-16 15:41:41', 4)
+pval: [0.23200001] -- 116th test, time elapsed 1.589411735534668 -- emperical power so far (from test_start): 0.29310344827586204
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(84.5658, device='cuda:0')
+(117, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 84.56580352783203, 0.04000000283122063, 1.5866141319274902, '2024-07-16 15:41:58', 4)
+pval: [0.04] -- 117th test, time elapsed 1.5866141319274902 -- emperical power so far (from test_start): 0.29914529914529914
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.7838, device='cuda:0')
+(118, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.78384399414062, 0.05400000140070915, 1.5899055004119873, '2024-07-16 15:42:04', 4)
+pval: [0.054] -- 118th test, time elapsed 1.5899055004119873 -- emperical power so far (from test_start): 0.2966101694915254
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(67.7996, device='cuda:0')
+(119, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 67.79957580566406, 0.33100003004074097, 1.5854952335357666, '2024-07-16 15:42:17', 4)
+pval: [0.33100003] -- 119th test, time elapsed 1.5854952335357666 -- emperical power so far (from test_start): 0.29411764705882354
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(85.3533, device='cuda:0')
+(120, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 85.35334014892578, 0.03400000184774399, 1.5880208015441895, '2024-07-16 15:42:35', 4)
+pval: [0.034] -- 120th test, time elapsed 1.5880208015441895 -- emperical power so far (from test_start): 0.3
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(69.5298, device='cuda:0')
+(121, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 69.52983093261719, 0.24300001561641693, 1.5862977504730225, '2024-07-16 15:42:55', 4)
+pval: [0.24300002] -- 121th test, time elapsed 1.5862977504730225 -- emperical power so far (from test_start): 0.2975206611570248
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(60.4981, device='cuda:0')
+(122, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 60.49808120727539, 0.562000036239624, 1.5877420902252197, '2024-07-16 15:43:04', 4)
+pval: [0.56200004] -- 122th test, time elapsed 1.5877420902252197 -- emperical power so far (from test_start): 0.29508196721311475
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(114.4613, device='cuda:0')
+(123, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 114.46133422851562, 0.0010000000474974513, 1.587850570678711, '2024-07-16 15:43:12', 4)
+pval: [0.001] -- 123th test, time elapsed 1.587850570678711 -- emperical power so far (from test_start): 0.3008130081300813
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(76.5627, device='cuda:0')
+(124, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 76.56265258789062, 0.12000000476837158, 1.5888476371765137, '2024-07-16 15:43:28', 4)
+pval: [0.12] -- 124th test, time elapsed 1.5888476371765137 -- emperical power so far (from test_start): 0.29838709677419356
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(77.6867, device='cuda:0')
+(125, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 77.68666076660156, 0.11800000816583633, 1.583662509918213, '2024-07-16 15:43:45', 4)
+pval: [0.11800001] -- 125th test, time elapsed 1.583662509918213 -- emperical power so far (from test_start): 0.296
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(70.7113, device='cuda:0')
+(126, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 70.71127319335938, 0.2160000056028366, 1.5912399291992188, '2024-07-16 15:43:57', 4)
+pval: [0.21600001] -- 126th test, time elapsed 1.5912399291992188 -- emperical power so far (from test_start): 0.29365079365079366
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.2617, device='cuda:0')
+(127, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.2617416381836, 0.14500001072883606, 1.585085153579712, '2024-07-16 15:44:19', 4)
+pval: [0.14500001] -- 127th test, time elapsed 1.585085153579712 -- emperical power so far (from test_start): 0.29133858267716534
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(90.7457, device='cuda:0')
+(128, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 90.7457275390625, 0.013000000268220901, 1.589801549911499, '2024-07-16 15:44:41', 4)
+pval: [0.013] -- 128th test, time elapsed 1.589801549911499 -- emperical power so far (from test_start): 0.296875
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(72.6620, device='cuda:0')
+(129, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 72.66197967529297, 0.1900000125169754, 1.5844862461090088, '2024-07-16 15:44:46', 4)
+pval: [0.19000001] -- 129th test, time elapsed 1.5844862461090088 -- emperical power so far (from test_start): 0.29457364341085274
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.1273, device='cuda:0')
+(130, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.12728500366211, 0.4700000286102295, 1.58986496925354, '2024-07-16 15:44:49', 4)
+pval: [0.47000003] -- 130th test, time elapsed 1.58986496925354 -- emperical power so far (from test_start): 0.2923076923076923
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(61.1449, device='cuda:0')
+(131, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 61.14485549926758, 0.5520000457763672, 1.5899195671081543, '2024-07-16 15:45:04', 4)
+pval: [0.55200005] -- 131th test, time elapsed 1.5899195671081543 -- emperical power so far (from test_start): 0.2900763358778626
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(65.8554, device='cuda:0')
+(132, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 65.85537719726562, 0.36400002241134644, 1.592501163482666, '2024-07-16 15:45:20', 4)
+pval: [0.36400002] -- 132th test, time elapsed 1.592501163482666 -- emperical power so far (from test_start): 0.2878787878787879
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.4847, device='cuda:0')
+(133, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.48471069335938, 0.14100000262260437, 1.5896711349487305, '2024-07-16 15:45:39', 4)
+pval: [0.141] -- 133th test, time elapsed 1.5896711349487305 -- emperical power so far (from test_start): 0.2857142857142857
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.5697, device='cuda:0')
+(134, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.56971740722656, 0.45000001788139343, 1.5866672992706299, '2024-07-16 15:45:57', 4)
+pval: [0.45000002] -- 134th test, time elapsed 1.5866672992706299 -- emperical power so far (from test_start): 0.2835820895522388
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(84.2699, device='cuda:0')
+(135, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 84.26988220214844, 0.03500000014901161, 1.586106538772583, '2024-07-16 15:46:02', 4)
+pval: [0.035] -- 135th test, time elapsed 1.586106538772583 -- emperical power so far (from test_start): 0.28888888888888886
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(98.5760, device='cuda:0')
+(136, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 98.57595825195312, 0.00800000037997961, 1.5909698009490967, '2024-07-16 15:46:05', 4)
+pval: [0.008] -- 136th test, time elapsed 1.5909698009490967 -- emperical power so far (from test_start): 0.29411764705882354
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(88.1630, device='cuda:0')
+(137, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 88.16304016113281, 0.023000001907348633, 1.5860614776611328, '2024-07-16 15:46:16', 4)
+pval: [0.023] -- 137th test, time elapsed 1.5860614776611328 -- emperical power so far (from test_start): 0.29927007299270075
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(68.4042, device='cuda:0')
+(138, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 68.4041748046875, 0.2840000092983246, 1.5873045921325684, '2024-07-16 15:46:33', 4)
+pval: [0.28400001] -- 138th test, time elapsed 1.5873045921325684 -- emperical power so far (from test_start): 0.2971014492753623
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(57.5977, device='cuda:0')
+(139, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 57.59770965576172, 0.6780000329017639, 1.5856046676635742, '2024-07-16 15:46:41', 4)
+pval: [0.67800003] -- 139th test, time elapsed 1.5856046676635742 -- emperical power so far (from test_start): 0.2949640287769784
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.5164, device='cuda:0')
+(140, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.5163803100586, 0.09200000762939453, 1.5876927375793457, '2024-07-16 15:47:01', 4)
+pval: [0.09200001] -- 140th test, time elapsed 1.5876927375793457 -- emperical power so far (from test_start): 0.29285714285714287
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(59.3189, device='cuda:0')
+(141, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 59.318878173828125, 0.6440000534057617, 1.583458662033081, '2024-07-16 15:47:06', 4)
+pval: [0.64400005] -- 141th test, time elapsed 1.583458662033081 -- emperical power so far (from test_start): 0.2907801418439716
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(59.5898, device='cuda:0')
+(142, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 59.58978271484375, 0.5870000123977661, 1.590761423110962, '2024-07-16 15:47:10', 4)
+pval: [0.58700001] -- 142th test, time elapsed 1.590761423110962 -- emperical power so far (from test_start): 0.2887323943661972
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(86.8613, device='cuda:0')
+(143, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 86.86125183105469, 0.030000001192092896, 1.586808443069458, '2024-07-16 15:47:24', 4)
+pval: [0.03] -- 143th test, time elapsed 1.586808443069458 -- emperical power so far (from test_start): 0.2937062937062937
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(93.1578, device='cuda:0')
+(144, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 93.15777587890625, 0.010000000707805157, 1.5929210186004639, '2024-07-16 15:47:42', 4)
+pval: [0.01] -- 144th test, time elapsed 1.5929210186004639 -- emperical power so far (from test_start): 0.2986111111111111
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(87.8465, device='cuda:0')
+(145, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 87.8465347290039, 0.027000000700354576, 1.586540937423706, '2024-07-16 15:48:03', 4)
+pval: [0.027] -- 145th test, time elapsed 1.586540937423706 -- emperical power so far (from test_start): 0.30344827586206896
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(86.1187, device='cuda:0')
+(146, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 86.1186752319336, 0.02500000037252903, 1.5893304347991943, '2024-07-16 15:48:21', 4)
+pval: [0.025] -- 146th test, time elapsed 1.5893304347991943 -- emperical power so far (from test_start): 0.3082191780821918
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(68.6500, device='cuda:0')
+(147, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 68.64998626708984, 0.3060000240802765, 1.585491418838501, '2024-07-16 15:48:24', 4)
+pval: [0.30600002] -- 147th test, time elapsed 1.585491418838501 -- emperical power so far (from test_start): 0.30612244897959184
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(92.5148, device='cuda:0')
+(148, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 92.51480865478516, 0.00800000037997961, 1.5921061038970947, '2024-07-16 15:48:36', 4)
+pval: [0.008] -- 148th test, time elapsed 1.5921061038970947 -- emperical power so far (from test_start): 0.3108108108108108
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(53.6944, device='cuda:0')
+(149, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 53.69444274902344, 0.800000011920929, 1.5889594554901123, '2024-07-16 15:48:43', 4)
+pval: [0.80000001] -- 149th test, time elapsed 1.5889594554901123 -- emperical power so far (from test_start): 0.3087248322147651
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.1847, device='cuda:0')
+(150, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.18465423583984, 0.10000000149011612, 1.5929605960845947, '2024-07-16 15:48:47', 4)
+pval: [0.1] -- 150th test, time elapsed 1.5929605960845947 -- emperical power so far (from test_start): 0.30666666666666664
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(79.1463, device='cuda:0')
+(151, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 79.14631652832031, 0.07500000298023224, 1.592158555984497, '2024-07-16 15:48:52', 4)
+pval: [0.075] -- 151th test, time elapsed 1.592158555984497 -- emperical power so far (from test_start): 0.304635761589404
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(62.0273, device='cuda:0')
+(152, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 62.027259826660156, 0.5290000438690186, 1.5940401554107666, '2024-07-16 15:49:13', 4)
+pval: [0.52900004] -- 152th test, time elapsed 1.5940401554107666 -- emperical power so far (from test_start): 0.3026315789473684
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(64.7102, device='cuda:0')
+(153, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 64.71016693115234, 0.4270000159740448, 1.590087890625, '2024-07-16 15:49:30', 4)
+pval: [0.42700002] -- 153th test, time elapsed 1.590087890625 -- emperical power so far (from test_start): 0.3006535947712418
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.6324, device='cuda:0')
+(154, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.63241958618164, 0.46000000834465027, 1.5909960269927979, '2024-07-16 15:49:42', 4)
+pval: [0.46000001] -- 154th test, time elapsed 1.5909960269927979 -- emperical power so far (from test_start): 0.2987012987012987
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(82.4037, device='cuda:0')
+(155, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 82.40371704101562, 0.05100000277161598, 1.5890214443206787, '2024-07-16 15:49:57', 4)
+pval: [0.051] -- 155th test, time elapsed 1.5890214443206787 -- emperical power so far (from test_start): 0.2967741935483871
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(76.9471, device='cuda:0')
+(156, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 76.94712829589844, 0.11100000888109207, 1.5972609519958496, '2024-07-16 15:50:10', 4)
+pval: [0.11100001] -- 156th test, time elapsed 1.5972609519958496 -- emperical power so far (from test_start): 0.2948717948717949
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(74.9940, device='cuda:0')
+(157, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 74.99402618408203, 0.13100001215934753, 1.5864362716674805, '2024-07-16 15:50:27', 4)
+pval: [0.13100001] -- 157th test, time elapsed 1.5864362716674805 -- emperical power so far (from test_start): 0.2929936305732484
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(95.5505, device='cuda:0')
+(158, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 95.55048370361328, 0.004000000189989805, 1.5910429954528809, '2024-07-16 15:50:47', 4)
+pval: [0.004] -- 158th test, time elapsed 1.5910429954528809 -- emperical power so far (from test_start): 0.2974683544303797
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(68.9053, device='cuda:0')
+(159, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 68.90534973144531, 0.2930000126361847, 1.5883314609527588, '2024-07-16 15:50:59', 4)
+pval: [0.29300001] -- 159th test, time elapsed 1.5883314609527588 -- emperical power so far (from test_start): 0.29559748427672955
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(82.6630, device='cuda:0')
+(160, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 82.66304016113281, 0.05000000074505806, 1.5915319919586182, '2024-07-16 15:51:07', 4)
+pval: [0.05] -- 160th test, time elapsed 1.5915319919586182 -- emperical power so far (from test_start): 0.29375
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(69.5012, device='cuda:0')
+(161, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 69.501220703125, 0.2670000195503235, 1.5899522304534912, '2024-07-16 15:51:12', 4)
+pval: [0.26700002] -- 161th test, time elapsed 1.5899522304534912 -- emperical power so far (from test_start): 0.2919254658385093
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(72.6732, device='cuda:0')
+(162, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 72.6732406616211, 0.15900000929832458, 1.5914154052734375, '2024-07-16 15:51:34', 4)
+pval: [0.15900001] -- 162th test, time elapsed 1.5914154052734375 -- emperical power so far (from test_start): 0.29012345679012347
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(67.8489, device='cuda:0')
+(163, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 67.848876953125, 0.32600000500679016, 1.5893445014953613, '2024-07-16 15:51:39', 4)
+pval: [0.32600001] -- 163th test, time elapsed 1.5893445014953613 -- emperical power so far (from test_start): 0.2883435582822086
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(71.6271, device='cuda:0')
+(164, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 71.6270980834961, 0.20100000500679016, 1.590754508972168, '2024-07-16 15:51:44', 4)
+pval: [0.20100001] -- 164th test, time elapsed 1.590754508972168 -- emperical power so far (from test_start): 0.2865853658536585
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.9797, device='cuda:0')
+(165, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.97972869873047, 0.09300000220537186, 1.5881636142730713, '2024-07-16 15:51:47', 4)
+pval: [0.093] -- 165th test, time elapsed 1.5881636142730713 -- emperical power so far (from test_start): 0.28484848484848485
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(56.3749, device='cuda:0')
+(166, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 56.37489318847656, 0.7220000624656677, 1.591278076171875, '2024-07-16 15:51:59', 4)
+pval: [0.72200006] -- 166th test, time elapsed 1.591278076171875 -- emperical power so far (from test_start): 0.28313253012048195
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.5637, device='cuda:0')
+(167, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.56365203857422, 0.10100000351667404, 1.58591890335083, '2024-07-16 15:52:02', 4)
+pval: [0.101] -- 167th test, time elapsed 1.58591890335083 -- emperical power so far (from test_start): 0.281437125748503
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(69.6525, device='cuda:0')
+(168, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 69.6524887084961, 0.2680000066757202, 1.589001178741455, '2024-07-16 15:52:11', 4)
+pval: [0.26800001] -- 168th test, time elapsed 1.589001178741455 -- emperical power so far (from test_start): 0.27976190476190477
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(69.4625, device='cuda:0')
+(169, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 69.46251678466797, 0.24800001084804535, 1.585852861404419, '2024-07-16 15:52:17', 4)
+pval: [0.24800001] -- 169th test, time elapsed 1.585852861404419 -- emperical power so far (from test_start): 0.2781065088757396
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.5556, device='cuda:0')
+(170, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.5556411743164, 0.07500000298023224, 1.597853660583496, '2024-07-16 15:52:21', 4)
+pval: [0.075] -- 170th test, time elapsed 1.597853660583496 -- emperical power so far (from test_start): 0.27647058823529413
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(63.5712, device='cuda:0')
+(171, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 63.57117462158203, 0.46000000834465027, 1.5955564975738525, '2024-07-16 15:52:38', 4)
+pval: [0.46000001] -- 171th test, time elapsed 1.5955564975738525 -- emperical power so far (from test_start): 0.27485380116959063
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(68.8989, device='cuda:0')
+(172, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 68.89891815185547, 0.281000018119812, 1.598095178604126, '2024-07-16 15:52:47', 4)
+pval: [0.28100002] -- 172th test, time elapsed 1.598095178604126 -- emperical power so far (from test_start): 0.27325581395348836
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(72.2063, device='cuda:0')
+(173, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 72.20628356933594, 0.19100001454353333, 1.5949368476867676, '2024-07-16 15:53:07', 4)
+pval: [0.19100001] -- 173th test, time elapsed 1.5949368476867676 -- emperical power so far (from test_start): 0.27167630057803466
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(86.5502, device='cuda:0')
+(174, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 86.55023193359375, 0.029000001028180122, 1.598395586013794, '2024-07-16 15:53:27', 4)
+pval: [0.029] -- 174th test, time elapsed 1.598395586013794 -- emperical power so far (from test_start): 0.27586206896551724
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.4366, device='cuda:0')
+(175, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.43655395507812, 0.07600000500679016, 1.5955448150634766, '2024-07-16 15:53:34', 4)
+pval: [0.07600001] -- 175th test, time elapsed 1.5955448150634766 -- emperical power so far (from test_start): 0.2742857142857143
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(69.1004, device='cuda:0')
+(176, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 69.10035705566406, 0.2770000100135803, 1.5990684032440186, '2024-07-16 15:53:50', 4)
+pval: [0.27700001] -- 176th test, time elapsed 1.5990684032440186 -- emperical power so far (from test_start): 0.2727272727272727
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(76.5020, device='cuda:0')
+(177, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 76.50201416015625, 0.10500000417232513, 1.5957868099212646, '2024-07-16 15:54:00', 4)
+pval: [0.105] -- 177th test, time elapsed 1.5957868099212646 -- emperical power so far (from test_start): 0.2711864406779661
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(66.6764, device='cuda:0')
+(178, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 66.67635345458984, 0.34700000286102295, 1.601008653640747, '2024-07-16 15:54:07', 4)
+pval: [0.347] -- 178th test, time elapsed 1.601008653640747 -- emperical power so far (from test_start): 0.2696629213483146
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(79.2228, device='cuda:0')
+(179, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 79.2227783203125, 0.0950000062584877, 1.5939126014709473, '2024-07-16 15:54:24', 4)
+pval: [0.09500001] -- 179th test, time elapsed 1.5939126014709473 -- emperical power so far (from test_start): 0.2681564245810056
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(74.2752, device='cuda:0')
+(180, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 74.2752456665039, 0.15000000596046448, 1.5954139232635498, '2024-07-16 15:54:32', 4)
+pval: [0.15000001] -- 180th test, time elapsed 1.5954139232635498 -- emperical power so far (from test_start): 0.26666666666666666
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(85.6647, device='cuda:0')
+(181, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 85.6646957397461, 0.04100000113248825, 1.5938920974731445, '2024-07-16 15:54:48', 4)
+pval: [0.041] -- 181th test, time elapsed 1.5938920974731445 -- emperical power so far (from test_start): 0.27071823204419887
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.2097, device='cuda:0')
+(182, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.2097396850586, 0.13199999928474426, 1.6023359298706055, '2024-07-16 15:54:52', 4)
+pval: [0.132] -- 182th test, time elapsed 1.6023359298706055 -- emperical power so far (from test_start): 0.2692307692307692
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(73.3474, device='cuda:0')
+(183, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 73.34738159179688, 0.1680000126361847, 1.5934221744537354, '2024-07-16 15:55:00', 4)
+pval: [0.16800001] -- 183th test, time elapsed 1.5934221744537354 -- emperical power so far (from test_start): 0.2677595628415301
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(64.0077, device='cuda:0')
+(184, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 64.00773620605469, 0.4140000343322754, 1.6026182174682617, '2024-07-16 15:55:12', 4)
+pval: [0.41400003] -- 184th test, time elapsed 1.6026182174682617 -- emperical power so far (from test_start): 0.266304347826087
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(64.4707, device='cuda:0')
+(185, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 64.47068786621094, 0.4310000240802765, 1.5954678058624268, '2024-07-16 15:55:21', 4)
+pval: [0.43100002] -- 185th test, time elapsed 1.5954678058624268 -- emperical power so far (from test_start): 0.2648648648648649
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(59.7287, device='cuda:0')
+(186, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 59.728660583496094, 0.5940000414848328, 1.5945630073547363, '2024-07-16 15:55:35', 4)
+pval: [0.59400004] -- 186th test, time elapsed 1.5945630073547363 -- emperical power so far (from test_start): 0.26344086021505375
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(79.4775, device='cuda:0')
+(187, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 79.47750091552734, 0.055000003427267075, 1.590172290802002, '2024-07-16 15:55:54', 4)
+pval: [0.055] -- 187th test, time elapsed 1.590172290802002 -- emperical power so far (from test_start): 0.2620320855614973
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(81.7988, device='cuda:0')
+(188, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 81.7988052368164, 0.05000000074505806, 1.5986297130584717, '2024-07-16 15:56:16', 4)
+pval: [0.05] -- 188th test, time elapsed 1.5986297130584717 -- emperical power so far (from test_start): 0.26063829787234044
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(68.0230, device='cuda:0')
+(189, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 68.02297973632812, 0.3020000159740448, 1.5955560207366943, '2024-07-16 15:56:31', 4)
+pval: [0.30200002] -- 189th test, time elapsed 1.5955560207366943 -- emperical power so far (from test_start): 0.25925925925925924
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(64.1254, device='cuda:0')
+(190, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 64.12535858154297, 0.39900001883506775, 1.5992827415466309, '2024-07-16 15:56:50', 4)
+pval: [0.39900002] -- 190th test, time elapsed 1.5992827415466309 -- emperical power so far (from test_start): 0.2578947368421053
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(77.2263, device='cuda:0')
+(191, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 77.2263412475586, 0.11300000548362732, 1.5933897495269775, '2024-07-16 15:57:08', 4)
+pval: [0.11300001] -- 191th test, time elapsed 1.5933897495269775 -- emperical power so far (from test_start): 0.25654450261780104
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(94.1910, device='cuda:0')
+(192, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 94.19096374511719, 0.005000000353902578, 1.5973997116088867, '2024-07-16 15:57:19', 4)
+pval: [0.005] -- 192th test, time elapsed 1.5973997116088867 -- emperical power so far (from test_start): 0.2604166666666667
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.6723, device='cuda:0')
+(193, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.67230224609375, 0.08500000089406967, 1.5918524265289307, '2024-07-16 15:57:27', 4)
+pval: [0.085] -- 193th test, time elapsed 1.5918524265289307 -- emperical power so far (from test_start): 0.25906735751295334
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(76.6406, device='cuda:0')
+(194, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 76.64055633544922, 0.11700000613927841, 1.597839593887329, '2024-07-16 15:57:31', 4)
+pval: [0.11700001] -- 194th test, time elapsed 1.597839593887329 -- emperical power so far (from test_start): 0.25773195876288657
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(75.8212, device='cuda:0')
+(195, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 75.82123565673828, 0.11000000685453415, 1.5986237525939941, '2024-07-16 15:57:36', 4)
+pval: [0.11000001] -- 195th test, time elapsed 1.5986237525939941 -- emperical power so far (from test_start): 0.2564102564102564
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(44.8333, device='cuda:0')
+(196, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 44.83333206176758, 0.9670000672340393, 1.5972561836242676, '2024-07-16 15:57:43', 4)
+pval: [0.96700007] -- 196th test, time elapsed 1.5972561836242676 -- emperical power so far (from test_start): 0.25510204081632654
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(78.8970, device='cuda:0')
+(197, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 78.8969955444336, 0.09000000357627869, 1.5926201343536377, '2024-07-16 15:57:48', 4)
+pval: [0.09] -- 197th test, time elapsed 1.5926201343536377 -- emperical power so far (from test_start): 0.25380710659898476
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(60.9983, device='cuda:0')
+(198, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 60.99827575683594, 0.5680000185966492, 1.5999329090118408, '2024-07-16 15:57:56', 4)
+pval: [0.56800002] -- 198th test, time elapsed 1.5999329090118408 -- emperical power so far (from test_start): 0.25252525252525254
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(55.2955, device='cuda:0')
+(199, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 55.29547882080078, 0.7550000548362732, 1.5924394130706787, '2024-07-16 15:58:16', 4)
+pval: [0.75500005] -- 199th test, time elapsed 1.5924394130706787 -- emperical power so far (from test_start): 0.25125628140703515
+db insert success
+tensor(0.4378)
+tensor(0.4378)
+tensor(89.2678, device='cuda:0')
+(200, 3, 0, 0.5, 5000, 'projchi', 'bitflip', 89.26778411865234, 0.015000000596046448, 1.5964691638946533, '2024-07-16 15:58:22', 4)
+pval: [0.015] -- 200th test, time elapsed 1.5964691638946533 -- emperical power so far (from test_start): 0.255
+db insert success
+2435.805461168289

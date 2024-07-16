@@ -79,7 +79,7 @@ for i in range(n_test):
             n_bin,
             device
         ),
-    d**n_bin,
+    k,
     device,
     device
     )

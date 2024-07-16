@@ -3,13 +3,13 @@ bump_size     = 0.002
 privacy_level = 1
 sample_size   = 170000
 n_permutation = 999
-n_test        = 800
-test_start    = 201
+n_test        = 200
+test_start    = 1
 table_name = 'k400'
 code_dir   = '/home1/jongminm/LDPUts/experiment/meeting/071424/k_400_curve'
 priv_mech  = 'bitflip'
 statistic  = 'elltwo'
-db_dir = '/home1/jongminm/LDPUts/experiment/meeting/071424/k_400_curve/071424_LDPUts.db'
+db_dir = '/home1/jongminm/LDPUts/experiment/db/071424_LDPUts.db'
 
 import sys
 sys.path.insert(0, '/home1/jongminm/LDPUts')
@@ -81,6 +81,7 @@ for i in range(n_test):
     test_num = i + test_start
     t_start_i = time.time()
     torch.manual_seed(test_num)
+    print(f"seed number = {test_num}")
     server_private.load_private_data_multinomial(
         LDPclient.release_private(
             priv_mech,

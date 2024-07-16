@@ -11,7 +11,7 @@ extension_result="npy"
 tool="python -u"
 
 code_dir="/home1/jongminm/${project_name}/experiment/meeting/${meeting_date}/${experiment_name}"
-db_dir="${code_dir}/${db_name}.db"
+db_dir="/home1/jongminm/${project_name}/experiment/db/${db_name}.db"
 
 #화면에 텍스트 표시:
 echo "code_dir = ${code_dir}"
@@ -25,9 +25,9 @@ statistic=elltwo
 privlev=1
 memory_multiplier=12
 n_permutation=999
-test_start=201
-n_test=800
-for ii in  60 70 80 90 100 110 120 130 140 150 160 170 180 190 200
+test_start=1
+n_test=200
+for ii in 200
 do
     sample_size=$((ii*1000))
 
