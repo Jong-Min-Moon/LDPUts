@@ -1,8 +1,40 @@
 import torch
 
+
+class purturbed_unif_p:
+
+    def __init__(self, alphabet_size, bump_size, privacy_level):
+        self.p1, self.p2 = self.get_p(alphabet_size, bump_size)
+        self.squred_eltwo = self.get_squared_elltwo(self.p1, self.p2)
+        self.alpha_bf, self.delta_bf = self.get_bitflip_params(privacy_level)
+        self.expectation_bitflip_elltwo = self.alpha_bf.square().mul(self.squred_eltwo)
+
+    def get_p(self, alphabet_size, bump_size):
+        p = torch.ones(alphabet_size).div(alphabet_size)
+        p2 = p.add(
+                torch.remainder(
+                torch.tensor(range(alphabet_size)),
+                2
+                ).add(-1/2).mul(2).mul(bump_size)
+                )
+        p1_idx = torch.cat( ( torch.arange(1, alphabet_size), torch.tensor([0])), 0)
+        p1 = p2[p1_idx]
+        return(p1, p2)
+
+    def get_squared_elltwo(self, p1, p2):
+        squared_elltwo = torch.sum(torch.pow(torch.subtract(p1, p2), 2), dim=0)
+        return(squared_elltwo)
+        
+    def get_bitflip_params(self, privacy_level):
+        alpha_bf = torch.tensor(privacy_level).div(2).exp().sub(1).div(
+            torch.tensor(privacy_level).div(2).exp().add(1)
+        )
+        delta_bf = torch.tensor(privacy_level).div(2).exp().add(1).reciprocal()
+        return(alpha_bf, delta_bf)
+
 class data_generator:
 
-
+    
 
     def generate_nearly_unif(self, alphabet_size, beta, sample_size):
         p_vector = self._generate_power_law_p(alphabet_size, beta)

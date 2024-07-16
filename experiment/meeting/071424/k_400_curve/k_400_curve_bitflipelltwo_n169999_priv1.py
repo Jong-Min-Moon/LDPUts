@@ -67,9 +67,7 @@ print(p2)
 p1_idx = torch.cat( ( torch.arange(1, alphabet_size), torch.tensor([0])), 0)
 p1 = p2[p1_idx]
 print(p1)
-    
-data_gen = data_generator()
-LDPclient = client()
+
 
 print(f"{method_name}, alpha={privacy_level}, sample size={sample_size}")
 print("#########################################")

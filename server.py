@@ -92,57 +92,78 @@ class server(ABC):
 
 class server_ell2(server):
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
-        super().load_private_data_multinomial(data_y, data_z, alphabet_size, device_y, device_z);
+        super().load_private_data_multinomial(data_y, data_z, alphabet_size, device_y, device_z)
         if utils.get_dimension(data_y) == 1:
-            self.data_y = torch.nn.functional.one_hot( data_y , self.alphabet_size).float()
+            self.data_y = torch.nn.functional.one_hot( data_y , self.alphabet_size).double()
         if utils.get_dimension(data_z) == 1:
-            self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).float()
+            self.data_z = torch.nn.functional.one_hot( data_z , self.alphabet_size).double()
         else:
-            self.data_y = data_y
-            self.data_z = data_z
+            self.data_y = data_y.double()
+            self.data_z = data_z.double()
         self.data_y_square_colsum = self.data_y.square().sum(1)
         self.data_z_square_colsum = self.data_z.square().sum(1)
 
         self.push_data_to_gpu()
 
+    import torch
+
     def _get_statistic(self, perm):
-        perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1) 
-        y_row_sum = self.get_sum_y(perm)
-        z_row_sum = self.get_sum_z(perm)
-        y_sqrsum = self.data_y_square_colsum[perm_toY_fromY].sum().to(self.cuda_device_z ).add(
-            self.data_z_square_colsum[perm_toY_fromZ].sum()
-        ) # scalar
-
-        z_sqrsum = self.data_y_square_colsum[perm_toZ_fromY].sum().to(self.cuda_device_z ).add(
-            self.data_z_square_colsum[perm_toZ_fromZ].sum()
-        ) # scalar
+        # Split permutation
+        perm_toY_fromY, perm_toY_fromZ, perm_toZ_fromY, perm_toZ_fromZ = utils.split_perm(perm, self.n_1)
         
-        one_Phi_one = y_row_sum.dot(y_row_sum) #scalar
-        one_Psi_one = z_row_sum.dot(z_row_sum) #scalar
-        cross = y_row_sum.dot(z_row_sum) #scalar
+        # Get row sums
+        y_row_sum = self.get_sum_y(perm).to(torch.float64)
+        z_row_sum = self.get_sum_z(perm).to(torch.float64)
+        
+        # Calculate y_sqrsum and z_sqrsum
+        y_sqrsum = (self.data_y_square_colsum[perm_toY_fromY].sum().to(self.cuda_device_z).to(torch.float64)
+                    + self.data_z_square_colsum[perm_toY_fromZ].sum().to(torch.float64))
+        
+        z_sqrsum = (self.data_y_square_colsum[perm_toZ_fromY].sum().to(self.cuda_device_z).to(torch.float64)
+                    + self.data_z_square_colsum[perm_toZ_fromZ].sum().to(torch.float64))
+        
+        # Calculate dot products
+        one_Phi_one = y_row_sum.dot(y_row_sum).to(torch.float64)
+        one_Psi_one = z_row_sum.dot(z_row_sum).to(torch.float64)
+        cross = y_row_sum.dot(z_row_sum).to(torch.float64)
+        
+        # Calculate tilde values
+        one_Phi_tilde_one = one_Phi_one - y_sqrsum
+        one_Psi_tilde_one = one_Psi_one - z_sqrsum
+        
+        # Convert n_1 and n_2 to float64
+        n_1 = self.n_1.to(torch.float64)
+        n_2 = self.n_2.to(torch.float64)
+        
+        # y only part: log calculation in case of large n1
+        sign_y = torch.sign(one_Phi_tilde_one)
+        log_abs_u_y = (torch.log(torch.abs(one_Phi_tilde_one))
+                    - torch.log(n_1)
+                    - torch.log(n_1 - 1))
+        u_y = sign_y * torch.exp(log_abs_u_y)
+        
+        # z only part: log calculation in case of large n2
+        sign_z = torch.sign(one_Psi_tilde_one)
+        log_abs_u_z = (torch.log(torch.abs(one_Psi_tilde_one))
+                    - torch.log(n_2)
+                    - torch.log(n_2 - 1))
+        u_z = sign_z * torch.exp(log_abs_u_z)
+        
+        # cross part
+        sign_cross = torch.sign(cross)
+        log_abs_cross = (torch.log(torch.abs(cross))
+                        + torch.log(torch.tensor(2.0, device=cross.device, dtype=torch.float64))
+                        - torch.log(n_1)
+                        - torch.log(n_2))
+        u_cross = sign_cross * torch.exp(log_abs_cross)
+        
+        # Calculate the final statistic
+        statistic = u_y + u_z - u_cross
+        
+        print(u_y, u_z, u_cross)
+        return statistic
 
-        one_Phi_tilde_one = one_Phi_one - y_sqrsum #scalar
-        one_Psi_tilde_one = one_Psi_one - z_sqrsum #scalar
 
-        n_1 = self.n_1.to(torch.float)
-        n_2 = self.n_2.to(torch.float)
-        # y only part. log calculation in case of large n1
-        sign_y = torch.sign(one_Phi_tilde_one) #scalar
-        abs_u_y = torch.exp(torch.log(torch.abs(one_Phi_tilde_one)) - torch.log(n_1) - torch.log(n_1 - 1) ) #scalar
-        u_y = sign_y * abs_u_y #scalar
-
-
-        # z only part. log calculation in case of large n2
-        sign_z = torch.sign(one_Psi_tilde_one) #scalar
-        abs_u_z = torch.exp(torch.log(torch.abs(one_Psi_tilde_one)) - torch.log(n_2) - torch.log(n_2- 1) ) #scalar
-        u_z = sign_z * abs_u_z #scalar
-
-        # cross part 
-        sign_cross = torch.sign(cross) #scalar
-        abs_cross = torch.exp(torch.log(torch.abs(cross)) +torch.log(torch.tensor(2).to(torch.float))- torch.log(n_1) - torch.log(n_2) ) #scalar
-        u_cross = sign_cross * abs_cross #scalar
-        statistic = u_y + u_z - u_cross #scalar
-        return(statistic) 
 
 class server_multinomial_genrr(server):
     def load_private_data_multinomial(self, data_y, data_z, alphabet_size, device_y, device_z):
