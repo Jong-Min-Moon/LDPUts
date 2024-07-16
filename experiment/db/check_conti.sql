@@ -1,0 +1,1 @@
+select avg(p_val<0.05) , sample_size, mechanism, statistic from conti_location group by sample_size, mechanism, statistic
