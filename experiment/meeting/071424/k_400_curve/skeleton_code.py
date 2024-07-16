@@ -69,6 +69,7 @@ for i in range(n_test):
     test_num = i + test_start
     t_start_i = time.time()
     torch.manual_seed(test_num)
+    print(f"seed number = {test_num}")
     server_private.load_private_data_multinomial(
         LDPclient.release_private(
             priv_mech,
