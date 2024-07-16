@@ -105,19 +105,8 @@ class bitflip(lapu):
         output: bit vector in (0,1)^k
         """
         sample_size = utils.get_sample_size(data_mutinomial)
-
-        alpha_half = torch.tensor(privacy_level).div(2)
-
-        log_p = alpha_half - alpha_half.exp().add(1).log()
-        p = log_p.exp()
-        bernoulli_dist = torch.distributions.bernoulli.Bernoulli(1-p) #0 value = stay, 1 value = flip
-
-
-        data_bitflip = torch.nn.functional.one_hot(data_mutinomial, alphabet_size).add( #one-hottize
-            bernoulli_dist.sample((sample_size,alphabet_size)).view(sample_size, alphabet_size)
-        )
-        data_bitflip = data_bitflip.add(
-            data_bitflip.eq(2).mul(-2)
-        )
-
-        return(data_bitflip)
+        flip_probability = torch.tensor(privacy_level).div(2).exp().reciprocal()
+        random_mask = torch.bernoulli(torch.full((sample_size, alphabet_size), flip_probability)).int().bool()
+        flipped_matrix = torch.nn.functional.one_hot(data_mutinomial, alphabet_size)
+        flipped_matrix[random_mask] = 1 - flipped_matrix[random_mask]
+        return(flipped_matrix)
