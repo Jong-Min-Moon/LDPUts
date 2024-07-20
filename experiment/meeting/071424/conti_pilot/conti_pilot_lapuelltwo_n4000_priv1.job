@@ -1,7 +1,0 @@
-#SBATCH --output=/home1/jongminm/LDPUts/experiment/meeting/071424/conti_pilot/conti_pilot_lapuelltwo_n4000_priv1.out
-module purge
-load conda
-eval "$(conda shell.bash hook)"
-conda activate LDPUtsEnvK40
-
-python -u  /home1/jongminm/LDPUts/experiment/meeting/071424/conti_pilot/conti_pilot_lapuelltwo_n4000_priv1.py > /home1/jongminm/LDPUts/experiment/meeting/071424/conti_pilot/conti_pilot_lapuelltwo_n4000_priv1.out

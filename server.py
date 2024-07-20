@@ -43,7 +43,6 @@ class server(ABC):
     
     def get_original_statistic(self):
        original_statistic = self._get_statistic( torch.arange(self.n_1 + self.n_2) )
-       print(original_statistic)
        return(original_statistic)
 
     @abstractmethod
@@ -160,7 +159,6 @@ class server_ell2(server):
         # Calculate the final statistic
         statistic = u_y + u_z - u_cross
         
-        print(u_y, u_z, u_cross)
         return statistic
 
 
@@ -204,7 +202,6 @@ class server_multinomial_genrr(server):
 
         mu_hat_diff_square_mat = mu_hat_diff_mat.square()
         permuted_statistic_vec = torch.mul(mu_hat_diff_square_mat , self.mean_recip_est.unsqueeze(1)).sum(dim=0).mul(self.scaling_constant)        
-        print(permuted_statistic_vec[n_permutation])
         return(
             self.get_p_value_proxy(
                 permuted_statistic_vec[:n_permutation],
@@ -300,7 +297,6 @@ class server_multinomial_bitflip(server_multinomial_genrr):
         proj_mu_hat_diff_mat = torch.mm(self.proj, mu_hat_diff_mat)
         Sigma_inv_proj_mu_hat_diff_mat = torch.cholesky_solve(proj_mu_hat_diff_mat, self.cov_est_L)
         permuted_statistic_vec = torch.mul(proj_mu_hat_diff_mat, Sigma_inv_proj_mu_hat_diff_mat).sum(dim=0).mul(self.scaling_constant)
-        print(permuted_statistic_vec[n_permutation])
         return(
             self.get_p_value_proxy(
                 permuted_statistic_vec[:n_permutation],
