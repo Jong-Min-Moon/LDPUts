@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home1/jongminm/LDPUts/experiment/meeting/071424/conti_pilot/conti_pilot_lapuelltwo_n3500_priv1.py", line 58, in <module>
+    copula_mean_1 = -multiplier * torch.ones(d).to(device)
+NameError: name 'd' is not defined

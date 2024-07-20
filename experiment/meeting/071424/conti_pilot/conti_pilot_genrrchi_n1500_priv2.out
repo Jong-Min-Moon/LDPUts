@@ -1,0 +1,803 @@
+genrrchi, alpha=2, sample size=1500
+#########################################
+tensor(96.9693, device='cuda:0')
+(1, 3, 0, 2, 1500, 'chi', 'genrr', 96.96928405761719, 0.005000000353902578, 1.3783628940582275, '2024-07-17 13:17:00', 4)
+pval: [0.005] -- 1th test, time elapsed 1.3783628940582275 -- emperical power so far (from test_start): 1.0
+db insert success
+tensor(62.1228, device='cuda:0')
+(2, 3, 0, 2, 1500, 'chi', 'genrr', 62.12282180786133, 0.5230000019073486, 1.3695547580718994, '2024-07-17 13:17:15', 4)
+pval: [0.523] -- 2th test, time elapsed 1.3695547580718994 -- emperical power so far (from test_start): 0.5
+db insert success
+tensor(105.8462, device='cuda:0')
+(3, 3, 0, 2, 1500, 'chi', 'genrr', 105.84620666503906, 0.0010000000474974513, 1.3598930835723877, '2024-07-17 13:17:35', 4)
+pval: [0.001] -- 3th test, time elapsed 1.3598930835723877 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(112.4126, device='cuda:0')
+(4, 3, 0, 2, 1500, 'chi', 'genrr', 112.41261291503906, 0.0010000000474974513, 1.3665766716003418, '2024-07-17 13:17:39', 4)
+pval: [0.001] -- 4th test, time elapsed 1.3665766716003418 -- emperical power so far (from test_start): 0.75
+db insert success
+tensor(74.4901, device='cuda:0')
+(5, 3, 0, 2, 1500, 'chi', 'genrr', 74.49006652832031, 0.14100000262260437, 1.3676578998565674, '2024-07-17 13:17:50', 4)
+pval: [0.141] -- 5th test, time elapsed 1.3676578998565674 -- emperical power so far (from test_start): 0.6
+db insert success
+tensor(84.5004, device='cuda:0')
+(6, 3, 0, 2, 1500, 'chi', 'genrr', 84.50035858154297, 0.02800000086426735, 1.3681409358978271, '2024-07-17 13:18:07', 4)
+pval: [0.028] -- 6th test, time elapsed 1.3681409358978271 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(85.9472, device='cuda:0')
+(7, 3, 0, 2, 1500, 'chi', 'genrr', 85.94715118408203, 0.030000001192092896, 1.3663668632507324, '2024-07-17 13:18:26', 4)
+pval: [0.03] -- 7th test, time elapsed 1.3663668632507324 -- emperical power so far (from test_start): 0.7142857142857143
+db insert success
+tensor(105.7005, device='cuda:0')
+(8, 3, 0, 2, 1500, 'chi', 'genrr', 105.7005386352539, 0.003000000026077032, 1.3738460540771484, '2024-07-17 13:18:32', 4)
+pval: [0.003] -- 8th test, time elapsed 1.3738460540771484 -- emperical power so far (from test_start): 0.75
+db insert success
+tensor(97.6616, device='cuda:0')
+(9, 3, 0, 2, 1500, 'chi', 'genrr', 97.6616439819336, 0.005000000353902578, 1.366762399673462, '2024-07-17 13:18:45', 4)
+pval: [0.005] -- 9th test, time elapsed 1.366762399673462 -- emperical power so far (from test_start): 0.7777777777777778
+db insert success
+tensor(76.9312, device='cuda:0')
+(10, 3, 0, 2, 1500, 'chi', 'genrr', 76.93120574951172, 0.11900000274181366, 1.36871337890625, '2024-07-17 13:18:51', 4)
+pval: [0.119] -- 10th test, time elapsed 1.36871337890625 -- emperical power so far (from test_start): 0.7
+db insert success
+tensor(98.9211, device='cuda:0')
+(11, 3, 0, 2, 1500, 'chi', 'genrr', 98.92107391357422, 0.00800000037997961, 1.3638219833374023, '2024-07-17 13:19:10', 4)
+pval: [0.008] -- 11th test, time elapsed 1.3638219833374023 -- emperical power so far (from test_start): 0.7272727272727273
+db insert success
+tensor(81.2978, device='cuda:0')
+(12, 3, 0, 2, 1500, 'chi', 'genrr', 81.29778289794922, 0.07200000435113907, 1.3665006160736084, '2024-07-17 13:19:21', 4)
+pval: [0.072] -- 12th test, time elapsed 1.3665006160736084 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(84.0721, device='cuda:0')
+(13, 3, 0, 2, 1500, 'chi', 'genrr', 84.07206726074219, 0.04100000113248825, 1.3630928993225098, '2024-07-17 13:19:38', 4)
+pval: [0.041] -- 13th test, time elapsed 1.3630928993225098 -- emperical power so far (from test_start): 0.6923076923076923
+db insert success
+tensor(85.7565, device='cuda:0')
+(14, 3, 0, 2, 1500, 'chi', 'genrr', 85.75653839111328, 0.02800000086426735, 1.3691003322601318, '2024-07-17 13:19:42', 4)
+pval: [0.028] -- 14th test, time elapsed 1.3691003322601318 -- emperical power so far (from test_start): 0.7142857142857143
+db insert success
+tensor(91.7614, device='cuda:0')
+(15, 3, 0, 2, 1500, 'chi', 'genrr', 91.76136779785156, 0.009000000543892384, 1.3639869689941406, '2024-07-17 13:19:52', 4)
+pval: [0.009] -- 15th test, time elapsed 1.3639869689941406 -- emperical power so far (from test_start): 0.7333333333333333
+db insert success
+tensor(117.7079, device='cuda:0')
+(16, 3, 0, 2, 1500, 'chi', 'genrr', 117.70791625976562, 0.0010000000474974513, 1.3670392036437988, '2024-07-17 13:20:00', 4)
+pval: [0.001] -- 16th test, time elapsed 1.3670392036437988 -- emperical power so far (from test_start): 0.75
+db insert success
+tensor(89.5875, device='cuda:0')
+(17, 3, 0, 2, 1500, 'chi', 'genrr', 89.58747100830078, 0.01600000075995922, 1.363201379776001, '2024-07-17 13:20:09', 4)
+pval: [0.016] -- 17th test, time elapsed 1.363201379776001 -- emperical power so far (from test_start): 0.7647058823529411
+db insert success
+tensor(92.0591, device='cuda:0')
+(18, 3, 0, 2, 1500, 'chi', 'genrr', 92.0591049194336, 0.013000000268220901, 1.3685684204101562, '2024-07-17 13:20:21', 4)
+pval: [0.013] -- 18th test, time elapsed 1.3685684204101562 -- emperical power so far (from test_start): 0.7777777777777778
+db insert success
+tensor(75.9454, device='cuda:0')
+(19, 3, 0, 2, 1500, 'chi', 'genrr', 75.94535064697266, 0.14000000059604645, 1.366602897644043, '2024-07-17 13:20:25', 4)
+pval: [0.14] -- 19th test, time elapsed 1.366602897644043 -- emperical power so far (from test_start): 0.7368421052631579
+db insert success
+tensor(96.2198, device='cuda:0')
+(20, 3, 0, 2, 1500, 'chi', 'genrr', 96.21980285644531, 0.005000000353902578, 1.366565465927124, '2024-07-17 13:20:38', 4)
+pval: [0.005] -- 20th test, time elapsed 1.366565465927124 -- emperical power so far (from test_start): 0.75
+db insert success
+tensor(85.2444, device='cuda:0')
+(21, 3, 0, 2, 1500, 'chi', 'genrr', 85.24442291259766, 0.02800000086426735, 1.3643617630004883, '2024-07-17 13:20:50', 4)
+pval: [0.028] -- 21th test, time elapsed 1.3643617630004883 -- emperical power so far (from test_start): 0.7619047619047619
+db insert success
+tensor(79.8442, device='cuda:0')
+(22, 3, 0, 2, 1500, 'chi', 'genrr', 79.84418487548828, 0.08100000023841858, 1.3687286376953125, '2024-07-17 13:20:56', 4)
+pval: [0.081] -- 22th test, time elapsed 1.3687286376953125 -- emperical power so far (from test_start): 0.7272727272727273
+db insert success
+tensor(89.3982, device='cuda:0')
+(23, 3, 0, 2, 1500, 'chi', 'genrr', 89.39816284179688, 0.015000000596046448, 1.3667404651641846, '2024-07-17 13:21:01', 4)
+pval: [0.015] -- 23th test, time elapsed 1.3667404651641846 -- emperical power so far (from test_start): 0.7391304347826086
+db insert success
+tensor(79.6530, device='cuda:0')
+(24, 3, 0, 2, 1500, 'chi', 'genrr', 79.65299987792969, 0.08300000429153442, 1.3649184703826904, '2024-07-17 13:21:17', 4)
+pval: [0.083] -- 24th test, time elapsed 1.3649184703826904 -- emperical power so far (from test_start): 0.7083333333333334
+db insert success
+tensor(94.5629, device='cuda:0')
+(25, 3, 0, 2, 1500, 'chi', 'genrr', 94.5628890991211, 0.00800000037997961, 1.3660914897918701, '2024-07-17 13:21:20', 4)
+pval: [0.008] -- 25th test, time elapsed 1.3660914897918701 -- emperical power so far (from test_start): 0.72
+db insert success
+tensor(72.9037, device='cuda:0')
+(26, 3, 0, 2, 1500, 'chi', 'genrr', 72.90370178222656, 0.17600001394748688, 1.3658583164215088, '2024-07-17 13:21:30', 4)
+pval: [0.17600001] -- 26th test, time elapsed 1.3658583164215088 -- emperical power so far (from test_start): 0.6923076923076923
+db insert success
+tensor(72.1327, device='cuda:0')
+(27, 3, 0, 2, 1500, 'chi', 'genrr', 72.13274383544922, 0.22100001573562622, 1.3621420860290527, '2024-07-17 13:21:43', 4)
+pval: [0.22100002] -- 27th test, time elapsed 1.3621420860290527 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(100.6687, device='cuda:0')
+(28, 3, 0, 2, 1500, 'chi', 'genrr', 100.66874694824219, 0.0010000000474974513, 1.3709981441497803, '2024-07-17 13:21:47', 4)
+pval: [0.001] -- 28th test, time elapsed 1.3709981441497803 -- emperical power so far (from test_start): 0.6785714285714286
+db insert success
+tensor(88.2001, device='cuda:0')
+(29, 3, 0, 2, 1500, 'chi', 'genrr', 88.20014953613281, 0.014000000432133675, 1.364933729171753, '2024-07-17 13:21:50', 4)
+pval: [0.014] -- 29th test, time elapsed 1.364933729171753 -- emperical power so far (from test_start): 0.6896551724137931
+db insert success
+tensor(65.5750, device='cuda:0')
+(30, 3, 0, 2, 1500, 'chi', 'genrr', 65.574951171875, 0.39100003242492676, 1.3661625385284424, '2024-07-17 13:21:55', 4)
+pval: [0.39100003] -- 30th test, time elapsed 1.3661625385284424 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(91.8488, device='cuda:0')
+(31, 3, 0, 2, 1500, 'chi', 'genrr', 91.84884643554688, 0.01100000087171793, 1.3664166927337646, '2024-07-17 13:22:06', 4)
+pval: [0.011] -- 31th test, time elapsed 1.3664166927337646 -- emperical power so far (from test_start): 0.6774193548387096
+db insert success
+tensor(70.8225, device='cuda:0')
+(32, 3, 0, 2, 1500, 'chi', 'genrr', 70.8224868774414, 0.23400001227855682, 1.369004726409912, '2024-07-17 13:22:20', 4)
+pval: [0.23400001] -- 32th test, time elapsed 1.369004726409912 -- emperical power so far (from test_start): 0.65625
+db insert success
+tensor(87.0175, device='cuda:0')
+(33, 3, 0, 2, 1500, 'chi', 'genrr', 87.01747131347656, 0.023000001907348633, 1.3570539951324463, '2024-07-17 13:22:27', 4)
+pval: [0.023] -- 33th test, time elapsed 1.3570539951324463 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(79.2961, device='cuda:0')
+(34, 3, 0, 2, 1500, 'chi', 'genrr', 79.29608154296875, 0.07700000703334808, 1.3644554615020752, '2024-07-17 13:22:48', 4)
+pval: [0.07700001] -- 34th test, time elapsed 1.3644554615020752 -- emperical power so far (from test_start): 0.6470588235294118
+db insert success
+tensor(73.2535, device='cuda:0')
+(35, 3, 0, 2, 1500, 'chi', 'genrr', 73.25353240966797, 0.20900000631809235, 1.3669319152832031, '2024-07-17 13:23:08', 4)
+pval: [0.20900001] -- 35th test, time elapsed 1.3669319152832031 -- emperical power so far (from test_start): 0.6285714285714286
+db insert success
+tensor(84.8051, device='cuda:0')
+(36, 3, 0, 2, 1500, 'chi', 'genrr', 84.80513000488281, 0.04700000211596489, 1.3682827949523926, '2024-07-17 13:23:15', 4)
+pval: [0.047] -- 36th test, time elapsed 1.3682827949523926 -- emperical power so far (from test_start): 0.6388888888888888
+db insert success
+tensor(94.0589, device='cuda:0')
+(37, 3, 0, 2, 1500, 'chi', 'genrr', 94.05887603759766, 0.006000000052154064, 1.3651888370513916, '2024-07-17 13:23:20', 4)
+pval: [0.006] -- 37th test, time elapsed 1.3651888370513916 -- emperical power so far (from test_start): 0.6486486486486487
+db insert success
+tensor(99.0475, device='cuda:0')
+(38, 3, 0, 2, 1500, 'chi', 'genrr', 99.04753875732422, 0.003000000026077032, 1.371213674545288, '2024-07-17 13:23:27', 4)
+pval: [0.003] -- 38th test, time elapsed 1.371213674545288 -- emperical power so far (from test_start): 0.6578947368421053
+db insert success
+tensor(84.9599, device='cuda:0')
+(39, 3, 0, 2, 1500, 'chi', 'genrr', 84.95985412597656, 0.03100000135600567, 1.364635944366455, '2024-07-17 13:23:37', 4)
+pval: [0.031] -- 39th test, time elapsed 1.364635944366455 -- emperical power so far (from test_start): 0.6666666666666666
+db insert success
+tensor(80.9259, device='cuda:0')
+(40, 3, 0, 2, 1500, 'chi', 'genrr', 80.9259033203125, 0.05700000375509262, 1.3669631481170654, '2024-07-17 13:23:51', 4)
+pval: [0.057] -- 40th test, time elapsed 1.3669631481170654 -- emperical power so far (from test_start): 0.65
+db insert success
+tensor(62.9815, device='cuda:0')
+(41, 3, 0, 2, 1500, 'chi', 'genrr', 62.98149108886719, 0.492000013589859, 1.3643772602081299, '2024-07-17 13:24:08', 4)
+pval: [0.49200001] -- 41th test, time elapsed 1.3643772602081299 -- emperical power so far (from test_start): 0.6341463414634146
+db insert success
+tensor(66.2771, device='cuda:0')
+(42, 3, 0, 2, 1500, 'chi', 'genrr', 66.27713012695312, 0.3440000116825104, 1.3663079738616943, '2024-07-17 13:24:24', 4)
+pval: [0.34400001] -- 42th test, time elapsed 1.3663079738616943 -- emperical power so far (from test_start): 0.6190476190476191
+db insert success
+tensor(84.3530, device='cuda:0')
+(43, 3, 0, 2, 1500, 'chi', 'genrr', 84.3530044555664, 0.03800000250339508, 1.365295171737671, '2024-07-17 13:24:40', 4)
+pval: [0.038] -- 43th test, time elapsed 1.365295171737671 -- emperical power so far (from test_start): 0.627906976744186
+db insert success
+tensor(63.9760, device='cuda:0')
+(44, 3, 0, 2, 1500, 'chi', 'genrr', 63.97595977783203, 0.4390000104904175, 1.3682174682617188, '2024-07-17 13:24:55', 4)
+pval: [0.43900001] -- 44th test, time elapsed 1.3682174682617188 -- emperical power so far (from test_start): 0.6136363636363636
+db insert success
+tensor(77.9341, device='cuda:0')
+(45, 3, 0, 2, 1500, 'chi', 'genrr', 77.93412780761719, 0.09800000488758087, 1.379692792892456, '2024-07-17 13:25:01', 4)
+pval: [0.098] -- 45th test, time elapsed 1.379692792892456 -- emperical power so far (from test_start): 0.6
+db insert success
+tensor(96.1742, device='cuda:0')
+(46, 3, 0, 2, 1500, 'chi', 'genrr', 96.1742172241211, 0.005000000353902578, 1.3678884506225586, '2024-07-17 13:25:13', 4)
+pval: [0.005] -- 46th test, time elapsed 1.3678884506225586 -- emperical power so far (from test_start): 0.6086956521739131
+db insert success
+tensor(64.6261, device='cuda:0')
+(47, 3, 0, 2, 1500, 'chi', 'genrr', 64.62611389160156, 0.4270000159740448, 1.3666877746582031, '2024-07-17 13:25:21', 4)
+pval: [0.42700002] -- 47th test, time elapsed 1.3666877746582031 -- emperical power so far (from test_start): 0.5957446808510638
+db insert success
+tensor(105.9330, device='cuda:0')
+(48, 3, 0, 2, 1500, 'chi', 'genrr', 105.9329833984375, 0.0020000000949949026, 1.3652219772338867, '2024-07-17 13:25:31', 4)
+pval: [0.002] -- 48th test, time elapsed 1.3652219772338867 -- emperical power so far (from test_start): 0.6041666666666666
+db insert success
+tensor(72.1786, device='cuda:0')
+(49, 3, 0, 2, 1500, 'chi', 'genrr', 72.17863464355469, 0.20000000298023224, 1.366014003753662, '2024-07-17 13:25:38', 4)
+pval: [0.2] -- 49th test, time elapsed 1.366014003753662 -- emperical power so far (from test_start): 0.5918367346938775
+db insert success
+tensor(81.5363, device='cuda:0')
+(50, 3, 0, 2, 1500, 'chi', 'genrr', 81.53632354736328, 0.055000003427267075, 1.3660798072814941, '2024-07-17 13:25:54', 4)
+pval: [0.055] -- 50th test, time elapsed 1.3660798072814941 -- emperical power so far (from test_start): 0.58
+db insert success
+tensor(109.9078, device='cuda:0')
+(51, 3, 0, 2, 1500, 'chi', 'genrr', 109.90776062011719, 0.0010000000474974513, 1.3590881824493408, '2024-07-17 13:26:02', 4)
+pval: [0.001] -- 51th test, time elapsed 1.3590881824493408 -- emperical power so far (from test_start): 0.5882352941176471
+db insert success
+tensor(96.6013, device='cuda:0')
+(52, 3, 0, 2, 1500, 'chi', 'genrr', 96.6013412475586, 0.009000000543892384, 1.3618626594543457, '2024-07-17 13:26:07', 4)
+pval: [0.009] -- 52th test, time elapsed 1.3618626594543457 -- emperical power so far (from test_start): 0.5961538461538461
+db insert success
+tensor(119.3173, device='cuda:0')
+(53, 3, 0, 2, 1500, 'chi', 'genrr', 119.3172836303711, 0.0010000000474974513, 1.362083911895752, '2024-07-17 13:26:18', 4)
+pval: [0.001] -- 53th test, time elapsed 1.362083911895752 -- emperical power so far (from test_start): 0.6037735849056604
+db insert success
+tensor(68.8124, device='cuda:0')
+(54, 3, 0, 2, 1500, 'chi', 'genrr', 68.81239318847656, 0.2670000195503235, 1.3661060333251953, '2024-07-17 13:26:35', 4)
+pval: [0.26700002] -- 54th test, time elapsed 1.3661060333251953 -- emperical power so far (from test_start): 0.5925925925925926
+db insert success
+tensor(83.4770, device='cuda:0')
+(55, 3, 0, 2, 1500, 'chi', 'genrr', 83.47696685791016, 0.049000002443790436, 1.3666210174560547, '2024-07-17 13:26:52', 4)
+pval: [0.049] -- 55th test, time elapsed 1.3666210174560547 -- emperical power so far (from test_start): 0.6
+db insert success
+tensor(98.9085, device='cuda:0')
+(56, 3, 0, 2, 1500, 'chi', 'genrr', 98.90853881835938, 0.004000000189989805, 1.3679931163787842, '2024-07-17 13:27:02', 4)
+pval: [0.004] -- 56th test, time elapsed 1.3679931163787842 -- emperical power so far (from test_start): 0.6071428571428571
+db insert success
+tensor(104.2543, device='cuda:0')
+(57, 3, 0, 2, 1500, 'chi', 'genrr', 104.25428009033203, 0.0020000000949949026, 1.3660743236541748, '2024-07-17 13:27:15', 4)
+pval: [0.002] -- 57th test, time elapsed 1.3660743236541748 -- emperical power so far (from test_start): 0.6140350877192983
+db insert success
+tensor(92.8340, device='cuda:0')
+(58, 3, 0, 2, 1500, 'chi', 'genrr', 92.83403778076172, 0.007000000216066837, 1.3670735359191895, '2024-07-17 13:27:32', 4)
+pval: [0.007] -- 58th test, time elapsed 1.3670735359191895 -- emperical power so far (from test_start): 0.6206896551724138
+db insert success
+tensor(61.8509, device='cuda:0')
+(59, 3, 0, 2, 1500, 'chi', 'genrr', 61.850868225097656, 0.5070000290870667, 1.3644204139709473, '2024-07-17 13:27:40', 4)
+pval: [0.50700003] -- 59th test, time elapsed 1.3644204139709473 -- emperical power so far (from test_start): 0.6101694915254238
+db insert success
+tensor(90.8227, device='cuda:0')
+(60, 3, 0, 2, 1500, 'chi', 'genrr', 90.82268524169922, 0.012000000104308128, 1.368819236755371, '2024-07-17 13:27:58', 4)
+pval: [0.012] -- 60th test, time elapsed 1.368819236755371 -- emperical power so far (from test_start): 0.6166666666666667
+db insert success
+tensor(81.7734, device='cuda:0')
+(61, 3, 0, 2, 1500, 'chi', 'genrr', 81.77336883544922, 0.06700000166893005, 1.3663840293884277, '2024-07-17 13:28:07', 4)
+pval: [0.067] -- 61th test, time elapsed 1.3663840293884277 -- emperical power so far (from test_start): 0.6065573770491803
+db insert success
+tensor(65.2329, device='cuda:0')
+(62, 3, 0, 2, 1500, 'chi', 'genrr', 65.2328872680664, 0.3840000033378601, 1.3666856288909912, '2024-07-17 13:28:16', 4)
+pval: [0.384] -- 62th test, time elapsed 1.3666856288909912 -- emperical power so far (from test_start): 0.5967741935483871
+db insert success
+tensor(94.8493, device='cuda:0')
+(63, 3, 0, 2, 1500, 'chi', 'genrr', 94.84932708740234, 0.006000000052154064, 1.3642973899841309, '2024-07-17 13:28:26', 4)
+pval: [0.006] -- 63th test, time elapsed 1.3642973899841309 -- emperical power so far (from test_start): 0.6031746031746031
+db insert success
+tensor(74.9835, device='cuda:0')
+(64, 3, 0, 2, 1500, 'chi', 'genrr', 74.98348999023438, 0.14500001072883606, 1.3683314323425293, '2024-07-17 13:28:47', 4)
+pval: [0.14500001] -- 64th test, time elapsed 1.3683314323425293 -- emperical power so far (from test_start): 0.59375
+db insert success
+tensor(83.0831, device='cuda:0')
+(65, 3, 0, 2, 1500, 'chi', 'genrr', 83.08309173583984, 0.049000002443790436, 1.367833137512207, '2024-07-17 13:29:01', 4)
+pval: [0.049] -- 65th test, time elapsed 1.367833137512207 -- emperical power so far (from test_start): 0.6
+db insert success
+tensor(80.2268, device='cuda:0')
+(66, 3, 0, 2, 1500, 'chi', 'genrr', 80.226806640625, 0.0650000050663948, 1.369877576828003, '2024-07-17 13:29:05', 4)
+pval: [0.06500001] -- 66th test, time elapsed 1.369877576828003 -- emperical power so far (from test_start): 0.5909090909090909
+db insert success
+tensor(86.0009, device='cuda:0')
+(67, 3, 0, 2, 1500, 'chi', 'genrr', 86.00091552734375, 0.029000001028180122, 1.3656063079833984, '2024-07-17 13:29:18', 4)
+pval: [0.029] -- 67th test, time elapsed 1.3656063079833984 -- emperical power so far (from test_start): 0.5970149253731343
+db insert success
+tensor(90.9602, device='cuda:0')
+(68, 3, 0, 2, 1500, 'chi', 'genrr', 90.96015930175781, 0.01100000087171793, 1.3686115741729736, '2024-07-17 13:29:22', 4)
+pval: [0.011] -- 68th test, time elapsed 1.3686115741729736 -- emperical power so far (from test_start): 0.6029411764705882
+db insert success
+tensor(86.2077, device='cuda:0')
+(69, 3, 0, 2, 1500, 'chi', 'genrr', 86.20774841308594, 0.026000000536441803, 1.36749267578125, '2024-07-17 13:29:43', 4)
+pval: [0.026] -- 69th test, time elapsed 1.36749267578125 -- emperical power so far (from test_start): 0.6086956521739131
+db insert success
+tensor(90.0551, device='cuda:0')
+(70, 3, 0, 2, 1500, 'chi', 'genrr', 90.05508422851562, 0.007000000216066837, 1.3639726638793945, '2024-07-17 13:29:53', 4)
+pval: [0.007] -- 70th test, time elapsed 1.3639726638793945 -- emperical power so far (from test_start): 0.6142857142857143
+db insert success
+tensor(92.5461, device='cuda:0')
+(71, 3, 0, 2, 1500, 'chi', 'genrr', 92.54606628417969, 0.01100000087171793, 1.3657879829406738, '2024-07-17 13:29:57', 4)
+pval: [0.011] -- 71th test, time elapsed 1.3657879829406738 -- emperical power so far (from test_start): 0.6197183098591549
+db insert success
+tensor(103.2881, device='cuda:0')
+(72, 3, 0, 2, 1500, 'chi', 'genrr', 103.28810119628906, 0.004000000189989805, 1.362290620803833, '2024-07-17 13:30:06', 4)
+pval: [0.004] -- 72th test, time elapsed 1.362290620803833 -- emperical power so far (from test_start): 0.625
+db insert success
+tensor(88.4405, device='cuda:0')
+(73, 3, 0, 2, 1500, 'chi', 'genrr', 88.44046020507812, 0.01900000125169754, 1.3517577648162842, '2024-07-17 13:30:27', 4)
+pval: [0.019] -- 73th test, time elapsed 1.3517577648162842 -- emperical power so far (from test_start): 0.6301369863013698
+db insert success
+tensor(100.1036, device='cuda:0')
+(74, 3, 0, 2, 1500, 'chi', 'genrr', 100.10363006591797, 0.0020000000949949026, 1.3519103527069092, '2024-07-17 13:30:34', 4)
+pval: [0.002] -- 74th test, time elapsed 1.3519103527069092 -- emperical power so far (from test_start): 0.6351351351351351
+db insert success
+tensor(72.4858, device='cuda:0')
+(75, 3, 0, 2, 1500, 'chi', 'genrr', 72.48577117919922, 0.18000000715255737, 1.351677656173706, '2024-07-17 13:30:39', 4)
+pval: [0.18000001] -- 75th test, time elapsed 1.351677656173706 -- emperical power so far (from test_start): 0.6266666666666667
+db insert success
+tensor(92.5718, device='cuda:0')
+(76, 3, 0, 2, 1500, 'chi', 'genrr', 92.57178497314453, 0.01100000087171793, 1.352097749710083, '2024-07-17 13:30:48', 4)
+pval: [0.011] -- 76th test, time elapsed 1.352097749710083 -- emperical power so far (from test_start): 0.631578947368421
+db insert success
+tensor(90.7012, device='cuda:0')
+(77, 3, 0, 2, 1500, 'chi', 'genrr', 90.70121002197266, 0.017000000923871994, 1.3614420890808105, '2024-07-17 13:30:58', 4)
+pval: [0.017] -- 77th test, time elapsed 1.3614420890808105 -- emperical power so far (from test_start): 0.6363636363636364
+db insert success
+tensor(63.6325, device='cuda:0')
+(78, 3, 0, 2, 1500, 'chi', 'genrr', 63.632476806640625, 0.4620000123977661, 1.3547616004943848, '2024-07-17 13:31:07', 4)
+pval: [0.46200001] -- 78th test, time elapsed 1.3547616004943848 -- emperical power so far (from test_start): 0.6282051282051282
+db insert success
+tensor(57.8278, device='cuda:0')
+(79, 3, 0, 2, 1500, 'chi', 'genrr', 57.827816009521484, 0.6720000505447388, 1.3545618057250977, '2024-07-17 13:31:12', 4)
+pval: [0.67200005] -- 79th test, time elapsed 1.3545618057250977 -- emperical power so far (from test_start): 0.620253164556962
+db insert success
+tensor(95.9059, device='cuda:0')
+(80, 3, 0, 2, 1500, 'chi', 'genrr', 95.9059066772461, 0.006000000052154064, 1.356337547302246, '2024-07-17 13:31:32', 4)
+pval: [0.006] -- 80th test, time elapsed 1.356337547302246 -- emperical power so far (from test_start): 0.625
+db insert success
+tensor(86.0024, device='cuda:0')
+(81, 3, 0, 2, 1500, 'chi', 'genrr', 86.00242614746094, 0.030000001192092896, 1.3540523052215576, '2024-07-17 13:31:47', 4)
+pval: [0.03] -- 81th test, time elapsed 1.3540523052215576 -- emperical power so far (from test_start): 0.6296296296296297
+db insert success
+tensor(98.8731, device='cuda:0')
+(82, 3, 0, 2, 1500, 'chi', 'genrr', 98.87310791015625, 0.003000000026077032, 1.3561866283416748, '2024-07-17 13:31:55', 4)
+pval: [0.003] -- 82th test, time elapsed 1.3561866283416748 -- emperical power so far (from test_start): 0.6341463414634146
+db insert success
+tensor(89.1030, device='cuda:0')
+(83, 3, 0, 2, 1500, 'chi', 'genrr', 89.10299682617188, 0.018000001087784767, 1.3515238761901855, '2024-07-17 13:32:04', 4)
+pval: [0.018] -- 83th test, time elapsed 1.3515238761901855 -- emperical power so far (from test_start): 0.6385542168674698
+db insert success
+tensor(49.2401, device='cuda:0')
+(84, 3, 0, 2, 1500, 'chi', 'genrr', 49.24009323120117, 0.9050000309944153, 1.3556931018829346, '2024-07-17 13:32:15', 4)
+pval: [0.90500003] -- 84th test, time elapsed 1.3556931018829346 -- emperical power so far (from test_start): 0.6309523809523809
+db insert success
+tensor(74.0538, device='cuda:0')
+(85, 3, 0, 2, 1500, 'chi', 'genrr', 74.05376434326172, 0.15700000524520874, 1.3522284030914307, '2024-07-17 13:32:25', 4)
+pval: [0.15700001] -- 85th test, time elapsed 1.3522284030914307 -- emperical power so far (from test_start): 0.6235294117647059
+db insert success
+tensor(77.2863, device='cuda:0')
+(86, 3, 0, 2, 1500, 'chi', 'genrr', 77.28633117675781, 0.10400000214576721, 1.3534765243530273, '2024-07-17 13:32:28', 4)
+pval: [0.104] -- 86th test, time elapsed 1.3534765243530273 -- emperical power so far (from test_start): 0.6162790697674418
+db insert success
+tensor(90.9241, device='cuda:0')
+(87, 3, 0, 2, 1500, 'chi', 'genrr', 90.924072265625, 0.01100000087171793, 1.356116771697998, '2024-07-17 13:32:50', 4)
+pval: [0.011] -- 87th test, time elapsed 1.356116771697998 -- emperical power so far (from test_start): 0.6206896551724138
+db insert success
+tensor(111.9796, device='cuda:0')
+(88, 3, 0, 2, 1500, 'chi', 'genrr', 111.97956848144531, 0.0010000000474974513, 1.3576624393463135, '2024-07-17 13:33:09', 4)
+pval: [0.001] -- 88th test, time elapsed 1.3576624393463135 -- emperical power so far (from test_start): 0.625
+db insert success
+tensor(87.4833, device='cuda:0')
+(89, 3, 0, 2, 1500, 'chi', 'genrr', 87.48332977294922, 0.020000001415610313, 1.3499109745025635, '2024-07-17 13:33:28', 4)
+pval: [0.02] -- 89th test, time elapsed 1.3499109745025635 -- emperical power so far (from test_start): 0.6292134831460674
+db insert success
+tensor(102.6799, device='cuda:0')
+(90, 3, 0, 2, 1500, 'chi', 'genrr', 102.6799087524414, 0.0010000000474974513, 1.355018138885498, '2024-07-17 13:33:44', 4)
+pval: [0.001] -- 90th test, time elapsed 1.355018138885498 -- emperical power so far (from test_start): 0.6333333333333333
+db insert success
+tensor(72.1292, device='cuda:0')
+(91, 3, 0, 2, 1500, 'chi', 'genrr', 72.1291732788086, 0.18900001049041748, 1.3479914665222168, '2024-07-17 13:33:59', 4)
+pval: [0.18900001] -- 91th test, time elapsed 1.3479914665222168 -- emperical power so far (from test_start): 0.6263736263736264
+db insert success
+tensor(96.7620, device='cuda:0')
+(92, 3, 0, 2, 1500, 'chi', 'genrr', 96.76200866699219, 0.0020000000949949026, 1.354597806930542, '2024-07-17 13:34:09', 4)
+pval: [0.002] -- 92th test, time elapsed 1.354597806930542 -- emperical power so far (from test_start): 0.6304347826086957
+db insert success
+tensor(86.8238, device='cuda:0')
+(93, 3, 0, 2, 1500, 'chi', 'genrr', 86.82378387451172, 0.030000001192092896, 1.3545811176300049, '2024-07-17 13:34:13', 4)
+pval: [0.03] -- 93th test, time elapsed 1.3545811176300049 -- emperical power so far (from test_start): 0.6344086021505376
+db insert success
+tensor(95.7320, device='cuda:0')
+(94, 3, 0, 2, 1500, 'chi', 'genrr', 95.73199462890625, 0.007000000216066837, 1.3574607372283936, '2024-07-17 13:34:21', 4)
+pval: [0.007] -- 94th test, time elapsed 1.3574607372283936 -- emperical power so far (from test_start): 0.6382978723404256
+db insert success
+tensor(70.8888, device='cuda:0')
+(95, 3, 0, 2, 1500, 'chi', 'genrr', 70.88877868652344, 0.21700000762939453, 1.3480823040008545, '2024-07-17 13:34:37', 4)
+pval: [0.21700001] -- 95th test, time elapsed 1.3480823040008545 -- emperical power so far (from test_start): 0.631578947368421
+db insert success
+tensor(101.1373, device='cuda:0')
+(96, 3, 0, 2, 1500, 'chi', 'genrr', 101.13733673095703, 0.0020000000949949026, 1.3562147617340088, '2024-07-17 13:34:45', 4)
+pval: [0.002] -- 96th test, time elapsed 1.3562147617340088 -- emperical power so far (from test_start): 0.6354166666666666
+db insert success
+tensor(74.0131, device='cuda:0')
+(97, 3, 0, 2, 1500, 'chi', 'genrr', 74.01307678222656, 0.15000000596046448, 1.352870225906372, '2024-07-17 13:34:56', 4)
+pval: [0.15000001] -- 97th test, time elapsed 1.352870225906372 -- emperical power so far (from test_start): 0.6288659793814433
+db insert success
+tensor(93.5207, device='cuda:0')
+(98, 3, 0, 2, 1500, 'chi', 'genrr', 93.52073669433594, 0.006000000052154064, 1.353250503540039, '2024-07-17 13:35:01', 4)
+pval: [0.006] -- 98th test, time elapsed 1.353250503540039 -- emperical power so far (from test_start): 0.6326530612244898
+db insert success
+tensor(80.3393, device='cuda:0')
+(99, 3, 0, 2, 1500, 'chi', 'genrr', 80.33930969238281, 0.07600000500679016, 1.354304552078247, '2024-07-17 13:35:15', 4)
+pval: [0.07600001] -- 99th test, time elapsed 1.354304552078247 -- emperical power so far (from test_start): 0.6262626262626263
+db insert success
+tensor(78.3217, device='cuda:0')
+(100, 3, 0, 2, 1500, 'chi', 'genrr', 78.32169342041016, 0.08400000631809235, 1.3625233173370361, '2024-07-17 13:35:19', 4)
+pval: [0.08400001] -- 100th test, time elapsed 1.3625233173370361 -- emperical power so far (from test_start): 0.62
+db insert success
+tensor(92.5809, device='cuda:0')
+(101, 3, 0, 2, 1500, 'chi', 'genrr', 92.58094787597656, 0.01100000087171793, 1.3530011177062988, '2024-07-17 13:35:25', 4)
+pval: [0.011] -- 101th test, time elapsed 1.3530011177062988 -- emperical power so far (from test_start): 0.6237623762376238
+db insert success
+tensor(89.9167, device='cuda:0')
+(102, 3, 0, 2, 1500, 'chi', 'genrr', 89.91671752929688, 0.01100000087171793, 1.356065034866333, '2024-07-17 13:35:35', 4)
+pval: [0.011] -- 102th test, time elapsed 1.356065034866333 -- emperical power so far (from test_start): 0.6274509803921569
+db insert success
+tensor(61.2574, device='cuda:0')
+(103, 3, 0, 2, 1500, 'chi', 'genrr', 61.257362365722656, 0.5320000052452087, 1.3510534763336182, '2024-07-17 13:35:54', 4)
+pval: [0.53200001] -- 103th test, time elapsed 1.3510534763336182 -- emperical power so far (from test_start): 0.6213592233009708
+db insert success
+tensor(95.4363, device='cuda:0')
+(104, 3, 0, 2, 1500, 'chi', 'genrr', 95.4362564086914, 0.005000000353902578, 1.352905035018921, '2024-07-17 13:36:14', 4)
+pval: [0.005] -- 104th test, time elapsed 1.352905035018921 -- emperical power so far (from test_start): 0.625
+db insert success
+tensor(77.4507, device='cuda:0')
+(105, 3, 0, 2, 1500, 'chi', 'genrr', 77.45072937011719, 0.0950000062584877, 1.3493309020996094, '2024-07-17 13:36:33', 4)
+pval: [0.09500001] -- 105th test, time elapsed 1.3493309020996094 -- emperical power so far (from test_start): 0.6190476190476191
+db insert success
+tensor(84.1488, device='cuda:0')
+(106, 3, 0, 2, 1500, 'chi', 'genrr', 84.14881896972656, 0.04800000041723251, 1.3529868125915527, '2024-07-17 13:36:53', 4)
+pval: [0.048] -- 106th test, time elapsed 1.3529868125915527 -- emperical power so far (from test_start): 0.6226415094339622
+db insert success
+tensor(80.6895, device='cuda:0')
+(107, 3, 0, 2, 1500, 'chi', 'genrr', 80.68952178955078, 0.06800000369548798, 1.3517944812774658, '2024-07-17 13:36:59', 4)
+pval: [0.068] -- 107th test, time elapsed 1.3517944812774658 -- emperical power so far (from test_start): 0.616822429906542
+db insert success
+tensor(85.3818, device='cuda:0')
+(108, 3, 0, 2, 1500, 'chi', 'genrr', 85.38182067871094, 0.036000002175569534, 1.3663630485534668, '2024-07-17 13:37:16', 4)
+pval: [0.036] -- 108th test, time elapsed 1.3663630485534668 -- emperical power so far (from test_start): 0.6203703703703703
+db insert success
+tensor(62.9544, device='cuda:0')
+(109, 3, 0, 2, 1500, 'chi', 'genrr', 62.95443344116211, 0.4970000088214874, 1.3507091999053955, '2024-07-17 13:37:20', 4)
+pval: [0.49700001] -- 109th test, time elapsed 1.3507091999053955 -- emperical power so far (from test_start): 0.6146788990825688
+db insert success
+tensor(76.0148, device='cuda:0')
+(110, 3, 0, 2, 1500, 'chi', 'genrr', 76.01478576660156, 0.12600000202655792, 1.3507819175720215, '2024-07-17 13:37:42', 4)
+pval: [0.126] -- 110th test, time elapsed 1.3507819175720215 -- emperical power so far (from test_start): 0.6090909090909091
+db insert success
+tensor(105.5500, device='cuda:0')
+(111, 3, 0, 2, 1500, 'chi', 'genrr', 105.55001068115234, 0.003000000026077032, 1.3485257625579834, '2024-07-17 13:37:49', 4)
+pval: [0.003] -- 111th test, time elapsed 1.3485257625579834 -- emperical power so far (from test_start): 0.6126126126126126
+db insert success
+tensor(80.4072, device='cuda:0')
+(112, 3, 0, 2, 1500, 'chi', 'genrr', 80.40721893310547, 0.07300000637769699, 1.3530993461608887, '2024-07-17 13:37:53', 4)
+pval: [0.07300001] -- 112th test, time elapsed 1.3530993461608887 -- emperical power so far (from test_start): 0.6071428571428571
+db insert success
+tensor(83.9223, device='cuda:0')
+(113, 3, 0, 2, 1500, 'chi', 'genrr', 83.9223403930664, 0.04200000315904617, 1.3458600044250488, '2024-07-17 13:38:00', 4)
+pval: [0.042] -- 113th test, time elapsed 1.3458600044250488 -- emperical power so far (from test_start): 0.6106194690265486
+db insert success
+tensor(56.5960, device='cuda:0')
+(114, 3, 0, 2, 1500, 'chi', 'genrr', 56.59600830078125, 0.6820000410079956, 1.3531842231750488, '2024-07-17 13:38:06', 4)
+pval: [0.68200004] -- 114th test, time elapsed 1.3531842231750488 -- emperical power so far (from test_start): 0.6052631578947368
+db insert success
+tensor(73.2948, device='cuda:0')
+(115, 3, 0, 2, 1500, 'chi', 'genrr', 73.29476165771484, 0.164000004529953, 1.342928409576416, '2024-07-17 13:38:09', 4)
+pval: [0.164] -- 115th test, time elapsed 1.342928409576416 -- emperical power so far (from test_start): 0.6
+db insert success
+tensor(104.5449, device='cuda:0')
+(116, 3, 0, 2, 1500, 'chi', 'genrr', 104.54492950439453, 0.0020000000949949026, 1.355959177017212, '2024-07-17 13:38:20', 4)
+pval: [0.002] -- 116th test, time elapsed 1.355959177017212 -- emperical power so far (from test_start): 0.603448275862069
+db insert success
+tensor(74.9683, device='cuda:0')
+(117, 3, 0, 2, 1500, 'chi', 'genrr', 74.96825408935547, 0.1600000113248825, 1.3462824821472168, '2024-07-17 13:38:30', 4)
+pval: [0.16000001] -- 117th test, time elapsed 1.3462824821472168 -- emperical power so far (from test_start): 0.5982905982905983
+db insert success
+tensor(65.3749, device='cuda:0')
+(118, 3, 0, 2, 1500, 'chi', 'genrr', 65.37488555908203, 0.42000001668930054, 1.361537218093872, '2024-07-17 13:38:50', 4)
+pval: [0.42000002] -- 118th test, time elapsed 1.361537218093872 -- emperical power so far (from test_start): 0.5932203389830508
+db insert success
+tensor(85.7979, device='cuda:0')
+(119, 3, 0, 2, 1500, 'chi', 'genrr', 85.7978744506836, 0.02500000037252903, 1.3509535789489746, '2024-07-17 13:38:57', 4)
+pval: [0.025] -- 119th test, time elapsed 1.3509535789489746 -- emperical power so far (from test_start): 0.5966386554621849
+db insert success
+tensor(64.9185, device='cuda:0')
+(120, 3, 0, 2, 1500, 'chi', 'genrr', 64.91851806640625, 0.4090000092983246, 1.3540380001068115, '2024-07-17 13:39:15', 4)
+pval: [0.40900001] -- 120th test, time elapsed 1.3540380001068115 -- emperical power so far (from test_start): 0.5916666666666667
+db insert success
+tensor(98.9750, device='cuda:0')
+(121, 3, 0, 2, 1500, 'chi', 'genrr', 98.97501373291016, 0.0020000000949949026, 1.3500723838806152, '2024-07-17 13:39:21', 4)
+pval: [0.002] -- 121th test, time elapsed 1.3500723838806152 -- emperical power so far (from test_start): 0.5950413223140496
+db insert success
+tensor(83.9785, device='cuda:0')
+(122, 3, 0, 2, 1500, 'chi', 'genrr', 83.97845458984375, 0.03500000014901161, 1.3559153079986572, '2024-07-17 13:39:40', 4)
+pval: [0.035] -- 122th test, time elapsed 1.3559153079986572 -- emperical power so far (from test_start): 0.5983606557377049
+db insert success
+tensor(98.7720, device='cuda:0')
+(123, 3, 0, 2, 1500, 'chi', 'genrr', 98.77202606201172, 0.0020000000949949026, 1.3497231006622314, '2024-07-17 13:40:01', 4)
+pval: [0.002] -- 123th test, time elapsed 1.3497231006622314 -- emperical power so far (from test_start): 0.6016260162601627
+db insert success
+tensor(80.2058, device='cuda:0')
+(124, 3, 0, 2, 1500, 'chi', 'genrr', 80.205810546875, 0.07700000703334808, 1.354429006576538, '2024-07-17 13:40:19', 4)
+pval: [0.07700001] -- 124th test, time elapsed 1.354429006576538 -- emperical power so far (from test_start): 0.5967741935483871
+db insert success
+tensor(61.2042, device='cuda:0')
+(125, 3, 0, 2, 1500, 'chi', 'genrr', 61.204193115234375, 0.5400000214576721, 1.3603861331939697, '2024-07-17 13:40:23', 4)
+pval: [0.54000002] -- 125th test, time elapsed 1.3603861331939697 -- emperical power so far (from test_start): 0.592
+db insert success
+tensor(88.4690, device='cuda:0')
+(126, 3, 0, 2, 1500, 'chi', 'genrr', 88.46902465820312, 0.015000000596046448, 1.3509278297424316, '2024-07-17 13:40:30', 4)
+pval: [0.015] -- 126th test, time elapsed 1.3509278297424316 -- emperical power so far (from test_start): 0.5952380952380952
+db insert success
+tensor(87.3103, device='cuda:0')
+(127, 3, 0, 2, 1500, 'chi', 'genrr', 87.31028747558594, 0.03100000135600567, 1.348694086074829, '2024-07-17 13:40:49', 4)
+pval: [0.031] -- 127th test, time elapsed 1.348694086074829 -- emperical power so far (from test_start): 0.5984251968503937
+db insert success
+tensor(79.2995, device='cuda:0')
+(128, 3, 0, 2, 1500, 'chi', 'genrr', 79.29945373535156, 0.08300000429153442, 1.3490242958068848, '2024-07-17 13:40:52', 4)
+pval: [0.083] -- 128th test, time elapsed 1.3490242958068848 -- emperical power so far (from test_start): 0.59375
+db insert success
+tensor(63.1926, device='cuda:0')
+(129, 3, 0, 2, 1500, 'chi', 'genrr', 63.19261932373047, 0.46800002455711365, 1.342698574066162, '2024-07-17 13:41:01', 4)
+pval: [0.46800002] -- 129th test, time elapsed 1.342698574066162 -- emperical power so far (from test_start): 0.5891472868217055
+db insert success
+tensor(68.5158, device='cuda:0')
+(130, 3, 0, 2, 1500, 'chi', 'genrr', 68.51582336425781, 0.2930000126361847, 1.348144769668579, '2024-07-17 13:41:18', 4)
+pval: [0.29300001] -- 130th test, time elapsed 1.348144769668579 -- emperical power so far (from test_start): 0.5846153846153846
+db insert success
+tensor(65.6738, device='cuda:0')
+(131, 3, 0, 2, 1500, 'chi', 'genrr', 65.67378997802734, 0.3680000305175781, 1.3470230102539062, '2024-07-17 13:41:37', 4)
+pval: [0.36800003] -- 131th test, time elapsed 1.3470230102539062 -- emperical power so far (from test_start): 0.5801526717557252
+db insert success
+tensor(80.1834, device='cuda:0')
+(132, 3, 0, 2, 1500, 'chi', 'genrr', 80.18341827392578, 0.07800000160932541, 1.3495962619781494, '2024-07-17 13:41:44', 4)
+pval: [0.078] -- 132th test, time elapsed 1.3495962619781494 -- emperical power so far (from test_start): 0.5757575757575758
+db insert success
+tensor(85.2874, device='cuda:0')
+(133, 3, 0, 2, 1500, 'chi', 'genrr', 85.28740692138672, 0.03800000250339508, 1.3434076309204102, '2024-07-17 13:41:46', 4)
+pval: [0.038] -- 133th test, time elapsed 1.3434076309204102 -- emperical power so far (from test_start): 0.5789473684210527
+db insert success
+tensor(109.5970, device='cuda:0')
+(134, 3, 0, 2, 1500, 'chi', 'genrr', 109.59698486328125, 0.0020000000949949026, 1.3568663597106934, '2024-07-17 13:41:59', 4)
+pval: [0.002] -- 134th test, time elapsed 1.3568663597106934 -- emperical power so far (from test_start): 0.582089552238806
+db insert success
+tensor(84.2447, device='cuda:0')
+(135, 3, 0, 2, 1500, 'chi', 'genrr', 84.2447280883789, 0.030000001192092896, 1.347275733947754, '2024-07-17 13:42:14', 4)
+pval: [0.03] -- 135th test, time elapsed 1.347275733947754 -- emperical power so far (from test_start): 0.5851851851851851
+db insert success
+tensor(69.8834, device='cuda:0')
+(136, 3, 0, 2, 1500, 'chi', 'genrr', 69.88339233398438, 0.2550000250339508, 1.353445291519165, '2024-07-17 13:42:20', 4)
+pval: [0.25500003] -- 136th test, time elapsed 1.353445291519165 -- emperical power so far (from test_start): 0.5808823529411765
+db insert success
+tensor(98.9238, device='cuda:0')
+(137, 3, 0, 2, 1500, 'chi', 'genrr', 98.923828125, 0.005000000353902578, 1.3452425003051758, '2024-07-17 13:42:34', 4)
+pval: [0.005] -- 137th test, time elapsed 1.3452425003051758 -- emperical power so far (from test_start): 0.583941605839416
+db insert success
+tensor(90.4295, device='cuda:0')
+(138, 3, 0, 2, 1500, 'chi', 'genrr', 90.42948913574219, 0.021000001579523087, 1.3460941314697266, '2024-07-17 13:42:37', 4)
+pval: [0.021] -- 138th test, time elapsed 1.3460941314697266 -- emperical power so far (from test_start): 0.5869565217391305
+db insert success
+tensor(71.0828, device='cuda:0')
+(139, 3, 0, 2, 1500, 'chi', 'genrr', 71.08275604248047, 0.21000000834465027, 1.341719388961792, '2024-07-17 13:42:52', 4)
+pval: [0.21000001] -- 139th test, time elapsed 1.341719388961792 -- emperical power so far (from test_start): 0.5827338129496403
+db insert success
+tensor(88.1311, device='cuda:0')
+(140, 3, 0, 2, 1500, 'chi', 'genrr', 88.13114929199219, 0.01900000125169754, 1.3449218273162842, '2024-07-17 13:42:58', 4)
+pval: [0.019] -- 140th test, time elapsed 1.3449218273162842 -- emperical power so far (from test_start): 0.5857142857142857
+db insert success
+tensor(79.2878, device='cuda:0')
+(141, 3, 0, 2, 1500, 'chi', 'genrr', 79.28775024414062, 0.06200000271201134, 1.3464813232421875, '2024-07-17 13:43:08', 4)
+pval: [0.062] -- 141th test, time elapsed 1.3464813232421875 -- emperical power so far (from test_start): 0.5815602836879432
+db insert success
+tensor(72.1531, device='cuda:0')
+(142, 3, 0, 2, 1500, 'chi', 'genrr', 72.15306854248047, 0.1980000138282776, 1.3480565547943115, '2024-07-17 13:43:26', 4)
+pval: [0.19800001] -- 142th test, time elapsed 1.3480565547943115 -- emperical power so far (from test_start): 0.5774647887323944
+db insert success
+tensor(58.4933, device='cuda:0')
+(143, 3, 0, 2, 1500, 'chi', 'genrr', 58.49333572387695, 0.6470000147819519, 1.3483588695526123, '2024-07-17 13:43:36', 4)
+pval: [0.64700001] -- 143th test, time elapsed 1.3483588695526123 -- emperical power so far (from test_start): 0.5734265734265734
+db insert success
+tensor(76.0743, device='cuda:0')
+(144, 3, 0, 2, 1500, 'chi', 'genrr', 76.0743179321289, 0.11400000751018524, 1.3501851558685303, '2024-07-17 13:43:55', 4)
+pval: [0.11400001] -- 144th test, time elapsed 1.3501851558685303 -- emperical power so far (from test_start): 0.5694444444444444
+db insert success
+tensor(88.9070, device='cuda:0')
+(145, 3, 0, 2, 1500, 'chi', 'genrr', 88.9069595336914, 0.014000000432133675, 1.346790075302124, '2024-07-17 13:43:59', 4)
+pval: [0.014] -- 145th test, time elapsed 1.346790075302124 -- emperical power so far (from test_start): 0.5724137931034483
+db insert success
+tensor(106.4746, device='cuda:0')
+(146, 3, 0, 2, 1500, 'chi', 'genrr', 106.47455596923828, 0.0020000000949949026, 1.3461782932281494, '2024-07-17 13:44:15', 4)
+pval: [0.002] -- 146th test, time elapsed 1.3461782932281494 -- emperical power so far (from test_start): 0.5753424657534246
+db insert success
+tensor(71.1747, device='cuda:0')
+(147, 3, 0, 2, 1500, 'chi', 'genrr', 71.17474365234375, 0.24900001287460327, 1.346616268157959, '2024-07-17 13:44:20', 4)
+pval: [0.24900001] -- 147th test, time elapsed 1.346616268157959 -- emperical power so far (from test_start): 0.5714285714285714
+db insert success
+tensor(89.5438, device='cuda:0')
+(148, 3, 0, 2, 1500, 'chi', 'genrr', 89.54383087158203, 0.014000000432133675, 1.3480491638183594, '2024-07-17 13:44:26', 4)
+pval: [0.014] -- 148th test, time elapsed 1.3480491638183594 -- emperical power so far (from test_start): 0.5743243243243243
+db insert success
+tensor(94.0296, device='cuda:0')
+(149, 3, 0, 2, 1500, 'chi', 'genrr', 94.02959442138672, 0.00800000037997961, 1.3463973999023438, '2024-07-17 13:44:33', 4)
+pval: [0.008] -- 149th test, time elapsed 1.3463973999023438 -- emperical power so far (from test_start): 0.5771812080536913
+db insert success
+tensor(95.7370, device='cuda:0')
+(150, 3, 0, 2, 1500, 'chi', 'genrr', 95.7370376586914, 0.004000000189989805, 1.3483688831329346, '2024-07-17 13:44:55', 4)
+pval: [0.004] -- 150th test, time elapsed 1.3483688831329346 -- emperical power so far (from test_start): 0.58
+db insert success
+tensor(70.4622, device='cuda:0')
+(151, 3, 0, 2, 1500, 'chi', 'genrr', 70.46220397949219, 0.25, 1.360802412033081, '2024-07-17 13:45:05', 4)
+pval: [0.25] -- 151th test, time elapsed 1.360802412033081 -- emperical power so far (from test_start): 0.5761589403973509
+db insert success
+tensor(89.7383, device='cuda:0')
+(152, 3, 0, 2, 1500, 'chi', 'genrr', 89.73826599121094, 0.020000001415610313, 1.3474338054656982, '2024-07-17 13:45:16', 4)
+pval: [0.02] -- 152th test, time elapsed 1.3474338054656982 -- emperical power so far (from test_start): 0.5789473684210527
+db insert success
+tensor(69.1644, device='cuda:0')
+(153, 3, 0, 2, 1500, 'chi', 'genrr', 69.1644058227539, 0.2580000162124634, 1.3465006351470947, '2024-07-17 13:45:18', 4)
+pval: [0.25800002] -- 153th test, time elapsed 1.3465006351470947 -- emperical power so far (from test_start): 0.5751633986928104
+db insert success
+tensor(87.8222, device='cuda:0')
+(154, 3, 0, 2, 1500, 'chi', 'genrr', 87.82220458984375, 0.01900000125169754, 1.3487765789031982, '2024-07-17 13:45:27', 4)
+pval: [0.019] -- 154th test, time elapsed 1.3487765789031982 -- emperical power so far (from test_start): 0.577922077922078
+db insert success
+tensor(67.6730, device='cuda:0')
+(155, 3, 0, 2, 1500, 'chi', 'genrr', 67.67301940917969, 0.2939999997615814, 1.3476459980010986, '2024-07-17 13:45:33', 4)
+pval: [0.294] -- 155th test, time elapsed 1.3476459980010986 -- emperical power so far (from test_start): 0.5741935483870968
+db insert success
+tensor(75.5811, device='cuda:0')
+(156, 3, 0, 2, 1500, 'chi', 'genrr', 75.58108520507812, 0.125, 1.3510558605194092, '2024-07-17 13:45:46', 4)
+pval: [0.125] -- 156th test, time elapsed 1.3510558605194092 -- emperical power so far (from test_start): 0.5705128205128205
+db insert success
+tensor(62.7674, device='cuda:0')
+(157, 3, 0, 2, 1500, 'chi', 'genrr', 62.76742935180664, 0.492000013589859, 1.3438944816589355, '2024-07-17 13:45:54', 4)
+pval: [0.49200001] -- 157th test, time elapsed 1.3438944816589355 -- emperical power so far (from test_start): 0.5668789808917197
+db insert success
+tensor(71.8450, device='cuda:0')
+(158, 3, 0, 2, 1500, 'chi', 'genrr', 71.84500122070312, 0.17600001394748688, 1.3506081104278564, '2024-07-17 13:46:08', 4)
+pval: [0.17600001] -- 158th test, time elapsed 1.3506081104278564 -- emperical power so far (from test_start): 0.5632911392405063
+db insert success
+tensor(64.4645, device='cuda:0')
+(159, 3, 0, 2, 1500, 'chi', 'genrr', 64.4645004272461, 0.4270000159740448, 1.3424773216247559, '2024-07-17 13:46:24', 4)
+pval: [0.42700002] -- 159th test, time elapsed 1.3424773216247559 -- emperical power so far (from test_start): 0.559748427672956
+db insert success
+tensor(84.9038, device='cuda:0')
+(160, 3, 0, 2, 1500, 'chi', 'genrr', 84.90380096435547, 0.029000001028180122, 1.3486652374267578, '2024-07-17 13:46:33', 4)
+pval: [0.029] -- 160th test, time elapsed 1.3486652374267578 -- emperical power so far (from test_start): 0.5625
+db insert success
+tensor(78.4873, device='cuda:0')
+(161, 3, 0, 2, 1500, 'chi', 'genrr', 78.48733520507812, 0.09800000488758087, 1.349949598312378, '2024-07-17 13:46:46', 4)
+pval: [0.098] -- 161th test, time elapsed 1.349949598312378 -- emperical power so far (from test_start): 0.5590062111801242
+db insert success
+tensor(75.8977, device='cuda:0')
+(162, 3, 0, 2, 1500, 'chi', 'genrr', 75.8977279663086, 0.1290000081062317, 1.3489394187927246, '2024-07-17 13:47:02', 4)
+pval: [0.12900001] -- 162th test, time elapsed 1.3489394187927246 -- emperical power so far (from test_start): 0.5555555555555556
+db insert success
+tensor(104.8442, device='cuda:0')
+(163, 3, 0, 2, 1500, 'chi', 'genrr', 104.84417724609375, 0.0010000000474974513, 1.3488998413085938, '2024-07-17 13:47:15', 4)
+pval: [0.001] -- 163th test, time elapsed 1.3488998413085938 -- emperical power so far (from test_start): 0.558282208588957
+db insert success
+tensor(82.9260, device='cuda:0')
+(164, 3, 0, 2, 1500, 'chi', 'genrr', 82.92601013183594, 0.04500000178813934, 1.3502790927886963, '2024-07-17 13:47:33', 4)
+pval: [0.045] -- 164th test, time elapsed 1.3502790927886963 -- emperical power so far (from test_start): 0.5609756097560976
+db insert success
+tensor(79.2369, device='cuda:0')
+(165, 3, 0, 2, 1500, 'chi', 'genrr', 79.2369155883789, 0.0820000022649765, 1.345323085784912, '2024-07-17 13:47:39', 4)
+pval: [0.082] -- 165th test, time elapsed 1.345323085784912 -- emperical power so far (from test_start): 0.5575757575757576
+db insert success
+tensor(80.1635, device='cuda:0')
+(166, 3, 0, 2, 1500, 'chi', 'genrr', 80.1634750366211, 0.06100000441074371, 1.3468561172485352, '2024-07-17 13:47:58', 4)
+pval: [0.061] -- 166th test, time elapsed 1.3468561172485352 -- emperical power so far (from test_start): 0.5542168674698795
+db insert success
+tensor(82.7172, device='cuda:0')
+(167, 3, 0, 2, 1500, 'chi', 'genrr', 82.71722412109375, 0.04200000315904617, 1.3555934429168701, '2024-07-17 13:48:12', 4)
+pval: [0.042] -- 167th test, time elapsed 1.3555934429168701 -- emperical power so far (from test_start): 0.5568862275449101
+db insert success
+tensor(76.4548, device='cuda:0')
+(168, 3, 0, 2, 1500, 'chi', 'genrr', 76.454833984375, 0.11700000613927841, 1.3533475399017334, '2024-07-17 13:48:25', 4)
+pval: [0.11700001] -- 168th test, time elapsed 1.3533475399017334 -- emperical power so far (from test_start): 0.5535714285714286
+db insert success
+tensor(125.9780, device='cuda:0')
+(169, 3, 0, 2, 1500, 'chi', 'genrr', 125.97798156738281, 0.0010000000474974513, 1.3477990627288818, '2024-07-17 13:48:33', 4)
+pval: [0.001] -- 169th test, time elapsed 1.3477990627288818 -- emperical power so far (from test_start): 0.5562130177514792
+db insert success
+tensor(79.6697, device='cuda:0')
+(170, 3, 0, 2, 1500, 'chi', 'genrr', 79.6697006225586, 0.05900000408291817, 1.3488059043884277, '2024-07-17 13:48:48', 4)
+pval: [0.059] -- 170th test, time elapsed 1.3488059043884277 -- emperical power so far (from test_start): 0.5529411764705883
+db insert success
+tensor(74.5429, device='cuda:0')
+(171, 3, 0, 2, 1500, 'chi', 'genrr', 74.54286193847656, 0.1510000079870224, 1.3465807437896729, '2024-07-17 13:49:05', 4)
+pval: [0.15100001] -- 171th test, time elapsed 1.3465807437896729 -- emperical power so far (from test_start): 0.5497076023391813
+db insert success
+tensor(92.3841, device='cuda:0')
+(172, 3, 0, 2, 1500, 'chi', 'genrr', 92.38407897949219, 0.01100000087171793, 1.349472999572754, '2024-07-17 13:49:24', 4)
+pval: [0.011] -- 172th test, time elapsed 1.349472999572754 -- emperical power so far (from test_start): 0.5523255813953488
+db insert success
+tensor(82.4548, device='cuda:0')
+(173, 3, 0, 2, 1500, 'chi', 'genrr', 82.45477294921875, 0.05400000140070915, 1.349111557006836, '2024-07-17 13:49:40', 4)
+pval: [0.054] -- 173th test, time elapsed 1.349111557006836 -- emperical power so far (from test_start): 0.5491329479768786
+db insert success
+tensor(87.5521, device='cuda:0')
+(174, 3, 0, 2, 1500, 'chi', 'genrr', 87.55205535888672, 0.014000000432133675, 1.3572697639465332, '2024-07-17 13:49:48', 4)
+pval: [0.014] -- 174th test, time elapsed 1.3572697639465332 -- emperical power so far (from test_start): 0.5517241379310345
+db insert success
+tensor(67.6377, device='cuda:0')
+(175, 3, 0, 2, 1500, 'chi', 'genrr', 67.63772583007812, 0.34200000762939453, 1.3524835109710693, '2024-07-17 13:50:05', 4)
+pval: [0.34200001] -- 175th test, time elapsed 1.3524835109710693 -- emperical power so far (from test_start): 0.5485714285714286
+db insert success
+tensor(91.1808, device='cuda:0')
+(176, 3, 0, 2, 1500, 'chi', 'genrr', 91.18077087402344, 0.01600000075995922, 1.3492376804351807, '2024-07-17 13:50:26', 4)
+pval: [0.016] -- 176th test, time elapsed 1.3492376804351807 -- emperical power so far (from test_start): 0.5511363636363636
+db insert success
+tensor(70.1328, device='cuda:0')
+(177, 3, 0, 2, 1500, 'chi', 'genrr', 70.1327896118164, 0.2590000033378601, 1.346466302871704, '2024-07-17 13:50:43', 4)
+pval: [0.259] -- 177th test, time elapsed 1.346466302871704 -- emperical power so far (from test_start): 0.5480225988700564
+db insert success
+tensor(87.1167, device='cuda:0')
+(178, 3, 0, 2, 1500, 'chi', 'genrr', 87.11669921875, 0.027000000700354576, 1.3475182056427002, '2024-07-17 13:50:57', 4)
+pval: [0.027] -- 178th test, time elapsed 1.3475182056427002 -- emperical power so far (from test_start): 0.550561797752809
+db insert success
+tensor(58.2100, device='cuda:0')
+(179, 3, 0, 2, 1500, 'chi', 'genrr', 58.2099723815918, 0.6540000438690186, 1.3460536003112793, '2024-07-17 13:51:00', 4)
+pval: [0.65400004] -- 179th test, time elapsed 1.3460536003112793 -- emperical power so far (from test_start): 0.547486033519553
+db insert success
+tensor(114.1655, device='cuda:0')
+(180, 3, 0, 2, 1500, 'chi', 'genrr', 114.16547393798828, 0.0010000000474974513, 1.3513953685760498, '2024-07-17 13:51:09', 4)
+pval: [0.001] -- 180th test, time elapsed 1.3513953685760498 -- emperical power so far (from test_start): 0.55
+db insert success
+tensor(64.0437, device='cuda:0')
+(181, 3, 0, 2, 1500, 'chi', 'genrr', 64.04371643066406, 0.4480000138282776, 1.349552869796753, '2024-07-17 13:51:26', 4)
+pval: [0.44800001] -- 181th test, time elapsed 1.349552869796753 -- emperical power so far (from test_start): 0.5469613259668509
+db insert success
+tensor(78.4601, device='cuda:0')
+(182, 3, 0, 2, 1500, 'chi', 'genrr', 78.46006774902344, 0.10000000149011612, 1.3431675434112549, '2024-07-17 13:51:39', 4)
+pval: [0.1] -- 182th test, time elapsed 1.3431675434112549 -- emperical power so far (from test_start): 0.5439560439560439
+db insert success
+tensor(69.0331, device='cuda:0')
+(183, 3, 0, 2, 1500, 'chi', 'genrr', 69.03311920166016, 0.26100000739097595, 1.345642328262329, '2024-07-17 13:52:00', 4)
+pval: [0.26100001] -- 183th test, time elapsed 1.345642328262329 -- emperical power so far (from test_start): 0.5409836065573771
+db insert success
+tensor(95.5713, device='cuda:0')
+(184, 3, 0, 2, 1500, 'chi', 'genrr', 95.57133483886719, 0.005000000353902578, 1.3472697734832764, '2024-07-17 13:52:21', 4)
+pval: [0.005] -- 184th test, time elapsed 1.3472697734832764 -- emperical power so far (from test_start): 0.5434782608695652
+db insert success
+tensor(102.4879, device='cuda:0')
+(185, 3, 0, 2, 1500, 'chi', 'genrr', 102.48794555664062, 0.003000000026077032, 1.3450474739074707, '2024-07-17 13:52:33', 4)
+pval: [0.003] -- 185th test, time elapsed 1.3450474739074707 -- emperical power so far (from test_start): 0.5459459459459459
+db insert success
+tensor(94.6853, device='cuda:0')
+(186, 3, 0, 2, 1500, 'chi', 'genrr', 94.68527221679688, 0.005000000353902578, 1.3467741012573242, '2024-07-17 13:52:52', 4)
+pval: [0.005] -- 186th test, time elapsed 1.3467741012573242 -- emperical power so far (from test_start): 0.5483870967741935
+db insert success
+tensor(85.9109, device='cuda:0')
+(187, 3, 0, 2, 1500, 'chi', 'genrr', 85.9109115600586, 0.029000001028180122, 1.3488643169403076, '2024-07-17 13:53:03', 4)
+pval: [0.029] -- 187th test, time elapsed 1.3488643169403076 -- emperical power so far (from test_start): 0.5508021390374331
+db insert success
+tensor(69.1798, device='cuda:0')
+(188, 3, 0, 2, 1500, 'chi', 'genrr', 69.17980194091797, 0.2710000276565552, 1.3493890762329102, '2024-07-17 13:53:05', 4)
+pval: [0.27100003] -- 188th test, time elapsed 1.3493890762329102 -- emperical power so far (from test_start): 0.5478723404255319
+db insert success
+tensor(104.8551, device='cuda:0')
+(189, 3, 0, 2, 1500, 'chi', 'genrr', 104.85514831542969, 0.003000000026077032, 1.3468899726867676, '2024-07-17 13:53:26', 4)
+pval: [0.003] -- 189th test, time elapsed 1.3468899726867676 -- emperical power so far (from test_start): 0.5502645502645502
+db insert success
+tensor(86.2615, device='cuda:0')
+(190, 3, 0, 2, 1500, 'chi', 'genrr', 86.261474609375, 0.026000000536441803, 1.3441503047943115, '2024-07-17 13:53:31', 4)
+pval: [0.026] -- 190th test, time elapsed 1.3441503047943115 -- emperical power so far (from test_start): 0.5526315789473685
+db insert success
+tensor(80.7564, device='cuda:0')
+(191, 3, 0, 2, 1500, 'chi', 'genrr', 80.75643920898438, 0.07300000637769699, 1.344383716583252, '2024-07-17 13:53:43', 4)
+pval: [0.07300001] -- 191th test, time elapsed 1.344383716583252 -- emperical power so far (from test_start): 0.5497382198952879
+db insert success
+tensor(64.6229, device='cuda:0')
+(192, 3, 0, 2, 1500, 'chi', 'genrr', 64.62290954589844, 0.42500001192092896, 1.3509948253631592, '2024-07-17 13:53:58', 4)
+pval: [0.42500001] -- 192th test, time elapsed 1.3509948253631592 -- emperical power so far (from test_start): 0.546875
+db insert success
+tensor(92.7670, device='cuda:0')
+(193, 3, 0, 2, 1500, 'chi', 'genrr', 92.76700592041016, 0.007000000216066837, 1.3446381092071533, '2024-07-17 13:54:08', 4)
+pval: [0.007] -- 193th test, time elapsed 1.3446381092071533 -- emperical power so far (from test_start): 0.5492227979274611
+db insert success
+tensor(62.3952, device='cuda:0')
+(194, 3, 0, 2, 1500, 'chi', 'genrr', 62.39522171020508, 0.49800002574920654, 1.347174882888794, '2024-07-17 13:54:13', 4)
+pval: [0.49800003] -- 194th test, time elapsed 1.347174882888794 -- emperical power so far (from test_start): 0.5463917525773195
+db insert success
+tensor(77.3604, device='cuda:0')
+(195, 3, 0, 2, 1500, 'chi', 'genrr', 77.36038208007812, 0.10300000756978989, 1.3450684547424316, '2024-07-17 13:54:33', 4)
+pval: [0.10300001] -- 195th test, time elapsed 1.3450684547424316 -- emperical power so far (from test_start): 0.5435897435897435
+db insert success
+tensor(68.8190, device='cuda:0')
+(196, 3, 0, 2, 1500, 'chi', 'genrr', 68.81903076171875, 0.2850000262260437, 1.351572036743164, '2024-07-17 13:54:47', 4)
+pval: [0.28500003] -- 196th test, time elapsed 1.351572036743164 -- emperical power so far (from test_start): 0.5408163265306123
+db insert success
+tensor(89.0292, device='cuda:0')
+(197, 3, 0, 2, 1500, 'chi', 'genrr', 89.02921295166016, 0.017000000923871994, 1.3491663932800293, '2024-07-17 13:54:51', 4)
+pval: [0.017] -- 197th test, time elapsed 1.3491663932800293 -- emperical power so far (from test_start): 0.5431472081218274
+db insert success
+tensor(96.7749, device='cuda:0')
+(198, 3, 0, 2, 1500, 'chi', 'genrr', 96.77494812011719, 0.007000000216066837, 1.3527746200561523, '2024-07-17 13:54:57', 4)
+pval: [0.007] -- 198th test, time elapsed 1.3527746200561523 -- emperical power so far (from test_start): 0.5454545454545454
+db insert success
+tensor(83.5514, device='cuda:0')
+(199, 3, 0, 2, 1500, 'chi', 'genrr', 83.5514144897461, 0.052000001072883606, 1.349661111831665, '2024-07-17 13:55:18', 4)
+pval: [0.052] -- 199th test, time elapsed 1.349661111831665 -- emperical power so far (from test_start): 0.542713567839196
+db insert success
+tensor(96.3765, device='cuda:0')
+(200, 3, 0, 2, 1500, 'chi', 'genrr', 96.37651062011719, 0.006000000052154064, 1.345247745513916, '2024-07-17 13:55:25', 4)
+pval: [0.006] -- 200th test, time elapsed 1.345247745513916 -- emperical power so far (from test_start): 0.545
+db insert success
+2308.212818622589
