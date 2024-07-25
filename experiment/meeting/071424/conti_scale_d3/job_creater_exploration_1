@@ -3,8 +3,8 @@
 #
 project_name="LDPUts"
 meeting_date="071424"
-experiment_name="conti_location_d5"
-db_name="071424_LDPUts"
+experiment_name="conti_scale_d3"
+db_name="experiment"
 #table_name="conti_location"
 table_name="exploration"
 extension_code="py"
@@ -21,7 +21,7 @@ echo "code_dir = ${code_dir}"
 privmech=bitflip
 statistic=elltwo
 
-d=5
+d=3
 n_test=20
 
 n_bin=4
@@ -31,10 +31,10 @@ memory_multiplier=12
 n_permutation=999
 test_start=1
 
-sample_size_multiplier=2000
+sample_size_multiplier=500
 for privlev in 1 #0.5 1 2
 do
-    for ii in 20 25 30 35 40
+    for ii in 5 10 15 20 25
     do
         sample_size=$((ii*sample_size_multiplier))
 

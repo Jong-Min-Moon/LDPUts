@@ -43,12 +43,12 @@ server_private = server_private_vec[statistic]
 
 significance_level = 0.05
 
-multiplier = 1/2
-copula_mean_1 = -multiplier * torch.ones(d).to(device)
-copula_mean_2 =  multiplier * torch.ones(d).to(device)
 
+copula_mean = torch.zeros(d).to(device)
 
-cov = (0.5 * torch.ones(d,d) + 0.5 * torch.eye(d)).to(device)
+sigma_1 = (0.5 * torch.ones(d,d) + 0.5 * torch.eye(d)).to(device)
+sigma_2 = sigma_1.mul(5)
+
 
     
 data_gen = data_generator()
@@ -67,14 +67,14 @@ for i in range(n_test):
     server_private.load_private_data_multinomial(
         LDPclient.release_private_conti(
             priv_mech,
-            data_gen.generate_copula_gaussian_data(sample_size, copula_mean_1, cov),
+            data_gen.generate_copula_gaussian_data(sample_size, copula_mean, sigma_1),
             privacy_level,
             n_bin,
             device
         ),
         LDPclient.release_private_conti(
             priv_mech,
-            data_gen.generate_copula_gaussian_data(sample_size, copula_mean_2, cov),
+            data_gen.generate_copula_gaussian_data(sample_size, copula_mean, sigma_2),
             privacy_level,
             n_bin,
             device

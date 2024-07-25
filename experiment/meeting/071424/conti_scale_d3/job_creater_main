@@ -5,8 +5,7 @@ project_name="LDPUts"
 meeting_date="071424"
 experiment_name="conti_scale_d3"
 db_name="071424_LDPUts"
-#table_name="conti_location"
-table_name="conti_location"
+table_name="conti_scale"
 extension_code="py"
 extension_result="npy"
 tool="python -u"
@@ -27,11 +26,11 @@ n_test=200
 n_bin=4
 k=$((n_bin ** d))
 
-memory_multiplier=14
+memory_multiplier=18
 n_permutation=999
 test_start=1
 
-sample_size_multiplier=4200
+sample_size_multiplier=1600
 
 for privmech in bitflip genrr lapu
     do
@@ -70,7 +69,7 @@ for privmech in bitflip genrr lapu
                 # job
                 touch ${code_dir}/temp_job
                 cat ${code_dir}/skeleton_job.job >> ${code_dir}/temp_job
-                echo "#SBATCH --mem=$((1000+memory_multiplier*2*8*sample_size*k/1024/1024))mb" >> ${code_dir}/temp_job
+                echo "#SBATCH --mem=$((3000+memory_multiplier*2*8*sample_size*k/1024/1024))mb" >> ${code_dir}/temp_job
                 echo "#SBATCH --job-name=${filename}" >> ${code_dir}/temp_job
                 echo "#SBATCH --output=${filename_out}" >> ${code_dir}/temp_job
                 echo "module purge" >> ${code_dir}/temp_job
