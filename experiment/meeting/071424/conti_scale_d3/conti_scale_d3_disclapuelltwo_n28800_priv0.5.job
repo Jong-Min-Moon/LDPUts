@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --partition=main
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=23:59:59
+#SBATCH --cpus-per-task=14
+
+#SBATCH --mem=2000mb
+#SBATCH --job-name=conti_scale_d3_disclapuelltwo_n28800_priv0.5
+#SBATCH --output=/home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d3/conti_scale_d3_disclapuelltwo_n28800_priv0.5.out
+module purge
+load conda
+eval "$(conda shell.bash hook)"
+conda activate LDPUtsEnvK40
+
+python -u  /home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d3/conti_scale_d3_disclapuelltwo_n28800_priv0.5.py > /home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d3/conti_scale_d3_disclapuelltwo_n28800_priv0.5.out

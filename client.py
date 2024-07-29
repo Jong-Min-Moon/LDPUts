@@ -19,7 +19,8 @@ class client:
             return( self.genrr.privatize(data, alphabet_size, privacy_level, cuda_device) )
         elif method_name =="bitflip":
             return( self.bitflip.privatize(data, alphabet_size, privacy_level, cuda_device) )
-
+        elif method_name =="disclapu":
+            return( self.disclapu.privatize(data, alphabet_size, privacy_level, cuda_device) )
     def release_private_conti(self, method_name, data, privacy_level, n_bin, cuda_device):
         if method_name == "lapu":
             return( self.lapu.privatize_conti(data, privacy_level, n_bin, cuda_device) )
@@ -27,7 +28,8 @@ class client:
             return( self.genrr.privatize_conti(data, privacy_level, n_bin, cuda_device) )
         elif method_name =="bitflip":
             return( self.bitflip.privatize_conti(data, privacy_level, n_bin, cuda_device) )
-            
+        elif method_name =="disclapu":
+            return( self.disclapu.privatize_conti(data, privacy_level, n_bin, cuda_device) )
 
 
 
@@ -75,6 +77,15 @@ class lapu:
 
 
 class disclapu(lapu):
+    def privatize(self, data_mutinomial, alphabet_size, privacy_level, cuda_device):
+        sample_size = utils.get_sample_size(data_mutinomial)
+        data_private = torch.nn.functional.one_hot(data_mutinomial, alphabet_size).mul(
+            torch.tensor(alphabet_size, dtype=torch.float32).sqrt()
+        ).add(
+            self._generate_noise(alphabet_size, privacy_level, sample_size)
+        )
+        return(data_private.to(cuda_device))
+    
     def _generate_noise(self, alphabet_size, privacy_level, sample_size):
         zeta_alpha = torch.tensor(- privacy_level).div(2).div(alphabet_size**(1/2)).exp()
         geometric_generator = torch.distributions.geometric.Geometric(1 - zeta_alpha)
