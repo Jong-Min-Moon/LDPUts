@@ -10,3 +10,5 @@ def insert_data(data_entry, db_dir):
     con.commit()
     con.close()
     print("db insert success")
+
+

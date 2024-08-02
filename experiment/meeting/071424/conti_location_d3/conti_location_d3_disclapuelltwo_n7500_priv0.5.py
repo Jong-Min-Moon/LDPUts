@@ -34,7 +34,10 @@ def insert_data(data_entry, db_dir):
     cursor_db.close()
     con.commit()
     con.close()
-    print("db insert success")device = torch.device('cpu' if torch.cuda.is_available() else 'cuda')
+    print("db insert success")
+
+
+device = torch.device('cpu' if torch.cuda.is_available() else 'cuda')
 print(torch.get_num_threads())
 data_gen = data_generator()
 LDPclient = client()
