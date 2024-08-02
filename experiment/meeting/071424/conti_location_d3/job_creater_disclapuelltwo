@@ -18,28 +18,29 @@ db_dir="/home1/jongminm/${project_name}/experiment/db/${db_name}.db"
 code_common_dir="/home1/jongminm/${project_name}/experiment/code_common"
 
 ####################################
-device_main=cpu
-device_sub=cuda
-n_cpu=30
+device_main=cuda
+device_sub=cpu
+n_cpu=8
 #gpu_order="#SBATCH --gpus-per-task=k40:1"
 data_gen_filename=density_location
 statistic=elltwo
 privmech=disclapu
-d=4 #1 for multinomial testing
+d=3 #1 for multinomial testing
 n_test=200
 n_permutation=999
 test_start=1
-sample_size_multiplier=500
+sample_size_multiplier=1000
 n_bin=4 #=k for multinomal testing
+bump=0
 ####################################
 k=$((n_bin ** d))
-mem_min=2000
+mem_min=4000
 
 
 
     for privlev in 0.5 1 2
         do
-            for ii in {1..20..1}
+            for ii in {1..10..1}
                 do
                 sample_size=$((ii*sample_size_multiplier))
 
@@ -57,6 +58,7 @@ mem_min=2000
                 echo "n_test        = ${n_test}"        >> ${code_dir}/temp_code
                 echo "test_start    = ${test_start}"    >> ${code_dir}/temp_code
                 echo "k             = ${k}"             >> ${code_dir}/temp_code
+                echo "bump           = ${bump}"          >> ${code_dir}/temp_code
 
                 #strings
                 echo "table_name = '${table_name}'"  >> ${code_dir}/temp_code

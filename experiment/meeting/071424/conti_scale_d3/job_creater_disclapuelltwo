@@ -18,28 +18,28 @@ db_dir="/home1/jongminm/${project_name}/experiment/db/${db_name}.db"
 code_common_dir="/home1/jongminm/${project_name}/experiment/code_common"
 
 ####################################
-device_main=cpu
-device_sub=cuda
-n_cpu=14
+device_main=cuda
+device_sub=cpu
+n_cpu=8
 #gpu_order="#SBATCH --gpus-per-task=k40:1"
 data_gen_filename=density_scale
 statistic=elltwo
 privmech=disclapu
-d=4 #1 for multinomial testing
+d=3 #1 for multinomial testing
 n_test=200
 n_permutation=999
 test_start=1
-sample_size_multiplier=1600
+sample_size_multiplier=3200
 n_bin=4 #=k for multinomal testing
 ####################################
 k=$((n_bin ** d))
-mem_min=2000
+mem_min=4000
 
 
 
     for privlev in 0.5 1 2
         do
-            for ii in {1..20..1}
+            for ii in {1..10..1}
                 do
                 sample_size=$((ii*sample_size_multiplier))
 

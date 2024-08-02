@@ -1,11 +1,11 @@
-d = 4
+d = 3
 n_bin = 4
 privacy_level = 0.5
 sample_size   = 9000
 n_permutation = 999
 n_test        = 200
 test_start    = 1
-k             = 256
+k             = 64
 table_name = 'conti_location'
 code_dir   = '/home1/jongminm/LDPUts/experiment/meeting/071424/conti_location_d3'
 priv_mech  = 'disclapu'
@@ -37,7 +37,7 @@ def insert_data(data_entry, db_dir):
     print("db insert success")
 
 
-device = torch.device('cpu' if torch.cuda.is_available() else 'cuda')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(torch.get_num_threads())
 data_gen = data_generator()
 LDPclient = client()

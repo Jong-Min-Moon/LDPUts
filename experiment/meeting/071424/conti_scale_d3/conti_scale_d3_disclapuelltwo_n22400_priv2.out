@@ -1,4 +1,604 @@
-  File "/home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d3/conti_scale_d3_disclapuelltwo_n22400_priv2.py", line 37
-    print("db insert success")device = torch.device('cpu' if torch.cuda.is_available() else 'cuda')
-                                   ^
-SyntaxError: invalid syntax
+8
+disclapuelltwo, alpha=2, sample size=22400
+#########################################
+(1, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4781459522763, 0.0010000000474974513, 99.56238555908203, '2024-08-02 12:51:10', 4, 999)
+pval: [0.001] -- 1th test, time elapsed 99.56238555908203 -- emperical power so far (from test_start): 1.0
+db insert success
+(2, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5246755799755412, 0.0010000000474974513, 99.28154134750366, '2024-08-02 12:52:51', 4, 999)
+pval: [0.001] -- 2th test, time elapsed 99.28154134750366 -- emperical power so far (from test_start): 1.0
+db insert success
+(3, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9422450938808229, 0.0010000000474974513, 97.68960475921631, '2024-08-02 12:54:50', 4, 999)
+pval: [0.001] -- 3th test, time elapsed 97.68960475921631 -- emperical power so far (from test_start): 1.0
+db insert success
+(4, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2149511723928437, 0.0010000000474974513, 99.55230665206909, '2024-08-02 12:56:31', 4, 999)
+pval: [0.001] -- 4th test, time elapsed 99.55230665206909 -- emperical power so far (from test_start): 1.0
+db insert success
+(5, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9386986282263003, 0.0010000000474974513, 99.01010465621948, '2024-08-02 12:58:23', 4, 999)
+pval: [0.001] -- 5th test, time elapsed 99.01010465621948 -- emperical power so far (from test_start): 1.0
+db insert success
+(6, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1667191328050395, 0.0010000000474974513, 99.52777099609375, '2024-08-02 13:00:09', 4, 999)
+pval: [0.001] -- 6th test, time elapsed 99.52777099609375 -- emperical power so far (from test_start): 1.0
+db insert success
+(7, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7830457919870937, 0.0010000000474974513, 60.19246959686279, '2024-08-02 13:02:03', 4, 999)
+pval: [0.001] -- 7th test, time elapsed 60.19246959686279 -- emperical power so far (from test_start): 1.0
+db insert success
+(8, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3984805915132004, 0.0010000000474974513, 8.72884202003479, '2024-08-02 13:03:19', 4, 999)
+pval: [0.001] -- 8th test, time elapsed 8.72884202003479 -- emperical power so far (from test_start): 1.0
+db insert success
+(9, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.985517519175041, 0.0010000000474974513, 9.45795750617981, '2024-08-02 13:03:43', 4, 999)
+pval: [0.001] -- 9th test, time elapsed 9.45795750617981 -- emperical power so far (from test_start): 1.0
+db insert success
+(10, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4223623133397547, 0.0010000000474974513, 8.67273998260498, '2024-08-02 13:04:00', 4, 999)
+pval: [0.001] -- 10th test, time elapsed 8.67273998260498 -- emperical power so far (from test_start): 1.0
+db insert success
+(11, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1071393959373195, 0.0010000000474974513, 9.246243953704834, '2024-08-02 13:04:13', 4, 999)
+pval: [0.001] -- 11th test, time elapsed 9.246243953704834 -- emperical power so far (from test_start): 1.0
+db insert success
+(12, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2994626982854038, 0.0010000000474974513, 9.47153091430664, '2024-08-02 13:04:38', 4, 999)
+pval: [0.001] -- 12th test, time elapsed 9.47153091430664 -- emperical power so far (from test_start): 1.0
+db insert success
+(13, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4933978808665613, 0.0010000000474974513, 8.452174186706543, '2024-08-02 13:04:55', 4, 999)
+pval: [0.001] -- 13th test, time elapsed 8.452174186706543 -- emperical power so far (from test_start): 1.0
+db insert success
+(14, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6987517940474834, 0.0010000000474974513, 8.390984296798706, '2024-08-02 13:05:14', 4, 999)
+pval: [0.001] -- 14th test, time elapsed 8.390984296798706 -- emperical power so far (from test_start): 1.0
+db insert success
+(15, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.651454876354233, 0.0010000000474974513, 8.515192747116089, '2024-08-02 13:05:37', 4, 999)
+pval: [0.001] -- 15th test, time elapsed 8.515192747116089 -- emperical power so far (from test_start): 1.0
+db insert success
+(16, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7058800152607985, 0.0010000000474974513, 8.517013788223267, '2024-08-02 13:06:04', 4, 999)
+pval: [0.001] -- 16th test, time elapsed 8.517013788223267 -- emperical power so far (from test_start): 1.0
+db insert success
+(17, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.9846384748173218, 0.0010000000474974513, 8.565132856369019, '2024-08-02 13:06:27', 4, 999)
+pval: [0.001] -- 17th test, time elapsed 8.565132856369019 -- emperical power so far (from test_start): 1.0
+db insert success
+(18, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9654131439930747, 0.0010000000474974513, 9.452058553695679, '2024-08-02 13:06:38', 4, 999)
+pval: [0.001] -- 18th test, time elapsed 9.452058553695679 -- emperical power so far (from test_start): 1.0
+db insert success
+(19, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.8247642300801337, 0.0010000000474974513, 8.743808269500732, '2024-08-02 13:06:53', 4, 999)
+pval: [0.001] -- 19th test, time elapsed 8.743808269500732 -- emperical power so far (from test_start): 1.0
+db insert success
+(20, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.163430698393375, 0.0010000000474974513, 9.22351861000061, '2024-08-02 13:07:13', 4, 999)
+pval: [0.001] -- 20th test, time elapsed 9.22351861000061 -- emperical power so far (from test_start): 1.0
+db insert success
+(21, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4875668412465233, 0.0010000000474974513, 8.703445672988892, '2024-08-02 13:07:23', 4, 999)
+pval: [0.001] -- 21th test, time elapsed 8.703445672988892 -- emperical power so far (from test_start): 1.0
+db insert success
+(22, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5963575935500063, 0.0010000000474974513, 8.66161823272705, '2024-08-02 13:07:38', 4, 999)
+pval: [0.001] -- 22th test, time elapsed 8.66161823272705 -- emperical power so far (from test_start): 1.0
+db insert success
+(23, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4042794847948032, 0.0010000000474974513, 9.573795795440674, '2024-08-02 13:07:54', 4, 999)
+pval: [0.001] -- 23th test, time elapsed 9.573795795440674 -- emperical power so far (from test_start): 1.0
+db insert success
+(24, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3576510371832682, 0.0010000000474974513, 9.22516942024231, '2024-08-02 13:08:23', 4, 999)
+pval: [0.001] -- 24th test, time elapsed 9.22516942024231 -- emperical power so far (from test_start): 1.0
+db insert success
+(25, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3546732444318543, 0.0010000000474974513, 9.408475875854492, '2024-08-02 13:08:52', 4, 999)
+pval: [0.001] -- 25th test, time elapsed 9.408475875854492 -- emperical power so far (from test_start): 1.0
+db insert success
+(26, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0206594296865799, 0.0010000000474974513, 8.900548219680786, '2024-08-02 13:09:10', 4, 999)
+pval: [0.001] -- 26th test, time elapsed 8.900548219680786 -- emperical power so far (from test_start): 1.0
+db insert success
+(27, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4922540024848554, 0.0010000000474974513, 9.401584386825562, '2024-08-02 13:09:29', 4, 999)
+pval: [0.001] -- 27th test, time elapsed 9.401584386825562 -- emperical power so far (from test_start): 1.0
+db insert success
+(28, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1564594532265486, 0.0010000000474974513, 8.643984079360962, '2024-08-02 13:09:54', 4, 999)
+pval: [0.001] -- 28th test, time elapsed 8.643984079360962 -- emperical power so far (from test_start): 1.0
+db insert success
+(29, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.7699590323251524, 0.0010000000474974513, 8.688513994216919, '2024-08-02 13:10:15', 4, 999)
+pval: [0.001] -- 29th test, time elapsed 8.688513994216919 -- emperical power so far (from test_start): 1.0
+db insert success
+(30, 3, 0, 2, 22400, 'elltwo', 'disclapu', 2.0159767482464614, 0.0010000000474974513, 8.43335223197937, '2024-08-02 13:10:27', 4, 999)
+pval: [0.001] -- 30th test, time elapsed 8.43335223197937 -- emperical power so far (from test_start): 1.0
+db insert success
+(31, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.8387689264133682, 0.0010000000474974513, 9.139585018157959, '2024-08-02 13:10:48', 4, 999)
+pval: [0.001] -- 31th test, time elapsed 9.139585018157959 -- emperical power so far (from test_start): 1.0
+db insert success
+(32, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5469150665169105, 0.0010000000474974513, 8.633294343948364, '2024-08-02 13:11:17', 4, 999)
+pval: [0.001] -- 32th test, time elapsed 8.633294343948364 -- emperical power so far (from test_start): 1.0
+db insert success
+(33, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1833837892048686, 0.0010000000474974513, 8.648911952972412, '2024-08-02 13:11:34', 4, 999)
+pval: [0.001] -- 33th test, time elapsed 8.648911952972412 -- emperical power so far (from test_start): 1.0
+db insert success
+(34, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2238833373508786, 0.0010000000474974513, 8.969959259033203, '2024-08-02 13:11:48', 4, 999)
+pval: [0.001] -- 34th test, time elapsed 8.969959259033203 -- emperical power so far (from test_start): 1.0
+db insert success
+(35, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1052737218345667, 0.0010000000474974513, 8.495533466339111, '2024-08-02 13:12:17', 4, 999)
+pval: [0.001] -- 35th test, time elapsed 8.495533466339111 -- emperical power so far (from test_start): 1.0
+db insert success
+(36, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1355599453137621, 0.0010000000474974513, 8.365970134735107, '2024-08-02 13:12:39', 4, 999)
+pval: [0.001] -- 36th test, time elapsed 8.365970134735107 -- emperical power so far (from test_start): 1.0
+db insert success
+(37, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6553506420852444, 0.0010000000474974513, 9.059440612792969, '2024-08-02 13:12:52', 4, 999)
+pval: [0.001] -- 37th test, time elapsed 9.059440612792969 -- emperical power so far (from test_start): 1.0
+db insert success
+(38, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3859043845501375, 0.0010000000474974513, 8.937169313430786, '2024-08-02 13:13:04', 4, 999)
+pval: [0.001] -- 38th test, time elapsed 8.937169313430786 -- emperical power so far (from test_start): 1.0
+db insert success
+(39, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5111969901076674, 0.0010000000474974513, 8.533138751983643, '2024-08-02 13:13:30', 4, 999)
+pval: [0.001] -- 39th test, time elapsed 8.533138751983643 -- emperical power so far (from test_start): 1.0
+db insert success
+(40, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9798509924225711, 0.0010000000474974513, 8.46377682685852, '2024-08-02 13:13:51', 4, 999)
+pval: [0.001] -- 40th test, time elapsed 8.46377682685852 -- emperical power so far (from test_start): 1.0
+db insert success
+(41, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1187863064882384, 0.0010000000474974513, 9.048698902130127, '2024-08-02 13:14:01', 4, 999)
+pval: [0.001] -- 41th test, time elapsed 9.048698902130127 -- emperical power so far (from test_start): 1.0
+db insert success
+(42, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5004631252094276, 0.0010000000474974513, 8.992913722991943, '2024-08-02 13:14:22', 4, 999)
+pval: [0.001] -- 42th test, time elapsed 8.992913722991943 -- emperical power so far (from test_start): 1.0
+db insert success
+(43, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9618956895078683, 0.0010000000474974513, 9.027532815933228, '2024-08-02 13:14:41', 4, 999)
+pval: [0.001] -- 43th test, time elapsed 9.027532815933228 -- emperical power so far (from test_start): 1.0
+db insert success
+(44, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7284555604111205, 0.0010000000474974513, 9.346258163452148, '2024-08-02 13:15:08', 4, 999)
+pval: [0.001] -- 44th test, time elapsed 9.346258163452148 -- emperical power so far (from test_start): 1.0
+db insert success
+(45, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3586292251006862, 0.0010000000474974513, 9.069764614105225, '2024-08-02 13:15:26', 4, 999)
+pval: [0.001] -- 45th test, time elapsed 9.069764614105225 -- emperical power so far (from test_start): 1.0
+db insert success
+(46, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.317061441729317, 0.0010000000474974513, 9.303189992904663, '2024-08-02 13:15:38', 4, 999)
+pval: [0.001] -- 46th test, time elapsed 9.303189992904663 -- emperical power so far (from test_start): 1.0
+db insert success
+(47, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.554667599016879, 0.0010000000474974513, 8.508666038513184, '2024-08-02 13:15:52', 4, 999)
+pval: [0.001] -- 47th test, time elapsed 8.508666038513184 -- emperical power so far (from test_start): 1.0
+db insert success
+(48, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.248907504611064, 0.0010000000474974513, 9.321865320205688, '2024-08-02 13:16:06', 4, 999)
+pval: [0.001] -- 48th test, time elapsed 9.321865320205688 -- emperical power so far (from test_start): 1.0
+db insert success
+(49, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3361175757253099, 0.0010000000474974513, 8.749932289123535, '2024-08-02 13:16:26', 4, 999)
+pval: [0.001] -- 49th test, time elapsed 8.749932289123535 -- emperical power so far (from test_start): 1.0
+db insert success
+(50, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.234182215730507, 0.0010000000474974513, 8.534880876541138, '2024-08-02 13:16:36', 4, 999)
+pval: [0.001] -- 50th test, time elapsed 8.534880876541138 -- emperical power so far (from test_start): 1.0
+db insert success
+(51, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.8263453145934463, 0.0010000000474974513, 8.6461660861969, '2024-08-02 13:16:56', 4, 999)
+pval: [0.001] -- 51th test, time elapsed 8.6461660861969 -- emperical power so far (from test_start): 1.0
+db insert success
+(52, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6828637627228646, 0.0010000000474974513, 8.51867938041687, '2024-08-02 13:17:21', 4, 999)
+pval: [0.001] -- 52th test, time elapsed 8.51867938041687 -- emperical power so far (from test_start): 1.0
+db insert success
+(53, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4629769136827901, 0.0010000000474974513, 8.964266777038574, '2024-08-02 13:17:31', 4, 999)
+pval: [0.001] -- 53th test, time elapsed 8.964266777038574 -- emperical power so far (from test_start): 1.0
+db insert success
+(54, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1020197667871718, 0.0010000000474974513, 8.62033724784851, '2024-08-02 13:17:58', 4, 999)
+pval: [0.001] -- 54th test, time elapsed 8.62033724784851 -- emperical power so far (from test_start): 1.0
+db insert success
+(55, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5432497400750753, 0.0010000000474974513, 8.964165925979614, '2024-08-02 13:18:27', 4, 999)
+pval: [0.001] -- 55th test, time elapsed 8.964165925979614 -- emperical power so far (from test_start): 1.0
+db insert success
+(56, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2377799655024688, 0.0010000000474974513, 8.46065378189087, '2024-08-02 13:18:53', 4, 999)
+pval: [0.001] -- 56th test, time elapsed 8.46065378189087 -- emperical power so far (from test_start): 1.0
+db insert success
+(57, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5137999716832429, 0.0010000000474974513, 8.680239200592041, '2024-08-02 13:19:03', 4, 999)
+pval: [0.001] -- 57th test, time elapsed 8.680239200592041 -- emperical power so far (from test_start): 1.0
+db insert success
+(58, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.100883649058514, 0.0010000000474974513, 8.547731876373291, '2024-08-02 13:19:26', 4, 999)
+pval: [0.001] -- 58th test, time elapsed 8.547731876373291 -- emperical power so far (from test_start): 1.0
+db insert success
+(59, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6283686577897494, 0.0010000000474974513, 8.514962911605835, '2024-08-02 13:19:36', 4, 999)
+pval: [0.001] -- 59th test, time elapsed 8.514962911605835 -- emperical power so far (from test_start): 1.0
+db insert success
+(60, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9340797326981214, 0.0010000000474974513, 8.622629880905151, '2024-08-02 13:19:45', 4, 999)
+pval: [0.001] -- 60th test, time elapsed 8.622629880905151 -- emperical power so far (from test_start): 1.0
+db insert success
+(61, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2654348398084578, 0.0010000000474974513, 8.52005648612976, '2024-08-02 13:20:01', 4, 999)
+pval: [0.001] -- 61th test, time elapsed 8.52005648612976 -- emperical power so far (from test_start): 1.0
+db insert success
+(62, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4739404654955655, 0.0010000000474974513, 8.514829158782959, '2024-08-02 13:20:24', 4, 999)
+pval: [0.001] -- 62th test, time elapsed 8.514829158782959 -- emperical power so far (from test_start): 1.0
+db insert success
+(63, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.479395990726605, 0.0010000000474974513, 8.64839506149292, '2024-08-02 13:20:45', 4, 999)
+pval: [0.001] -- 63th test, time elapsed 8.64839506149292 -- emperical power so far (from test_start): 1.0
+db insert success
+(64, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2187323018419747, 0.0010000000474974513, 8.617496252059937, '2024-08-02 13:21:05', 4, 999)
+pval: [0.001] -- 64th test, time elapsed 8.617496252059937 -- emperical power so far (from test_start): 1.0
+db insert success
+(65, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4669297864653812, 0.0010000000474974513, 9.113093376159668, '2024-08-02 13:21:31', 4, 999)
+pval: [0.001] -- 65th test, time elapsed 9.113093376159668 -- emperical power so far (from test_start): 1.0
+db insert success
+(66, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.424787330308113, 0.0010000000474974513, 8.489944219589233, '2024-08-02 13:21:53', 4, 999)
+pval: [0.001] -- 66th test, time elapsed 8.489944219589233 -- emperical power so far (from test_start): 1.0
+db insert success
+(67, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.8461739651785418, 0.0010000000474974513, 9.091120958328247, '2024-08-02 13:22:19', 4, 999)
+pval: [0.001] -- 67th test, time elapsed 9.091120958328247 -- emperical power so far (from test_start): 1.0
+db insert success
+(68, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6848762609276742, 0.0010000000474974513, 8.53031587600708, '2024-08-02 13:22:34', 4, 999)
+pval: [0.001] -- 68th test, time elapsed 8.53031587600708 -- emperical power so far (from test_start): 1.0
+db insert success
+(69, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3986615648055256, 0.0010000000474974513, 8.493403673171997, '2024-08-02 13:22:45', 4, 999)
+pval: [0.001] -- 69th test, time elapsed 8.493403673171997 -- emperical power so far (from test_start): 1.0
+db insert success
+(70, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1747501781435918, 0.0010000000474974513, 8.66838026046753, '2024-08-02 13:22:57', 4, 999)
+pval: [0.001] -- 70th test, time elapsed 8.66838026046753 -- emperical power so far (from test_start): 1.0
+db insert success
+(71, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0501790860686677, 0.0010000000474974513, 9.058609247207642, '2024-08-02 13:23:19', 4, 999)
+pval: [0.001] -- 71th test, time elapsed 9.058609247207642 -- emperical power so far (from test_start): 1.0
+db insert success
+(72, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.533938955734433, 0.0010000000474974513, 8.524527788162231, '2024-08-02 13:23:41', 4, 999)
+pval: [0.001] -- 72th test, time elapsed 8.524527788162231 -- emperical power so far (from test_start): 1.0
+db insert success
+(73, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2659707865383423, 0.0010000000474974513, 8.407181978225708, '2024-08-02 13:23:57', 4, 999)
+pval: [0.001] -- 73th test, time elapsed 8.407181978225708 -- emperical power so far (from test_start): 1.0
+db insert success
+(74, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1348626947866487, 0.0010000000474974513, 8.51936650276184, '2024-08-02 13:24:08', 4, 999)
+pval: [0.001] -- 74th test, time elapsed 8.51936650276184 -- emperical power so far (from test_start): 1.0
+db insert success
+(75, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3151717554791231, 0.0010000000474974513, 8.557007551193237, '2024-08-02 13:24:28', 4, 999)
+pval: [0.001] -- 75th test, time elapsed 8.557007551193237 -- emperical power so far (from test_start): 1.0
+db insert success
+(76, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1418841751306594, 0.0010000000474974513, 8.585017204284668, '2024-08-02 13:24:48', 4, 999)
+pval: [0.001] -- 76th test, time elapsed 8.585017204284668 -- emperical power so far (from test_start): 1.0
+db insert success
+(77, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1158580137255192, 0.0010000000474974513, 9.291915893554688, '2024-08-02 13:25:16', 4, 999)
+pval: [0.001] -- 77th test, time elapsed 9.291915893554688 -- emperical power so far (from test_start): 1.0
+db insert success
+(78, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.7671305229009127, 0.0010000000474974513, 8.975133657455444, '2024-08-02 13:25:35', 4, 999)
+pval: [0.001] -- 78th test, time elapsed 8.975133657455444 -- emperical power so far (from test_start): 1.0
+db insert success
+(79, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.699096098571641, 0.0010000000474974513, 9.12337851524353, '2024-08-02 13:25:58', 4, 999)
+pval: [0.001] -- 79th test, time elapsed 9.12337851524353 -- emperical power so far (from test_start): 1.0
+db insert success
+(80, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0135389998135649, 0.0010000000474974513, 9.070356845855713, '2024-08-02 13:26:27', 4, 999)
+pval: [0.001] -- 80th test, time elapsed 9.070356845855713 -- emperical power so far (from test_start): 1.0
+db insert success
+(81, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7413471875217938, 0.0010000000474974513, 9.093287467956543, '2024-08-02 13:26:43', 4, 999)
+pval: [0.001] -- 81th test, time elapsed 9.093287467956543 -- emperical power so far (from test_start): 1.0
+db insert success
+(82, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3134345377189893, 0.0010000000474974513, 8.589681386947632, '2024-08-02 13:27:07', 4, 999)
+pval: [0.001] -- 82th test, time elapsed 8.589681386947632 -- emperical power so far (from test_start): 1.0
+db insert success
+(83, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.101477787557167, 0.0010000000474974513, 8.587419271469116, '2024-08-02 13:27:23', 4, 999)
+pval: [0.001] -- 83th test, time elapsed 8.587419271469116 -- emperical power so far (from test_start): 1.0
+db insert success
+(84, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.183551928479408, 0.0010000000474974513, 9.05960750579834, '2024-08-02 13:27:33', 4, 999)
+pval: [0.001] -- 84th test, time elapsed 9.05960750579834 -- emperical power so far (from test_start): 1.0
+db insert success
+(85, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3797257324860723, 0.0010000000474974513, 8.435920715332031, '2024-08-02 13:28:00', 4, 999)
+pval: [0.001] -- 85th test, time elapsed 8.435920715332031 -- emperical power so far (from test_start): 1.0
+db insert success
+(86, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3051918372721207, 0.0010000000474974513, 8.514950037002563, '2024-08-02 13:28:20', 4, 999)
+pval: [0.001] -- 86th test, time elapsed 8.514950037002563 -- emperical power so far (from test_start): 1.0
+db insert success
+(87, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.63126998952455, 0.0010000000474974513, 8.660630226135254, '2024-08-02 13:28:34', 4, 999)
+pval: [0.001] -- 87th test, time elapsed 8.660630226135254 -- emperical power so far (from test_start): 1.0
+db insert success
+(88, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4886415131029587, 0.0010000000474974513, 8.489951610565186, '2024-08-02 13:28:50', 4, 999)
+pval: [0.001] -- 88th test, time elapsed 8.489951610565186 -- emperical power so far (from test_start): 1.0
+db insert success
+(89, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1618277506173031, 0.0010000000474974513, 8.611137628555298, '2024-08-02 13:29:16', 4, 999)
+pval: [0.001] -- 89th test, time elapsed 8.611137628555298 -- emperical power so far (from test_start): 1.0
+db insert success
+(90, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4589105322205764, 0.0010000000474974513, 8.504462957382202, '2024-08-02 13:29:29', 4, 999)
+pval: [0.001] -- 90th test, time elapsed 8.504462957382202 -- emperical power so far (from test_start): 1.0
+db insert success
+(91, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4623535553989342, 0.0010000000474974513, 8.534740209579468, '2024-08-02 13:29:53', 4, 999)
+pval: [0.001] -- 91th test, time elapsed 8.534740209579468 -- emperical power so far (from test_start): 1.0
+db insert success
+(92, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2722750439019022, 0.0010000000474974513, 9.054490566253662, '2024-08-02 13:30:14', 4, 999)
+pval: [0.001] -- 92th test, time elapsed 9.054490566253662 -- emperical power so far (from test_start): 1.0
+db insert success
+(93, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4213893074355965, 0.0010000000474974513, 8.561718940734863, '2024-08-02 13:30:24', 4, 999)
+pval: [0.001] -- 93th test, time elapsed 8.561718940734863 -- emperical power so far (from test_start): 1.0
+db insert success
+(94, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.749649592454877, 0.0010000000474974513, 8.498381853103638, '2024-08-02 13:30:46', 4, 999)
+pval: [0.001] -- 94th test, time elapsed 8.498381853103638 -- emperical power so far (from test_start): 1.0
+db insert success
+(95, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.8294151724929177, 0.0010000000474974513, 8.65580701828003, '2024-08-02 13:31:14', 4, 999)
+pval: [0.001] -- 95th test, time elapsed 8.65580701828003 -- emperical power so far (from test_start): 1.0
+db insert success
+(96, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6380594969526232, 0.0010000000474974513, 8.951138019561768, '2024-08-02 13:31:38', 4, 999)
+pval: [0.001] -- 96th test, time elapsed 8.951138019561768 -- emperical power so far (from test_start): 1.0
+db insert success
+(97, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1721478224931667, 0.0010000000474974513, 8.46695613861084, '2024-08-02 13:31:54', 4, 999)
+pval: [0.001] -- 97th test, time elapsed 8.46695613861084 -- emperical power so far (from test_start): 1.0
+db insert success
+(98, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0721027988205147, 0.0010000000474974513, 9.08776593208313, '2024-08-02 13:32:07', 4, 999)
+pval: [0.001] -- 98th test, time elapsed 9.08776593208313 -- emperical power so far (from test_start): 1.0
+db insert success
+(99, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2913461460859987, 0.0010000000474974513, 8.51704740524292, '2024-08-02 13:32:29', 4, 999)
+pval: [0.001] -- 99th test, time elapsed 8.51704740524292 -- emperical power so far (from test_start): 1.0
+db insert success
+(100, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.928740199308828, 0.0010000000474974513, 8.504093885421753, '2024-08-02 13:32:54', 4, 999)
+pval: [0.001] -- 100th test, time elapsed 8.504093885421753 -- emperical power so far (from test_start): 1.0
+db insert success
+(101, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9759941613542287, 0.0010000000474974513, 8.58452558517456, '2024-08-02 13:33:18', 4, 999)
+pval: [0.001] -- 101th test, time elapsed 8.58452558517456 -- emperical power so far (from test_start): 1.0
+db insert success
+(102, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0260198980760906, 0.0010000000474974513, 9.05133843421936, '2024-08-02 13:33:47', 4, 999)
+pval: [0.001] -- 102th test, time elapsed 9.05133843421936 -- emperical power so far (from test_start): 1.0
+db insert success
+(103, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4865647434987546, 0.0010000000474974513, 8.653471946716309, '2024-08-02 13:34:07', 4, 999)
+pval: [0.001] -- 103th test, time elapsed 8.653471946716309 -- emperical power so far (from test_start): 1.0
+db insert success
+(104, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.907083874851157, 0.0010000000474974513, 8.550944089889526, '2024-08-02 13:34:28', 4, 999)
+pval: [0.001] -- 104th test, time elapsed 8.550944089889526 -- emperical power so far (from test_start): 1.0
+db insert success
+(105, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1655331018197392, 0.0010000000474974513, 8.672502279281616, '2024-08-02 13:34:45', 4, 999)
+pval: [0.001] -- 105th test, time elapsed 8.672502279281616 -- emperical power so far (from test_start): 1.0
+db insert success
+(106, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7321175616401643, 0.0010000000474974513, 9.083275556564331, '2024-08-02 13:35:14', 4, 999)
+pval: [0.001] -- 106th test, time elapsed 9.083275556564331 -- emperical power so far (from test_start): 1.0
+db insert success
+(107, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.7024723948637446, 0.0010000000474974513, 9.070552349090576, '2024-08-02 13:35:33', 4, 999)
+pval: [0.001] -- 107th test, time elapsed 9.070552349090576 -- emperical power so far (from test_start): 1.0
+db insert success
+(108, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2681823497524278, 0.0010000000474974513, 9.036806344985962, '2024-08-02 13:35:49', 4, 999)
+pval: [0.001] -- 108th test, time elapsed 9.036806344985962 -- emperical power so far (from test_start): 1.0
+db insert success
+(109, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.48759768432405, 0.0010000000474974513, 9.029138803482056, '2024-08-02 13:36:10', 4, 999)
+pval: [0.001] -- 109th test, time elapsed 9.029138803482056 -- emperical power so far (from test_start): 1.0
+db insert success
+(110, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3780581260576534, 0.0010000000474974513, 8.946374416351318, '2024-08-02 13:36:25', 4, 999)
+pval: [0.001] -- 110th test, time elapsed 8.946374416351318 -- emperical power so far (from test_start): 1.0
+db insert success
+(111, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5447896655240188, 0.0010000000474974513, 8.640141248703003, '2024-08-02 13:36:54', 4, 999)
+pval: [0.001] -- 111th test, time elapsed 8.640141248703003 -- emperical power so far (from test_start): 1.0
+db insert success
+(112, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.287292024158892, 0.0010000000474974513, 8.955738306045532, '2024-08-02 13:37:14', 4, 999)
+pval: [0.001] -- 112th test, time elapsed 8.955738306045532 -- emperical power so far (from test_start): 1.0
+db insert success
+(113, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.478922152631069, 0.0010000000474974513, 8.938997268676758, '2024-08-02 13:37:39', 4, 999)
+pval: [0.001] -- 113th test, time elapsed 8.938997268676758 -- emperical power so far (from test_start): 1.0
+db insert success
+(114, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.234842010924365, 0.0010000000474974513, 8.564748525619507, '2024-08-02 13:37:58', 4, 999)
+pval: [0.001] -- 114th test, time elapsed 8.564748525619507 -- emperical power so far (from test_start): 1.0
+db insert success
+(115, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6658424143724666, 0.0010000000474974513, 8.51504397392273, '2024-08-02 13:38:22', 4, 999)
+pval: [0.001] -- 115th test, time elapsed 8.51504397392273 -- emperical power so far (from test_start): 1.0
+db insert success
+(116, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1987953063679138, 0.0010000000474974513, 8.563864946365356, '2024-08-02 13:38:44', 4, 999)
+pval: [0.001] -- 116th test, time elapsed 8.563864946365356 -- emperical power so far (from test_start): 1.0
+db insert success
+(117, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2193742374904182, 0.0010000000474974513, 8.9770188331604, '2024-08-02 13:39:08', 4, 999)
+pval: [0.001] -- 117th test, time elapsed 8.9770188331604 -- emperical power so far (from test_start): 1.0
+db insert success
+(118, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1125261299576485, 0.0010000000474974513, 9.10917854309082, '2024-08-02 13:39:19', 4, 999)
+pval: [0.001] -- 118th test, time elapsed 9.10917854309082 -- emperical power so far (from test_start): 1.0
+db insert success
+(119, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9997255039394215, 0.0010000000474974513, 9.175455570220947, '2024-08-02 13:39:31', 4, 999)
+pval: [0.001] -- 119th test, time elapsed 9.175455570220947 -- emperical power so far (from test_start): 1.0
+db insert success
+(120, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1712245588911543, 0.0010000000474974513, 8.753481388092041, '2024-08-02 13:39:44', 4, 999)
+pval: [0.001] -- 120th test, time elapsed 8.753481388092041 -- emperical power so far (from test_start): 1.0
+db insert success
+(121, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.746873634270834, 0.0010000000474974513, 9.125921249389648, '2024-08-02 13:40:00', 4, 999)
+pval: [0.001] -- 121th test, time elapsed 9.125921249389648 -- emperical power so far (from test_start): 1.0
+db insert success
+(122, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7881328878476266, 0.0010000000474974513, 8.939392805099487, '2024-08-02 13:40:13', 4, 999)
+pval: [0.001] -- 122th test, time elapsed 8.939392805099487 -- emperical power so far (from test_start): 1.0
+db insert success
+(123, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3084075215422102, 0.0010000000474974513, 8.727508544921875, '2024-08-02 13:40:28', 4, 999)
+pval: [0.001] -- 123th test, time elapsed 8.727508544921875 -- emperical power so far (from test_start): 1.0
+db insert success
+(124, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0296203665943429, 0.0010000000474974513, 8.680570840835571, '2024-08-02 13:40:56', 4, 999)
+pval: [0.001] -- 124th test, time elapsed 8.680570840835571 -- emperical power so far (from test_start): 1.0
+db insert success
+(125, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.8184775753926914, 0.0010000000474974513, 8.831342458724976, '2024-08-02 13:41:09', 4, 999)
+pval: [0.001] -- 125th test, time elapsed 8.831342458724976 -- emperical power so far (from test_start): 1.0
+db insert success
+(126, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.395814316027522, 0.0010000000474974513, 9.167263507843018, '2024-08-02 13:41:33', 4, 999)
+pval: [0.001] -- 126th test, time elapsed 9.167263507843018 -- emperical power so far (from test_start): 1.0
+db insert success
+(127, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.6448264416971394, 0.0010000000474974513, 8.493098258972168, '2024-08-02 13:41:58', 4, 999)
+pval: [0.001] -- 127th test, time elapsed 8.493098258972168 -- emperical power so far (from test_start): 1.0
+db insert success
+(128, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9154804315322087, 0.0010000000474974513, 8.417104005813599, '2024-08-02 13:42:21', 4, 999)
+pval: [0.001] -- 128th test, time elapsed 8.417104005813599 -- emperical power so far (from test_start): 1.0
+db insert success
+(129, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1433510965053282, 0.0010000000474974513, 8.342014789581299, '2024-08-02 13:42:39', 4, 999)
+pval: [0.001] -- 129th test, time elapsed 8.342014789581299 -- emperical power so far (from test_start): 1.0
+db insert success
+(130, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.288904319535174, 0.0010000000474974513, 8.57227635383606, '2024-08-02 13:42:56', 4, 999)
+pval: [0.001] -- 130th test, time elapsed 8.57227635383606 -- emperical power so far (from test_start): 1.0
+db insert success
+(131, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.481422371644599, 0.0010000000474974513, 8.429566621780396, '2024-08-02 13:43:14', 4, 999)
+pval: [0.001] -- 131th test, time elapsed 8.429566621780396 -- emperical power so far (from test_start): 1.0
+db insert success
+(132, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0451633257290096, 0.0010000000474974513, 9.017224550247192, '2024-08-02 13:43:35', 4, 999)
+pval: [0.001] -- 132th test, time elapsed 9.017224550247192 -- emperical power so far (from test_start): 1.0
+db insert success
+(133, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.944799356994749, 0.0010000000474974513, 8.832486152648926, '2024-08-02 13:43:47', 4, 999)
+pval: [0.001] -- 133th test, time elapsed 8.832486152648926 -- emperical power so far (from test_start): 1.0
+db insert success
+(134, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7556840741585247, 0.0010000000474974513, 9.821086883544922, '2024-08-02 13:44:15', 4, 999)
+pval: [0.001] -- 134th test, time elapsed 9.821086883544922 -- emperical power so far (from test_start): 1.0
+db insert success
+(135, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.277515265356456, 0.0010000000474974513, 9.444861650466919, '2024-08-02 13:44:31', 4, 999)
+pval: [0.001] -- 135th test, time elapsed 9.444861650466919 -- emperical power so far (from test_start): 1.0
+db insert success
+(136, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.8923936222519968, 0.0010000000474974513, 9.680575132369995, '2024-08-02 13:44:45', 4, 999)
+pval: [0.001] -- 136th test, time elapsed 9.680575132369995 -- emperical power so far (from test_start): 1.0
+db insert success
+(137, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5632374814033803, 0.0010000000474974513, 9.709530353546143, '2024-08-02 13:45:12', 4, 999)
+pval: [0.001] -- 137th test, time elapsed 9.709530353546143 -- emperical power so far (from test_start): 1.0
+db insert success
+(138, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.506254132876001, 0.0010000000474974513, 9.81375002861023, '2024-08-02 13:45:25', 4, 999)
+pval: [0.001] -- 138th test, time elapsed 9.81375002861023 -- emperical power so far (from test_start): 1.0
+db insert success
+(139, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0044555910462503, 0.0010000000474974513, 9.861772537231445, '2024-08-02 13:45:48', 4, 999)
+pval: [0.001] -- 139th test, time elapsed 9.861772537231445 -- emperical power so far (from test_start): 1.0
+db insert success
+(140, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4516512922344131, 0.0010000000474974513, 8.468598365783691, '2024-08-02 13:46:14', 4, 999)
+pval: [0.001] -- 140th test, time elapsed 8.468598365783691 -- emperical power so far (from test_start): 1.0
+db insert success
+(141, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9457098356383078, 0.0010000000474974513, 8.784764766693115, '2024-08-02 13:46:27', 4, 999)
+pval: [0.001] -- 141th test, time elapsed 8.784764766693115 -- emperical power so far (from test_start): 1.0
+db insert success
+(142, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.427076446266975, 0.0010000000474974513, 8.48701786994934, '2024-08-02 13:46:41', 4, 999)
+pval: [0.001] -- 142th test, time elapsed 8.48701786994934 -- emperical power so far (from test_start): 1.0
+db insert success
+(143, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3135101709480415, 0.0010000000474974513, 10.02604866027832, '2024-08-02 13:46:52', 4, 999)
+pval: [0.001] -- 143th test, time elapsed 10.02604866027832 -- emperical power so far (from test_start): 1.0
+db insert success
+(144, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3474911908896683, 0.0010000000474974513, 9.86032485961914, '2024-08-02 13:47:04', 4, 999)
+pval: [0.001] -- 144th test, time elapsed 9.86032485961914 -- emperical power so far (from test_start): 1.0
+db insert success
+(145, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7081185986347869, 0.0010000000474974513, 9.731970071792603, '2024-08-02 13:47:14', 4, 999)
+pval: [0.001] -- 145th test, time elapsed 9.731970071792603 -- emperical power so far (from test_start): 1.0
+db insert success
+(146, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.432380613985293, 0.0010000000474974513, 9.632556200027466, '2024-08-02 13:47:38', 4, 999)
+pval: [0.001] -- 146th test, time elapsed 9.632556200027466 -- emperical power so far (from test_start): 1.0
+db insert success
+(147, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.8791714603520626, 0.0010000000474974513, 9.034418821334839, '2024-08-02 13:48:08', 4, 999)
+pval: [0.001] -- 147th test, time elapsed 9.034418821334839 -- emperical power so far (from test_start): 1.0
+db insert success
+(148, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4044283880129536, 0.0010000000474974513, 9.857251167297363, '2024-08-02 13:48:22', 4, 999)
+pval: [0.001] -- 148th test, time elapsed 9.857251167297363 -- emperical power so far (from test_start): 1.0
+db insert success
+(149, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.373131424863396, 0.0010000000474974513, 9.875453233718872, '2024-08-02 13:48:44', 4, 999)
+pval: [0.001] -- 149th test, time elapsed 9.875453233718872 -- emperical power so far (from test_start): 1.0
+db insert success
+(150, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.437921778708044, 0.0010000000474974513, 9.971766233444214, '2024-08-02 13:49:09', 4, 999)
+pval: [0.001] -- 150th test, time elapsed 9.971766233444214 -- emperical power so far (from test_start): 1.0
+db insert success
+(151, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0835040542554921, 0.0010000000474974513, 9.760524034500122, '2024-08-02 13:49:27', 4, 999)
+pval: [0.001] -- 151th test, time elapsed 9.760524034500122 -- emperical power so far (from test_start): 1.0
+db insert success
+(152, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2558101207195622, 0.0010000000474974513, 9.69883942604065, '2024-08-02 13:49:44', 4, 999)
+pval: [0.001] -- 152th test, time elapsed 9.69883942604065 -- emperical power so far (from test_start): 1.0
+db insert success
+(153, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.7888661231499041, 0.0010000000474974513, 9.89015793800354, '2024-08-02 13:49:54', 4, 999)
+pval: [0.001] -- 153th test, time elapsed 9.89015793800354 -- emperical power so far (from test_start): 1.0
+db insert success
+(154, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5378344560910664, 0.0010000000474974513, 9.704819917678833, '2024-08-02 13:50:07', 4, 999)
+pval: [0.001] -- 154th test, time elapsed 9.704819917678833 -- emperical power so far (from test_start): 1.0
+db insert success
+(155, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3150494454043065, 0.0010000000474974513, 9.876360654830933, '2024-08-02 13:50:28', 4, 999)
+pval: [0.001] -- 155th test, time elapsed 9.876360654830933 -- emperical power so far (from test_start): 1.0
+db insert success
+(156, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7085940368581083, 0.0010000000474974513, 9.773776054382324, '2024-08-02 13:50:52', 4, 999)
+pval: [0.001] -- 156th test, time elapsed 9.773776054382324 -- emperical power so far (from test_start): 1.0
+db insert success
+(157, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.689416624634291, 0.0010000000474974513, 9.707149028778076, '2024-08-02 13:51:03', 4, 999)
+pval: [0.001] -- 157th test, time elapsed 9.707149028778076 -- emperical power so far (from test_start): 1.0
+db insert success
+(158, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4618369952179662, 0.0010000000474974513, 9.872431993484497, '2024-08-02 13:51:17', 4, 999)
+pval: [0.001] -- 158th test, time elapsed 9.872431993484497 -- emperical power so far (from test_start): 1.0
+db insert success
+(159, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.511879481484157, 0.0010000000474974513, 9.948553562164307, '2024-08-02 13:51:44', 4, 999)
+pval: [0.001] -- 159th test, time elapsed 9.948553562164307 -- emperical power so far (from test_start): 1.0
+db insert success
+(160, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5192088674451183, 0.0010000000474974513, 9.822713613510132, '2024-08-02 13:52:00', 4, 999)
+pval: [0.001] -- 160th test, time elapsed 9.822713613510132 -- emperical power so far (from test_start): 1.0
+db insert success
+(161, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5795296604360183, 0.0010000000474974513, 9.810441493988037, '2024-08-02 13:52:14', 4, 999)
+pval: [0.001] -- 161th test, time elapsed 9.810441493988037 -- emperical power so far (from test_start): 1.0
+db insert success
+(162, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.173797593049632, 0.0010000000474974513, 9.803441524505615, '2024-08-02 13:52:29', 4, 999)
+pval: [0.001] -- 162th test, time elapsed 9.803441524505615 -- emperical power so far (from test_start): 1.0
+db insert success
+(163, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1392251493799868, 0.0010000000474974513, 9.821635961532593, '2024-08-02 13:52:49', 4, 999)
+pval: [0.001] -- 163th test, time elapsed 9.821635961532593 -- emperical power so far (from test_start): 1.0
+db insert success
+(164, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0968040739886877, 0.0010000000474974513, 9.792206525802612, '2024-08-02 13:53:00', 4, 999)
+pval: [0.001] -- 164th test, time elapsed 9.792206525802612 -- emperical power so far (from test_start): 1.0
+db insert success
+(165, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.8263921848906817, 0.0010000000474974513, 9.719592094421387, '2024-08-02 13:53:15', 4, 999)
+pval: [0.001] -- 165th test, time elapsed 9.719592094421387 -- emperical power so far (from test_start): 1.0
+db insert success
+(166, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.8440197071492523, 0.0010000000474974513, 9.849980115890503, '2024-08-02 13:53:32', 4, 999)
+pval: [0.001] -- 166th test, time elapsed 9.849980115890503 -- emperical power so far (from test_start): 1.0
+db insert success
+(167, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9662052986856597, 0.0010000000474974513, 9.747036695480347, '2024-08-02 13:53:47', 4, 999)
+pval: [0.001] -- 167th test, time elapsed 9.747036695480347 -- emperical power so far (from test_start): 1.0
+db insert success
+(168, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2584206974219692, 0.0010000000474974513, 8.727159976959229, '2024-08-02 13:54:16', 4, 999)
+pval: [0.001] -- 168th test, time elapsed 8.727159976959229 -- emperical power so far (from test_start): 1.0
+db insert success
+(169, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3420573984289845, 0.0010000000474974513, 9.74731183052063, '2024-08-02 13:54:36', 4, 999)
+pval: [0.001] -- 169th test, time elapsed 9.74731183052063 -- emperical power so far (from test_start): 1.0
+db insert success
+(170, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5966242416819174, 0.0010000000474974513, 8.60361099243164, '2024-08-02 13:54:53', 4, 999)
+pval: [0.001] -- 170th test, time elapsed 8.60361099243164 -- emperical power so far (from test_start): 1.0
+db insert success
+(171, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5357241403652626, 0.0010000000474974513, 9.781275749206543, '2024-08-02 13:55:09', 4, 999)
+pval: [0.001] -- 171th test, time elapsed 9.781275749206543 -- emperical power so far (from test_start): 1.0
+db insert success
+(172, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.602438637045509, 0.0010000000474974513, 9.881333112716675, '2024-08-02 13:55:32', 4, 999)
+pval: [0.001] -- 172th test, time elapsed 9.881333112716675 -- emperical power so far (from test_start): 1.0
+db insert success
+(173, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9267553173977632, 0.0010000000474974513, 9.755938529968262, '2024-08-02 13:56:01', 4, 999)
+pval: [0.001] -- 173th test, time elapsed 9.755938529968262 -- emperical power so far (from test_start): 1.0
+db insert success
+(174, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.13144433329545, 0.0010000000474974513, 9.976227521896362, '2024-08-02 13:56:12', 4, 999)
+pval: [0.001] -- 174th test, time elapsed 9.976227521896362 -- emperical power so far (from test_start): 1.0
+db insert success
+(175, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0579279157845667, 0.0010000000474974513, 9.843818664550781, '2024-08-02 13:56:35', 4, 999)
+pval: [0.001] -- 175th test, time elapsed 9.843818664550781 -- emperical power so far (from test_start): 1.0
+db insert success
+(176, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9736653740268246, 0.0010000000474974513, 9.848766565322876, '2024-08-02 13:56:51', 4, 999)
+pval: [0.001] -- 176th test, time elapsed 9.848766565322876 -- emperical power so far (from test_start): 1.0
+db insert success
+(177, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4660394998492432, 0.0010000000474974513, 9.780572652816772, '2024-08-02 13:57:02', 4, 999)
+pval: [0.001] -- 177th test, time elapsed 9.780572652816772 -- emperical power so far (from test_start): 1.0
+db insert success
+(178, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.2031392519756476, 0.0010000000474974513, 9.73058795928955, '2024-08-02 13:57:23', 4, 999)
+pval: [0.001] -- 178th test, time elapsed 9.73058795928955 -- emperical power so far (from test_start): 1.0
+db insert success
+(179, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3858675390586237, 0.0010000000474974513, 9.80807876586914, '2024-08-02 13:57:52', 4, 999)
+pval: [0.001] -- 179th test, time elapsed 9.80807876586914 -- emperical power so far (from test_start): 1.0
+db insert success
+(180, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3626024875899532, 0.0010000000474974513, 9.999064445495605, '2024-08-02 13:58:04', 4, 999)
+pval: [0.001] -- 180th test, time elapsed 9.999064445495605 -- emperical power so far (from test_start): 1.0
+db insert success
+(181, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7046563473922713, 0.0010000000474974513, 9.738118648529053, '2024-08-02 13:58:28', 4, 999)
+pval: [0.001] -- 181th test, time elapsed 9.738118648529053 -- emperical power so far (from test_start): 1.0
+db insert success
+(182, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.9505876411194114, 0.0010000000474974513, 9.814610719680786, '2024-08-02 13:58:46', 4, 999)
+pval: [0.001] -- 182th test, time elapsed 9.814610719680786 -- emperical power so far (from test_start): 1.0
+db insert success
+(183, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.781001380803568, 0.0010000000474974513, 9.692376613616943, '2024-08-02 13:59:16', 4, 999)
+pval: [0.001] -- 183th test, time elapsed 9.692376613616943 -- emperical power so far (from test_start): 1.0
+db insert success
+(184, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.8386945435131121, 0.0010000000474974513, 9.879786014556885, '2024-08-02 13:59:42', 4, 999)
+pval: [0.001] -- 184th test, time elapsed 9.879786014556885 -- emperical power so far (from test_start): 1.0
+db insert success
+(185, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.0211356848366364, 0.0010000000474974513, 9.985633134841919, '2024-08-02 13:59:59', 4, 999)
+pval: [0.001] -- 185th test, time elapsed 9.985633134841919 -- emperical power so far (from test_start): 1.0
+db insert success
+(186, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.4037058599417866, 0.0010000000474974513, 9.928386449813843, '2024-08-02 14:00:25', 4, 999)
+pval: [0.001] -- 186th test, time elapsed 9.928386449813843 -- emperical power so far (from test_start): 1.0
+db insert success
+(187, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.767108762272394, 0.0010000000474974513, 9.840776205062866, '2024-08-02 14:00:42', 4, 999)
+pval: [0.001] -- 187th test, time elapsed 9.840776205062866 -- emperical power so far (from test_start): 1.0
+db insert success
+(188, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.7438927306314431, 0.0010000000474974513, 9.930223226547241, '2024-08-02 14:01:02', 4, 999)
+pval: [0.001] -- 188th test, time elapsed 9.930223226547241 -- emperical power so far (from test_start): 1.0
+db insert success
+(189, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3391150968032735, 0.0010000000474974513, 9.851669073104858, '2024-08-02 14:01:21', 4, 999)
+pval: [0.001] -- 189th test, time elapsed 9.851669073104858 -- emperical power so far (from test_start): 1.0
+db insert success
+(190, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.8673122617408566, 0.0010000000474974513, 9.859952926635742, '2024-08-02 14:01:48', 4, 999)
+pval: [0.001] -- 190th test, time elapsed 9.859952926635742 -- emperical power so far (from test_start): 1.0
+db insert success
+(191, 3, 0, 2, 22400, 'elltwo', 'disclapu', 2.0133040547318632, 0.0010000000474974513, 10.126448154449463, '2024-08-02 14:02:14', 4, 999)
+pval: [0.001] -- 191th test, time elapsed 10.126448154449463 -- emperical power so far (from test_start): 1.0
+db insert success
+(192, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.8709061963187095, 0.0010000000474974513, 9.27168345451355, '2024-08-02 14:02:28', 4, 999)
+pval: [0.001] -- 192th test, time elapsed 9.27168345451355 -- emperical power so far (from test_start): 1.0
+db insert success
+(193, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.9321475141324687, 0.0010000000474974513, 8.585757732391357, '2024-08-02 14:02:57', 4, 999)
+pval: [0.001] -- 193th test, time elapsed 8.585757732391357 -- emperical power so far (from test_start): 1.0
+db insert success
+(194, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1830972766326564, 0.0010000000474974513, 9.940725088119507, '2024-08-02 14:03:17', 4, 999)
+pval: [0.001] -- 194th test, time elapsed 9.940725088119507 -- emperical power so far (from test_start): 1.0
+db insert success
+(195, 3, 0, 2, 22400, 'elltwo', 'disclapu', 0.996238202673263, 0.0010000000474974513, 9.997304201126099, '2024-08-02 14:03:51', 4, 999)
+pval: [0.001] -- 195th test, time elapsed 9.997304201126099 -- emperical power so far (from test_start): 1.0
+db insert success
+(196, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1352378971528632, 0.0010000000474974513, 9.990156412124634, '2024-08-02 14:04:09', 4, 999)
+pval: [0.001] -- 196th test, time elapsed 9.990156412124634 -- emperical power so far (from test_start): 1.0
+db insert success
+(197, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.5548309231051416, 0.0010000000474974513, 9.94405722618103, '2024-08-02 14:04:35', 4, 999)
+pval: [0.001] -- 197th test, time elapsed 9.94405722618103 -- emperical power so far (from test_start): 1.0
+db insert success
+(198, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3526758920382171, 0.0010000000474974513, 9.644481182098389, '2024-08-02 14:04:49', 4, 999)
+pval: [0.001] -- 198th test, time elapsed 9.644481182098389 -- emperical power so far (from test_start): 1.0
+db insert success
+(199, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.3161690219783937, 0.0010000000474974513, 9.80041217803955, '2024-08-02 14:05:00', 4, 999)
+pval: [0.001] -- 199th test, time elapsed 9.80041217803955 -- emperical power so far (from test_start): 1.0
+db insert success
+(200, 3, 0, 2, 22400, 'elltwo', 'disclapu', 1.1575858732450905, 0.0010000000474974513, 10.055017948150635, '2024-08-02 14:05:25', 4, 999)
+pval: [0.001] -- 200th test, time elapsed 10.055017948150635 -- emperical power so far (from test_start): 1.0
+db insert success
+4483.669909238815
