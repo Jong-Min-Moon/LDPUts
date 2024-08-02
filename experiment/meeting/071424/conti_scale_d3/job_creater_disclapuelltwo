@@ -1,0 +1,117 @@
+#!/bin/bash
+#
+#
+
+####################################
+experiment_name="conti_scale_d3"
+table_name="conti_scale"
+####################################
+
+project_name="LDPUts"
+meeting_date="071424"
+db_name="071424_LDPUts"
+extension_code="py"
+extension_result="npy"
+tool="python -u"
+code_dir="/home1/jongminm/${project_name}/experiment/meeting/${meeting_date}/${experiment_name}"
+db_dir="/home1/jongminm/${project_name}/experiment/db/${db_name}.db"
+code_common_dir="/home1/jongminm/${project_name}/experiment/code_common"
+
+####################################
+device_main=cuda
+device_sub=cpu
+n_cpu=8
+#gpu_order="#SBATCH --gpus-per-task=k40:1"
+data_gen_filename=density_scale
+statistic=elltwo
+privmech=disclapu
+d=3 #1 for multinomial testing
+n_test=200
+n_permutation=999
+test_start=1
+sample_size_multiplier=3200
+n_bin=4 #=k for multinomal testing
+####################################
+k=$((n_bin ** d))
+mem_min=4000
+
+
+
+    for privlev in 0.5 1 2
+        do
+            for ii in {1..10..1}
+                do
+                sample_size=$((ii*sample_size_multiplier))
+
+                filename=${experiment_name}_${privmech}${statistic}_n${sample_size}_priv${privlev}
+                filename_code=${code_dir}/${filename}.${extension_code}
+                filename_job=${code_dir}/${filename}.job
+                filename_out=${code_dir}/${filename}.out
+                #scalar parameters
+                touch ${code_dir}/temp_code
+                echo "d = ${d}"                         >> ${code_dir}/temp_code
+                echo "n_bin = ${n_bin}"                 >> ${code_dir}/temp_code
+                echo "privacy_level = ${privlev}"       >> ${code_dir}/temp_code
+                echo "sample_size   = ${sample_size}"   >> ${code_dir}/temp_code
+                echo "n_permutation = ${n_permutation}" >> ${code_dir}/temp_code
+                echo "n_test        = ${n_test}"        >> ${code_dir}/temp_code
+                echo "test_start    = ${test_start}"    >> ${code_dir}/temp_code
+                echo "k             = ${k}"             >> ${code_dir}/temp_code
+
+                #strings
+                echo "table_name = '${table_name}'"  >> ${code_dir}/temp_code
+                echo "code_dir   = '${code_dir}'"  >> ${code_dir}/temp_code
+                echo "priv_mech  = '${privmech}'"  >> ${code_dir}/temp_code
+                echo "statistic  = '${statistic}'" >> ${code_dir}/temp_code
+                echo "db_dir = '${db_dir}'" >> ${code_dir}/temp_code
+
+                #import code chunks, part 1
+                cat ${code_common_dir}/code_common_pacakges.${extension_code} >> ${code_dir}/temp_code
+                cat ${code_common_dir}/db_insert_function.${extension_code} >> ${code_dir}/temp_code
+                
+                # gpu or cpu
+                echo "device = torch.device('${device_main}' if torch.cuda.is_available() else '${device_sub}')"  >> ${code_dir}/temp_code
+                
+                #import code chunks, part 2
+                cat ${code_common_dir}/loop_start.${extension_code} >> ${code_dir}/temp_code
+                
+                #data generation
+                cat ${code_common_dir}/${data_gen_filename}.${extension_code} >> ${code_dir}/temp_code
+
+                #import code chunks, part 3
+                cat ${code_common_dir}/loop_end.${extension_code} >> ${code_dir}/temp_code
+                
+                mv ${code_dir}/temp_code ${filename_code}
+
+
+
+                # job
+                touch ${code_dir}/temp_job
+                echo "#!/bin/bash" >> ${code_dir}/temp_job
+                echo "#SBATCH --partition=main" >> ${code_dir}/temp_job
+                echo "#SBATCH --nodes=1" >> ${code_dir}/temp_job
+                echo "#SBATCH --ntasks=1" >> ${code_dir}/temp_job
+                echo "#SBATCH --time=23:59:59" >> ${code_dir}/temp_job
+                echo "#SBATCH --cpus-per-task=${n_cpu}" >> ${code_dir}/temp_job
+                echo "${gpu_order}" >> ${code_dir}/temp_job
+                
+                
+                
+                mem_cal=$((40*sample_size*k/1024/1024))
+                mem=$(echo "if ($mem_min < $mem_cal) $mem_cal else $mem_min" | bc)
+                echo "#SBATCH --mem=$((mem))mb" >> ${code_dir}/temp_job
+                echo "#SBATCH --job-name=${filename}" >> ${code_dir}/temp_job
+                echo "#SBATCH --output=${filename_out}" >> ${code_dir}/temp_job
+                echo "module purge" >> ${code_dir}/temp_job
+                echo "load conda" >> ${code_dir}/temp_job
+                cat ${code_common_dir}/conda_template >> ${code_dir}/temp_job
+                echo "${tool}  ${filename_code} > ${filename_out}" >> ${code_dir}/temp_job
+                mv ${code_dir}/temp_job ${filename_job}
+                sleep 3
+                sbatch ${filename_job}
+                done
+        done
+
+
+
+

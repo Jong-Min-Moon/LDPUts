@@ -1,0 +1,4 @@
+genrrelltwo, alpha=2, sample size=40000
+#########################################
+/var/spool/slurm/d/job24682431/slurm_script: line 23: 23221 Killed                  python -u /home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d5/conti_scale_d5_genrrelltwo_n40000_priv2.py > /home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d5/conti_scale_d5_genrrelltwo_n40000_priv2.out
+slurmstepd: error: Detected 1 oom_kill event in StepId=24682431.batch. Some of the step tasks have been OOM Killed.

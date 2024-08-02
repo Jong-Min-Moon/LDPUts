@@ -1,0 +1,8 @@
+lapuelltwo, alpha=0.5, sample size=400000
+#########################################
+Traceback (most recent call last):
+  File "/home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d5/conti_scale_d5_lapuelltwo_n400000_priv0.5.py", line 97, in <module>
+    device
+  File "/home1/jongminm/LDPUts/server.py", line 102, in load_private_data_multinomial
+    self.data_y_square_colsum = self.data_y.square().sum(1)
+RuntimeError: CUDA out of memory. Tried to allocate 3.05 GiB (GPU 0; 11.17 GiB total capacity; 9.16 GiB already allocated; 1.56 GiB free; 9.16 GiB reserved in total by PyTorch)

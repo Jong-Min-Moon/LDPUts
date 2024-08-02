@@ -1,0 +1,6 @@
+bitflipelltwo, alpha=2, sample size=40000
+#########################################
+tensor(0.2689)
+tensor(0.2689)
+/var/spool/slurm/d/job24682267/slurm_script: line 23: 17234 Killed                  python -u /home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d5/conti_scale_d5_bitflipelltwo_n40000_priv2.py > /home1/jongminm/LDPUts/experiment/meeting/071424/conti_scale_d5/conti_scale_d5_bitflipelltwo_n40000_priv2.out
+slurmstepd: error: Detected 3 oom_kill events in StepId=24682267.batch. Some of the step tasks have been OOM Killed.
