@@ -1,12 +1,12 @@
 
-    p = torch.ones(k).div(k)
+    p = torch.ones(d).div(d)
     p2 = p.add(
         torch.remainder(
-        torch.tensor(range(k)),
+        torch.tensor(range(d)),
         2
         ).add(-1/2).mul(2).mul(bump)
     )
-    p1_idx = torch.cat( ( torch.arange(1, k), torch.tensor([0])), 0)
+    p1_idx = torch.cat( ( torch.arange(1, d), torch.tensor([0])), 0)
     p1 = p2[p1_idx]
     
 
@@ -25,7 +25,7 @@
             privacy_level,
             device
         ),
-    k,
+    d,
     device,
     device
     )

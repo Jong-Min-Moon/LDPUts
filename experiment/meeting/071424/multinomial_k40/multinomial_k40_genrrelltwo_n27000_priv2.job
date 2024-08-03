@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --partition=main
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=23:59:59
+#SBATCH --cpus-per-task=30
+
+#SBATCH --mem=4000mb
+#SBATCH --job-name=multinomial_k40_genrrelltwo_n27000_priv2
+#SBATCH --output=/home1/jongminm/LDPUts/experiment/meeting/071424/multinomial_k40/multinomial_k40_genrrelltwo_n27000_priv2.out
+module purge
+load conda
+eval "$(conda shell.bash hook)"
+conda activate LDPUtsEnvK40
+
+python -u  /home1/jongminm/LDPUts/experiment/meeting/071424/multinomial_k40/multinomial_k40_genrrelltwo_n27000_priv2.py > /home1/jongminm/LDPUts/experiment/meeting/071424/multinomial_k40/multinomial_k40_genrrelltwo_n27000_priv2.out
